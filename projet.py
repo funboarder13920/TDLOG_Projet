@@ -100,8 +100,9 @@ class ballon :
 		self.position = position
 
 class joueur : 
-	def __init__(self,equipe,jeu,nEquipe,position,prop):
+	def __init__(self,equipe,jeu,nEquipe,position,prop, numero):
 		self.position = position
+		self.numero = numero
 		self.porteur = False
 		self.jeu = jeu
 		self.ko = False
@@ -143,7 +144,7 @@ class joueur :
 
 class equipe :
 	def __init__(self,jeu,nEquipe,positions):
-		self.equipe = [joueur(self,jeu,nEquipe,positions[i],prop[i]) for i in range(6)]
+		self.equipe = [joueur(self,jeu,nEquipe,positions[i],prop[i],i) for i in range(6)]
 		self.score = 0
 		self.coup = 0
 		self.jeu = jeu
@@ -151,6 +152,27 @@ class equipe :
 
 	def joue(self):
 		self.coup = 2
+		while True
+			optionJeu()
+			opt = intInput("Action: ")
+			# 0 =  passe
+			if opt == 0:
+				reglePasse()
+				j1 = intInput("Joueur 1: ")
+				while True
+					try :
+						j2 = intInput("Joueur 2: ")
+						assert j2!=j1
+						break
+				jeu.passe(equipe[j1],equipe[j2])
+
+			elif opt == 1:
+				regleDeplacement()
+				j = intInput("Joueur: ")
+
+
+
+		#on lui demande quoi jouer
 
 	def forme(self):
 		if self.carte = [False for i in range(6)]:
