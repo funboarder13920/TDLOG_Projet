@@ -1,13 +1,15 @@
 import random
 import logging
 import logging.config
-
+import copy
 
 logging.config.fileConfig("log.conf")
 log = logging.getLogger("application")
 nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
+# propriété ,( bonus attaque , bonus défense, déplacement)
+bonus = ["ordinaire":(0,0,3),"dur":(1,0,3),"costaud":(2,1,2),"fute":(0,1,3),"rapide":(-1,-1,4)]
 
 def intInput(str):
 	while True:
@@ -67,6 +69,32 @@ class jeu :
 		self.ballon = ballon((7,1+random.randint(1,6)))
 		self.tour = 1
 
+	def tour(self):
+		if self.tour == 1:
+			self.equipe1.joue()
+			self.tour = 2
+		else : 
+			self.equipe2.joue()
+			self.tour = 1
+
+	def resolution(self,attaquant,defenseur):
+		#Est ce que l'attaquant gagne?
+		attaquant.equipe.forme()
+		defenseur.equipe.forme()
+		vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
+		vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
+		if vAtt != vDef:
+			return vAtt>vDef
+		else:
+			vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
+			vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
+			if vAtt != vDef:
+				return vAtt>vDef
+			else: 
+				return False
+
+
+
 class ballon :
 	def __init__(self,position):
 		self.position = position
@@ -78,15 +106,66 @@ class joueur :
 		self.jeu = jeu
 		self.ko = False
 		self.equipe = equipe
+		self.nEquipe = nEquipe
 		self.prop = prop
 		jeu.matrice[position[0]][position[1]] = self 
+
+	def deplacement(self,pos):
+		#pas par pas c'est plus simple
+		if (libre  et in the range)
+
+	def enArriere(self,joueur2):
+		#joueur2 est il derrière joueur 1?
+		if self.nEquipe == 1:
+			return (self.pos[0]-joueur2.pos[0])>0
+		else :
+			return (self.pos[0]-joueur2.pos[0])<0
+
+	def passe(self,joueur2):
+		if self.porteur:
+			if self.enArriere(joueur2):
+				interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
+				if interc[0]:
+					if askIntercepter():
+						jeu.resolution(self,interc[1])
+					else:
+						log.info("L'adversaire n'intercepte pas")
+				else:
+					log.info("passe sans interception")
+					self.porteur = False
+					joueur2.porteur = True
+			else:
+				log.error("passe: passe en avant")
+		else:
+			log.error("passe: le joueur n'est pas porteur")
+
+	def :
 
 class equipe :
 	def __init__(self,jeu,nEquipe,positions):
 		self.equipe = [joueur(self,jeu,nEquipe,positions[i],prop[i]) for i in range(6)]
 		self.score = 0
+		self.coup = 0
 		self.jeu = jeu
 		self.carte = [True for i in range(6)]
 
+	def joue(self):
+		self.coup = 2
+
+	def forme(self):
+		if self.carte = [False for i in range(6)]:
+			self.carte = [True for i in range(6)]
+		cartePossible = []
+		for i in range(len(self.carte)):
+			if carte[i]:
+				cartePossible.append(i)
+		e = random.randint(0,len(cartPossible)-1)
+		return cartePossible(e)+1
+
+
+
 jeu = jeu()
-print(jeu.matrice[5][2])
+
+
+#garder en liste quel joueur a été joué, on passe quand on dit ok on a fini
+#verifier qu'il n'y a pas de joueur retourné sur la case d'arrêt
