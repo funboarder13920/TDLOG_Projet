@@ -177,6 +177,21 @@ class joueur :
 		else:
 			log.error("passe: le joueur n'est pas porteur")
 
+	def placage(self,joueur2):
+		if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
+			if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO:
+				if self.jeu.resolution(self,joueur2):
+					joueur2.KO = True
+					self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
+					self.joueur.pos = joueur2.pos
+					self.jeu.matrice[self.pos[0]][self.pos[1]] = [self.jeu.matrice[self.pos[0]][self.pos[1]],self]
+					self.depRestant -= 1 
+				else:
+					self.KO = True
+					if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
+
+
+
 
 class equipe :
 	def __init__(self,jeu,nEquipe,positions):
@@ -203,7 +218,7 @@ class equipe :
 					try :
 						j2 = intInput("Joueur 2: ")
 						assert j2!=j1
-						self.jeu.passe(self.equipe[j1],self.equipe[j2])
+						self.equipe[j1].passe(self.equipe[j2])
 						break
 					except:
 						pass
