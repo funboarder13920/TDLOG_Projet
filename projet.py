@@ -116,14 +116,28 @@ class joueur :
 		self.nEquipe = nEquipe
 		self.prop = prop
 		self.jeu.matrice[position[0]][position[1]] = self
-		self.couprestant = 
+		if nEquipe !=3:
+			self.depRestant = bonus[self.prop][2]
+		else:
+			self.depRestant = 0
+
+	def deplace(self,pos):
+		self.jeu.matrice[self.pos[0]][self.pos[1]],self.jeu.matrice[pos[0]][pos[1]] = self.jeu.matrice[pos[0]][pos[1]],self.jeu.matrice[self.pos[0]][self.pos[1]]
+		self.depRestant -= 1
+		self.pos = pos
 
 	def deplacement(self,pos):
 		#pas par pas c'est plus simple
+		# le joueur ne doit pas être KO et le déplacement doit être d'au plus 1
 		if not self.ko:
 			if abs(self.position  - pos)==1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
-				pass
-				#modifmatrice
+				if self.coupRestant ==  bonus[self.prop][2] and self.coupRestant !=0:
+					#Le joueur ne s'est pas encore déplacé
+					if self.equipe.coupRestant >0:
+						self.coupRestant -=1
+						self.deplace(pos)
+				elif self.equipe[j].coupRestant != 0 and self.equipe[j].coupRestant !=  bonus[self.equipe[j].prop][2]:
+					self.deplace(pos)
 
 	def onGrid(self):
 		if self.nEquipe==1:
@@ -168,13 +182,17 @@ class equipe :
 	def __init__(self,jeu,nEquipe,positions):
 		self.equipe = [joueur(self,jeu,nEquipe,positions[i],prop[i],i) for i in range(6)]
 		self.score = 0
-		self.coup = 0
+		self.coupRestant = 2
 		self.jeu = jeu
 		self.carte = [True for i in range(6)]
 
 	def joue(self):
-		self.coup = 2
-		while True:
+		#Reinitialisation
+		self.coupRestant = 2
+		for joueur in self.equipe:
+			joueur.depRestant =  bonus[joueur.prop][2]
+		cont = True
+		while cont:
 			optionJeu()
 			opt = intInput("Action: ")
 			# 0 =  passe
@@ -185,13 +203,20 @@ class equipe :
 					try :
 						j2 = intInput("Joueur 2: ")
 						assert j2!=j1
-						jeu.passe(equipe[j1],equipe[j2])
+						self.jeu.passe(self.equipe[j1],self.equipe[j2])
 						break
 					except:
 						pass
 			elif opt == 1:
 				regleDeplacement()
 				j = intInput("Joueur: ")
+				posx = intInput("posx: ")
+				posy = intInput("posy: ")
+				self.equipe[j].deplacement((posx,posy))
+
+			elif opt == -1:
+				cont = False
+
 
 
 
