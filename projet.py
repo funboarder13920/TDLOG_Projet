@@ -9,7 +9,7 @@ nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
-bonus = ["ordinaire":(0,0,3),"dur":(1,0,3),"costaud":(2,1,2),"fute":(0,1,3),"rapide":(-1,-1,4)]
+bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rapide':(-1,-1,4)}
 
 def intInput(str):
 	while True:
@@ -60,6 +60,9 @@ class jeu :
 	def __init__(self):
 		log.debug("Initialisation du jeu")
 		self.matrice = [ [0 for i in range(nbLigne)] for j in range(nbColonne)]
+		for i in range(nbLigne):
+			for j in range(nbColonne):
+				joueur(None,self,3,(j,i),"",0)
 		print("Choix équipe 1")
 		positions1 = choixPos(1)
 		print("Choix équipe 2")
@@ -93,6 +96,9 @@ class jeu :
 			else: 
 				return False
 
+	def libre(self,pos):
+		return self.matrice[pos[1]][pos[2]].equipe == 3 or self.matrice[pos[1]][pos[2]].ko
+
 
 
 class ballon :
@@ -109,11 +115,27 @@ class joueur :
 		self.equipe = equipe
 		self.nEquipe = nEquipe
 		self.prop = prop
-		jeu.matrice[position[0]][position[1]] = self 
+		self.jeu.matrice[position[0]][position[1]] = self
 
 	def deplacement(self,pos):
 		#pas par pas c'est plus simple
-		if (libre  et in the range)
+		if not self.ko:
+			if abs(self.position  - pos)==1 and self.jeu.libre(pos) and self.onGrid():
+				pass
+				#modifmatrice
+
+	def onGrid(self):
+		if self.nEquipe==1:
+			if self.porteur:
+				return (posx>=0 and posx<12 and posy>=0 and posy<8)
+			else:
+				return (posx>0 and posx<12 and posy>=0 and posy<8)
+		else :
+			if self.porteur:
+				return (posx>0 and posx<=12 and posy>=0 and posy<8)
+			else:
+				return (posx>0 and posx<12 and posy>=0 and posy<8)
+
 
 	def enArriere(self,joueur2):
 		#joueur2 est il derrière joueur 1?
@@ -140,7 +162,6 @@ class joueur :
 		else:
 			log.error("passe: le joueur n'est pas porteur")
 
-	def :
 
 class equipe :
 	def __init__(self,jeu,nEquipe,positions):
@@ -152,20 +173,21 @@ class equipe :
 
 	def joue(self):
 		self.coup = 2
-		while True
+		while True:
 			optionJeu()
 			opt = intInput("Action: ")
 			# 0 =  passe
 			if opt == 0:
 				reglePasse()
 				j1 = intInput("Joueur 1: ")
-				while True
+				while True:
 					try :
 						j2 = intInput("Joueur 2: ")
 						assert j2!=j1
+						jeu.passe(equipe[j1],equipe[j2])
 						break
-				jeu.passe(equipe[j1],equipe[j2])
-
+					except:
+						pass
 			elif opt == 1:
 				regleDeplacement()
 				j = intInput("Joueur: ")
@@ -175,7 +197,7 @@ class equipe :
 		#on lui demande quoi jouer
 
 	def forme(self):
-		if self.carte = [False for i in range(6)]:
+		if self.carte == [False for i in range(6)]:
 			self.carte = [True for i in range(6)]
 		cartePossible = []
 		for i in range(len(self.carte)):
@@ -187,6 +209,7 @@ class equipe :
 
 
 jeu = jeu()
+print(jeu.matrice)
 
 
 #garder en liste quel joueur a été joué, on passe quand on dit ok on a fini
