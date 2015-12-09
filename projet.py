@@ -96,8 +96,8 @@ class jeu :
 			else: 
 				return False
 
-	def libre(self,pos):
-		return self.matrice[pos[1]][pos[2]].equipe == 3 or self.matrice[pos[1]][pos[2]].ko
+	def libre(self,pos,couprestant = 0):
+		return self.matrice[pos[1]][pos[2]].equipe == 3 or (self.matrice[pos[1]][pos[2]].ko and couprestant >=2)
 
 
 
@@ -116,11 +116,12 @@ class joueur :
 		self.nEquipe = nEquipe
 		self.prop = prop
 		self.jeu.matrice[position[0]][position[1]] = self
+		self.couprestant = 
 
 	def deplacement(self,pos):
 		#pas par pas c'est plus simple
 		if not self.ko:
-			if abs(self.position  - pos)==1 and self.jeu.libre(pos) and self.onGrid():
+			if abs(self.position  - pos)==1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
 				pass
 				#modifmatrice
 
