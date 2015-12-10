@@ -11,6 +11,18 @@ prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rapide':(-1,-1,4)}
 
+def droite(point1,point2):
+	# retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
+	if point1[0]==point2[0]:
+		return(1,0,point1[0])
+	else:
+		pinter=point1-point2
+		a = -pinter[0]/pinter[1]
+		return(a,1,-a*point1[0]-point1[1])
+
+def calcPosDroite(r,pos):
+	return r[0]*pos[0]+r[1]*pos[1]+r[2]
+
 def inRange(pos):
 	return (pos[0]>0 and pos[0]<12 and pos[1]>=0 and pos[1]<8)
 
@@ -108,6 +120,24 @@ class jeu :
 				return False
 		return True
 
+	def interception(self,joueur1,joueur2):
+		pos1 = joueur1.pos
+		pos2 = joueur2.pos
+		r1 = droite(pos1-(1/2,1/2),pos2-(1/2,1/2))
+		r2 = droite(pos1+(1/2,1/2),pos2+(1/2,1/2))
+		v1 = droite(pos1+(-1/2,1/2),pos2+(-1/2,1/2))
+		v2 = droite(pos1+(1/2,-1/2),pos2+(1/2,-1/2))
+		inter = []
+		if joueur1.nEquipe == 1:
+			for joueur in self.equipe2.equipe:
+				if calcPosDroite(r1,joueur.pos)*calcPosDroite(r2,joueur.pos) >=0 or calcPosDroite(v1,joueur.pos)*calcPosDroite(v2,joueur.pos):
+					inter.append(joueur)
+		else:
+			for joueur in self.equipe1.equipe:
+				if calcPosDroite(r1,joueur.pos)*calcPosDroite(r2,joueur.pos) >=0 or calcPosDroite(v1,joueur.pos)*calcPosDroite(v2,joueur.pos):
+					inter.append(joueur)
+		return inter
+
 
 
 class ballon :
@@ -116,7 +146,7 @@ class ballon :
 
 class joueur : 
 	def __init__(self,equipe,jeu,nEquipe,position,prop, numero):
-		self.position = position
+		self.pos= position
 		self.numero = numero
 		self.porteur = False
 		self.jeu = jeu
@@ -149,6 +179,8 @@ class joueur :
 					self.deplace(pos)
 
 	def onGrid(self):
+		posx = self.pos[0]
+		posy = self.pos[1]
 		if self.nEquipe==1:
 			if self.porteur:
 				return (posx>=0 and posx<12 and posy>=0 and posy<8)
@@ -171,16 +203,17 @@ class joueur :
 	def passe(self,joueur2):
 		if self.porteur:
 			if self.enArriere(joueur2):
+				self.porteur = False
+				joueur2.porteur = True
 				interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
-				if interc[0]:
+				for adv in interc:
 					if askIntercepter():
-						jeu.resolution(self,interc[1])
+						if jeu.resolution(self,adv):
+							adv.porteur = True
+							joueur2.porteur = False
+							break
 					else:
 						log.info("L'adversaire n'intercepte pas")
-				else:
-					log.info("passe sans interception")
-					self.porteur = False
-					joueur2.porteur = True
 			else:
 				log.error("passe: passe en avant")
 		else:
@@ -208,14 +241,9 @@ class joueur :
 								self.deplace(self.pos+(dy,dx))
 							elif inRange((-dy,-dx)+self.pos) and len(self.jeu.matrice[(-dy+self.pos)[0]][(-dx+self.pos)[1]])==1:
 								self.deplace(self.pos+(-dx,-dy))
-							else 
+							else :
 								assert False
 								#Pour le test, à enlever normalement
-
-
-
-
-
 
 
 class equipe :
@@ -254,19 +282,17 @@ class equipe :
 				posy = intInput("posy: ")
 				self.equipe[j].deplacement((posx,posy))
 				if self.equipe[j].pos[0]==0 or self.equipe[j].pos[0]== 12:
-					gagné
-
-
+					cont = True
+					self.score += 1
+					self.jeu.fin()
+					break
 			elif opt == -1:
 				if self.jeu.finTour():
 					cont = False
 				else:
 					print("Des joueurs se superposent")
-
-
-
-
 		#on lui demande quoi jouer
+
 
 	def forme(self):
 		if self.carte == [False for i in range(6)]:
@@ -283,6 +309,11 @@ class equipe :
 jeu = jeu()
 print(jeu.matrice)
 
-
-#garder en liste quel joueur a été joué, on passe quand on dit ok on a fini
-#verifier qu'il n'y a pas de joueur retourné sur la case d'arrêt
+# TODO LIST
+# tester la fonction plaquage, est ce que l'action est bien résolue?
+# faire le log
+# fonction règles, askintercepter, etc...
+# plaquer un joueur KO
+# poser la balle derrière en cas de plaquage
+# plaquage sur côté: on place "derrière le joueur?"
+# récupérer la balle dans le déplacement
