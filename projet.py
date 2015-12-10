@@ -11,6 +11,9 @@ prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rapide':(-1,-1,4)}
 
+def inRange(pos):
+	return (pos[0]>0 and pos[0]<12 and pos[1]>=0 and pos[1]<8)
+
 def intInput(str):
 	while True:
 		try:
@@ -99,6 +102,12 @@ class jeu :
 	def libre(self,pos,couprestant = 0):
 		return self.matrice[pos[1]][pos[2]].equipe == 3 or (self.matrice[pos[1]][pos[2]].ko and couprestant >=2)
 
+	def finTour(self):
+		for joueur in self.equipe:
+			if len(self.matrice[joueur.pos[0]][self.joueur.pos[1]])!=1:
+				return False
+		return True
+
 
 
 class ballon :
@@ -183,12 +192,28 @@ class joueur :
 				if self.jeu.resolution(self,joueur2):
 					joueur2.KO = True
 					self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
-					self.joueur.pos = joueur2.pos
+					self.pos = joueur2.pos
 					self.jeu.matrice[self.pos[0]][self.pos[1]] = [self.jeu.matrice[self.pos[0]][self.pos[1]],self]
 					self.depRestant -= 1 
 				else:
 					self.KO = True
 					if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
+						(dx,dy)=-joueur2.pos+self.pos
+						if inRange(dx+self.pos) and len(self.jeu.matrice[(dx+self.pos)[0]][(dy+self.pos)[1]])==1:
+							self.deplace(self.pos+(dx,dy))
+						else:
+							if inRange(2*(dx,dy)+self.pos) and len(self.jeu.matrice[(2*dx+self.pos)[0]][(2*dy+self.pos)[1]])==1:
+								self.deplace(self.pos+2*(dx,dy))
+							elif inRange((dy,dx)+self.pos) and len(self.jeu.matrice[(dy+self.pos)[0]][(dx+self.pos)[1]])==1:
+								self.deplace(self.pos+(dy,dx))
+							elif inRange((-dy,-dx)+self.pos) and len(self.jeu.matrice[(-dy+self.pos)[0]][(-dx+self.pos)[1]])==1:
+								self.deplace(self.pos+(-dx,-dy))
+							else 
+								assert False
+								#Pour le test, à enlever normalement
+
+
+
 
 
 
@@ -228,9 +253,15 @@ class equipe :
 				posx = intInput("posx: ")
 				posy = intInput("posy: ")
 				self.equipe[j].deplacement((posx,posy))
+				if self.equipe[j].pos[0]==0 or self.equipe[j].pos[0]== 12:
+					gagné
+
 
 			elif opt == -1:
-				cont = False
+				if self.jeu.finTour():
+					cont = False
+				else:
+					print("Des joueurs se superposent")
 
 
 
