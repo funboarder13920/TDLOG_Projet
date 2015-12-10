@@ -317,3 +317,5 @@ print(jeu.matrice)
 # poser la balle derrière en cas de plaquage
 # plaquage sur côté: on place "derrière le joueur?"
 # récupérer la balle dans le déplacement
+# fonction tir au pied,passage en force = plaquage?
+# tout tester
