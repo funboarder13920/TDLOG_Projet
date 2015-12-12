@@ -11,6 +11,9 @@ prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rapide':(-1,-1,4)}
 
+def absol(point):
+	return (abs(point[0]),abs(point[1]))
+
 def droite(point1,point2):
 	# retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
 	if point1[0]==point2[0]:
@@ -196,9 +199,9 @@ class joueur :
 	def enArriere(self,joueur2):
 		#joueur2 est il derrière joueur 1?
 		if self.nEquipe == 1:
-			return (self.pos[0]-joueur2.pos[0])>0
+			return (self.pos[0]-joueur2.pos[0])>0 and max(absol(self.pos-joueur2.pos))<=2
 		else :
-			return (self.pos[0]-joueur2.pos[0])<0
+			return (self.pos[0]-joueur2.pos[0])<0 and max(absol(self.pos-joueur2.pos))<=2
 
 	def passe(self,joueur2):
 		if self.porteur:
@@ -244,6 +247,33 @@ class joueur :
 							else :
 								assert False
 								#Pour le test, à enlever normalement
+	
+	def nobodyFront(self):
+		if self.nEquipe == 1:
+			for joueur in self.equipe:
+				if joueur.pos[0]>self.pos[0]:
+					return False
+			return True
+		else:
+			for joueur in self.equipe:
+				if joueur.pos[0]<self.pos[0]:
+					return False
+			return True
+
+	def front(self,pos):
+		if self.nEquipe == 1:
+			return pos[0]-self.pos[0]>0 and pos[0]-self.pos[0]<=2
+		else:
+			return pos[0]-self.pos[0]<0 and -pos[0]+self.pos[0]<=2
+
+
+	def tirAvant(self,pos):
+		if self.porteur:
+			if self.nobodyFront(pos) and self.front(pos):
+				self.porteur = False
+				self.ballon.position = pos
+
+
 
 
 class equipe :
@@ -319,3 +349,4 @@ print(jeu.matrice)
 # récupérer la balle dans le déplacement
 # fonction tir au pied,passage en force = plaquage?
 # tout tester
+# plaquage parfait
