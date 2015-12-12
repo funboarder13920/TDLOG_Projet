@@ -178,8 +178,12 @@ class joueur :
 					if self.equipe.coupRestant >0:
 						self.coupRestant -=1
 						self.deplace(pos)
+						if self.ballon.pos = pos:
+							self.porteur = True
 				elif self.equipe[j].coupRestant != 0 and self.equipe[j].coupRestant !=  bonus[self.equipe[j].prop][2]:
 					self.deplace(pos)
+					if self.ballon.pos = pos:
+							self.porteur = True
 
 	def onGrid(self):
 		posx = self.pos[0]
@@ -350,3 +354,5 @@ print(jeu.matrice)
 # fonction tir au pied,passage en force = plaquage?
 # tout tester
 # plaquage parfait
+# ballon.position : suivre le ballon s'il est sur un joueur
+# le ballon doit connaitre le joueur qui le porteur: à rajouter dans la classe ballon
