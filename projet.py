@@ -279,9 +279,9 @@ class joueur :
 
         def front(self,pos):
                 if self.nEquipe == 1:
-                        return pos[0]-self.pos[0]>0 and pos[0]-self.pos[0]<=2
+                        return pos[0]-self.pos[0]>0 and pos[0]-self.pos[0]<=3
                 else:
-                        return pos[0]-self.pos[0]<0 and -pos[0]+self.pos[0]<=2
+                        return pos[0]-self.pos[0]<0 and -pos[0]+self.pos[0]<=3
 
 
         def tirAvant(self,pos):
@@ -356,16 +356,20 @@ class equipe :
 jeu = jeu()
 print(jeu.matrice)
 
+
 # TODO LIST
-# tester la fonction plaquage, est ce que l'action est bien résolue?
-# faire le log
-# fonction règles, askintercepter, etc...
-# plaquer un joueur KO
-# poser la balle derrière en cas de plaquage
-# plaquage sur côté: on place "derrière le joueur?"
-# récupérer la balle dans le déplacement
-# fonction tir au pied,passage en force = plaquage?
-# tout tester
-# plaquage parfait
-# ballon.position : suivre le ballon s'il est sur un joueur
-# le ballon doit connaitre le joueur qui le porteur: à rajouter dans la classe ballon
+# tester la fonction plaquage, est ce que l'action est bien résolue? Valentin
+# faire le log François
+# fonction règles, askintercepter, etc... François
+# plaquer un joueur KO Quentin
+# poser la balle derrière en cas de plaquage Quentin
+# plaquage sur côté: on place "derrière le joueur?" Quentin
+# récupérer la balle dans le déplacement Quentin
+# fonction tir au pied,passage en force = plaquage? Quentin
+# tout tester Valentin
+# plaquage parfait Quentin
+# ballon.position : suivre le ballon s'il est sur un joueur Quentin
+# plaquage : fin de l'action Quentin
+# ecrire des tests sans lancer le jeu sur des morceaux de code Valentin
+# etre clair sur les règles , les commenter dans le code François
+# se documenter sur les IA (jeu d'échec?) tout le monde
