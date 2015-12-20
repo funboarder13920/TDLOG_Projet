@@ -16,11 +16,12 @@ def absol(point):
 
 def droite(point1,point2):
         # retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
+        assert point1!=point2
         if point1[0]==point2[0]:
                 return(1,0,point1[0])
         else:
-                pinter=point1-point2
-                a = -pinter[0]/pinter[1]
+                pinter=(point1[0]-point2[0],point1[1]-point2[1])
+                a = -pinter[1]/pinter[0]
                 return(a,1,-a*point1[0]-point1[1])
 
 def calcPosDroite(r,pos):
@@ -29,10 +30,10 @@ def calcPosDroite(r,pos):
 def inRange(pos):
         return (pos[0]>0 and pos[0]<12 and pos[1]>=0 and pos[1]<8)
 
-def intInput(str):
+def intInput(strarg = ""):
         while True:
                 try:
-                        num1 = int(input(str))
+                        num1 = int(input(strarg))
                 except ValueError:
                         continue
                 else:
@@ -365,8 +366,9 @@ class equipe :
 
 
 
-jeu = jeu()
-print(jeu.matrice)
+if __name__ == "__main__":
+        jeu = jeu()
+        print(jeu.matrice)
 
 
 # TODO LIST
