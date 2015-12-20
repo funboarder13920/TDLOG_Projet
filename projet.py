@@ -132,7 +132,6 @@ class jeu :
         def interception(self,joueur1,joueur2):
                 pos1 = joueur1.pos
                 pos2 = joueur2.pos
-                print(pos2)
                 r1 = droite(add(pos1 ,(-1 / 2,-1 / 2)),add(pos2 ,(-1 / 2,-1 / 2)))
                 r2 = droite(add(pos1 ,(1 / 2,1 / 2)),add(pos2 , (1 / 2,1 / 2)))
                 v1 = droite(add(pos1 , (-1 / 2,1 / 2)),add(pos2 , (-1 / 2,1 / 2)))
@@ -378,22 +377,3 @@ class equipe :
 
 if __name__ == "__main__":
         jeu = jeu()
-        print(jeu.matrice)
-
-
-# TODO LIST
-# tester la fonction plaquage, est ce que l'action est bien résolue? Valentin
-# faire le log François
-# fonction règles, askintercepter, etc... François
-# plaquer un joueur KO Quentin
-# poser la balle derrière en cas de plaquage Quentin
-# plaquage sur côté: on place "derrière le joueur?" Quentin
-# récupérer la balle dans le déplacement Quentin
-# fonction tir au pied,passage en force = plaquage? Quentin
-# tout tester Valentin
-# plaquage parfait Quentin
-# ballon.position : suivre le ballon s'il est sur un joueur Quentin
-# plaquage : fin de l'action Quentin
-# ecrire des tests sans lancer le jeu sur des morceaux de code Valentin
-# etre clair sur les règles , les commenter dans le code François
-# se documenter sur les IA (jeu d'échec?) tout le monde
