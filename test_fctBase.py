@@ -40,9 +40,13 @@ class test_intInput(unittest.TestCase):
 
 class test_choixPos(unittest.TestCase):
 	@unittest.mock.patch('projet.equipe', nbEquipe = 1)
-	@unittest.mock.patch('builtins.input',unittest.mock.MagicMock(side_effect=['-1', '1','1','2','1','0','1','2',
+	@unittest.mock.patch('builtins.input',unittest.mock.MagicMock(side_effect=['-1', '1','ab','+','1','2','1','0','1','2',
 		'1','7','1','12','1','-1','1','8','2','0','2','3','2','4','11','0','11','8']))
-	# mettre une liste pour input
-	# mock patch une équipe?
 	def test1(self,equipe):
 		self.assertEqual(projet.choixPos(equipe.nbEquipe),[(1,2),(1,0),(1,7),(2,0),(2,3),(2,4)])
+
+	@unittest.mock.patch('projet.equipe', nbEquipe = 2)
+	@unittest.mock.patch('builtins.input',unittest.mock.MagicMock(side_effect=['-1', '1','1','2','1','0','2','4','11',
+		'0','11','8','11','7','10','0','10','6','10','5','20','3','10','7']))
+	def test2(self,equipe):
+		self.assertEqual(projet.choixPos(equipe.nbEquipe),[(11,0),(11,7),(10,0),(10,6),(10,5),(10,7)])
