@@ -99,20 +99,17 @@ class jeu :
                         self.tour = 1
 
         def resolution(self,attaquant,defenseur):
-                #Est ce que l'attaquant gagne?
                 attaquant.equipe.forme()
                 defenseur.equipe.forme()
                 vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                 vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
                 if vAtt != vDef:
-                        return vAtt>vDef
+                        return vAtt-vDef
                 else:
                         vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                         vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
-                        if vAtt != vDef:
-                                return vAtt>vDef
-                        else: 
-                                return False
+                        return vAtt-vDef
+
 
         def libre(self,pos,couprestant = 0):
                 return self.matrice[pos[1]][pos[2]].equipe == 3 or (self.matrice[pos[1]][pos[2]].ko and couprestant >=2)
@@ -144,17 +141,16 @@ class jeu :
 
 
 class ballon :
-        def __init__(self,position):
+        def __init__(self,position,jeu):
                 self.position = position
-        #Le ballon a la même position que son porteur
-        def porteur(self,jeu):
-                for j in jeu.equipe1.equipe:
-                        if j.porteur:
-                                self.position = j.pos
-                for k in jeu.equipe2.equipe:
-                        if k.porteur:
-                                self.position = k.pos
-
+                self.jeu = jeu
+                self.porteur = self.jeu.matrice[position[0]][position[1]]
+        def deplacement(self):
+                if self.porteur.nEquipe!=3:
+                        self.position = self.porteur.position
+        """def changeporteur(self,player):
+                self.porteur = player"""
+                
 class joueur : 
         def __init__(self,equipe,jeu,nEquipe,position,prop, numero):
                 self.pos= position
@@ -192,6 +188,8 @@ class joueur :
                                         self.deplace(pos)
                                         if self.ballon.pos == pos:
                                                         self.porteur = True
+                                if self.porteur:
+                                        self.jeu.ballon.deplacement()
 
         def onGrid(self):
                 posx = self.pos[0]
@@ -234,20 +232,33 @@ class joueur :
                 else:
                         log.error("passe: le joueur n'est pas porteur")
 
-        def placage(self,joueur2):
+        def placage(self,joueur2,plaquer):
                 if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
-                        if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur: #On ne peut plaquer le joueur que si il a le ballon
-                                if self.jeu.resolution(self,joueur2):
+                        if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
+                                if self.jeu.resolution(self,joueur2)>=0:
+                                        #positionnement de la balle
+                                        if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: #plaquage parfait
+                                                self.porteur = True
+                                                self.jeu.ballon.porteur = self
+                                                self.jeu.ballon.deplacement()
+                                        else:
+                                                #faire le cas où un joueur se trouve sur la case où le ballon doit arriver
+                                                #faire le cas où le ballon est censé aller sur une ligne de but ou en dehors du terrain
+                                                if joueur2.pos[0]>self.pos[0]:
+                                                        self.jeu.ballon.position += (0,1)
+                                                elif joueur2.pos[0]<self.pos[0]:
+                                                        self.jeu.ballon.position += (0,-1)
+                                                else:
+                                                        if joueur2.pos[1]<self.pos[1]:
+                                                                self.jeu.ballon.position += (-1,0)
+                                                        else:
+                                                                self.jeu.ballon.position += (1,0)
                                         joueur2.KO = True
+                                        joueur2.porteur = False
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
                                         self.pos = joueur2.pos
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = [self.jeu.matrice[self.pos[0]][self.pos[1]],self]
                                         self.depRestant -= 1
-                                        #Le ballon va derriere joueur2
-                                        if joueur2.nEquipe == 1:
-                                                self.jeu.ballon.position += (0,-1)
-                                        else:
-                                                self.jeu.ballon.position += (0,1)
                                 else:
                                         self.KO = True
                                         if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
@@ -286,9 +297,10 @@ class joueur :
 
         def tirAvant(self,pos):
                 if self.porteur:
-                        if self.nobodyFront(pos) and self.front(pos) and self.jeu.matrice[pos].nEquipe == 3: #doit attérir sur une case vide
+                        if self.nobodyFront(pos) and self.front(pos) and self.jeu.matrice[pos].nEquipe == 3: 
                                 self.porteur = False
                                 self.ballon.position = pos
+                                self.jeu.ballon.porteur = self.jeu.matrice[position[0]][position[1]]
 
 
 
