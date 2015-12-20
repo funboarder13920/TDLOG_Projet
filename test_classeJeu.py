@@ -90,5 +90,41 @@ class test_jeu(unittest.TestCase):
                 nbFalse+=1
         self.assertGreater(nbTrue/1000,0.78)
 
-    def test_libre(self):
-        self.assertTrue(self.jeu.libre((-1,-1)))
+    def test_libre1(self):
+        self.assertFalse(self.jeu.libre((1,1)))
+        self.assertTrue(self.jeu.libre((3,2)))
+        self.assertFalse(self.jeu.libre((2,3)))
+
+    def test_libre2(self):
+        self.jeu.equipe1.equipe[0].ko = True
+        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,1))
+        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos))
+        self.assertTrue(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,2))
+        self.jeu.equipe1.equipe[0].ko = False
+
+    # Tests interception à partir de l'exemple des règles
+    def test_interception1(self):
+        self.jeu.equipe1.equipe[0].pos = (1,0)
+        self.jeu.equipe1.equipe[1].pos = (5,0)
+        self.jeu.equipe2.equipe[1].pos = (2,0)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[1])),1)
+
+    def test_interception2(self):
+        self.jeu.equipe1.equipe[0].pos = (6,4)
+        self.jeu.equipe1.equipe[1].pos = (8,4)
+        self.jeu.equipe1.equipe[2].pos = (8,5)
+        self.jeu.equipe1.equipe[3].pos = (7,6)
+        self.jeu.equipe1.equipe[4].pos = (7,7)
+        self.jeu.equipe1.equipe[5].pos = (7,3)
+        self.jeu.equipe2.equipe[0].pos = (7,5)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[1])),0)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[2])),1)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[3])),1)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[4])),1)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[5])),0)

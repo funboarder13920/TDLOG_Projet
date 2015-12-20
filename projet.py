@@ -11,6 +11,9 @@ prop = ["ordinaire","ordinaire","dur","costaud","fute","rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rapide':(-1,-1,4)}
 
+def add(p1,p2):
+    return(p1[0]+p2[0],p1[1]+p2[1])
+
 def absol(point):
         return (abs(point[0]),abs(point[1]))
 
@@ -18,7 +21,7 @@ def droite(point1,point2):
         # retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
         assert point1 != point2
         if point1[0] == point2[0]:
-                return(1,0,point1[0])
+                return(1,0,-point1[0])
         else:
                 pinter = (point1[0] - point2[0],point1[1] - point2[1])
                 a = -pinter[1] / pinter[0]
@@ -116,7 +119,9 @@ class jeu :
                                 return False
 
         def libre(self,pos,couprestant=0):
-                return self.matrice[pos[1]][pos[2]].equipe == 3 or (self.matrice[pos[1]][pos[2]].ko and couprestant >= 2)
+                assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
+                print(self.matrice[pos[0]][pos[1]].nEquipe)
+                return self.matrice[pos[0]][pos[1]].nEquipe == 3 or (self.matrice[pos[0]][pos[1]].ko and couprestant >= 2)
 
         def finTour(self):
                 for joueur in self.equipe:
@@ -127,18 +132,29 @@ class jeu :
         def interception(self,joueur1,joueur2):
                 pos1 = joueur1.pos
                 pos2 = joueur2.pos
-                r1 = droite(pos1 - (1 / 2,1 / 2),pos2 - (1 / 2,1 / 2))
-                r2 = droite(pos1 + (1 / 2,1 / 2),pos2 + (1 / 2,1 / 2))
-                v1 = droite(pos1 + (-1 / 2,1 / 2),pos2 + (-1 / 2,1 / 2))
-                v2 = droite(pos1 + (1 / 2,-1 / 2),pos2 + (1 / 2,-1 / 2))
+                print(pos2)
+                r1 = droite(add(pos1 ,(-1 / 2,-1 / 2)),add(pos2 ,(-1 / 2,-1 / 2)))
+                r2 = droite(add(pos1 ,(1 / 2,1 / 2)),add(pos2 , (1 / 2,1 / 2)))
+                v1 = droite(add(pos1 , (-1 / 2,1 / 2)),add(pos2 , (-1 / 2,1 / 2)))
+                v2 = droite(add(pos1 , (1 / 2,-1 / 2)),add(pos2 , (1 / 2,-1 / 2)))
+                c1=droite(pos1,add(pos1,(1/2,0)))
+                c2=droite(pos2,add(pos2,(1/2,0)))
+                d1=droite(pos1,add(pos1,(0,1/2)))
+                d2=droite(pos2,add(pos2,(0,1/2)))
                 inter = []
                 if joueur1.nEquipe == 1:
                         for joueur in self.equipe2.equipe:
-                                if calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) >= 0 or calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos):
+                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) <= 0 or 
+                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<=0) and
+                                    (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
+                                    calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
                                         inter.append(joueur)
                 else:
                         for joueur in self.equipe1.equipe:
-                                if calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) >= 0 or calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos):
+                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) <= 0 or 
+                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<=0)
+                                    and (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
+                                    calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
                                         inter.append(joueur)
                 return inter
 
@@ -147,7 +163,8 @@ class jeu :
 class ballon :
         def __init__(self,position):
                 self.position = position
-        #Le ballon a la même position que son porteur
+
+        #Réinitialisation de la position du ballon sur celle du joueur porteur
         def porteur(self,jeu):
                 for j in jeu.equipe1.equipe:
                         if j.porteur:
@@ -155,6 +172,7 @@ class ballon :
                 for k in jeu.equipe2.equipe:
                         if k.porteur:
                                 self.position = k.pos
+
 
 class joueur : 
         def __init__(self,equipe,jeu,nEquipe,position,prop, numero):
