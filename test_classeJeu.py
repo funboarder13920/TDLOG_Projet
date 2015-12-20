@@ -59,3 +59,36 @@ class test_jeu(unittest.TestCase):
             else:
                 nbFalse+=1
         self.assertLess(nbTrue/1000,0.5)
+
+    def test_resolution5(self):
+        nbTrue = 0
+        nbFalse = 0
+        for i in range(1000):
+            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[5]):
+                nbTrue+=1
+            else:
+                nbFalse+=1
+        self.assertGreater(nbTrue/1000,0.63)
+
+    def test_resolution6(self):
+        nbTrue = 0
+        nbFalse = 0
+        for i in range(1000):
+            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[4]):
+                nbTrue+=1
+            else:
+                nbFalse+=1
+        self.assertLess(nbTrue/1000,0.36)
+
+    def test_resolution7(self):
+        nbTrue = 0
+        nbFalse = 0
+        for i in range(1000):
+            if self.jeu.resolution(self.jeu.equipe1.equipe[3],self.jeu.equipe2.equipe[0]):
+                nbTrue+=1
+            else:
+                nbFalse+=1
+        self.assertGreater(nbTrue/1000,0.78)
+
+    def test_libre(self):
+        self.assertTrue(self.jeu.libre((-1,-1)))
