@@ -31,7 +31,6 @@ class test_intInput(unittest.TestCase):
 
 	@unittest.mock.patch('builtins.input',lambda x:'-1')
 	def test2(self):
-		print('1\n2')
 		self.assertEqual(projet.intInput(),-1)
 
 	@unittest.mock.patch('builtins.input',unittest.mock.MagicMock(side_effect = ['+','5']))
