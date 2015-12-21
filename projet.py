@@ -183,16 +183,37 @@ class joueur :
                 self.equipe = equipe
                 self.nEquipe = nEquipe
                 self.prop = prop
-                self.jeu.matrice[position[0]][position[1]] = self
+                self.jeu.matrice[position[0]][position[1]] = [self]
                 if nEquipe != 3:
                         self.depRestant = bonus[self.prop][2]
                 else:
                         self.depRestant = 0
 
         def deplace(self,pos):
-                self.jeu.matrice[self.pos[0]][self.pos[1]],self.jeu.matrice[pos[0]][pos[1]] = self.jeu.matrice[pos[0]][pos[1]],self.jeu.matrice[self.pos[0]][self.pos[1]]
-                self.depRestant -= 1
-                self.pos = pos
+            if self.jeu.matrice[pos[0]][pos[1]][0].ko:
+                self.jeu.matrice[pos[0]][pos[1]].append(self)
+                self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
+                if self.jeu.matrice[self.pos[0]][self.pos[1]] == []:
+                    self.jeu.matrice[self.pos[0]][self.pos[1]].append(None)
+                    #Garder le vecteur de taille au moins 1
+            else:
+                if (len(self.jeu.matrice[self.pos[0]][self.pos[1]])==1 and 
+                len(self.jeu.matrice[pos[0]][pos[1]] ) ==1):
+                    self.jeu.matrice[self.pos[0]][self.pos[1]][0],self.jeu.matrice[pos[0]][pos[1]][0] = self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.matrice[self.pos[0]][self.pos[1]][0]
+                elif (len(self.jeu.matrice[self.pos[0]][self.pos[1]])!=1 and 
+                len(self.jeu.matrice[pos[0]][pos[1]] ) !=1):
+                    self.jeu.matrice[self.pos[0]][self.pos[1]][-1],self.jeu.matrice[pos[0]][pos[1]][-1] = self.jeu.matrice[pos[0]][pos[1]][-1],self.jeu.matrice[self.pos[0]][self.pos[1]][-1]
+                elif len(self.jeu.matrice[self.pos[0]][self.pos[1]])!=1:
+                    if self.jeu.matrice[pos[0]][pos[1]][0]==None:
+                        self.jeu.matrice[pos[0]][pos[1]][0] = self
+                        self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
+                    else:
+                        self.jeu.matrice[self.pos[0]][self.pos[1]][-1],self.jeu.matrice[pos[0]][pos[1]][0] = self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.matrice[self.pos[0]][self.pos[1]][-1]
+                else:
+                    self.jeu.matrice[self.pos[0]][self.pos[1]][0],self.jeu.matrice[pos[0]][pos[1]][-1] = self.jeu.matrice[pos[0]][pos[1]][-1],self.jeu.matrice[self.pos[0]][self.pos[1]][0]
+            self.depRestant-=1
+            self.pos=pos                
+
 
         def deplacement(self,pos):
                 #pas par pas c'est plus simple
