@@ -185,10 +185,12 @@ class joueur :
                                                 self.deplace(pos)
                                                 if self.ballon.pos == pos:
                                                         self.porteur = True
+                                                        self.jeu.ballon.porteur = self
                                 elif self.equipe[j].coupRestant != 0 and self.equipe[j].coupRestant !=  bonus[self.equipe[j].prop][2]:
                                         self.deplace(pos)
                                         if self.ballon.pos == pos:
                                                         self.porteur = True
+                                                        self.jeu.ballon.porteur = self
                                 if self.porteur:
                                         self.jeu.ballon.deplacement()
 
@@ -237,23 +239,48 @@ class joueur :
                 if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
                                 if self.jeu.resolution(self,joueur2)>=0:
-                                        #positionnement de la balle
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: #plaquage parfait
                                                 self.porteur = True
                                                 self.jeu.ballon.porteur = self
                                                 self.jeu.ballon.deplacement()
-                                        else:
-                                                #faire le cas où un joueur se trouve sur la case où le ballon doit arriver
-                                                #faire le cas où le ballon est censé aller sur une ligne de but ou en dehors du terrain
+                                        else: #plaquage classique ou passage en force
                                                 if joueur2.pos[0]>self.pos[0]:
-                                                        self.jeu.ballon.position += (0,1)
+                                                        if joueur2.pos[0] < nbColonne-2:
+                                                                self.jeu.ballon.position += (1,0)
+                                                        else:
+                                                                if joueur2.pos[1] < nbLigne/2:
+                                                                        self.jeu.ballon.position += (0,1)
+                                                                else:
+                                                                        self.jeu.ballon.position += (0,-1)
                                                 elif joueur2.pos[0]<self.pos[0]:
-                                                        self.jeu.ballon.position += (0,-1)
-                                                else:
-                                                        if joueur2.pos[1]<self.pos[1]:
+                                                        if joueur2.pos[0] > 1:
                                                                 self.jeu.ballon.position += (-1,0)
                                                         else:
-                                                                self.jeu.ballon.position += (1,0)
+                                                                if joueur2.pos[1] < nbLigne/2:
+                                                                        self.jeu.ballon.position += (0,1)
+                                                                else:
+                                                                        self.jeu.ballon.position += (0,-1)
+                                                else:
+                                                        if joueur2.pos[1]<self.pos[1]:
+                                                                if joueur2.pos[1] > 0:
+                                                                        self.jeu.ballon.position += (0,-1)
+                                                                else:
+                                                                        if joueur2.pos[1] < nbColonne/2:
+                                                                                self.jeu.ballon.position += (1,0)
+                                                                        else:
+                                                                                self.jeu.ballon.position += (-1,0)
+                                                        else:
+                                                                if joueur2.pos[1] < nbLigne-1:
+                                                                        self.jeu.ballon.position += (0,1)
+                                                                else:
+                                                                        if joueur2.pos[1] < nbColonne/2:
+                                                                                self.jeu.ballon.position += (1,0)
+                                                                        else:
+                                                                                self.jeu.ballon.position += (-1,0)
+                                                #si il y a un joueur sur la case du ballon, il le récupère
+                                                self.jeu.ballon.porteur = self.jeu.matrice[self.jeu.ballon.position[0]][self.jeu.ballon.position[1]]
+                                                if self.jeu.ballon.porteur.nEquipe !=3:
+                                                        self.jeu.ballon.porteur.porteur = True
                                         joueur2.KO = True
                                         joueur2.porteur = False
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
@@ -262,7 +289,7 @@ class joueur :
                                         self.depRestant -= 1
                                 else:
                                         self.KO = True
-                                        if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
+                                        """if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
                                                 (dx,dy)=-joueur2.pos+self.pos
                                                 if inRange(dx+self.pos) and len(self.jeu.matrice[(dx+self.pos)[0]][(dy+self.pos)[1]])==1:
                                                         self.deplace(self.pos+(dx,dy))
@@ -275,7 +302,7 @@ class joueur :
                                                                 self.deplace(self.pos+(-dx,-dy))
                                                         else :
                                                                 assert False
-                                                                #Pour le test, à enlever normalement
+                                                                #Pour le test, à enlever normalement"""
         
         def nobodyFront(self):
                 if self.nEquipe == 1:
@@ -298,7 +325,7 @@ class joueur :
 
         def tirAvant(self,pos):
                 if self.porteur:
-                        if self.nobodyFront(pos) and self.front(pos) and self.jeu.matrice[pos].nEquipe == 3: 
+                        if self.nobodyFront(pos) and self.front(pos) and self.jeu.matrice[pos[0]][pos[1]].nEquipe == 3: 
                                 self.porteur = False
                                 self.ballon.position = pos
                                 self.jeu.ballon.porteur = self.jeu.matrice[position[0]][position[1]]
