@@ -91,7 +91,7 @@ class jeu :
                 positions2 = choixPos(2)
                 self.equipe1 = equipe(self,1,positions1)
                 self.equipe2 = equipe(self,2,positions2)
-                self.ballon = ballon((7,1 + random.randint(1,6)))
+                self.ballon = ballon((7,1 + random.randint(1,6)),self)
                 self.tour = 1
 
         def tour(self):
@@ -257,9 +257,11 @@ class joueur :
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
                                         if askIntercepter():
-                                                if jeu.resolution(self,adv):
+                                                if jeu.resolution(self,adv)<0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
+                                                        self.jeu.ballon.deplacement()
+                                                        
                                                         break
                                         else:
                                                 log.info("L'adversaire n'intercepte pas")
@@ -310,7 +312,7 @@ class joueur :
                                                                                 self.jeu.ballon.position += (1,0)
                                                                         else:
                                                                                 self.jeu.ballon.position += (-1,0)
-                                                #si il y a un joueur sur la case du ballon, il le récupère
+                                                #si il y a un joueur sur la case du ballon il le récupère
                                                 self.jeu.ballon.porteur = self.jeu.matrice[self.jeu.ballon.position[0]][self.jeu.ballon.position[1]]
                                                 if self.jeu.ballon.porteur.nEquipe !=3:
                                                         self.jeu.ballon.porteur.porteur = True
