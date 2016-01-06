@@ -330,10 +330,12 @@ class joueur :
                                 joueur2.porteur = True
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
-                                        if adv.askIntercepter(self,joueur2):
-                                                if jeu.resolution(self,adv)>=0:
+										if adv.askIntercepter(self,joueur2):
+                                                if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
+                                                        self.jeu.ballon.deplacement()
+                                                        
                                                         break
                                         else:
                                                 log.info("La passe est réussie")
