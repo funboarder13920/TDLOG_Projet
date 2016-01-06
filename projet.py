@@ -330,7 +330,11 @@ class joueur :
                                 joueur2.porteur = True
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
+<<<<<<< HEAD
+                                        if askIntercepter():
+=======
 										if adv.askIntercepter(self,joueur2):
+>>>>>>> 32de77d39e348275e8a565ae9ae1149a597eabd5
                                                 if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
@@ -345,12 +349,19 @@ class joueur :
                         log.error("La passe est impossible car le joueur %d n'est pas porteur",self.numero)
 
         def placage(self,joueur2,plaquer):
+<<<<<<< HEAD
+                if abs(self.pos-joueur2.pos)==1 and (self.depRestant>1 or plaquer):
+                        if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
+                                if self.jeu.resolution(self,joueur2)>0:
+                                        if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: #plaquage parfait
+=======
                 log.info("Le joueur %d essaie de plaquer le joueur %d",self.numero, joueur2.numero)
                 if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
                                 if self.jeu.resolution(self,joueur2)>=0:
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: 
                                                 log.debug("Plaquage parfait")
+>>>>>>> 32de77d39e348275e8a565ae9ae1149a597eabd5
                                                 self.porteur = True
                                                 self.jeu.ballon.porteur = self
                                                 self.jeu.ballon.deplacement()
@@ -406,7 +417,10 @@ class joueur :
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
                                         self.pos = joueur2.pos
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = [self.jeu.matrice[self.pos[0]][self.pos[1]],self]
-                                        self.depRestant -= 1
+                                        if plaquer:
+                                            self.depRestant = 0
+                                        else:
+                                            self.depRestant -= 1
                                 else:
                                         self.KO = True
                                         """if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
