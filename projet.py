@@ -271,7 +271,7 @@ class joueur :
                         log.error("passe: le joueur n'est pas porteur")
 
         def placage(self,joueur2,plaquer):
-                if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
+                if abs(self.pos-joueur2.pos)==1 and (self.depRestant>1 or plaquer):
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
                                 if self.jeu.resolution(self,joueur2)>=0:
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: #plaquage parfait
@@ -321,7 +321,10 @@ class joueur :
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(None,self,3,self.pos,"",0)
                                         self.pos = joueur2.pos
                                         self.jeu.matrice[self.pos[0]][self.pos[1]] = [self.jeu.matrice[self.pos[0]][self.pos[1]],self]
-                                        self.depRestant -= 1
+                                        if plaquer:
+                                            self.depRestant = 0
+                                        else:
+                                            self.depRestant -= 1
                                 else:
                                         self.KO = True
                                         """if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
