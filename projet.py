@@ -257,7 +257,7 @@ class joueur :
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
                                         if askIntercepter():
-                                                if jeu.resolution(self,adv)<0:
+                                                if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
                                                         self.jeu.ballon.deplacement()
@@ -273,7 +273,7 @@ class joueur :
         def placage(self,joueur2,plaquer):
                 if abs(self.pos-joueur2.pos)==1 and (self.depRestant>1 or plaquer):
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
-                                if self.jeu.resolution(self,joueur2)>=0:
+                                if self.jeu.resolution(self,joueur2)>0:
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: #plaquage parfait
                                                 self.porteur = True
                                                 self.jeu.ballon.porteur = self
