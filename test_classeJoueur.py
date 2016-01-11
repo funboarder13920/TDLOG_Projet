@@ -16,6 +16,36 @@ class test_joueur(unittest.TestCase):
 		self.patcher.start()
 		self.jeu = projet.jeu()
 		self.patcher.stop()
+
+	def test_enArriere(self):
+		self.assertFalse(self.jeu.equipe1.equipe[0].enArriere(self.jeu.equipe1.equipe[1]))
+		self.assertFalse(self.jeu.equipe1.equipe[1].enArriere(self.jeu.equipe1.equipe[1]))
+		self.assertTrue(self.jeu.equipe1.equipe[2].enArriere(self.jeu.equipe1.equipe[1]))
+		self.assertTrue(self.jeu.equipe1.equipe[-3].enArriere(self.jeu.equipe1.equipe[-1]))
+		self.assertFalse(self.jeu.equipe1.equipe[-1].enArriere(self.jeu.equipe1.equipe[-3]))
+		self.jeu.equipe1.equipe[2].pos=(10,10)
+		self.assertFalse(self.jeu.equipe1.equipe[2].enArriere(self.jeu.equipe1.equipe[1]))
+
+	def test_nobodyFront(self):
+		self.jeu.equipe1.equipe[2].pos=(10,10)
+		self.assertFalse(self.jeu.equipe1.equipe[2].nobodyFront())
+		self.assertFalse(self.jeu.equipe1.equipe[0].nobodyFront())
+		self.jeu.equipe2.equipe[2].pos=(2,2)
+		self.assertTrue(self.jeu.equipe2.equipe[2].nobodyFront())
+		self.assertFalse(self.jeu.equipe2.equipe[0].nobodyFront())
+
+	def test_front(self):
+		pass
+
+	def test_tirAvant(self):
+		pass
+
+	def test_placage(self):
+		pass
+
+	def test_passe(self):
+		pass
+
 """
 	def test_deplace1(self):
 		pos = self.jeu.equipe1.equipe[0].pos
@@ -46,8 +76,4 @@ class test_joueur(unittest.TestCase):
 	def test_deplacement1(self):
 		pass
 """
-
-	def test_enArriere(self):
-		self.assertTrue(self.jeu.equipe1.equipe[1].enArriere(self.jeu.equipe1.equipe[1]))
-
 

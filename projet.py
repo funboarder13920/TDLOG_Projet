@@ -14,6 +14,9 @@ bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rap
 def add(p1,p2):
     return(p1[0]+p2[0],p1[1]+p2[1])
 
+def sub(p1,p2):
+    return(p1[0]-p2[0],p1[1]-p2[1])
+
 def absol(point):
         return (abs(point[0]),abs(point[1]))
 
@@ -210,7 +213,7 @@ class joueur :
                 # le joueur ne doit pas être KO et le déplacement doit être
                 # d'au plus 1
                 if not self.ko:
-                        if abs(self.position - pos) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
+                        if abs(add(self.position,-pos)) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
                                 if self.coupRestant == bonus[self.prop][2] and self.coupRestant != 0:
                                         #Le joueur ne s'est pas encore déplacé
                                         if self.equipe.coupRestant > 0:
@@ -245,9 +248,9 @@ class joueur :
         def enArriere(self,joueur2):
                 #joueur2 est il derrière joueur 1?
                 if self.nEquipe == 1:
-                        return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(self.pos - joueur2.pos)) <= 2
+                        return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
                 else :
-                        return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(self.pos - joueur2.pos)) <= 2
+                        return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
 
         def passe(self,joueur2):
                 if self.porteur:
@@ -343,12 +346,13 @@ class joueur :
         
         def nobodyFront(self):
                 if self.nEquipe == 1:
-                        for joueur in self.equipe:
+                        for joueur in self.equipe.equipe:
+                                print(joueur.pos[0])
                                 if joueur.pos[0] > self.pos[0]:
                                         return False
                         return True
                 else:
-                        for joueur in self.equipe:
+                        for joueur in self.equipe.equipe:
                                 if joueur.pos[0] < self.pos[0]:
                                         return False
                         return True
@@ -366,7 +370,6 @@ class joueur :
                                 self.porteur = False
                                 self.ballon.position = pos
                                 self.jeu.ballon.porteur = self.jeu.matrice[position[0]][position[1]]
-
 
 
 
