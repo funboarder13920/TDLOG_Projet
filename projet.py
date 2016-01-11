@@ -17,6 +17,9 @@ bonus = {'ordinaire':(0,0,3),'dur':(1,0,3),'costaud':(2,1,2),'fute':(0,1,3),'rap
 def add(p1,p2):
     return(p1[0]+p2[0],p1[1]+p2[1])
 
+def sub(p1,p2):
+    return(p1[0]-p2[0],p1[1]-p2[1])
+
 def absol(point):
         return (abs(point[0]),abs(point[1]))
 
@@ -41,7 +44,7 @@ def intInput(strarg=""):
     log.debug("Saisie de l'entier %s",strarg)
     while True:
                 try:
-                        num1 = int(raw_input(strarg))
+                        num1 = int(input(strarg))
                 except ValueError as e:
                      print("Vous devez saisir un nombre")
                      log.error("Nombre %s invalide", strarg)
@@ -100,7 +103,7 @@ class jeu :
                 os.system('clear')     
                 # TODO :Mettre ce texte dans une fonction printIntro        
                 print("****************************************** Kahmaté ******************************************")
-                print("Auteurs : Valentin B., Molotov, François D (2015) ")     
+                print("Auteurs : Valentin B., Quentin B., François D (2015) ")     
                 print("\nLe Kahmaté se joue à deux joueurs, amusez-vous bien !")
                 print("Voir règle du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
                 print("\n")
@@ -271,7 +274,7 @@ class joueur :
                 # le joueur ne doit pas être KO et le déplacement doit être
                 # d'au plus 1
                 if not self.ko:
-                        if abs(self.position - pos) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
+                        if abs(add(self.position,-pos)) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
                                 if self.coupRestant == bonus[self.prop][2] and self.coupRestant != 0:
                                         #Le joueur ne s'est pas encore déplacé
                                         if self.equipe.coupRestant > 0:
@@ -313,9 +316,9 @@ class joueur :
                 log.debug("Test si le joueur 2 est derrière joueur 1")
                 #joueur2 est il derrière joueur 1?
                 if self.nEquipe == 1:
-                        return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(self.pos - joueur2.pos)) <= 2
+                        return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
                 else :
-                        return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(self.pos - joueur2.pos)) <= 2
+                        return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
 
         def askIntercepter(self,joueur1,joueur2):
             self.jeu.tour()
@@ -340,13 +343,13 @@ class joueur :
                                 joueur2.porteur = True
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
-                                    if adv.askIntercepter(self,joueur2):
-                                        if jeu.resolution(self,adv)<=0:
+                                        if adv.askIntercepter(self,joueur2):
+                                                if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
                                                         self.jeu.ballon.deplacement()
                                                         break
-                                    else:
+                                        else:
                                                 log.info("La passe est réussie")
                         else:
                                 log.error("La passe est impossible car le joueur %d n'est pas derrière", self.numero)
@@ -443,14 +446,15 @@ class joueur :
         def nobodyFront(self):
                 log.debug("Test personne en face")
                 if self.nEquipe == 1:
-                        for joueur in self.equipe:
+                        for joueur in self.equipe.equipe:
+                                print(joueur.pos[0])
                                 if joueur.pos[0] > self.pos[0]:
                                         #log.debug("Résultat : Faux")
                                         return False
                         log.debug("Résultat : Vrai")
                         return True
                 else:
-                        for joueur in self.equipe:
+                        for joueur in self.equipe.equipe:
                                 if joueur.pos[0] < self.pos[0]:
                                         log.debug("Résultat : faux")
                                         return False
@@ -480,7 +484,6 @@ class joueur :
                             print("case non vide")
 
 
-
 class equipe :
         def __init__(self,jeu,nEquipe,positions):
                 log.debug("Initialisation de l'équipe %d",nEquipe)
@@ -504,7 +507,6 @@ class equipe :
                 self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.debug("tutoriel désactivé")
-                
                 
         def regleDeplacement():
             if (self.tutoriel==1):
@@ -577,86 +579,82 @@ class equipe :
                     print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
                     print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
                     
-def reglePasse():
-    if (self.tutoriel==1):
-                print("RAPPEL DES REGLES DE PLAQUAGE")
-                print("\n Vous devez être à côté d'un joueur pour le plaquer")
-                print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
-                print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
-                print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
-                print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
-                print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-                print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
-                print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")                
-                print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-                print("\n \n Voulez-vous désactiver le tutoriel?")
-                print("\n Si oui, tapez 0. Sinon, tapez 1")
-                activer_tutoriel=intInput("Tutoriel :")
-                self.tutoriel=activer_tutoriel
+        def reglePasse():
+                if (self.tutoriel==1):
+                    print("RAPPEL DES REGLES DE PLAQUAGE")
+                    print("\n Vous devez être à côté d'un joueur pour le plaquer")
+                    print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
+                    print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
+                    print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
+                    print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
+                    print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
+                    print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
+                    print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")                
+                    print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
+                    print("\n \n Voulez-vous désactiver le tutoriel?")
+                    print("\n Si oui, tapez 0. Sinon, tapez 1")
+                    activer_tutoriel=intInput("Tutoriel :")
+                    self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.info("tutoriel désactivé")
-
-                
             
-def joue(self,interception=False):
-    #Reinitialisation
-    log.debug("L'équipe %d joue un tour",self.nEquipe)
-    self.coupRestant = 2
-    for joueur in self.equipe:
-        joueur.depRestant = bonus[joueur.prop][2]
-    cont = True
-    while cont:
-        self.optionJeu()
-        opt = intInput("Action: ")
-        if opt == 0:
-            self.reglePasse()
-            j1 = intInput("Joueur 1: ")
-            while True:
-                try :
-                    j2 = intInput("Joueur 2: ")
-                    assert j2 != j1
-                    self.equipe[j1].passe(self.equipe[j2])
-                    break
-                except:
-                    pass
-        elif opt == 1:
-            self.regleDeplacement()
-            self.possibilitesDeplacement()
-            j = intInput("Joueur qui passe: ")
-            posx = intInput("posx: ")
-            posy = intInput("posy: ")
-            self.equipe[j].deplacement((posx,posy))
-            if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
-                cont = True
-                self.score += 1
-                self.jeu.fin()
-                break
-        elif opt==2:
-            self.reglePlaquage()
-            j1=intInput("Joueur qui plaque:")
-            j2=intInput("Joueur plaqué")
-            self.equipe[j1].placage(self.equipe[j2],1)
-        elif opt == -1:
-            if self.jeu.finTour():
-                cont = False
-            else:
-                print("Des joueurs se superposent")
+        def joue(self,interception=False):
+            #Reinitialisation
+            log.debug("L'équipe %d joue un tour",self.nEquipe)
+            self.coupRestant = 2
+            for joueur in self.equipe:
+                    joueur.depRestant = bonus[joueur.prop][2]
+            cont = True
+            while cont:
+                    self.optionJeu()
+                    opt = intInput("Action: ")
+                    if opt == 0:
+                            self.reglePasse()
+                            j1 = intInput("Joueur 1: ")
+                            while True:
+                                    try :
+                                            j2 = intInput("Joueur 2: ")
+                                            assert j2 != j1
+                                            self.equipe[j1].passe(self.equipe[j2])
+                                            break
+                                    except:
+                                            pass
+                    elif opt == 1:
+                            self.regleDeplacement()
+                            self.possibilitesDeplacement()
+                            j = intInput("Joueur qui passe: ")
+                            posx = intInput("posx: ")
+                            posy = intInput("posy: ")
+                            self.equipe[j].deplacement((posx,posy))
+                            if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
+                                    cont = True
+                                    self.score += 1
+                                    self.jeu.fin()
+                                    break
+                    elif opt==2:
+                            self.reglePlaquage()
+                            j1=intInput("Joueur qui plaque:")
+                            j2=intInput("Joueur plaqué")
+                            self.equipe[j1].placage(self.equipe[j2],1)
+                    elif opt == -1:
+                            if self.jeu.finTour():
+                                    cont = False
+                            else:
+                                    print("Des joueurs se superposent")
 
-
-def forme(self):
-    log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)   
-    if self.carte == [False for i in range(6)]:
-        log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
-        self.carte = [True for i in range(6)]
-    cartePossible = []
-    for i in range(len(self.carte)):
-        if self.carte[i]:
-            cartePossible.append(i)
-    e = random.randint(0,len(cartePossible)-1)
-    log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
-    self.carte[cartePossible[e]]=False
-    return cartePossible[e] + 1
-
+        def forme(self):
+            log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)   
+            if self.carte == [False for i in range(6)]:
+                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+                self.carte = [True for i in range(6)]
+            cartePossible = []
+            for i in range(len(self.carte)):
+                if self.carte[i]:
+                    cartePossible.append(i)
+            e = random.randint(0,len(cartePossible)-1)
+            log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+            self.carte[cartePossible[e]]=False
+            return cartePossible[e] + 1
 
 
 if __name__ == "__main__":
