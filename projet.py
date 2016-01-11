@@ -209,6 +209,7 @@ class ballon :
                 self.position = position
                 self.jeu = jeu
                 self.porteur = self.jeu.matrice[position[0]][position[1]]
+
         def deplacement(self):
                 if self.porteur.nEquipe!=3:
                         self.position = self.porteur.position
@@ -462,10 +463,11 @@ class joueur :
         def tirAvant(self,pos):
                 log.info("Le joueur %d essaie de tirer en avant",self.numero)
                 if self.porteur:
-                        if self.nobodyFront(pos) and self.front(pos) and self.jeu.matrice[pos[0]][pos[1]].nEquipe == 3: 
+                        if self.nobodyFront() and self.front(pos) and self.jeu.matrice[pos[0]][pos[1]].nEquipe == 3: 
                                 self.porteur = False
                                 self.ballon.position = pos
                                 self.jeu.ballon.porteur = self.jeu.matrice[position[0]][position[1]]
+                                self.jeu.matrice[position[0]][position[1]].porteur = True
                         elif (not self.nobodyFront(pos)): 
                             log.error("Le tir en avant est impossible car le joueur %d a un joueur devant lui", self.numero)
                         elif (not self.front(pos)):

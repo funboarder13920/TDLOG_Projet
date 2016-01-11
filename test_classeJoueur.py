@@ -28,17 +28,28 @@ class test_joueur(unittest.TestCase):
 
 	def test_nobodyFront(self):
 		self.jeu.equipe1.equipe[2].pos=(10,10)
-		self.assertFalse(self.jeu.equipe1.equipe[2].nobodyFront())
+		self.assertTrue(self.jeu.equipe1.equipe[2].nobodyFront())
 		self.assertFalse(self.jeu.equipe1.equipe[0].nobodyFront())
 		self.jeu.equipe2.equipe[2].pos=(2,2)
 		self.assertTrue(self.jeu.equipe2.equipe[2].nobodyFront())
 		self.assertFalse(self.jeu.equipe2.equipe[0].nobodyFront())
 
 	def test_front(self):
-		pass
+		self.assertTrue(self.jeu.equipe1.equipe[2].front((3,3)))
+		self.assertFalse(self.jeu.equipe1.equipe[2].front((2,3)))
+		self.assertFalse(self.jeu.equipe1.equipe[2].front((7,3)))
+		self.assertFalse(self.jeu.equipe2.equipe[-1].front((3,3)))
+		self.assertFalse(self.jeu.equipe2.equipe[-1].front((11,3)))
+		self.assertTrue(self.jeu.equipe2.equipe[-1].front((9,3)))
 
 	def test_tirAvant(self):
-		pass
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position = (4,2)
+		self.jeu.equipe1.equipe[0].pos=(4,2)
+		self.jeu.ballon.porteur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].tirAvant((7,5))
+		self.assertEqual(self.jeu.ballon.position,(7,5))
+		#Pourquoi interdire d'envoyer la balle sur un joueur adverse?
 
 	def test_placage(self):
 		pass
@@ -75,5 +86,6 @@ class test_joueur(unittest.TestCase):
 		
 	def test_deplacement1(self):
 		pass
+		recupère la balle?
 """
 
