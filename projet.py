@@ -44,7 +44,7 @@ def intInput(strarg=""):
     log.debug("Saisie de l'entier %s",strarg)
     while True:
                 try:
-                        num1 = int(raw_input(strarg))
+                        num1 = int(input(strarg))
                 except ValueError as e:
                      print("Vous devez saisir un nombre")
                      log.error("Nombre %s invalide", strarg)
@@ -61,7 +61,7 @@ def choixPos(nEquipe):
         positions = []
         k = 0
         while k < 6 :
-             print("\n")		
+             print("\n")        
              #print "Joueur " , (k+1) , prop[k] , "..."               
              posx = intInput("x: ")
              posy = intInput("y: ")
@@ -101,14 +101,14 @@ class jeu :
                         for j in range(nbColonne):
                                 joueur(None,self,3,(j,i),"",0)
                 os.system('clear')     
-                # TODO :Mettre ce texte dans une fonction printIntro		
+                # TODO :Mettre ce texte dans une fonction printIntro        
                 print("****************************************** Kahmaté ******************************************")
-                print("Auteurs : Valentin B., Molotov, François D (2015) ")		
+                print("Auteurs : Valentin B., Molotov, François D (2015) ")        
                 print("\nLe Kahmaté se joue à deux joueurs, amusez-vous bien !")
                 print("Voir règle du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
                 print("\n")
                 print("Instructions: ")
-                print("* Suivre les instructions de la console")	
+                print("* Suivre les instructions de la console")    
                 print("* Pour arrêter la partie : CTRL+D ") # TODO : à implémenter
                 print("**********************************************************************************************")
                 print("\nChoix de la position des joueurs de l'équipe 1")
@@ -137,22 +137,22 @@ class jeu :
                 defenseur.equipe.forme()
                 vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                 vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
-				print("Attaquant : %d,Défenseur : %d",(vAtt,vDef))
+                print("Attaquant : %d,Défenseur : %d",(vAtt,vDef))
                 if vAtt > vDef:
                         print("\n Victoire de l'attaquant par %d",vAtt-vDef) 
-						log.debug("Résultat : %d",vAtt-vDef)
+                        log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
-				elif vDef<vAtt:
-					    print("\n Victoire du défenseur par %d",vDef-vAtt) 
-						log.debug("Résultat : %d",vAtt-vDef)
+                elif vDef<vAtt:
+                        print("\n Victoire du défenseur par %d",vDef-vAtt) 
+                        log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
                 else:
-						print("Egalité, on tire une nouvelle carte forme")
+                        print("Egalité, on tire une nouvelle carte forme")
                         vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                         vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
-				
+                
 
         def libre(self,pos,couprestant=0):
                 log.debug("Test Libre de la position (%d,%d)",pos[0],pos[1])
@@ -310,20 +310,20 @@ class joueur :
                 else :
                         return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
 
-		def askIntercepter(self,joueur1,joueur2):
-			self.jeu.tour()
-			log.info("Demande au joueur adverse l'interception")
-			print("Au joueur de l'équipe %d",joueur1.nEquipe)
-			print("Voulez-vous intercepter le lancer du joueur adverse %s de coordonnées (%d,%d) au joueur adverse %s de coordonnées (%d,%d)",(prop[joueur1.numero],joueur1.pos[1},joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1},joueur2.pos[0])
-			print("\n , avec votre joueur %s de coordonnées de coordonnées (%d,%d)",(prop[self.numero],self.pos[1},self.pos[0])
-			print("\n")
-			print("Si oui, tapez 1. Sinon tapez 0")
-			self.jeu.tour()
-			intercepte = intInput("Interception: ")
-			if (intercepte==1):
-				return True
-			else:
-				return False
+        def askIntercepter(self,joueur1,joueur2):
+            self.jeu.tour()
+            log.info("Demande au joueur adverse l'interception")
+            print("Au joueur de l'équipe %d",joueur1.nEquipe)
+            print("Voulez-vous intercepter le lancer du joueur adverse %s de coordonnées (%d,%d) au joueur adverse %s de coordonnées (%d,%d)",(prop[joueur1.numero],joueur1.pos[1],joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1],joueur2.pos[0]))
+            print("\n , avec votre joueur %s de coordonnées de coordonnées (%d,%d)",prop[self.numero],self.pos[1],self.pos[0])
+            print("\n")
+            print("Si oui, tapez 1. Sinon tapez 0")
+            self.jeu.tour()
+            intercepte = intInput("Interception: ")
+            if (intercepte==1):
+                return True
+            else:
+                return False
 
         def passe(self,joueur2):
                 log.info("Le joueur %s essayer de passer au joueur %d",self.numero,joueur2.numero)
@@ -333,7 +333,7 @@ class joueur :
                                 joueur2.porteur = True
                                 interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
                                 for adv in interc:
-										if adv.askIntercepter(self,joueur2):
+                                        if adv.askIntercepter(self,joueur2):
                                                 if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
@@ -440,7 +440,7 @@ class joueur :
                         for joueur in self.equipe.equipe:
                                 print(joueur.pos[0])
                                 if joueur.pos[0] > self.pos[0]:
-                   	                    #log.debug("Résultat : Faux")
+                                           #log.debug("Résultat : Faux")
                                         return False
                         log.debug("Résultat : Vrai")
                         return True
@@ -451,7 +451,7 @@ class joueur :
                                         return False
                         log.debug("Résultat : Vrai")
                         return True
-						
+                        
         def front(self,pos):
                 log.debug("Test endroit où on envoie le ballon")
                 if self.nEquipe == 1:
@@ -484,161 +484,159 @@ class equipe :
                 self.jeu = jeu
                 self.carte = [True for i in range(6)]
                 self.nEquipe = nEquipe
-				self.tutoriel=1
-				self.interception=False
+                self.tutoriel=1
+                self.interception=False
 
-		def OptionJeu():
-			if (self.tutoriel==1)
-				print("Pour passer la balle, entrez 0")
-				print("\n Pour vous déplacer, entrez 1")
-				print("\n Pour finir votre tour, entrez -1")
-				print("\n \n Voulez-vous désactiver le tutoriel?")
-				print("\n Si oui, tapez 0. Sinon, tapez 1")
-				activer_tutoriel=intInput("Tutoriel :")
-				self.tutoriel=activer_tutoriel
-				if (activer_tutoriel==0):
-					log.debug("tutoriel désactivé")
-				
-				
-		def regleDeplacement():
-			if (self.tutoriel==1):
-				print("RAPPEL DES REGLES DE PASSE")
-				print("Vous pouvez faire autant de passes que vous voulez")
-				print("\n Vous ne pouvez passer la balle qu'à un joueur à l'arrière du porteur")
-				print("\n Le receveur doit être positionné à 1 ou 2 cases de distance sur une ligne droite orthogonale ou diagonale")
-				print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-				print("\n \n Voulez-vous désactiver le tutoriel?")
-				print("\n Si oui, tapez 0. Sinon, tapez 1")
-				activer_tutoriel=intInput("Tutoriel :")
-				self.tutoriel=activer_tutoriel
-				if (activer_tutoriel==0):
-					log.info("tutoriel désactivé")
-		
-		def reglePasse():
-			if (self.tutoriel==1):
+        def OptionJeu():
+            if self.tutoriel==1:
+                print("Pour passer la balle, entrez 0")
+                print("\n Pour vous déplacer, entrez 1")
+                print("\n Pour finir votre tour, entrez -1")
+                print("\n \n Voulez-vous désactiver le tutoriel?")
+                print("\n Si oui, tapez 0. Sinon, tapez 1")
+                activer_tutoriel=intInput("Tutoriel :")
+                self.tutoriel=activer_tutoriel
+                if (activer_tutoriel==0):
+                    log.debug("tutoriel désactivé")
+                
+                
+        def regleDeplacement():
+            if (self.tutoriel==1):
                 print("RAPPEL DES REGLES DE PASSE")
-				print("\n Vous ne pouvez pas déplacer plus de 2 joueurs différents par tour")
-				print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
-				print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
-				print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
-				print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
-				print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-				print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
-				print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")				
-				print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-				print("\n \n Voulez-vous désactiver le tutoriel?")
-				print("\n Si oui, tapez 0. Sinon, tapez 1")
-				activer_tutoriel=intInput("Tutoriel :")
-				self.tutoriel=activer_tutoriel
-				if (activer_tutoriel==0):
-					log.info("tutoriel désactivé")
-					
-		def possibilitesDeplacement()
-				if (coupRestant==2):
-					print("Vous pouvez encore déplacer 2 nouveaux joueurs ce tour")
-					print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[0].depRestant)
-					print("\n Rappel : le deuxième joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[1].depRestant)
-					print("\n Rappel : le gros costaud numéro 0) peut encore se déplacer de %d cases "",%(self.equipe)[2].depRestant)
-					print("\n Rappel : le dur numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[3].depRestant)
-					print("\n Rappel : le rapide numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[4].depRestant)
-					print("\n Rappel : le futé numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[5].depRestant)	
-				elif (coupRestant==1):
-					k = 0
-					while k < 6 :
-						if (not (self.equipe[k].depRestant == bonus[self.equipe[k].prop][2])):
-							break
-					print("Vous pouvez encore déplacer un nouveau joueur ce tour") #KO bien gérés?
-					print("\n Le joueur %s de numéro %d s'est déjà déplacé ",(prop[k],k))
-					print("Vous pouvez encore déplacer 1 nouveau joueur ce tour")
-					print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",%(self.equipe)[0].depRestant)
-					print("\n Rappel : le premier joueur ordinaire (numéro 1) peut encore se déplacer de %d cases ",%(self.equipe)[1].depRestant)
-					print("\n Rappel : le gros costaud (numéro 2) peut encore se déplacer de %d cases "",%(self.equipe)[2].depRestant)
-					print("\n Rappel : le dur (numéro 3) peut encore se déplacer de %d cases ",%(self.equipe)[3].depRestant)
-					print("\n Rappel : le rapide (numéro 4) peut encore se déplacer de %d cases ",%(self.equipe)[4].depRestant)
-					print("\n Rappel : le futé (numéro 5) peut encore se déplacer de %d cases ",%(self.equipe)[5].depRestant)
-				else:
-					k1 = 0
-					k2 = 0
-					i=0
-					while k2 < 6 :
-						if ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i==0)):
-							k1=k2
-							i+=1
-						elif ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i==1)):
-							break
-					print("Vous ne pouvez plus déplacer de nouveau joueur ce tour") #KO bien gérés?
-					print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k1],k1,self.equipe[k1].depRestant))
-					print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
-					print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
-					
+                print("Vous pouvez faire autant de passes que vous voulez")
+                print("\n Vous ne pouvez passer la balle qu'à un joueur à l'arrière du porteur")
+                print("\n Le receveur doit être positionné à 1 ou 2 cases de distance sur une ligne droite orthogonale ou diagonale")
+                print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
+                print("\n \n Voulez-vous désactiver le tutoriel?")
+                print("\n Si oui, tapez 0. Sinon, tapez 1")
+                activer_tutoriel=intInput("Tutoriel :")
+                self.tutoriel=activer_tutoriel
+                if (activer_tutoriel==0):
+                    log.info("tutoriel désactivé")
+        
+        def reglePasse():
+            if (self.tutoriel==1):
+                print("RAPPEL DES REGLES DE PASSE")
+                print("\n Vous ne pouvez pas déplacer plus de 2 joueurs différents par tour")
+                print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
+                print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
+                print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
+                print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
+                print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
+                print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
+                print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")                
+                print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
+                print("\n \n Voulez-vous désactiver le tutoriel?")
+                print("\n Si oui, tapez 0. Sinon, tapez 1")
+                activer_tutoriel=intInput("Tutoriel :")
+                self.tutoriel=activer_tutoriel
+                if (activer_tutoriel==0):
+                    log.info("tutoriel désactivé")
+                    
+        def possibilitesDeplacement():
+                if (coupRestant==2):
+                    print("Vous pouvez encore déplacer 2 nouveaux joueurs ce tour")
+                    print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",self.equipe[0].depRestant)
+                    print("\n Rappel : le deuxième joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",self.equipe[1].depRestant)
+                    print("\n Rappel : le gros costaud numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[2].depRestant)
+                    print("\n Rappel : le dur numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[3].depRestant)
+                    print("\n Rappel : le rapide numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[4].depRestant)
+                    print("\n Rappel : le futé numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[5].depRestant)    
+                elif (coupRestant==1):
+                    k = 0
+                    while k < 6 :
+                        if (not (self.equipe[k].depRestant == bonus[self.equipe[k].prop][2])):
+                            break
+                    print("Vous pouvez encore déplacer un nouveau joueur ce tour") #KO bien gérés?
+                    print("\n Le joueur %s de numéro %d s'est déjà déplacé ",(prop[k],k))
+                    print("Vous pouvez encore déplacer 1 nouveau joueur ce tour")
+                    print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
+                    print("\n Rappel : le premier joueur ordinaire (numéro 1) peut encore se déplacer de %d cases ",(self.equipe)[1].depRestant)
+                    print("\n Rappel : le gros costaud (numéro 2) peut encore se déplacer de %d cases ",(self.equipe)[2].depRestant)
+                    print("\n Rappel : le dur (numéro 3) peut encore se déplacer de %d cases ",(self.equipe)[3].depRestant)
+                    print("\n Rappel : le rapide (numéro 4) peut encore se déplacer de %d cases ",(self.equipe)[4].depRestant)
+                    print("\n Rappel : le futé (numéro 5) peut encore se déplacer de %d cases ",(self.equipe)[5].depRestant)
+                else:
+                    k1 = 0
+                    k2 = 0
+                    i=0
+                    while k2 < 6 :
+                        if ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i==0)):
+                            k1=k2
+                            i+=1
+                        elif ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i==1)):
+                            break
+                    print("Vous ne pouvez plus déplacer de nouveau joueur ce tour") #KO bien gérés?
+                    print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k1],k1,self.equipe[k1].depRestant))
+                    print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
+                    print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
+                    
 def reglePasse():
-	if (self.tutoriel==1):
+    if (self.tutoriel==1):
                 print("RAPPEL DES REGLES DE PLAQUAGE")
-				print("\n Vous devez être à côté d'un joueur pour le plaquer")
-				print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
-				print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
-				print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
-				print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
-				print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-				print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
-				print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")				
-				print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-				print("\n \n Voulez-vous désactiver le tutoriel?")
-				print("\n Si oui, tapez 0. Sinon, tapez 1")
-				activer_tutoriel=intInput("Tutoriel :")
-				self.tutoriel=activer_tutoriel
-				if (activer_tutoriel==0):
-					log.info("tutoriel désactivé")
+                print("\n Vous devez être à côté d'un joueur pour le plaquer")
+                print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
+                print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
+                print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
+                print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
+                print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
+                print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
+                print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")                
+                print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
+                print("\n \n Voulez-vous désactiver le tutoriel?")
+                print("\n Si oui, tapez 0. Sinon, tapez 1")
+                activer_tutoriel=intInput("Tutoriel :")
+                self.tutoriel=activer_tutoriel
+                if (activer_tutoriel==0):
+                    log.info("tutoriel désactivé")
 
-				
-			
-        def joue(self,interception=False):
-				#Reinitialisation
-                log.debug("L'équipe %d joue un tour",self.nEquipe)
-                self.coupRestant = 2
-                for joueur in self.equipe:
-                        joueur.depRestant = bonus[joueur.prop][2]
-                cont = True
-                while cont:
-                        self.optionJeu()
-                        opt = intInput("Action: ")
-                        if opt == 0:
-                                self.reglePasse()
-                                j1 = intInput("Joueur 1: ")
-                                while True:
-                                        try :
-                                                j2 = intInput("Joueur 2: ")
-                                                assert j2 != j1
-                                                self.equipe[j1].passe(self.equipe[j2])
-                                                break
-                                        except:
-                                                pass
-                        elif opt == 1:
-                                self.regleDeplacement()
-								self.possibilitesDeplacement()
-                                j = intInput("Joueur qui passe: ")
-                                posx = intInput("posx: ")
-                                posy = intInput("posy: ")
-                                self.equipe[j].deplacement((posx,posy))
-                                if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
-                                        cont = True
-                                        self.score += 1
-                                        self.jeu.fin()
-                                        break
-						elif opt=2:
-							self.reglePlaquage()
-							j1=intInput("Joueur qui plaque:")
-							j2=intInput("Joueur plaqué")
-							self.equipe[j1].placage(self.equipe[j2],1)
-                        elif opt == -1:
-                                if self.jeu.finTour():
-                                        cont = False
-                                else:
-                                        print("Des joueurs se superposent")
-
+                
+    def joue(self,interception=False):
+            #Reinitialisation
+        log.debug("L'équipe %d joue un tour",self.nEquipe)
+        self.coupRestant = 2
+        for joueur in self.equipe:
+            joueur.depRestant = bonus[joueur.prop][2]
+        cont = True
+        while cont:
+            self.optionJeu()
+            opt = intInput("Action: ")
+            if opt == 0:
+                self.reglePasse()
+                j1 = intInput("Joueur 1: ")
+                while True:
+                    try :
+                        j2 = intInput("Joueur 2: ")
+                        assert j2 != j1
+                        self.equipe[j1].passe(self.equipe[j2])
+                        break
+                    except:
+                        pass
+            elif opt == 1:
+                self.regleDeplacement()
+                self.possibilitesDeplacement()
+                j = intInput("Joueur qui passe: ")
+                posx = intInput("posx: ")
+                posy = intInput("posy: ")
+                self.equipe[j].deplacement((posx,posy))
+                if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
+                    cont = True
+                    self.score += 1
+                    self.jeu.fin()
+                    break
+            elif opt==2:
+                self.reglePlaquage()
+                j1=intInput("Joueur qui plaque:")
+                j2=intInput("Joueur plaqué")
+                self.equipe[j1].placage(self.equipe[j2],1)
+            elif opt == -1:
+                if self.jeu.finTour():
+                    cont = False
+                else:
+                    print("Des joueurs se superposent")
 
         def forme(self):
-                log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)	
+                log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)    
                 if self.carte == [False for i in range(6)]:
                         log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
                         self.carte = [True for i in range(6)]
