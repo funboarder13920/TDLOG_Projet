@@ -91,7 +91,7 @@ class jeu :
                 positions2 = choixPos(2)
                 self.equipe1 = equipe(self,1,positions1)
                 self.equipe2 = equipe(self,2,positions2)
-                self.ballon = ballon((7,1 + random.randint(1,6)))
+                self.ballon = ballon((7,1 + random.randint(1,6)),self)
                 self.tour = 1
 
         def tour(self):
@@ -116,7 +116,7 @@ class jeu :
 
         def libre(self,pos,couprestant=0):
                 assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
-                print(self.matrice[pos[0]][pos[1]].nEquipe)
+                #print(self.matrice[pos[0]][pos[1]].nEquipe)
                 return self.matrice[pos[0]][pos[1]].nEquipe == 3 or (self.matrice[pos[0]][pos[1]].ko and couprestant >= 2)
 
         def finTour(self):
