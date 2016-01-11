@@ -573,8 +573,8 @@ class equipe :
                     print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
                     print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
                     
-def reglePasse():
-    if (self.tutoriel==1):
+        def reglePasse():
+            if (self.tutoriel==1):
                 print("RAPPEL DES REGLES DE PLAQUAGE")
                 print("\n Vous devez être à côté d'un joueur pour le plaquer")
                 print("\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
@@ -582,7 +582,7 @@ def reglePasse():
                 print("\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
                 print("\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
                 print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-                print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
+                print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")                
                 print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")                
                 print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
                 print("\n \n Voulez-vous désactiver le tutoriel?")
@@ -593,61 +593,61 @@ def reglePasse():
                     log.info("tutoriel désactivé")
 
                 
-    def joue(self,interception=False):
+        def joue(self,interception=False):
             #Reinitialisation
-        log.debug("L'équipe %d joue un tour",self.nEquipe)
-        self.coupRestant = 2
-        for joueur in self.equipe:
-            joueur.depRestant = bonus[joueur.prop][2]
-        cont = True
-        while cont:
-            self.optionJeu()
-            opt = intInput("Action: ")
-            if opt == 0:
-                self.reglePasse()
-                j1 = intInput("Joueur 1: ")
-                while True:
-                    try :
-                        j2 = intInput("Joueur 2: ")
-                        assert j2 != j1
-                        self.equipe[j1].passe(self.equipe[j2])
+            log.debug("L'équipe %d joue un tour",self.nEquipe)
+            self.coupRestant = 2
+            for joueur in self.equipe:
+                joueur.depRestant = bonus[joueur.prop][2]
+            cont = True
+            while cont:
+                self.optionJeu()
+                opt = intInput("Action: ")
+                if opt == 0:
+                    self.reglePasse()
+                    j1 = intInput("Joueur 1: ")
+                    while True:
+                        try :
+                            j2 = intInput("Joueur 2: ")
+                            assert j2 != j1
+                            self.equipe[j1].passe(self.equipe[j2])
+                            break
+                        except:
+                            pass
+                elif opt == 1:
+                    self.regleDeplacement()
+                    self.possibilitesDeplacement()
+                    j = intInput("Joueur qui passe: ")
+                    posx = intInput("posx: ")
+                    posy = intInput("posy: ")
+                    self.equipe[j].deplacement((posx,posy))
+                    if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
+                        cont = True
+                        self.score += 1
+                        self.jeu.fin()
                         break
-                    except:
-                        pass
-            elif opt == 1:
-                self.regleDeplacement()
-                self.possibilitesDeplacement()
-                j = intInput("Joueur qui passe: ")
-                posx = intInput("posx: ")
-                posy = intInput("posy: ")
-                self.equipe[j].deplacement((posx,posy))
-                if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
-                    cont = True
-                    self.score += 1
-                    self.jeu.fin()
-                    break
-            elif opt==2:
-                self.reglePlaquage()
-                j1=intInput("Joueur qui plaque:")
-                j2=intInput("Joueur plaqué")
-                self.equipe[j1].placage(self.equipe[j2],1)
-            elif opt == -1:
-                if self.jeu.finTour():
-                    cont = False
-                else:
-                    print("Des joueurs se superposent")
+                elif opt==2:
+                    self.reglePlaquage()
+                    j1=intInput("Joueur qui plaque:")
+                    j2=intInput("Joueur plaqué")
+                    self.equipe[j1].placage(self.equipe[j2],1)
+                elif opt == -1:
+                    if self.jeu.finTour():
+                        cont = False
+                    else:
+                        print("Des joueurs se superposent")
 
         def forme(self):
-                log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)    
+                log.debug("Calcul de la forme de l'équipe %d",self.nEquipe)    
                 if self.carte == [False for i in range(6)]:
-                        log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+                        log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
                         self.carte = [True for i in range(6)]
                 cartePossible = []
                 for i in range(len(self.carte)):
                         if self.carte[i]:
                                 cartePossible.append(i)
                 e = random.randint(0,len(cartePossible)-1)
-                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
                 self.carte[cartePossible[e]]=False
                 return cartePossible[e] + 1
 

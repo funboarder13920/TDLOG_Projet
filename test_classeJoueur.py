@@ -54,6 +54,9 @@ class test_joueur(unittest.TestCase):
 	def test_placage(self):
 		pass
 
+	def test_placageInterception(self):
+		pass
+
 	def test_passe(self):
 		pass
 
