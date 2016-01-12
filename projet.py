@@ -208,11 +208,11 @@ class ballon :
                 log.debug("Initialisation du ballon à la position (%d,%d)",position[0],position[1])
                 self.position = position
                 self.jeu = jeu
-                self.porteur = self.jeu.matrice[position[0]][position[1]]
+                self.porteur = self.jeu.matrice[position[0]][position[1]][-1]
 
         def deplacement(self):
                 if self.porteur.nEquipe!=3:
-                        self.position = self.porteur.position
+                        self.position = self.porteur.pos
                         log.debug("Le ballon se deplace à la postion (%d,%d)",self.position[0],self.position[1])
                 
 class joueur : 
@@ -332,14 +332,16 @@ class joueur :
                         if self.enArriere(joueur2):
                                 self.porteur = False
                                 joueur2.porteur = True
-                                interc = self.jeu.interception(self.posx,self.posy,joueur2.posx,joueur2.posy)
+                                self.jeu.ballon.porteur = joueur2
+                                self.jeu.ballon.deplacement()
+                                interc = self.jeu.interception(self,joueur2)
+                                print(len(interc))
                                 for adv in interc:
                                         if adv.askIntercepter(self,joueur2):
                                                 if jeu.resolution(self,adv)<=0:
                                                         adv.porteur = True
                                                         joueur2.porteur = False
                                                         self.jeu.ballon.deplacement()
-                                                        
                                                         break
                                         else:
                                                 log.info("La passe est réussie")
@@ -439,7 +441,6 @@ class joueur :
                 log.debug("Test personne en face")
                 if self.nEquipe == 1:
                         for joueur in self.equipe.equipe:
-                                print(joueur.pos[0])
                                 if joueur.pos[0] > self.pos[0]:
                                            #log.debug("Résultat : Faux")
                                         return False
@@ -463,11 +464,11 @@ class joueur :
         def tirAvant(self,pos):
                 log.info("Le joueur %d essaie de tirer en avant",self.numero)
                 if self.porteur:
-                        if self.nobodyFront() and self.front(pos) and self.jeu.matrice[pos[0]][pos[1]].nEquipe == 3: 
+                        if self.nobodyFront() and self.front(pos): 
                                 self.porteur = False
-                                self.ballon.position = pos
-                                self.jeu.ballon.porteur = self.jeu.matrice[position[0]][position[1]]
-                                self.jeu.matrice[position[0]][position[1]].porteur = True
+                                self.jeu.ballon.position = pos
+                                self.jeu.ballon.porteur = self.jeu.matrice[pos[0]][pos[1]][-1]
+                                self.jeu.matrice[pos[0]][pos[1]][-1].porteur = True
                         elif (not self.nobodyFront(pos)): 
                             log.error("Le tir en avant est impossible car le joueur %d a un joueur devant lui", self.numero)
                         elif (not self.front(pos)):
