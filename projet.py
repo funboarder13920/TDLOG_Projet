@@ -268,7 +268,7 @@ class joueur :
                 # le joueur ne doit pas etre KO et le deplacement doit etre
                 # d'au plus 1
                 if not self.ko:
-                        if abs(add(self.position,-pos)) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
+                        if absol(sub(self.pos,pos)) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
                                 if self.depRestant == bonus[self.prop][2] and self.depRestant != 0:
                                         #Le joueur ne s'est pas encore deplace
                                         if self.equipe.coupRestant > 0:
@@ -317,9 +317,9 @@ class joueur :
         def askIntercepter(self,joueur1,joueur2):
             self.jeu.tour()
             log.info("Demande au joueur adverse l'interception")
-            'Au joueur de l\'equipe {0}'.format(joueur1.nEquipe)
-            'Voulez-vous intercepter le lancer du joueur adverse {0} de coordonnées ({1},{2}) au joueur adverse {3} de coordonnees ({4},{5})'.format(prop[joueur1.numero],joueur1.pos[1],joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1],joueur2.pos[0]))
-            print("\n , avec votre joueur {0} de coordonnées ({1},{2})".format(prop[self.numero],self.pos[1],self.pos[0])
+            print('Au joueur de l\'equipe {0}'.format(joueur1.nEquipe))
+            print('Voulez-vous intercepter le lancer du joueur adverse {0} de coordonnées ({1},{2}) au joueur adverse {3} de coordonnees ({4},{5})'.format(prop[joueur1.numero],joueur1.pos[1],joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1],joueur2.pos[0]))
+            print("\n , avec votre joueur {0} de coordonnées ({1},{2})".format(prop[self.numero],self.pos[1],self.pos[0]))
             print("\n")	 
             print("Si oui, tapez 1. Sinon tapez 0")
             self.jeu.tour()
@@ -355,7 +355,7 @@ class joueur :
 
         def placage(self,joueur2,plaquer):
                 log.info("Le joueur {0} essaie de plaquer le joueur {0}",self.numero, joueur2.numero)
-                if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
+                if absol(sub(self.pos,joueur2.pos))==1 and self.depRestant>1:
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
                                 if self.jeu.resolution(self,joueur2)>=0:
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer==1: 
@@ -515,7 +515,8 @@ class equipe :
                 print("\n Pour finir votre tour, entrez -1")
                 print("\n \n Voulez-vous desactiver le tutoriel?")
                 print("\n Si oui, tapez 0. Sinon, tapez 1")
-                activer_tutoriel=intInput("Tutoriel :")
+                #activer_tutoriel=intInput("Tutoriel :")
+                activer_tutoriel = 0
                 self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.debug("tutoriel desactive")
@@ -530,7 +531,8 @@ class equipe :
                 print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
                 print("\n \n Voulez-vous desactiver le tutoriel?")
                 print("\n Si oui, tapez 0. Sinon, tapez 1")
-                activer_tutoriel=intInput("Tutoriel :")
+                #activer_tutoriel=intInput("Tutoriel :")
+                activer_tutoriel = 0
                 self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.info("tutoriel desactive")
@@ -549,7 +551,8 @@ class equipe :
                 print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
                 print("\n \n Voulez-vous desactiver le tutoriel?")
                 print("\n Si oui, tapez 0. Sinon, tapez 1")
-                activer_tutoriel=intInput("Tutoriel :")
+                #activer_tutoriel=intInput("Tutoriel :")
+                activer_tutoriel = 0
                 self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.info("tutoriel desactive")
@@ -592,23 +595,24 @@ class equipe :
                     '\n Le joueur {0} de numero {1} peut encore se deplacer de {2}'.format(prop[k2],k2,self.equipe[k2].depRestant)
                     '\n Rappel : le joueur %s (numero {0}) peut encore se deplacer de {0} cases'.format((self.equipe)[0].depRestant)
                     
-        def reglePlaquage():
+        def reglePlaquage(self):
             if (self.tutoriel==1):
                 'RAPPEL DES REGLES DE PLAQUAGE'
                 '\n Vous devez etre a côte d\'un joueur pour le plaquer'
                 '\n Toutefois, vous pouvez utiliser vos deplacements dans l\'ordre que vous voulez'
                 'Vous ne pouvez pas courir sur un autre joueur a moins qu\'il ne soit KO ou que vous forciez le passage'
-				for joueur in bonus:
-                    '\n Rappel : le joueur joueur
+                for joueur in bonus:
+                    '\n Rappel : le joueur joueur'
                     '\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se deplacer de 3 cases par tour'
                     '\n Rappel : le gros costaud (joueur 2) peut se deplacer de 2 cases par tour'
                     '\n Rappel : le dur (joueur 3) peut se deplacer de 3 cases par tour'
                     '\n Rappel : le rapide (joueur 4) peut se deplacer de 4 cases par tour'                
                     '\n Rappel : le fute (joueur 5) peut se deplacer de 3 cases par tour'                
-                '\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
+                '\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l\'intercepter'
                 '\n \n Voulez-vous desactiver le tutoriel?'
                 '\n Si oui, tapez 0. Sinon, tapez 1'
-                activer_tutoriel=intInput("Tutoriel :")
+                #activer_tutoriel=intInput("Tutoriel :")
+                activer_tutoriel = 0
                 self.tutoriel=activer_tutoriel
                 if (activer_tutoriel==0):
                     log.info("tutoriel desactive")
