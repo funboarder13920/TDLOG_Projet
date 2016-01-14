@@ -249,22 +249,6 @@ class joueur :
                 self.jeu.matrice[pos[0]][pos[1]][0] = self
                 self.jeu.matrice[self.pos[0]][self.pos[1]].append(joueur(None,self,3,self.pos,"",0))
                 self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
-            #Ancienne version :
-            """else: 
-                if (len(self.jeu.matrice[self.pos[0]][self.pos[1]])==1 and 
-                len(self.jeu.matrice[pos[0]][pos[1]] ) ==1):
-                    self.jeu.matrice[self.pos[0]][self.pos[1]][0],self.jeu.matrice[pos[0]][pos[1]][0] = self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.matrice[self.pos[0]][self.pos[1]][0]
-                elif (len(self.jeu.matrice[self.pos[0]][self.pos[1]])!=1 and 
-                len(self.jeu.matrice[pos[0]][pos[1]] ) !=1):
-                    self.jeu.matrice[self.pos[0]][self.pos[1]][-1],self.jeu.matrice[pos[0]][pos[1]][-1] = self.jeu.matrice[pos[0]][pos[1]][-1],self.jeu.matrice[self.pos[0]][self.pos[1]][-1]
-                elif len(self.jeu.matrice[self.pos[0]][self.pos[1]])!=1:
-                    if self.jeu.matrice[pos[0]][pos[1]][0]==None:
-                        self.jeu.matrice[pos[0]][pos[1]][0] = self
-                        self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
-                    else:
-                        self.jeu.matrice[self.pos[0]][self.pos[1]][-1],self.jeu.matrice[pos[0]][pos[1]][0] = self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.matrice[self.pos[0]][self.pos[1]][-1]
-                else:
-                    self.jeu.matrice[self.pos[0]][self.pos[1]][0],self.jeu.matrice[pos[0]][pos[1]][-1] = self.jeu.matrice[pos[0]][pos[1]][-1],self.jeu.matrice[self.pos[0]][self.pos[1]][0]"""
             self.depRestant-=1
             self.pos=pos                
 
