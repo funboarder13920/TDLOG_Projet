@@ -120,7 +120,7 @@ class jeu :
                 self.ballon = ballon((7,1 + random.randint(1,6)),self)
                 self.tour = 1
 
-        def tour(self):
+        def changetour(self):
             log.info("Début des tours de jeu")
             if self.tour == 1:
                         log.info("Tour de jeu équipe 1")
@@ -212,7 +212,7 @@ class ballon :
 
         def deplacement(self):
                 if self.porteur.nEquipe!=3:
-                        self.position = self.porteur.position
+                        self.position = self.porteur.pos
                         log.debug("Le ballon se deplace à la postion (%d,%d)",self.position[0],self.position[1])
                 
 class joueur : 
@@ -259,7 +259,10 @@ class joueur :
                 # le joueur ne doit pas être KO et le déplacement doit être
                 # d'au plus 1
                 if not self.ko:
-                        if abs(add(self.position,-pos)) == 1 and self.jeu.libre(pos,self.couprestant) and self.onGrid():
+                        posneg = []
+                        posneg.append(-pos[0])
+                        posneg.append(-pos[1])
+                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.couprestant) and self.onGrid():
                                 if self.coupRestant == bonus[self.prop][2] and self.coupRestant != 0:
                                         #Le joueur ne s'est pas encore déplacé
                                         if self.equipe.coupRestant > 0:
@@ -306,14 +309,14 @@ class joueur :
                         return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
 
         def askIntercepter(self,joueur1,joueur2):
-            self.jeu.tour()
+            self.jeu.changetour()
             log.info("Demande au joueur adverse l'interception")
             print("Au joueur de l'équipe %d",joueur1.nEquipe)
             print("Voulez-vous intercepter le lancer du joueur adverse %s de coordonnées (%d,%d) au joueur adverse %s de coordonnées (%d,%d)",(prop[joueur1.numero],joueur1.pos[1],joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1],joueur2.pos[0]))
             print("\n , avec votre joueur %s de coordonnées de coordonnées (%d,%d)",(prop[self.numero],self.pos[1],self.pos[0]))
             print("\n")
             print("Si oui, tapez 1. Sinon tapez 0")
-            self.jeu.tour()
+            self.jeu.changetour()
             intercepte = intInput("Interception: ")
             if (intercepte==1):
                 return True
@@ -530,8 +533,8 @@ class equipe :
                 if (activer_tutoriel==0):
                     log.info("tutoriel désactivé")
                     
-        def possibilitesDeplacement():
-                if (coupRestant==2):
+        def possibilitesDeplacement(self):
+                if (self.coupRestant==2):
                     print("Vous pouvez encore déplacer 2 nouveaux joueurs ce tour")
                     print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
                     print("\n Rappel : le deuxième joueur ordinaire (numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[1].depRestant)
@@ -539,7 +542,7 @@ class equipe :
                     print("\n Rappel : le dur numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[3].depRestant)
                     print("\n Rappel : le rapide numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[4].depRestant)
                     print("\n Rappel : le futé numéro 0) peut encore se déplacer de %d cases ",(self.equipe)[5].depRestant)    
-                elif (coupRestant==1):
+                elif (self.coupRestant==1):
                     k = 0
                     while k < 6 :
                         if (not (self.equipe[k].depRestant == bonus[self.equipe[k].prop][2])):
@@ -568,7 +571,7 @@ class equipe :
                     print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
                     print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
                     
-        def reglePlaquage():
+        def reglePlaquage(self):
                 if (self.tutoriel==1):
                     print("RAPPEL DES REGLES DE PLAQUAGE")
                     print("\n Vous devez être à côté d'un joueur pour le plaquer")
@@ -595,7 +598,7 @@ class equipe :
                     joueur.depRestant = bonus[joueur.prop][2]
             cont = True
             while cont:
-                    self.optionJeu()
+                    self.OptionJeu()
                     opt = intInput("Action: ")
                     if opt == 0:
                             self.reglePasse()
@@ -647,6 +650,6 @@ class equipe :
 
 if __name__ == "__main__":
         jeu = jeu()
-        jeu.tour()
+        jeu.changetour()
         print("Fin du jeu")
 
