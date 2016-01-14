@@ -50,7 +50,6 @@ class test_joueur(unittest.TestCase):
 		self.jeu.equipe1.equipe[0].tirAvant((7,5))
 		self.assertEqual(self.jeu.ballon.position,(7,5))
 		self.assertTrue(self.jeu.matrice[7][5][-1].porteur)
-		#Pourquoi interdire d'envoyer la balle sur un joueur adverse?
 
 	def test_placage(self):
 		pass
