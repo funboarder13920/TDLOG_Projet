@@ -237,7 +237,7 @@ class joueur :
             if self.jeu.matrice[pos[0]][pos[1]][0].ko and not self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko:  #Cas où on va sur une case où il y a un joueur ko
                 self.jeu.matrice[pos[0]][pos[1]].append(self)
                 self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3 #joueur de l'équipe 3 pour compléter
-                self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None # équipe 3
+                self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None # équipe 3"""
             elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and not self.jeu.matrice[pos[0]][pos[1]][0].ko: #Cas où on part d'une case où il y a un joueur ko
                 self.jeu.matrice[pos[0]][pos[1]][0] = self
                 self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
@@ -248,6 +248,7 @@ class joueur :
                 self.jeu.matrice[pos[0]][pos[1]][0] = self
                 self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3
                 self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None
+            self = self.jeu.matrice[pos[0]][pos[1]][-1]
             self.depRestant-=1
             self.pos=pos
 
