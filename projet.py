@@ -579,7 +579,7 @@ class equipe :
                     print("\n Le joueur %s de numéro %d peut encore se déplacer de d  ",(prop[k2],k2,self.equipe[k2].depRestant))
                     print("\n Rappel : le joueur %s (numéro %d) peut encore se déplacer de %d cases ",(self.equipe)[0].depRestant)
                     
-        def reglePasse():
+        def reglePlaquage():
                 if (self.tutoriel==1):
                     print("RAPPEL DES REGLES DE PLAQUAGE")
                     print("\n Vous devez être à côté d'un joueur pour le plaquer")
@@ -655,7 +655,6 @@ class equipe :
             log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
             self.carte[cartePossible[e]]=False
             return cartePossible[e] + 1
-
 
 if __name__ == "__main__":
         jeu = jeu()
