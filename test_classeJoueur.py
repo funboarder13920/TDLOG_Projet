@@ -28,23 +28,97 @@ class test_joueur(unittest.TestCase):
 
 	def test_nobodyFront(self):
 		self.jeu.equipe1.equipe[2].pos=(10,10)
-		self.assertFalse(self.jeu.equipe1.equipe[2].nobodyFront())
+		self.assertTrue(self.jeu.equipe1.equipe[2].nobodyFront())
 		self.assertFalse(self.jeu.equipe1.equipe[0].nobodyFront())
 		self.jeu.equipe2.equipe[2].pos=(2,2)
 		self.assertTrue(self.jeu.equipe2.equipe[2].nobodyFront())
 		self.assertFalse(self.jeu.equipe2.equipe[0].nobodyFront())
 
 	def test_front(self):
-		pass
+		self.assertTrue(self.jeu.equipe1.equipe[2].front((3,3)))
+		self.assertFalse(self.jeu.equipe1.equipe[2].front((2,3)))
+		self.assertFalse(self.jeu.equipe1.equipe[2].front((7,3)))
+		self.assertFalse(self.jeu.equipe2.equipe[-1].front((3,3)))
+		self.assertFalse(self.jeu.equipe2.equipe[-1].front((11,3)))
+		self.assertTrue(self.jeu.equipe2.equipe[-1].front((9,3)))
 
 	def test_tirAvant(self):
-		pass
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position = (4,2)
+		self.jeu.equipe1.equipe[0].pos=(4,2)
+		self.jeu.ballon.porteur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].tirAvant((7,5))
+		self.assertEqual(self.jeu.ballon.position,(7,5))
+		self.assertTrue(self.jeu.matrice[7][5][-1].porteur)
+		#Pourquoi interdire d'envoyer la balle sur un joueur adverse?
 
 	def test_placage(self):
 		pass
 
-	def test_passe(self):
+	def test_placageInterception(self):
 		pass
+
+	def test_passe1(self):
+		self.jeu.equipe1.equipe[0].pos=(5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
+		self.assertEqual(self.jeu.ballon.position,(3,3))
+
+	def test_passe2(self):
+		self.jeu.equipe1.equipe[0].pos=(5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[1].passe(self.jeu.equipe1.equipe[0])
+		self.assertEqual(self.jeu.ballon.position,(5,1))
+
+
+	def test_passe3(self):
+		self.jeu.equipe1.equipe[0].pos = (5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe1.equipe[2].pos = (4,2)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
+		self.assertEqual(self.jeu.ballon.position,(3,3))
+
+	def test_passe4(self):
+		self.jeu.equipe1.equipe[0].pos = (5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe2.equipe[2].pos = (4,3)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
+		self.assertEqual(self.jeu.ballon.position,(3,3))
+
+	def test_passe5(self):
+		self.jeu.equipe1.equipe[0].pos = (5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe2.equipe[2].pos = (4,1)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
+		self.assertEqual(self.jeu.ballon.position,(3,3))
+	#pblm à l'interception?
+
+	def test_passe5(self):
+		self.jeu.equipe1.equipe[0].pos = (5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe2.equipe[2].pos = (4,2)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[1].passe(self.jeu.equipe1.equipe[0])
+		self.assertEqual(self.jeu.ballon.position,(5,1))
+
+	#fonction déplacement du ballon?
 
 """
 	def test_deplace1(self):
@@ -75,5 +149,6 @@ class test_joueur(unittest.TestCase):
 		
 	def test_deplacement1(self):
 		pass
+		recupère la balle?
 """
 
