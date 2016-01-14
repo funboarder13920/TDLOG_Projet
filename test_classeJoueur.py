@@ -17,7 +17,7 @@ class test_joueur(unittest.TestCase):
 		self.jeu = projet.jeu()
 		self.patcher.stop()
 
-	"""def test_enArriere(self):
+	def test_enArriere(self):
 		self.assertFalse(self.jeu.equipe1.equipe[0].enArriere(self.jeu.equipe1.equipe[1]))
 		self.assertFalse(self.jeu.equipe1.equipe[1].enArriere(self.jeu.equipe1.equipe[1]))
 		self.assertTrue(self.jeu.equipe1.equipe[2].enArriere(self.jeu.equipe1.equipe[1]))
@@ -84,7 +84,7 @@ class test_joueur(unittest.TestCase):
 		self.jeu.ballon.position =(5,1)
 		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
 		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
-		self.assertEqual(self.jeu.ballon.position,(3,3))"""
+		self.assertEqual(self.jeu.ballon.position,(3,3))
 
 	def test_passe4(self):
 		self.jeu.equipe1.equipe[0].pos = (5,1)
@@ -150,5 +150,3 @@ class test_joueur(unittest.TestCase):
 		pass
 		recupère la balle?
 """
-
-unittest.main()
