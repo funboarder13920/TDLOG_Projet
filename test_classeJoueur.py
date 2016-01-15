@@ -150,4 +150,3 @@ class test_joueur(unittest.TestCase):
 		pass
 		recupère la balle?
 """
-
