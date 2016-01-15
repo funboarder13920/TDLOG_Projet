@@ -119,7 +119,7 @@ class test_joueur(unittest.TestCase):
 
 	#fonction déplacement du ballon?
 
-"""
+
 	def test_deplace1(self):
 		pos = self.jeu.equipe1.equipe[0].pos
 		self.assertEqual(self.jeu.equipe1.equipe[0].depRestant,3)
@@ -148,5 +148,6 @@ class test_joueur(unittest.TestCase):
 		
 	def test_deplacement1(self):
 		pass
-		recupère la balle?
-"""
+		#recupère la balle?
+
+unittest.main()

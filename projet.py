@@ -158,7 +158,7 @@ class jeu :
                 log.debug("Test Libre de la position ({0},{0})",pos[0],pos[1])
                 assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
                 print(self.matrice[pos[0]][pos[1]][-1].nEquipe)
-                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]].ko and joueur.depRestant >= 2))
+                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]][-1].ko and joueur.depRestant >= 2))
                 log.debug("Résultat : %d", isLibre)                
                 return isLibre
 
@@ -234,6 +234,9 @@ class joueur :
 
         def deplace(self,pos):
             log.debug("Le joueur %d se déplace à (%d,%d)",self.numero,pos[0],pos[1])
+            testporteur = False
+            if self.porteur == True:
+                testporteur = True
             if self.jeu.matrice[pos[0]][pos[1]][0].ko and not self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko:  #Cas où on va sur une case où il y a un joueur ko
                 self.jeu.matrice[pos[0]][pos[1]].append(self)
                 self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3 #joueur de l'équipe 3 pour compléter
@@ -251,6 +254,8 @@ class joueur :
             self = self.jeu.matrice[pos[0]][pos[1]][-1]
             self.depRestant-=1
             self.pos=pos
+            if testporteur:
+                self.jeu.ballon.porteur = self
 
 
         def deplacement(self,pos):
@@ -634,16 +639,16 @@ class equipe :
                                     print("Des joueurs se superposent")
 
         def forme(self):
-            log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)   
+            log.debug("Calcul de la forme de l'équipe %d",self.nEquipe)   
             if self.carte == [False for i in range(6)]:
-                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
                 self.carte = [True for i in range(6)]
             cartePossible = []
             for i in range(len(self.carte)):
                 if self.carte[i]:
                     cartePossible.append(i)
             e = random.randint(0,len(cartePossible)-1)
-            log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+            log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
             self.carte[cartePossible[e]]=False
             return cartePossible[e] + 1
 

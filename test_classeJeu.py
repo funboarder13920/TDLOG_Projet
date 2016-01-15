@@ -92,15 +92,15 @@ class test_jeu(unittest.TestCase):
         self.assertGreater(nbTrue/1000,0.78)
 
     def test_libre1(self):
-        self.assertFalse(self.jeu.libre((1,1)))
-        self.assertTrue(self.jeu.libre((3,2)))
-        self.assertFalse(self.jeu.libre((2,3)))
+        self.assertFalse(self.jeu.libre((1,1),self))
+        self.assertTrue(self.jeu.libre((3,2),self))
+        self.assertFalse(self.jeu.libre((2,3),self))
 
     def test_libre2(self):
         self.jeu.equipe1.equipe[0].ko = True
-        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,1))
-        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos))
-        self.assertTrue(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,2))
+        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,self.jeu.equipe1.equipe[1]))
+        self.assertFalse(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,self.jeu.equipe1.equipe[2]))
+        self.assertTrue(self.jeu.libre(self.jeu.equipe1.equipe[0].pos,self.jeu.equipe1.equipe[1]))
         self.jeu.equipe1.equipe[0].ko = False
 
     # Tests interception à partir de l'exemple des règles
@@ -129,3 +129,5 @@ class test_jeu(unittest.TestCase):
             self.jeu.equipe1.equipe[4])),1)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
             self.jeu.equipe1.equipe[5])),0)
+
+unittest.main()
