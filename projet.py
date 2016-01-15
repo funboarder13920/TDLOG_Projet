@@ -133,32 +133,29 @@ class jeu :
 
         def resolution(self,attaquant,defenseur):
                 log.info("Résolution attaquant %d équipe %d - défenseur %d équipe %d " ,attaquant.numero ,attaquant.nEquipe , defenseur.numero , defenseur.nEquipe)
-                attaquant.equipe.forme()
-                defenseur.equipe.forme()
                 vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                 vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
-                print("Attaquant : %d,Défenseur : %d",(vAtt,vDef))
+                #print("Attaquant : %d,Défenseur : %d",(vAtt,vDef))
                 if vAtt > vDef:
-                        print("\n Victoire de l'attaquant par %d",vAtt-vDef) 
+                        #print("\n Victoire de l'attaquant par %d",vAtt-vDef) 
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
-                elif vDef<vAtt:
-                        print("\n Victoire du défenseur par %d",vDef-vAtt) 
+                elif vDef > vAtt:
+                        #print("\n Victoire du défenseur par %d",vDef-vAtt) 
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
                 else:
-                        print("Egalité, on tire une nouvelle carte forme")
+                        #print("Egalité, on tire une nouvelle carte forme")
                         vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                         vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
                 
 
-        def libre(self,pos,joueur):
+        def libre(self,pos,depRestant=0):
                 log.debug("Test Libre de la position ({0},{0})",pos[0],pos[1])
                 assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
-                print(self.matrice[pos[0]][pos[1]][-1].nEquipe)
-                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]].ko and joueur.depRestant >= 2))
+                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]][-1].ko and depRestant >= 2))
                 log.debug("Résultat : %d", isLibre)                
                 return isLibre
 
@@ -259,8 +256,8 @@ class joueur :
                 # le joueur ne doit pas être KO et le déplacement doit être
                 # d'au plus 1
                 if not self.ko:
-                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self) and self.onGrid():
-                                if self.depRestant == bonus[self.prop][2]:
+                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.depRestant) and self.onGrid():
+                                if self.depRestant == bonus[self.prop][2] and self.depRestant > 0:
                                         #Le joueur ne s'est pas encore déplacé
                                         if self.equipe.coupRestant > 0:
                                                 self.equipe.coupRestant -=1
@@ -269,7 +266,7 @@ class joueur :
                                                         self.porteur = True
                                                         self.jeu.ballon.porteur = self
                                         else:
-                                            log.error("Vous ne pouvez pas déplacé plus de joueurs")
+                                            log.error("Vous ne pouvez pas déplacer plus de joueurs")
                                 elif self.depRestant != bonus[self.prop][2]:
                                         self.deplace(pos)
                                         if self.ballon.position == pos:
@@ -487,7 +484,7 @@ class equipe :
                 self.tutoriel=1
                 self.interception=False
 
-        def OptionJeu(self):
+        def optionJeu(self):
             if (self.tutoriel==1):
                 print("Pour passer la balle, entrez 0")
                 print("\n Pour vous déplacer, entrez 1")
@@ -634,16 +631,16 @@ class equipe :
                                     print("Des joueurs se superposent")
 
         def forme(self):
-            log.debug("Calcul de la forme de l'équipe %d",equipe.nEquipe)   
+            log.debug("Calcul de la forme de l'équipe %d",self.nEquipe)   
             if self.carte == [False for i in range(6)]:
-                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+                log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
                 self.carte = [True for i in range(6)]
             cartePossible = []
             for i in range(len(self.carte)):
                 if self.carte[i]:
                     cartePossible.append(i)
             e = random.randint(0,len(cartePossible)-1)
-            log.debug("Toutes les cartes de l'équipe %d ont été utilisées",equipe.nEquipe)
+            log.debug("Toutes les cartes de l'équipe %d ont été utilisées",self.nEquipe)
             self.carte[cartePossible[e]]=False
             return cartePossible[e] + 1
 
