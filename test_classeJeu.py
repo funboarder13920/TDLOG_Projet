@@ -126,6 +126,13 @@ class test_jeu(unittest.TestCase):
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
             self.jeu.equipe1.equipe[3])),1)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
-            self.jeu.equipe1.equipe[4])),1)
+            self.jeu.equipe1.equipe[4])),0)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
             self.jeu.equipe1.equipe[5])),0)
+
+    def test_interception3(self):
+        self.jeu.equipe1.equipe[0].pos = (5,1)
+        self.jeu.equipe1.equipe[1].pos = (3,3)
+        self.jeu.equipe2.equipe[2].pos = (4,1)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[1])),0)

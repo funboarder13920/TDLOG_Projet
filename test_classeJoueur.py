@@ -86,6 +86,8 @@ class test_joueur(unittest.TestCase):
 		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
 		self.assertEqual(self.jeu.ballon.position,(3,3))
 
+	@unittest.mock.patch('builtins.input',lambda x:'1')
+	@unittest.mock.patch('projet.jeu.resolution',unittest.mock.MagicMock(side_effect = [-1]))
 	def test_passe4(self):
 		self.jeu.equipe1.equipe[0].pos = (5,1)
 		self.jeu.equipe1.equipe[1].pos = (3,3)
@@ -96,7 +98,20 @@ class test_joueur(unittest.TestCase):
 		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
 		self.assertEqual(self.jeu.ballon.position,(3,3))
 
-	def test_passe5(self):
+	@unittest.mock.patch('builtins.input',lambda x:'1')
+	@unittest.mock.patch('projet.jeu.resolution',unittest.mock.MagicMock(side_effect = [1]))
+	def test_passe6(self):
+		self.jeu.equipe1.equipe[0].pos = (5,1)
+		self.jeu.equipe1.equipe[1].pos = (3,3)
+		self.jeu.equipe2.equipe[2].pos = (4,3)
+		self.jeu.equipe1.equipe[0].porteur = True
+		self.jeu.ballon.position =(5,1)
+		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
+		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
+		self.assertEqual(self.jeu.ballon.position,(3,3))
+
+
+	def test_passe7(self):
 		self.jeu.equipe1.equipe[0].pos = (5,1)
 		self.jeu.equipe1.equipe[1].pos = (3,3)
 		self.jeu.equipe2.equipe[2].pos = (4,1)
@@ -107,7 +122,7 @@ class test_joueur(unittest.TestCase):
 		self.assertEqual(self.jeu.ballon.position,(3,3))
 	#pblm à l'interception?
 
-	def test_passe5(self):
+	def test_passe8(self):
 		self.jeu.equipe1.equipe[0].pos = (5,1)
 		self.jeu.equipe1.equipe[1].pos = (3,3)
 		self.jeu.equipe2.equipe[2].pos = (4,2)
