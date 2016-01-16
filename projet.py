@@ -120,7 +120,7 @@ class jeu :
                 self.ballon = ballon((7,1 + random.randint(1,6)),self)
                 self.tour = 1
 
-        def changetour(self):
+        def changeTour(self):
             log.info("Début des tours de jeu")
             if self.tour == 1:
                         log.info("Tour de jeu équipe 1")
@@ -133,8 +133,6 @@ class jeu :
 
         def resolution(self,attaquant,defenseur):
                 log.info("Résolution attaquant %d équipe %d - défenseur %d équipe %d " ,attaquant.numero ,attaquant.nEquipe , defenseur.numero , defenseur.nEquipe)
-                attaquant.equipe.forme()
-                defenseur.equipe.forme()
                 vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
                 vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
                 print("Attaquant : %d,Défenseur : %d",(vAtt,vDef))
@@ -142,7 +140,7 @@ class jeu :
                         print("\n Victoire de l'attaquant par %d",vAtt-vDef) 
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
-                elif vDef<vAtt:
+                elif vDef > vAtt:
                         print("\n Victoire du défenseur par %d",vDef-vAtt) 
                         log.debug("Résultat : %d",vAtt-vDef)
                         return vAtt-vDef
@@ -154,11 +152,10 @@ class jeu :
                         return vAtt-vDef
                 
 
-        def libre(self,pos,joueur):
+        def libre(self,pos,depRestant=0):
                 log.debug("Test Libre de la position ({0},{0})",pos[0],pos[1])
                 assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
-                print(self.matrice[pos[0]][pos[1]][-1].nEquipe)
-                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]][-1].ko and joueur.depRestant >= 2))
+                isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]][-1].ko and depRestant >= 2))
                 log.debug("Résultat : %d", isLibre)                
                 return isLibre
 
@@ -186,16 +183,16 @@ class jeu :
                 inter = []
                 if joueur1.nEquipe == 1:
                         for joueur in self.equipe2.equipe:
-                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) <= 0 or 
-                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<=0) and
+                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) < 0 or 
+                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<0) and
                                     (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
                                     calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
                                         inter.append(joueur)
                                         log.debug("Interception par l'équipe 1 du joueur %d",joueur.numero)
                 else:
                         for joueur in self.equipe1.equipe:
-                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) <= 0 or 
-                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<=0)
+                                if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) < 0 or 
+                                    calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<0)
                                     and (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
                                     calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
                                         inter.append(joueur)
@@ -264,8 +261,8 @@ class joueur :
                 # le joueur ne doit pas être KO et le déplacement doit être
                 # d'au plus 1
                 if not self.ko:
-                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self) and self.onGrid():
-                                if self.depRestant == bonus[self.prop][2]:
+                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.depRestant) and self.onGrid():
+                                if self.depRestant == bonus[self.prop][2] and self.depRestant > 0:
                                         #Le joueur ne s'est pas encore déplacé
                                         if self.equipe.coupRestant > 0:
                                                 self.equipe.coupRestant -=1
@@ -274,7 +271,7 @@ class joueur :
                                                         self.porteur = True
                                                         self.jeu.ballon.porteur = self
                                         else:
-                                            log.error("Vous ne pouvez pas déplacé plus de joueurs")
+                                            log.error("Vous ne pouvez pas déplacer plus de joueurs")
                                 elif self.depRestant != bonus[self.prop][2]:
                                         self.deplace(pos)
                                         if self.ballon.position == pos:
@@ -313,14 +310,12 @@ class joueur :
                         return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos ,joueur2.pos))) <= 2
 
         def askIntercepter(self,joueur1,joueur2):
-            self.jeu.changetour()
             log.info("Demande au joueur adverse l'interception")
             print("Au joueur de l'équipe %d",joueur1.nEquipe)
             print("Voulez-vous intercepter le lancer du joueur adverse %s de coordonnées (%d,%d) au joueur adverse %s de coordonnées (%d,%d)",(prop[joueur1.numero],joueur1.pos[1],joueur1.pos[0],prop[joueur2.numero],joueur2.pos[1],joueur2.pos[0]))
             print("\n , avec votre joueur %s de coordonnées de coordonnées (%d,%d)",(prop[self.numero],self.pos[1],self.pos[0]))
             print("\n")
             print("Si oui, tapez 1. Sinon tapez 0")
-            self.jeu.changetour()
             intercepte = intInput("Interception: ")
             if (intercepte==1):
                 return True
@@ -492,16 +487,17 @@ class equipe :
                 self.tutoriel=1
                 self.interception=False
 
-        def OptionJeu(self):
+        def optionJeu(self):
             if (self.tutoriel==1):
                 print("Pour passer la balle, entrez 0")
                 print("\n Pour vous déplacer, entrez 1")
                 print("\n Pour finir votre tour, entrez -1")
                 print("\n \n Voulez-vous désactiver le tutoriel?")
                 print("\n Si oui, tapez 0. Sinon, tapez 1")
-                activer_tutoriel=intInput("Tutoriel :")
-                self.tutoriel=activer_tutoriel
-                if (activer_tutoriel==0):
+                #activer_tutoriel=intInput("Tutoriel :")
+                #self.tutoriel=activer_tutoriel
+                self.tutoriel= 0
+                if (self.tutoriel==0):
                     log.debug("tutoriel désactivé")
                 
         def regleDeplacement(self):
@@ -589,10 +585,11 @@ class equipe :
                     print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
                     print("\n \n Voulez-vous désactiver le tutoriel?")
                     print("\n Si oui, tapez 0. Sinon, tapez 1")
-                    activer_tutoriel=intInput("Tutoriel :")
-                    self.tutoriel=activer_tutoriel
-                if (activer_tutoriel==0):
-                    log.info("tutoriel désactivé")
+                    #activer_tutoriel=intInput("Tutoriel :")
+                    #self.tutoriel=activer_tutoriel
+                    self.tutoriel= 0
+                    if (self.tutoriel==0):
+                        log.info("tutoriel désactivé")
             
         def joue(self,interception=False):
             #Reinitialisation
@@ -602,7 +599,7 @@ class equipe :
                     joueur.depRestant = bonus[joueur.prop][2]
             cont = True
             while cont:
-                    self.OptionJeu()
+                    self.optionJeu()
                     opt = intInput("Action: ")
                     if opt == 0:
                             self.reglePasse()
@@ -637,6 +634,7 @@ class equipe :
                                     cont = False
                             else:
                                     print("Des joueurs se superposent")
+            self.jeu.changeTour()
 
         def forme(self):
             log.debug("Calcul de la forme de l'équipe %d",self.nEquipe)   
@@ -654,6 +652,5 @@ class equipe :
 
 if __name__ == "__main__":
         jeu = jeu()
-        jeu.changetour()
         print("Fin du jeu")
 

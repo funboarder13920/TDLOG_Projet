@@ -2,6 +2,7 @@ import projet
 import unittest
 import unittest.mock
 
+
 projet.log.propagate = False
 
 positionsStr = ['1','0','1','1','2','2','2','3','1','4','1','5','10','1','10','2',
@@ -40,22 +41,21 @@ class test_jeu(unittest.TestCase):
 
     @unittest.mock.patch('projet.equipe.forme',unittest.mock.MagicMock(side_effect = [2,0]))
     def test_resolution1(self):
-        print(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]))
-        #self.assertGreater(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]),0)
+        self.assertGreater(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]),0)
 
     @unittest.mock.patch('projet.equipe.forme',unittest.mock.MagicMock(side_effect = [1,1,2,0]))
     def test_resolution2(self):
-        self.assertTrue(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]))
+        self.assertGreater(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]),0)
 
     @unittest.mock.patch('projet.equipe.forme',unittest.mock.MagicMock(side_effect = [1,1,2,2]))
     def test_resolution3(self):
-        self.assertFalse(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]))
+        self.assertLessEqual(self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe1.equipe[0]),0)
 
     def test_resolution4(self):
         nbTrue = 0
         nbFalse = 0
         for i in range(1000):
-            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[0])>=0:
+            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[0])>0:
                 nbTrue+=1
             else:
                 nbFalse+=1
@@ -65,7 +65,7 @@ class test_jeu(unittest.TestCase):
         nbTrue = 0
         nbFalse = 0
         for i in range(1000):
-            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[5])>=0:
+            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[5])>0:
                 nbTrue+=1
             else:
                 nbFalse+=1
@@ -75,7 +75,7 @@ class test_jeu(unittest.TestCase):
         nbTrue = 0
         nbFalse = 0
         for i in range(1000):
-            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[4])>=0:
+            if self.jeu.resolution(self.jeu.equipe1.equipe[0],self.jeu.equipe2.equipe[4])>0:
                 nbTrue+=1
             else:
                 nbFalse+=1
@@ -126,8 +126,15 @@ class test_jeu(unittest.TestCase):
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
             self.jeu.equipe1.equipe[3])),1)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
-            self.jeu.equipe1.equipe[4])),1)
+            self.jeu.equipe1.equipe[4])),0)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
             self.jeu.equipe1.equipe[5])),0)
+
+    def test_interception3(self):
+        self.jeu.equipe1.equipe[0].pos = (5,1)
+        self.jeu.equipe1.equipe[1].pos = (3,3)
+        self.jeu.equipe2.equipe[2].pos = (4,1)
+        self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
+            self.jeu.equipe1.equipe[1])),0)
 
 unittest.main()
