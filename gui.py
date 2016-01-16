@@ -24,15 +24,15 @@ if __name__ == "__main__" :
 	#button2.resize(48, 48)
 	#button2.move(67, 478)
 	#button2.show()
-	button=[[None for i in range(13)] for j in range(8)]
+	button=[[None for j in range(8)] for i in range(13)]
 	for i in range(13):
 		for j in range(8):
-			button.append(qtg.QPushButton(window))
-			button[-1].resize(46.7,47.2)
-			button[-1].move(67+i*46.7,478-j*47.2)
-			button[-1].setIcon(qtg.QIcon("./images/1_normal1.png"))
-			button[-1].setIconSize(qtc.QSize(35,35))
-			button[-1].setStyleSheet("background-color: transparent")			
-			button[-1].show()
+			button[i][j]=qtg.QPushButton(window)
+			button[i][j].resize(46.7,47.2)
+			button[i][j].move(67+i*46.7,478-j*47.2)
+			button[i][j].setIcon(qtg.QIcon("./images/1_normal1.png"))
+			button[i][j].setIconSize(qtc.QSize(35,35))
+			button[i][j].setStyleSheet("background-color: transparent")			
+			button[i][j].show()
 	window.show()
 	app.exec_()

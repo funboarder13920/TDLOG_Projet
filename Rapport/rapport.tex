@@ -1,0 +1,50 @@
+\documentclass[a4paper,11pt,twoside]{article}%
+\usepackage[lmargin=90pt,rmargin=90pt,tmargin=127pt,bmargin=123pt]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings} 
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage[section]{placeins} 
+\usepackage{hyperref} % Créer des liens et des signets 
+\hypersetup{	
+colorlinks=true, %colorise les liens 
+breaklinks=true, %permet le retour à la ligne dans les liens trop longs 
+urlcolor= blue, %couleur des hyperliens 
+linkcolor= black,	%couleur des liens internes 
+citecolor=black,	%couleur des références 
+} 
+\setstretch{1,3}
+\graphicspath{{images/}}
+\newtheorem{mydef}{Définition}
+\newtheorem{preuve}{Preuve}
+\title{Projet \\ TDLOG  }
+\author{Quentin Bérard \and Valentin Berkes \and François Dupré}
+\date{Janvier 2016}
+
+\begin{document}
+\lstset{basicstyle = \tiny , language=Python,breaklines=true,frame = lines}  
+\renewcommand\lstlistingname{Code}
+\begin{titlepage}
+
+\begin{figure}[ht]
+\centering
+      \includegraphics[width=0.4\linewidth,keepaspectratio]{ecole_ponts_rvb_transparent}
+      \vspace{30pt}
+\end{figure}
+	
+		\centering
+    {\LARGE Projet\\TDLOG\\  \vspace{60pt} \textbf{Kahmaté}} \\
+    \vspace{65pt}
+    {\Large Quentin Bérard \hspace{15pt} Valentin Berkes \hspace{15pt} François Dupré }\\
+		\vfill
+		 {\large	Janvier 2016}
+\end{titlepage}
+
+
+\end{document}
