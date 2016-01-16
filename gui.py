@@ -53,9 +53,9 @@ class gui1(qtg.QWidget):
 		self.buttonBallon.setIconSize(qtc.QSize(25,25))			
 		self.buttonBallon.show()
 		self.window.show()
-		thread = listen()
+		self.thread = listen()
 		self.window.connect(self.thread, qtc.SIGNAL("update"), self.update)
-		thread.start()
+		self.thread.start()
 		sys.exit(self.app.exec_())
 
 	def update(self,value):
