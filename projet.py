@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
 import random
+import globalQueue
+import fakeNone
 import logging
 import logging.config
 import copy
@@ -56,41 +58,40 @@ def intInput(strarg=""):
 def choixPos(nEquipe):
         log.info("Choix de l'équipe %d ...",nEquipe)
         if not (nEquipe == 2 or nEquipe == 1):
-                log.error("Equipe {0} impossible",nEquipe)
-                assert nEquipe == 2 or nEquipe == 1
+            log.error("Equipe {0} impossible",nEquipe)
+            assert nEquipe == 2 or nEquipe == 1
         positions = []
         k = 0
         while k < 6 :
-             print("\n")        
-             #print "Joueur " , (k+1) , prop[k] , "..."               
-             posx = intInput("x: ")
-             posy = intInput("y: ")
-             log.debug("Un joueur %s est choisi sur (%d,%d)",prop[k],posx,posy)
-             if (nEquipe == 1):
-                        if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
-                                if not (posx,posy) in positions:
-                                        k+=1
-                                        positions.append((posx,posy))
-                                        log.debug("Append de (%d,%d)",posx,posy)
-                                else:
-                                        print("Veuillez réessayer : la position est déjà occupée.")
-                                        log.warn("Position (%d,%d) déjà occupée",posx,posy)
-                        else:
-                                print("Veuillez réessayer : la position est hors limite. 1=<x<=2 0<=y<=7")
-                                log.warn("(%d,%d) est hors limite",posx,posy)
-             else :
-                        if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
-                                if not (posx,posy) in positions:    
-                                        k+=1
-                                        positions.append((posx,posy))
-                                        log.info("Append de (%d,%d)",posx,posy)
-                                else:
-                                    print("Veuillez réessayer : la position est déjà occupée.")
-                                    log.warn("Position déjà occupée")
-                        else:
-                                #print("Veuillez réessayer : la position est hors limite 10=<x<=11 0<=y<=7.")
-                                log.warn("(%d,%d) est hors limite",posx,posy)
-
+            print("\n")        
+            #print "Joueur " , (k+1) , prop[k] , "..."               
+            posx = intInput("x: ")
+            posy = intInput("y: ")
+            log.debug("Un joueur %s est choisi sur (%d,%d)",prop[k],posx,posy)
+            if (nEquipe == 1):
+                if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
+                    if not (posx,posy) in positions:
+                        k+=1
+                        positions.append((posx,posy))
+                        log.debug("Append de (%d,%d)",posx,posy)
+                    else:
+                        print("Veuillez réessayer : la position est déjà occupée.")
+                        log.warn("Position (%d,%d) déjà occupée",posx,posy)
+                else:
+                    print("Veuillez réessayer : la position est hors limite. 1=<x<=2 0<=y<=7")
+                    log.warn("(%d,%d) est hors limite",posx,posy)
+            else :
+                if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
+                    if not (posx,posy) in positions:    
+                        k+=1
+                        positions.append((posx,posy))
+                        log.info("Append de (%d,%d)",posx,posy)
+                    else:
+                        print("Veuillez réessayer : la position est déjà occupée.")
+                        log.warn("Position déjà occupée")
+                else:
+                    print("Veuillez réessayer : la position est hors limite 10=<x<=11 0<=y<=7.")
+                    log.warn("(%d,%d) est hors limite",posx,posy)
         return positions
 
 class jeu :
@@ -119,6 +120,7 @@ class jeu :
                 self.equipe2 = equipe(self,2,positions2)
                 self.ballon = ballon((7,1 + random.randint(1,6)),self)
                 self.tour = 1
+                globalQueue.queue.put(self)
 
         def changeTour(self):
             log.info("Début des tours de jeu")
@@ -279,6 +281,7 @@ class joueur :
                                 log.error("Le joueur doit être libre et se déplacer d'une seule valeur")
                 else:
                         log.error("Le joueur ne doit pas être KO")
+                globalQueue.queue.put(self.jeu)
 
         def onGrid(self):
                 log.debug("Test si la postion du joueur est bonne")
@@ -340,6 +343,7 @@ class joueur :
                                 log.error("La passe est impossible car le joueur %d n'est pas derrière", self.numero)
                 else:
                         log.error("La passe est impossible car le joueur {0} n'est pas porteur",self.numero)
+                globalQueue.queue.put(self.jeu)
 
         def placage(self,joueur2,plaquer):
                 log.info("Le joueur {0} essaie de plaquer le joueur {0}",self.numero, joueur2.numero)
@@ -409,25 +413,8 @@ class joueur :
                                             self.depRestant -= 1
                                 else:
                                         self.KO = True
-                                        """if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
-                                                (dx,dy)=-joueur2.pos+self.pos
-                                                if inRange(dx+self.pos) and len(self.jeu.matrice[(dx+self.pos)[0]][(dy+self.pos)[1]])==1:
-                                                        self.deplace(self.pos+(dx,dy))
-                                        if len(self.jeu.matrice[self.pos[0]][self.pos[1]]) != 1:
-                                                (dx,dy) = -joueur2.pos + self.pos
-                                                if inRange(dx + self.pos) and len(self.jeu.matrice[(dx + self.pos)[0]][(dy + self.pos)[1]]) == 1:
-                                                        self.deplace(self.pos + (dx,dy))
-                                                else:
-                                                        if inRange(2 * (dx,dy) + self.pos) and len(self.jeu.matrice[(2 * dx + self.pos)[0]][(2 * dy + self.pos)[1]]) == 1:
-                                                                self.deplace(self.pos + 2 * (dx,dy))
-                                                        elif inRange((dy,dx) + self.pos) and len(self.jeu.matrice[(dy + self.pos)[0]][(dx + self.pos)[1]]) == 1:
-                                                                self.deplace(self.pos + (dy,dx))
-                                                        elif inRange((-dy,-dx) + self.pos) and len(self.jeu.matrice[(-dy + self.pos)[0]][(-dx + self.pos)[1]]) == 1:
-                                                                self.deplace(self.pos + (-dx,-dy))
-                                                        else :
-                                                                assert False
-                                                                #Pour le test, à enlever normalement"""
-        
+                globalQueue.queue.put(self.jeu)
+
         def nobodyFront(self):
                 log.debug("Test personne en face")
                 if self.nEquipe == 1:
@@ -467,6 +454,7 @@ class joueur :
                             print("case non remplie")
                         else:
                             print("case non vide")
+                globalQueue.queue.put(self.jeu)
 
 
 class equipe :
