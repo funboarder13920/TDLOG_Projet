@@ -30,7 +30,7 @@ def droite(point1,point2):
     if point1[0] == point2[0]:
                 return(1,0,-point1[0])
     else:
-                pinter = (point1[0] - point2[0],point1[1] - point2[1])
+                pinter = sub(point1,point2)
                 a = -pinter[1] / pinter[0]
                 return(a,1,-a * point1[0] - point1[1])
 
