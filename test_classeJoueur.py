@@ -158,11 +158,15 @@ class test_joueur(unittest.TestCase):
 		self.jeu.equipe1.equipe[1].deplace(self.jeu.equipe1.equipe[0].pos)
 		pos = self.jeu.equipe1.equipe[1].pos
 		self.jeu.equipe1.equipe[1].deplace((pos[0]+1,pos[1]))
-		self.assertEqual(self.jeu.equipe1.equipe[1].pos,pos)
+		self.assertEqual(self.jeu.equipe1.equipe[1].pos,projet.add(pos,(1,0)))
 		self.assertEqual(self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.equipe1.equipe[0])
 		
 	def test_deplacement1(self):
 		pass
+<<<<<<< HEAD
 		#recupère la balle?
 
 unittest.main()
+=======
+		#recup la balle?
+>>>>>>> 71c853f8896855bfd8645f1740f1247620bdf18b
