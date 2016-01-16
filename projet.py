@@ -118,9 +118,10 @@ class jeu :
                 positions2 = choixPos(2)
                 self.equipe1 = equipe(self,1,positions1)
                 self.equipe2 = equipe(self,2,positions2)
-                self.ballon = ballon((7,1 + random.randint(1,6)),self)
+                self.ballon = ballon((6,1 + random.randint(1,6)),self)
                 self.tour = 1
                 globalQueue.queue.put(self)
+                self.equipe1.joue()
 
         def changeTour(self):
             log.info("Début des tours de jeu")
@@ -347,7 +348,7 @@ class joueur :
 
         def placage(self,joueur2,plaquer):
                 log.info("Le joueur {0} essaie de plaquer le joueur {0}",self.numero, joueur2.numero)
-                if abs(self.pos-joueur2.pos)==1 and self.depRestant>1:
+                if absol(sub(self.pos,joueur2.pos))==1 and self.depRestant>1:
                         if joueur2.nEquipe != 3 and joueur2.nEquipe!= self.nEquipe and not joueur2.KO and joueur2.porteur:
                                 if self.jeu.resolution(self,joueur2)>0:
                                         if self.jeu.resolution(self,joueur2)>=2 and plaquer: 
