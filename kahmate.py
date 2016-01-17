@@ -10,20 +10,22 @@ import time
 
 
 class guik(threading.Thread):
-	def __init__(self):
-		super().__init__()
 
-	def run(self):
-		gui.gui1()
-		
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+        gui.gui1()
+
 
 class rules(threading.Thread):
-	def __init__(self):
-		super().__init__()
 
-	def run(self):
-		jeu = projet.jeu()
-		print("Fin du jeu")
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+        jeu = projet.jeu()
+        print("Fin du jeu")
 
 t1 = rules()
 t2 = guik()
