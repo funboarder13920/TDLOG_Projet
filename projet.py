@@ -279,10 +279,9 @@ class jeu:
         positions2 = choixPos(2)
         self.equipe1 = equipe(self, 1, positions1)
         self.equipe2 = equipe(self, 2, positions2)
-        self.ballon = ballon((6, 1 + random.randint(1, 6)), self)
+        self.ballon = ballon((6, random.randint(1, 6)), self)
         self.tour = 1
         globalQueue.queue.put(self)
-        # self.equipe1.joue()
 
     def changeTour(self):
         log.info("Début des tours de jeu")

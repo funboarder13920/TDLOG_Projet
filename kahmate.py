@@ -25,6 +25,7 @@ class rules(threading.Thread):
 
     def run(self):
         jeu = projet.jeu()
+        jeu.equipe1.joue()
         print("Fin du jeu")
 
 t1 = rules()
