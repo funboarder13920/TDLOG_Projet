@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 import random
 import globalQueue
-import fakeNone
+#import fakeNone
 import logging
 import logging.config
 import copy
@@ -96,15 +96,141 @@ def choixPos(nEquipe):
                     k += 1
                     positions.append((posx, posy))
                     log.info("Append de (%d,%d)", posx, posy)
-                else:
-                    print("Veuillez réessayer : la position est déjà occupée.")
-                    log.warn("Position déjà occupée")
-            else:
-                print(
-                    "Veuillez réessayer : la position est hors limite 10=<x<=11 0<=y<=7.")
-                log.warn("(%d,%d) est hors limite", posx, posy)
     return positions
 
+def libre(self,pos,depRestant=0):
+        log.debug("Test Libre de la position ({0},{0})",pos[0],pos[1])
+        assert(pos[0]>=0 and pos[0]<nbColonne and pos[1]>=0 and pos[1]<nbLigne)
+        isLibre = (self.matrice[pos[0]][pos[1]][-1].nEquipe == 3 or (self.matrice[pos[0]][pos[1]][-1].ko and depRestant >= 2))
+        log.debug("Résultat : %d", isLibre)                
+        return isLibre
+
+def finTour(self):
+        log.debug("Test fin du tour")
+        for joueur in self.equipe:
+                if len(self.matrice[joueur.pos[0]][self.joueur.pos[1]]) != 1:
+                    log.debug("Le tour n'est pas fini")
+                    return False
+        log.debug("Le tour est fini")
+        return True
+
+def interception(self,joueur1,joueur2):
+        pos1 = joueur1.pos
+        pos2 = joueur2.pos
+        log.info("Interception entre ({0},{0}) et ({0},{0})",pos1[0],pos1[1],pos2[0],pos2[1] )
+        r1 = droite(add(pos1 ,(-1 / 2,-1 / 2)),add(pos2 ,(-1 / 2,-1 / 2)))
+        r2 = droite(add(pos1 ,(1 / 2,1 / 2)),add(pos2 , (1 / 2,1 / 2)))
+        v1 = droite(add(pos1 , (-1 / 2,1 / 2)),add(pos2 , (-1 / 2,1 / 2)))
+        v2 = droite(add(pos1 , (1 / 2,-1 / 2)),add(pos2 , (1 / 2,-1 / 2)))
+        c1=droite(pos1,add(pos1,(1/2,0)))
+        c2=droite(pos2,add(pos2,(1/2,0)))
+        d1=droite(pos1,add(pos1,(0,1/2)))
+        d2=droite(pos2,add(pos2,(0,1/2)))
+        inter = []
+        if joueur1.nEquipe == 1:
+                for joueur in self.equipe2.equipe:
+                        if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) < 0 or 
+                            calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<0) and
+                            (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
+                            calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
+                                inter.append(joueur)
+                                log.debug("Interception par l'équipe 1 du joueur %d",joueur.numero)
+        else:
+                for joueur in self.equipe1.equipe:
+                        if ((calcPosDroite(r1,joueur.pos) * calcPosDroite(r2,joueur.pos) < 0 or 
+                            calcPosDroite(v1,joueur.pos) * calcPosDroite(v2,joueur.pos)<0)
+                            and (calcPosDroite(d1,joueur.pos)*calcPosDroite(d2,joueur.pos)<0 or
+                            calcPosDroite(c1,joueur.pos)*calcPosDroite(c2,joueur.pos)<0)):
+                                inter.append(joueur)
+                                log.debug("Interception par l'équipe 2 du joueur %d",joueur.numero)
+        return inter
+
+
+class ballon :
+        def __init__(self,position,jeu):
+                log.debug("Initialisation du ballon à la position (%d,%d)",position[0],position[1])
+                self.position = position
+                self.jeu = jeu
+                self.porteur = self.jeu.matrice[position[0]][position[1]]
+
+        def deplacement(self):
+                if self.porteur.nEquipe!=3:
+                        self.position = self.porteur.pos
+                        log.debug("Le ballon se deplace à la postion (%d,%d)",self.position[0],self.position[1])
+                
+class joueur : 
+        def __init__(self,equipe,jeu,nEquipe,position,prop, numero):
+                log.debug("Initialisation du joueur %d de l'équipe %d",numero,nEquipe)
+                self.pos = position
+                self.numero = numero
+                self.porteur = False
+                self.jeu = jeu
+                self.ko = False
+                self.equipe = equipe
+                self.nEquipe = nEquipe
+                self.prop = prop
+                self.jeu.matrice[position[0]][position[1]] = [self]
+                if nEquipe != 3:
+                        self.depRestant = bonus[self.prop][2]
+                else:
+                        self.depRestant = 0
+
+        def deplace(self,pos):
+            log.debug("Le joueur %d se déplace à (%d,%d)",self.numero,pos[0],pos[1])
+            testporteur = False
+            if self.porteur == True:
+                testporteur = True
+            if self.jeu.matrice[pos[0]][pos[1]][0].ko and not self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko:  #Cas où on va sur une case où il y a un joueur ko
+                self.jeu.matrice[pos[0]][pos[1]].append(self)
+                self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3 #joueur de l'équipe 3 pour compléter
+                self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None # équipe 3"""
+            elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and not self.jeu.matrice[pos[0]][pos[1]][0].ko: #Cas où on part d'une case où il y a un joueur ko
+                self.jeu.matrice[pos[0]][pos[1]][0] = self
+                self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
+            elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and self.jeu.matrice[pos[0]][pos[1]][0].ko: #Cas où on part d'une case où un joueur est ko pour arriver à une case où un autre joueur est ko
+                self.jeu.matrice[pos[0]][pos[1]].append(self)
+                self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
+            else: #Cas où les joueurs ko ne sont pas impliqués
+                self.jeu.matrice[pos[0]][pos[1]][0] = self
+                self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3
+                self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None
+            self = self.jeu.matrice[pos[0]][pos[1]][-1]
+            self.depRestant-=1
+            self.pos=pos
+            if testporteur:
+                self.jeu.ballon.porteur = self
+
+
+        def deplacement(self,pos):
+                log.info("Déplacement du joueur %d" , self.numero)
+                #pas par pas c'est plus simple
+                # le joueur ne doit pas être KO et le déplacement doit être
+                # d'au plus 1
+                if not self.ko:
+                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.depRestant) and self.onGrid():
+                                if self.depRestant == bonus[self.prop][2] and self.depRestant > 0:
+                                        #Le joueur ne s'est pas encore déplacé
+                                        if self.equipe.coupRestant > 0:
+                                                self.equipe.coupRestant -=1
+                                                self.deplace(pos)
+                                                if self.jeu.ballon.position == pos:
+                                                        self.porteur = True
+                                                        self.jeu.ballon.porteur = self
+                                        else:
+                                            log.error("Vous ne pouvez pas déplacer plus de joueurs")
+                                elif self.depRestant != bonus[self.prop][2]:
+                                        self.deplace(pos)
+                                        if self.ballon.position == pos:
+                                                        self.porteur = True
+                                                        self.jeu.ballon.porteur = self
+                                if self.porteur:
+                                        log.info("Le joueur est porteur, le ballon doit aussi se déplacer")
+                                        self.jeu.ballon.deplacement()
+                        else:
+                                log.error("Le joueur doit être libre et se déplacer d'une seule valeur")
+                else:
+                        log.error("Le joueur ne doit pas être KO")
+                globalQueue.queue.put(self.jeu) 
 
 class jeu:
 
@@ -262,25 +388,23 @@ class joueur:
         # Cas où on va sur une case où il y a un joueur ko
         if self.jeu.matrice[pos[0]][pos[1]][0].ko and not self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko:
             self.jeu.matrice[pos[0]][pos[1]].append(self)
-            self.jeu.matrice[self.pos[0]][self.pos[1]][
-                0].nEquipe = 3  # joueur de l'équipe 3 pour compléter
-            self.jeu.matrice[self.pos[0]][self.pos[1]][
-                0].equipe = None  # équipe 3"""
+            self.jeu.matrice[self.pos[0]][self.pos[1]][0] = joueur(
+                        None, self.jeu, 3, self.pos, "", 0)  # joueur de l'équipe 3 pour compléter
         elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and not self.jeu.matrice[pos[0]][pos[1]][0].ko:  # Cas où on part d'une case où il y a un joueur ko
             self.jeu.matrice[pos[0]][pos[1]][0] = self
             self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
-        # Cas où on part d'une case où un joueur est ko pour arriver à une case
+        # Cas où on part d'une case où un joueur est ko pour arriver ù une case
         # où un autre joueur est ko
         elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and self.jeu.matrice[pos[0]][pos[1]][0].ko:
             self.jeu.matrice[pos[0]][pos[1]].append(self)
             self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
         else:  # Cas où les joueurs ko ne sont pas impliqués
             self.jeu.matrice[pos[0]][pos[1]][0] = self
-            self.jeu.matrice[self.pos[0]][self.pos[1]][0].nEquipe = 3
-            self.jeu.matrice[self.pos[0]][self.pos[1]][0].equipe = None
-        self = self.jeu.matrice[pos[0]][pos[1]][-1]
+            self.jeu.matrice[self.pos[0]][self.pos[1]][0] = joueur(
+                        None, self.jeu, 3, self.pos, "", 0)
         self.depRestant -= 1
         self.pos = pos
+
 
     def deplacement(self, pos):
         log.info("Déplacement du joueur %d", self.numero)
@@ -454,8 +578,8 @@ class joueur:
                             self.jeu.ballon.porteur.porteur = True
                     joueur2.KO = True
                     joueur2.porteur = False
-                    self.jeu.matrice[self.pos[0]][self.pos[1]] = joueur(
-                        None, self, 3, self.pos, "", 0)
+                    self.jeu.matrice[self.pos[0]][self.pos[1]][0] = joueur(
+                        None, self.jeu, 3, self.pos, "", 0)
                     self.pos = joueur2.pos
                     self.jeu.matrice[self.pos[0]][self.pos[1]] = [
                         self.jeu.matrice[self.pos[0]][self.pos[1]], self]
