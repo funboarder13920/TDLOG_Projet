@@ -1,6 +1,7 @@
 import projet
 import unittest
 import unittest.mock
+import coverage
 
 projet.log.propagate = False
 
@@ -71,11 +72,167 @@ class test_joueur(unittest.TestCase):
         self.assertEqual(self.jeu.ballon.position, (7, 5))
         self.assertTrue(self.jeu.equipe2.equipe[0].porteur)
 
-    def test_placage(self):
-        pass
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage1(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((4, 5))
+        j2.deplace((5, 5))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(j1.pos,(4,5))
+        self.assertEqual(self.jeu.ballon.position, (6, 5))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
 
-    def test_placageInterception(self):
-        pass
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[3]))
+    def test_placage2(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((4, 5))
+        j2.deplace((5, 5))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j2.ko)
+        self.assertTrue(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, (4, 5))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 1)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage3(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = False
+        j1.deplace((4, 5))
+        j2.deplace((5, 5))
+        pos = self.jeu.ballon.position
+        j1.placage(j2)
+        self.assertFalse(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, pos)
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[-1]))
+    def test_placage4(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((4, 5))
+        j2.deplace((5, 5))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j1.ko)
+        self.assertFalse(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertTrue(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, (5, 5))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 2)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage5(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((5, 6))
+        j2.deplace((5, 5))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, (5, 4))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage6(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((10, 0))
+        j2.deplace((11, 0))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, (11, 1))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage7(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j2.porteur = True
+        j1.deplace((10, 7))
+        j2.deplace((11, 7))
+        self.jeu.ballon.porteur = j2
+        self.jeu.ballon.deplacement()
+        j1.placage(j2)
+        self.assertTrue(j2.ko)
+        self.assertFalse(j1.porteur)
+        self.assertFalse(j2.porteur)
+        self.assertEqual(self.jeu.ballon.position, (11, 6))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage8(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j1.porteur = True
+        j1.deplace((1, 0))
+        j2.deplace((2, 0))
+        self.jeu.ballon.porteur = j1
+        self.jeu.ballon.deplacement()
+        j2.placage(j1)
+        self.assertTrue(j1.ko)
+        self.assertFalse(j2.porteur)
+        self.assertFalse(j1.porteur)
+        self.assertEqual(self.jeu.ballon.position, (1, 1))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 1)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_placage9(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j1.porteur = True
+        j1.deplace((1, 7))
+        j2.deplace((2, 7))
+        self.jeu.ballon.porteur = j1
+        self.jeu.ballon.deplacement()
+        j2.placage(j1)
+        self.assertTrue(j1.ko)
+        self.assertFalse(j2.porteur)
+        self.assertFalse(j1.porteur)
+        self.assertEqual(self.jeu.ballon.position, (1, 6))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
+
+    @unittest.mock.patch('projet.jeu.resolution', unittest.mock.MagicMock(side_effect=[1]))
+    def test_passageForce(self):
+        j1 = self.jeu.equipe1.equipe[0]
+        j2 = self.jeu.equipe2.equipe[0]
+        j1.porteur = True
+        j1.deplace((1, 0))
+        j2.deplace((2, 0))
+        self.jeu.ballon.porteur = j1
+        self.jeu.ballon.deplacement()
+        j1.placage(j2,False)
+        self.assertTrue(j2.ko)
+        self.assertFalse(j2.porteur)
+        self.assertTrue(j1.porteur)
+        self.assertEqual(self.jeu.ballon.position, (2,0))
+        self.assertEqual(self.jeu.ballon.porteur.nEquipe, 1)
+        self.assertEqual(j1.pos,(2,0))
 
     def test_passe1(self):
         self.jeu.equipe1.equipe[0].pos = (5, 1)
