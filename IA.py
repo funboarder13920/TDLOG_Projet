@@ -36,4 +36,3 @@ class IA:
                     self.actionsmax[e][0].dicoactions[self.actionsmax[e][1]](self.actionsmax[e][2],False)
             else:
                 self.actionsmax[e][0].dicoactions[self.actionsmax[e][1]](self.actionsmax[e][2])
-               
