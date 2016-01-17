@@ -120,7 +120,6 @@ class test_joueur(unittest.TestCase):
 		self.jeu.ballon.joueur = self.jeu.equipe1.equipe[0]
 		self.jeu.equipe1.equipe[0].passe(self.jeu.equipe1.equipe[1])
 		self.assertEqual(self.jeu.ballon.position,(3,3))
-	#pblm à l'interception?
 
 	def test_passe8(self):
 		self.jeu.equipe1.equipe[0].pos = (5,1)
@@ -160,7 +159,24 @@ class test_joueur(unittest.TestCase):
 		self.jeu.equipe1.equipe[1].deplace((pos[0]+1,pos[1]))
 		self.assertEqual(self.jeu.equipe1.equipe[1].pos,projet.add(pos,(1,0)))
 		self.assertEqual(self.jeu.matrice[pos[0]][pos[1]][0],self.jeu.equipe1.equipe[0])
-		
-	def test_deplacement1(self):
-		pass
-		#recup la balle?
+	
+	def test_deplacementBallon(self):
+		self.jeu.ballon.position=(5,5)
+		self.jeu.ballon.porteur = self.jeu.equipe1.equipe[2]
+		self.jeu.ballon.deplacement()
+		self.assertEqual(self.jeu.ballon.position,self.jeu.equipe1.equipe[2].pos)
+
+	def test_deplacement4(self):
+		self.jeu.ballon.position =(5,1)
+		(posx,posy) = self.jeu.equipe1.equipe[0].pos
+		self.jeu.ballon.porteur = self.jeu.matrice[posx][posy][0]
+		self.jeu.equipe1.equipe[0].pos=(5,0)
+		self.jeu.equipe1.equipe[0].deplacement((5,1))
+		self.assertTrue(self.jeu.equipe1.equipe[0].porteur)
+		self.assertEqual(self.jeu.ballon.porteur.numero,0)
+		self.jeu.equipe1.equipe[0].deplacement((5,2))
+		self.assertEqual(self.jeu.equipe1.equipe[0].nEquipe,1)
+		self.assertEqual(self.jeu.ballon.porteur.pos,(5,2))
+		self.assertEqual(self.jeu.ballon.position,(5,2))
+
+

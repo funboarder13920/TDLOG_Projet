@@ -121,7 +121,7 @@ class jeu :
                 self.ballon = ballon((6,1 + random.randint(1,6)),self)
                 self.tour = 1
                 globalQueue.queue.put(self)
-                self.equipe1.joue()
+                #self.equipe1.joue()
 
         def changeTour(self):
             log.info("Début des tours de jeu")
@@ -208,9 +208,10 @@ class ballon :
                 log.debug("Initialisation du ballon à la position (%d,%d)",position[0],position[1])
                 self.position = position
                 self.jeu = jeu
-                self.porteur = self.jeu.matrice[position[0]][position[1]]
+                self.porteur = self.jeu.matrice[position[0]][position[1]][-1]
 
         def deplacement(self):
+                print(self.porteur.nEquipe)
                 if self.porteur.nEquipe!=3:
                         self.position = self.porteur.pos
                         log.debug("Le ballon se deplace à la postion (%d,%d)",self.position[0],self.position[1])
@@ -254,35 +255,39 @@ class joueur :
 
 
         def deplacement(self,pos):
-                log.info("Déplacement du joueur %d" , self.numero)
-                #pas par pas c'est plus simple
-                # le joueur ne doit pas être KO et le déplacement doit être
-                # d'au plus 1
-                if not self.ko:
-                        if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.depRestant) and self.onGrid():
-                                if self.depRestant == bonus[self.prop][2] and self.depRestant > 0:
-                                        #Le joueur ne s'est pas encore déplacé
-                                        if self.equipe.coupRestant > 0:
-                                                self.equipe.coupRestant -=1
-                                                self.deplace(pos)
-                                                if self.jeu.ballon.position == pos:
-                                                        self.porteur = True
-                                                        self.jeu.ballon.porteur = self
-                                        else:
-                                            log.error("Vous ne pouvez pas déplacer plus de joueurs")
-                                elif self.depRestant != bonus[self.prop][2]:
-                                        self.deplace(pos)
-                                        if self.ballon.position == pos:
-                                                        self.porteur = True
-                                                        self.jeu.ballon.porteur = self
-                                if self.porteur:
-                                        log.info("Le joueur est porteur, le ballon doit aussi se déplacer")
-                                        self.jeu.ballon.deplacement()
+            log.info("Déplacement du joueur %d" , self.numero)
+            #pas par pas c'est plus simple
+            # le joueur ne doit pas être KO et le déplacement doit être
+            # d'au plus 1
+            if not self.ko:
+                if (absol(sub(self.pos, pos)) == (1,0) or absol(sub(self.pos, pos)) == (0,1)) and self.jeu.libre(pos,self.depRestant) and self.onGrid():
+                    if self.depRestant == bonus[self.prop][2] and self.depRestant > 0:
+                        #Le joueur ne s'est pas encore déplacé
+                        if self.equipe.coupRestant > 0:
+                            self.equipe.coupRestant -=1
+                            self.deplace(pos)
+                            if self.jeu.ballon.position == pos:
+                                self.porteur = True
+                                self.jeu.ballon.porteur = self
                         else:
-                                log.error("Le joueur doit être libre et se déplacer d'une seule valeur")
+                            log.error("Vous ne pouvez pas déplacer plus de joueurs")
+                
+                    elif self.depRestant != bonus[self.prop][2]:
+                        self.deplace(pos)
+                        if self.jeu.ballon.position == pos:
+                            self.porteur = True
+                            self.jeu.ballon.porteur = self
+                            print(self.numero)
+                if self.porteur:
+                    log.info("Le joueur est porteur, le ballon doit aussi se déplacer")
+                    print(self.jeu.ballon.position,self.pos,self.jeu.ballon.porteur.nEquipe)
+                    self.jeu.ballon.deplacement()
+                    print(self.jeu.ballon.position,self.pos,self.jeu.ballon.porteur.nEquipe)
                 else:
-                        log.error("Le joueur ne doit pas être KO")
-                globalQueue.queue.put(self.jeu)
+                    log.error("Le joueur doit être libre et se déplacer d'une seule valeur")
+            else:
+                log.error("Le joueur ne doit pas être KO")
+            globalQueue.queue.put(self.jeu)
 
         def onGrid(self):
                 log.debug("Test si la postion du joueur est bonne")
