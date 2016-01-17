@@ -197,5 +197,3 @@ class test_joueur(unittest.TestCase):
         self.assertEqual(self.jeu.equipe1.equipe[0].nEquipe, 1)
         self.assertEqual(self.jeu.ballon.porteur.pos, (5, 2))
         self.assertEqual(self.jeu.ballon.position, (5, 2))
-
-unittest.main()
