@@ -145,19 +145,6 @@ def interception(self,joueur1,joueur2):
                                 log.debug("Interception par l'équipe 2 du joueur %d",joueur.numero)
         return inter
 
-
-class ballon :
-        def __init__(self,position,jeu):
-                log.debug("Initialisation du ballon à la position (%d,%d)",position[0],position[1])
-                self.position = position
-                self.jeu = jeu
-                self.porteur = self.jeu.matrice[position[0]][position[1]]
-
-        def deplacement(self):
-                if self.porteur.nEquipe!=3:
-                        self.position = self.porteur.pos
-                        log.debug("Le ballon se deplace à la postion (%d,%d)",self.position[0],self.position[1])
-
 class jeu:
 
     def __init__(self):
