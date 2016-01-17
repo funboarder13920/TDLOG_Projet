@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 import random
 import globalQueue
-import fakeNone
+#import fakeNone
 import logging
 import logging.config
 import copy
