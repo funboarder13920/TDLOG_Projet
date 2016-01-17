@@ -387,7 +387,7 @@ class joueur:
                 "La passe est impossible car le joueur {0} n'est pas porteur", self.numero)
         globalQueue.queue.put(self.jeu)
 
-    def placage(self, joueur2, plaquer):
+    def placage(self, joueur2, plaquer=True):
         log.info("Le joueur {0} essaie de plaquer le joueur {0}",
                  self.numero, joueur2.numero)
         if absol(sub(self.pos, joueur2.pos)) == 1 and self.depRestant > 1:
@@ -692,8 +692,13 @@ class equipe:
             elif opt == 2:
                 self.reglePlaquage()
                 j1 = intInput("Joueur qui plaque:")
-                j2 = intInput("Joueur plaqué")
-                self.equipe[j1].placage(self.equipe[j2], 1)
+                j2 = intInput("Joueur plaqué:")
+                self.equipe[j1].placage(self.jeu.equipe2.equipe[j2])
+            elif opt == 3:
+                self.regleForcerPassage()
+                j1 = intInput("Joueur qui force le passage:")
+                j2 = intInput("Joueur en face:")
+                self.equipe2.equipe[j2].placage(self.equipe[j], False)
             elif opt == -1:
                 if self.jeu.finTour():
                     cont = False
