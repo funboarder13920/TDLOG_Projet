@@ -144,5 +144,3 @@ class test_jeu(unittest.TestCase):
         self.jeu.equipe2.equipe[2].pos = (4, 1)
         self.assertEqual(len(self.jeu.interception(self.jeu.equipe1.equipe[0],
                                                    self.jeu.equipe1.equipe[1])), 0)
-
-unittest.main()
