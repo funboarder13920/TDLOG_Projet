@@ -347,10 +347,48 @@ class test_joueur(unittest.TestCase):
         (posx, posy) = self.jeu.equipe1.equipe[0].pos
         self.jeu.ballon.porteur = self.jeu.matrice[posx][posy][0]
         self.jeu.equipe1.equipe[0].pos = (5, 0)
+        dep = self.jeu.equipe1.equipe[0].depRestant 
         self.jeu.equipe1.equipe[0].deplacement((5, 1))
         self.assertTrue(self.jeu.equipe1.equipe[0].porteur)
         self.assertEqual(self.jeu.ballon.porteur.numero, 0)
+        self.assertEqual(self.jeu.equipe1.equipe[0].depRestant ,dep-1)
         self.jeu.equipe1.equipe[0].deplacement((5, 2))
         self.assertEqual(self.jeu.equipe1.equipe[0].nEquipe, 1)
         self.assertEqual(self.jeu.ballon.porteur.pos, (5, 2))
         self.assertEqual(self.jeu.ballon.position, (5, 2))
+
+    def test_onGrid1(self):
+        self.jeu.equipe1.equipe[0].pos = (1,0)
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0,0)))
+
+    def test_onGrid2(self):
+        self.jeu.equipe1.equipe[0].pos = (11,0)
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((12,0)))
+
+    def test_onGrid3(self):
+        self.jeu.equipe1.equipe[0].pos = (11,0)
+        self.jeu.equipe1.equipe[0].porteur = True
+        self.assertTrue(self.jeu.equipe1.equipe[0].onGrid((12,0)))
+
+    def test_onGrid3_bis(self):
+        self.jeu.equipe1.equipe[0].pos = (1,0)
+        self.jeu.equipe1.equipe[0].porteur = True
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0,0)))
+
+    def test_onGrid4(self):
+        self.jeu.equipe2.equipe[0].pos = (1,0)
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((0,0)))
+
+    def test_onGrid5(self):
+        self.jeu.equipe2.equipe[0].pos = (11,0)
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12,0)))
+
+    def test_onGrid6(self):
+        self.jeu.equipe2.equipe[0].pos = (11,0)
+        self.jeu.equipe2.equipe[0].porteur = True
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12,0)))
+
+    def test_onGrid7(self):
+        self.jeu.equipe2.equipe[0].pos = (1,0)
+        self.jeu.equipe2.equipe[0].porteur = True
+        self.assertTrue(self.jeu.equipe2.equipe[0].onGrid((0,0)))
