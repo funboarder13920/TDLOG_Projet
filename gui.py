@@ -40,7 +40,6 @@ class depThread(qtc.QThread):
             globalQueue.waitInput = False
             globalQueue.cond = True
             click = queuePos.get()
-            print("3")
             pos1 = reverse(click)
             click = queuePos.get()
             globalQueue.cond = False
@@ -69,6 +68,9 @@ class gui1(qtg.QWidget):
         self.buttonDeplace = qtg.QPushButton("Déplacer", self)
         self.buttonDeplace.resize(50, 25)
         self.buttonDeplace.move(20, 20)
+        self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
+        self.buttonFinTour.resize(50, 25)
+        self.buttonFinTour.move(85, 20)
         self.button = buttonPos(self)
         self.button.resize(700, 492)
         self.button.move(20, 90)
@@ -106,11 +108,17 @@ class gui1(qtg.QWidget):
         self.depThread = depThread()
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.buttonDeplace.clicked.connect(self.launchDep)
+        self.buttonFinTour.clicked.connect(self.finTour)
         self.thread.start()
         sys.exit(self.app.exec_())
 
     def launchDep(self):
         self.depThread.start()
+
+    def finTour(self):
+        if globalQueue.waitInput:
+            globalQueue.waitInput = False
+            globalQueue.queueAction.put(["fin"])
 
     def update(self, value):
         for i in range(6):

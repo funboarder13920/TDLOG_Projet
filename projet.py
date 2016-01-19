@@ -109,77 +109,6 @@ def choixPos(nEquipe):
     return positions
 
 
-def libre(self, pos, depRestant=0):
-    log.debug("Test Libre de la position ({0},{1})".format(pos[0], pos[1]))
-    assert(pos[0] >= 0 and pos[0] < nbColonne and pos[
-           1] >= 0 and pos[1] < nbLigne)
-    isLibre = ((self.matrice[pos[0]][pos[1]][-1].nEquipe == 3)
-               or (self.matrice[pos[0]][pos[1]][-1].ko and depRestant >= 2))
-    log.debug("Résultat : {0}".format(isLibre))
-    return isLibre
-
-
-def finTour(self):
-    log.debug("Test fin du tour")
-    for joueur in self.equipe:
-        if len(self.matrice[joueur.pos[0]][self.joueur.pos[1]]) != 1:
-            log.debug("Le tour n'est pas fini")
-            return False
-    log.debug("Le tour est fini")
-    return True
-
-
-def interception(self, joueur1, joueur2):
-    pos1 = joueur1.pos
-    pos2 = joueur2.pos
-    log.info("Interception entre ({0},{1}) et ({2},{3})".format(
-        pos1[0], pos1[1], pos2[0], pos2[1]))
-    r1 = droite(add(pos1, (-1 / 2, -1 / 2)), add(pos2, (-1 / 2, -1 / 2)))
-    r2 = droite(add(pos1, (1 / 2, 1 / 2)), add(pos2, (1 / 2, 1 / 2)))
-    v1 = droite(add(pos1, (-1 / 2, 1 / 2)), add(pos2, (-1 / 2, 1 / 2)))
-    v2 = droite(add(pos1, (1 / 2, -1 / 2)), add(pos2, (1 / 2, -1 / 2)))
-    c1 = droite(pos1, add(pos1, (1 / 2, 0)))
-    c2 = droite(pos2, add(pos2, (1 / 2, 0)))
-    d1 = droite(pos1, add(pos1, (0, 1 / 2)))
-    d2 = droite(pos2, add(pos2, (0, 1 / 2)))
-    inter = []
-    if joueur1.nEquipe == 1:
-        for joueur in self.equipe2.equipe:
-            if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
-                 calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0) and
-                (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
-                 calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
-                inter.append(joueur)
-                log.debug(
-                    "Interception par l'équipe 1 du joueur {0}".format(joueur.numero))
-    else:
-        for joueur in self.equipe1.equipe:
-            if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
-                 calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0)
-                and (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
-                     calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
-                inter.append(joueur)
-                log.debug(
-                    "Interception par l'équipe 2 du joueur {0}".format(joueur.numero))
-    return inter
-
-
-class ballon:
-
-    def __init__(self, position, jeu):
-        log.debug("Initialisation du ballon à la position ({0},{1})".format(
-            position[0], position[1]))
-        self.position = position
-        self.jeu = jeu
-        self.porteur = self.jeu.matrice[position[0]][position[1]]
-
-    def deplacement(self):
-        if self.porteur.nEquipe != 3:
-            self.position = self.porteur.pos
-            log.debug("Le ballon se deplace à la postion ({0},{1})".format(
-                self.position[0], self.position[1]))
-
-
 class jeu:
 
     def __init__(self):
@@ -211,14 +140,14 @@ class jeu:
 
     def changeTour(self):
         log.info("Début des tours de jeu")
-        if self.tour == 1:
+        if self.tour == 2:
             log.info("Tour de jeu équipe 1")
+            self.tour = 1
             self.equipe1.joue()
-            self.tour = 2
         else:
             log.info("Tour de jeu équipe 2")
+            self.tour = 2
             self.equipe2.joue()
-            self.tour = 1
 
     def resolution(self, attaquant, defenseur):
         log.info("Résolution attaquant{0}/équipe {1} - défenseur {2}/équipe {3}".format(
@@ -249,15 +178,6 @@ class jeu:
                    3 or (self.matrice[pos[0]][pos[1]][-1].ko and depRestant >= 2))
         log.debug("Résultat : {0}".format(isLibre))
         return isLibre
-
-    def finTour(self):
-        log.debug("Test fin du tour")
-        for joueur in self.equipe:
-            if len(self.matrice[joueur.pos[0]][self.joueur.pos[1]]) != 1:
-                log.debug("Le tour n'est pas fini")
-                return False
-        log.debug("Le tour est fini")
-        return True
 
     def interception(self, joueur1, joueur2):
         pos1 = joueur1.pos
@@ -292,6 +212,9 @@ class jeu:
                     log.debug(
                         "Interception par l'équipe 2 du joueur {0}".format(joueur.numero))
         return inter
+
+    def fin(self):
+        print("Vous avez gagné")
 
 
 class ballon:
@@ -737,12 +660,9 @@ class equipe:
             joueur.depRestant = bonus[joueur.prop][2]
         cont = True
         while cont:
-            print("in1")
             globalQueue.waitInput = True
             args = globalQueue.queueAction.get()
             globalQueue.waitInput = False
-            print("in2")
-            print(args[1])
             if args[0] == "passe":
                 self.reglePasse()
                 # vérifier l'quipe qui jue?
@@ -750,7 +670,6 @@ class equipe:
             elif args[0] == "deplace":
                 pos1 = args[1]
                 pos2 = args[2]
-                print(pos1,pos2)
                 j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
                 if j1.nEquipe == self.nEquipe:
                     j1.deplacement(pos2)
@@ -770,11 +689,12 @@ class equipe:
                 j2 = intInput("Joueur en face:")
                 self.equipe2.equipe[j2].placage(self.equipe[j1], False)
             elif args[0] == "fin":
-                if self.jeu.finTour():
+                if self.finTour():
                     cont = False
                 else:
                     print("Des joueurs se superposent")
-        self.jeu.changeTour()
+        if not cont:
+            self.jeu.changeTour()
 
     def forme(self):
         log.debug("Calcul de la forme de l'équipe {0}".format(self.nEquipe))
@@ -791,6 +711,15 @@ class equipe:
             e, self.nEquipe))
         self.carte[cartePossible[e]] = False
         return cartePossible[e] + 1
+
+    def finTour(self):
+        log.debug("Test fin du tour")
+        for joueur in self.equipe:
+            if len(self.jeu.matrice[joueur.pos[0]][joueur.pos[1]]) != 1:
+                log.debug("Le tour n'est pas fini")
+                return False
+        log.debug("Le tour est fini")
+        return True
 
 if __name__ == "__main__":
     jeu = jeu()
