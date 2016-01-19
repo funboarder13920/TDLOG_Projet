@@ -737,42 +737,39 @@ class equipe:
             joueur.depRestant = bonus[joueur.prop][2]
         cont = True
         while cont:
-            self.optionJeu()
-            opt = intInput("Action: ")
-            if opt == 0:
+            print("in1")
+            globalQueue.waitInput = True
+            args = globalQueue.queueAction.get()
+            globalQueue.waitInput = False
+            print("in2")
+            print(args[1])
+            if args[0] == "passe":
                 self.reglePasse()
-                j1 = intInput("Joueur 1: ")
-                while True:
-                    try:
-                        j2 = intInput("Joueur 2: ")
-                        assert j2 != j1
-                        self.equipe[j1].passe(self.equipe[j2])
+                # vérifier l'quipe qui jue?
+                self.equipe[args[1]].passe(self.equipe[args[2]])
+            elif args[0] == "deplace":
+                pos1 = args[1]
+                pos2 = args[2]
+                print(pos1,pos2)
+                j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
+                if j1.nEquipe == self.nEquipe:
+                    j1.deplacement(pos2)
+                    if j1.pos[0] == 0 or j1.pos[0] == 12:
+                        cont = True
+                        self.score += 1
+                        self.jeu.fin()
                         break
-                    except:
-                        pass
-            elif opt == 1:
-                self.regleDeplacement()
-                self.possibilitesDeplacement()
-                j = intInput("Joueur qui passe: ")
-                posx = intInput("posx: ")
-                posy = intInput("posy: ")
-                self.equipe[j].deplacement((posx, posy))
-                if self.equipe[j].pos[0] == 0 or self.equipe[j].pos[0] == 12:
-                    cont = True
-                    self.score += 1
-                    self.jeu.fin()
-                    break
-            elif opt == 2:
+            elif args[0] == "placage":
                 self.reglePlaquage()
                 j1 = intInput("Joueur qui plaque:")
                 j2 = intInput("Joueur plaqué:")
                 self.equipe[j1].placage(self.jeu.equipe2.equipe[j2])
-            elif opt == 3:
+            elif args[0] == "passage":
                 self.regleForcerPassage()
                 j1 = intInput("Joueur qui force le passage:")
                 j2 = intInput("Joueur en face:")
                 self.equipe2.equipe[j2].placage(self.equipe[j1], False)
-            elif opt == -1:
+            elif args[0] == "fin":
                 if self.jeu.finTour():
                     cont = False
                 else:

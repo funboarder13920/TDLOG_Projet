@@ -1,12 +1,21 @@
 import PyQt4.QtCore as qtc
 import PyQt4.QtGui as qtg
 import globalQueue
+import queue
 import sys
 import random
 import time
 
 token = ["normal1.png", "normal2.png", "dur.png",
          "costaud.png", "fute.png", "rapide.png", "ko.png"]
+
+
+queuePos = queue.Queue()
+queueListen = queue.Queue()
+
+
+def reverse(click):
+    return (int((click[0] - 67) / 46.7), int(1 + -(click[1] - 478) / 47.2))
 
 
 class listen(qtc.QThread):
@@ -21,13 +30,46 @@ class listen(qtc.QThread):
             self.emit(qtc.SIGNAL("update"), instant)
 
 
+class depThread(qtc.QThread):
+
+    def __init__(self, parent=None):
+        qtc.QThread.__init__(self, parent)
+
+    def run(self):
+        if globalQueue.waitInput:
+            globalQueue.waitInput = False
+            globalQueue.cond = True
+            click = queuePos.get()
+            print("3")
+            pos1 = reverse(click)
+            click = queuePos.get()
+            globalQueue.cond = False
+            pos2 = reverse(click)
+            globalQueue.queueAction.put(("deplace", pos1, pos2))
+
+
+class buttonPos(qtg.QPushButton):
+
+    def __init__(self, parent):
+        super().__init__(parent)
+
+    def mousePressEvent(self, QMouseEvent):
+        if globalQueue.cond:
+            x = QMouseEvent.x() + self.x()
+            y = QMouseEvent.y() + self.y()
+            queuePos.put((x, y))
+
+
 class gui1(qtg.QWidget):
 
     def __init__(self, parent=None):
         self.app = qtg.QApplication([])
-        self.window = qtg.QWidget()
-        self.window.resize(800, 600)
-        self.button = qtg.QPushButton(self.window)
+        super(gui1, self).__init__()
+        self.resize(800, 600)
+        self.buttonDeplace = qtg.QPushButton("Déplacer", self)
+        self.buttonDeplace.resize(50, 25)
+        self.buttonDeplace.move(20, 20)
+        self.button = buttonPos(self)
         self.button.resize(700, 492)
         self.button.move(20, 90)
         self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
@@ -36,7 +78,7 @@ class gui1(qtg.QWidget):
         self.buttonEquipe1 = [None for j in range(6)]
         self.buttonEquipe2 = [None for j in range(6)]
         for i in range(6):
-            self.buttonEquipe1[i] = qtg.QPushButton(self.window)
+            self.buttonEquipe1[i] = buttonPos(self)
             self.buttonEquipe1[i].resize(46.7, 47.2)
             self.buttonEquipe1[i].move(67 + i * 46.7, 47.2)
             self.buttonEquipe1[i].setIcon(qtg.QIcon("./images/1_" + token[i]))
@@ -44,7 +86,7 @@ class gui1(qtg.QWidget):
             self.buttonEquipe1[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe1[i].show()
-            self.buttonEquipe2[i] = qtg.QPushButton(self.window)
+            self.buttonEquipe2[i] = buttonPos(self)
             self.buttonEquipe2[i].resize(46.7, 47.2)
             self.buttonEquipe2[i].move(67 + (7 + i) * 46.7, 47.2)
             self.buttonEquipe2[i].setIcon(qtg.QIcon("./images/2_" + token[i]))
@@ -52,18 +94,23 @@ class gui1(qtg.QWidget):
             self.buttonEquipe2[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe2[i].show()
-        self.buttonBallon = qtg.QPushButton(self.window)
+        self.buttonBallon = buttonPos(self)
         self.buttonBallon.resize(46.7, 47.2)
         self.buttonBallon.move(67, 478)
         self.buttonBallon.setStyleSheet("background-color: transparent")
         self.buttonBallon.setIcon(qtg.QIcon("./images/ballon.png"))
         self.buttonBallon.setIconSize(qtc.QSize(25, 25))
         self.buttonBallon.show()
-        self.window.show()
+        self.show()
         self.thread = listen()
-        self.window.connect(self.thread, qtc.SIGNAL("update"), self.update)
+        self.depThread = depThread()
+        self.connect(self.thread, qtc.SIGNAL("update"), self.update)
+        self.buttonDeplace.clicked.connect(self.launchDep)
         self.thread.start()
         sys.exit(self.app.exec_())
+
+    def launchDep(self):
+        self.depThread.start()
 
     def update(self, value):
         for i in range(6):
@@ -102,38 +149,4 @@ class gui1(qtg.QWidget):
         (i, j) = value.ballon.position
         self.buttonBallon.move(67 + i * 46.7, 478 - j * 47.2)
         self.buttonBallon.show()
-        self.window.show()
-
-
-"""
-if __name__ == "__main__" :
-	app = qtg.QApplication([])
-
-	window = qtg.QMainWindow()
-	window.resize(800,600)
-	
-
-
-	button = qtg.QPushButton(window)
-	button.resize(700, 492)
-	button.move(20, 90)
-	button.setIcon(qtg.QIcon("./images/plateau.jpg"))
-	button.setIconSize(qtc.QSize(700,492))
-	button.show()
-	window.show()
-	#button2 = qtg.QPushButton(window)
-	#button2.resize(48, 48)
-	#button2.move(67, 478)
-	#button2.show()
-	button=[[None for j in range(8)] for i in range(13)]
-	for i in range(13):
-		for j in range(8):
-			button[i][j]=qtg.QPushButton(window)
-			button[i][j].resize(46.7,47.2)
-			button[i][j].move(67+i*46.7,478-j*47.2)
-			button[i][j].setIcon(qtg.QIcon("./images/1_normal1.png"))
-			button[i][j].setIconSize(qtc.QSize(35,35))
-			button[i][j].setStyleSheet("background-color: transparent")			
-			button[i][j].show()
-	window.show()
-	app.exec_()"""
+        self.show()
