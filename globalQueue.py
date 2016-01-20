@@ -1,8 +1,10 @@
-import queue 
+import queue
 
 
+
+waitInput = queue.Queue()
 queueAction = queue.Queue()
 queue = queue.Queue()
 
-waitInput = False
+waitOut = False
 cond = True

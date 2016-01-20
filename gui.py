@@ -25,7 +25,6 @@ class listen(qtc.QThread):
 
     def run(self):
         while True:
-            print(globalQueue.queue.qsize())
             instant = globalQueue.queue.get()
             self.emit(qtc.SIGNAL("update"), instant)
 
@@ -36,15 +35,16 @@ class depThread(qtc.QThread):
         qtc.QThread.__init__(self, parent)
 
     def run(self):
-        if globalQueue.waitInput:
-            globalQueue.waitInput = False
-            globalQueue.cond = True
-            click = queuePos.get()
-            pos1 = reverse(click)
-            click = queuePos.get()
-            globalQueue.cond = False
-            pos2 = reverse(click)
-            globalQueue.queueAction.put(("deplace", pos1, pos2))
+        while True:
+            wait = globalQueue.waitInput.get()
+            if wait:
+                globalQueue.cond = True
+                click = queuePos.get()
+                pos1 = reverse(click)
+                click = queuePos.get()
+                globalQueue.cond = False
+                pos2 = reverse(click)
+                globalQueue.queueAction.put((pos1, pos2))
 
 
 class buttonPos(qtg.QPushButton):
@@ -107,8 +107,8 @@ class gui1(qtg.QWidget):
         self.thread = listen()
         self.depThread = depThread()
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
-        self.buttonDeplace.clicked.connect(self.launchDep)
         self.buttonFinTour.clicked.connect(self.finTour)
+        self.depThread.start()
         self.thread.start()
         sys.exit(self.app.exec_())
 
@@ -116,8 +116,8 @@ class gui1(qtg.QWidget):
         self.depThread.start()
 
     def finTour(self):
-        if globalQueue.waitInput:
-            globalQueue.waitInput = False
+        if globalQueue.waitOut:
+            globalQueue.waitOut = False
             globalQueue.queueAction.put(["fin"])
 
     def update(self, value):
@@ -139,8 +139,9 @@ class gui1(qtg.QWidget):
                 self.buttonEquipe1[i].show()
 
             if value.equipe2.equipe[i].ko:
-                self.buttonEquipe2[i].move(67 + (value.equipe2.equipe[i].pos[0]) * (46.7 - 10),
-                                           478 - value.equipe2.equipe[i].pos[1] * (47.2 + 10))
+                print(value.equipe2.equipe[i].pos[0]), value.equipe2.equipe[i].pos[1])
+                self.buttonEquipe2[i].move(67 + (value.equipe2.equipe[i].pos[0]) * (46.7),
+                                           478 - value.equipe2.equipe[i].pos[1] * (47.2))
                 self.buttonEquipe2[i].setIcon(
                     qtg.QIcon("./images/2_" + token[6]))
                 self.buttonEquipe2[i].setIconSize(qtc.QSize(25, 25))

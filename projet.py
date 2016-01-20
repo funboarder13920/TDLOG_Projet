@@ -2,7 +2,6 @@
 # -*- coding: latin-1 -*-
 import random
 import globalQueue
-import fakeNone
 import logging
 import logging.config
 import copy
@@ -10,6 +9,7 @@ import os
 
 logging.config.fileConfig("log.conf")
 log = logging.getLogger("application")
+log.propagate = False
 nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire", "ordinaire", "dur", "costaud", "fute", "rapide"]
@@ -48,6 +48,10 @@ def calcPosDroite(r, pos):
 
 def inRange(pos):
     return (pos[0] > 0 and pos[0] < 12 and pos[1] >= 0 and pos[1] < 8)
+
+
+def inRangeGrid(pos):
+    return (pos[0] >= 0 and pos[0] <= 12 and pos[1] >= 0 and pos[1] < 8)
 
 
 def intInput(strarg=""):
@@ -496,7 +500,7 @@ class joueur:
                 self.jeu.ballon.position = pos
                 self.jeu.ballon.porteur = self.jeu.matrice[pos[0]][pos[1]][-1]
                 self.jeu.matrice[pos[0]][pos[1]][-1].porteur = True
-            elif (not self.nobodyFront(pos)):
+            elif (not self.nobodyFront()):
                 log.error("Le tir en avant est impossible car le joueur {0} a un joueur devant lui".format(
                     self.numero))
             elif (not self.front(pos)):
@@ -531,9 +535,8 @@ class equipe:
             print("\n Pour finir votre tour, entrez -1")
             print("\n \n Voulez-vous désactiver le tutoriel?")
             print("\n Si oui, tapez 0. Sinon, tapez 1")
-            #activer_tutoriel=intInput("Tutoriel :")
-            # self.tutoriel=activer_tutoriel
-            self.tutoriel = 0
+            activer_tutoriel = intInput("Tutoriel :")
+            self.tutoriel = activer_tutoriel
             if (self.tutoriel == 0):
                 log.debug("Tutoriel désactivé")
 
@@ -660,39 +663,37 @@ class equipe:
             joueur.depRestant = bonus[joueur.prop][2]
         cont = True
         while cont:
-            globalQueue.waitInput = True
+            globalQueue.waitOut = True
+            globalQueue.waitInput.put(True)
             args = globalQueue.queueAction.get()
-            globalQueue.waitInput = False
-            if args[0] == "passe":
-                self.reglePasse()
-                # vérifier l'quipe qui jue?
-                self.equipe[args[1]].passe(self.equipe[args[2]])
-            elif args[0] == "deplace":
-                pos1 = args[1]
-                pos2 = args[2]
-                j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
-                if j1.nEquipe == self.nEquipe:
-                    j1.deplacement(pos2)
-                    if j1.pos[0] == 0 or j1.pos[0] == 12:
-                        cont = True
-                        self.score += 1
-                        self.jeu.fin()
-                        break
-            elif args[0] == "placage":
-                self.reglePlaquage()
-                j1 = intInput("Joueur qui plaque:")
-                j2 = intInput("Joueur plaqué:")
-                self.equipe[j1].placage(self.jeu.equipe2.equipe[j2])
-            elif args[0] == "passage":
-                self.regleForcerPassage()
-                j1 = intInput("Joueur qui force le passage:")
-                j2 = intInput("Joueur en face:")
-                self.equipe2.equipe[j2].placage(self.equipe[j1], False)
-            elif args[0] == "fin":
+            globalQueue.waitOut = False
+            if args[0] == "fin":
                 if self.finTour():
                     cont = False
                 else:
                     print("Des joueurs se superposent")
+            else:
+                pos1 = args[0]
+                pos2 = args[1]
+                if inRangeGrid(pos1) and inRangeGrid(pos2):
+                    j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
+                    j2 = self.jeu.matrice[pos2[0]][pos2[1]][-1]
+                    if sum(sub(pos1, pos2)) > 1:
+                        if (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
+                            print("ici1")
+                            j1.passe(j2)
+                        else:
+                            print("ici2")
+                            j1.tirAvant(pos2)
+                    else:
+                        if (j2.nEquipe == 3 or j2.ko) and j1.nEquipe == self.nEquipe:
+                            j1.deplacement(pos2)
+                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != j1.nEquipe and j1.porteur):
+                            j2.placage(j1, False)
+                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
+                            j1.passe(j2)
+                        else:
+                            j1.placage(j2)
         if not cont:
             self.jeu.changeTour()
 
