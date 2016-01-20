@@ -60,3 +60,5 @@ class test_choixPos(unittest.TestCase):
     def test2(self, equipe):
         self.assertEqual(projet.choixPos(equipe.nbEquipe), [
                          (11, 0), (11, 7), (10, 0), (10, 6), (10, 5), (10, 7)])
+
+unittest.main()
