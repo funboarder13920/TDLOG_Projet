@@ -1,6 +1,7 @@
 import projet
 import unittest
 import unittest.mock
+#import coverage
 
 
 projet.log.propagate = False
