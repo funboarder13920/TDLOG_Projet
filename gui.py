@@ -38,7 +38,7 @@ class askInter(qtc.QThread):
         while True:
             adv = globalQueue.interAdv.get()
             self.emit(qtc.SIGNAL("interception"),
-                      "Voulez vous essayer d'intercepter la passe avec le joueur " + adv.numero + " ?")
+                      "Voulez vous essayer d'intercepter la passe avec le joueur " + str(adv.numero) + " ?")
 
 
 class depThread(qtc.QThread):
@@ -78,7 +78,7 @@ class gui1(qtg.QWidget):
         super(gui1, self).__init__()
         self.resize(800, 600)
         self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
-        self.buttonFinTour.resize(50, 25)
+        self.buttonFinTour.resize(70, 25)
         self.buttonFinTour.move(85, 20)
         self.button = buttonPos(self)
         self.button.resize(700, 492)

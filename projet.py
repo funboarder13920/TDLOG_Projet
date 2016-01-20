@@ -30,6 +30,20 @@ def absol(point):
     return (abs(point[0]), abs(point[1]))
 
 
+def intInput(strarg=""):
+    log.debug("Saisie de l'entier {0}".format(strarg))
+    while True:
+        try:
+            num1 = int(input(strarg))
+        except ValueError as e:
+            print("Vous devez saisir un nombre")
+            log.error("Nombre {0} invalide".format(strarg))
+            continue
+        else:
+            break
+    return num1
+
+
 def droite(point1, point2):
     log.debug("droite({0},{1})".format(point1, point2))
     # retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
@@ -52,20 +66,6 @@ def inRange(pos):
 
 def inRangeGrid(pos):
     return (pos[0] >= 0 and pos[0] <= 12 and pos[1] >= 0 and pos[1] < 8)
-
-
-def intInput(strarg=""):
-    log.debug("Saisie de l'entier {0}".format(strarg))
-    while True:
-        try:
-            num1 = int(input(strarg))
-        except ValueError as e:
-            print("Vous devez saisir un nombre")
-            log.error("Nombre {0} invalide".format(strarg))
-            continue
-        else:
-            break
-    return num1
 
 
 def choixPos(nEquipe):
@@ -199,22 +199,24 @@ class jeu:
         inter = []
         if joueur1.nEquipe == 1:
             for joueur in self.equipe2.equipe:
-                if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
-                     calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0) and
-                    (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
-                     calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
-                    inter.append(joueur)
-                    log.debug(
-                        "Interception par l'équipe 1 du joueur {0}".format(joueur.numero))
+                if not(joueur.ko):
+                    if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
+                         calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0) and
+                        (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
+                         calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
+                        inter.append(joueur)
+                        log.debug(
+                            "Interception par l'équipe 1 du joueur {0}".format(joueur.numero))
         else:
             for joueur in self.equipe1.equipe:
-                if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
-                     calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0)
-                    and (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
-                         calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
-                    inter.append(joueur)
-                    log.debug(
-                        "Interception par l'équipe 2 du joueur {0}".format(joueur.numero))
+                if not(joueur.ko):
+                    if ((calcPosDroite(r1, joueur.pos) * calcPosDroite(r2, joueur.pos) < 0 or
+                         calcPosDroite(v1, joueur.pos) * calcPosDroite(v2, joueur.pos) < 0)
+                        and (calcPosDroite(d1, joueur.pos) * calcPosDroite(d2, joueur.pos) < 0 or
+                             calcPosDroite(c1, joueur.pos) * calcPosDroite(c2, joueur.pos) < 0)):
+                        inter.append(joueur)
+                        log.debug(
+                            "Interception par l'équipe 2 du joueur {0}".format(joueur.numero))
         return inter
 
     def fin(self):
@@ -247,6 +249,7 @@ class joueur:
         self.porteur = False
         self.jeu = jeu
         self.ko = False
+        self.koCount = -1
         self.equipe = equipe
         self.nEquipe = nEquipe
         self.prop = prop
@@ -335,21 +338,6 @@ class joueur:
             return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(sub(self.pos, joueur2.pos))) <= 2
         else:
             return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos, joueur2.pos))) <= 2
-
-    def askIntercepter(self, joueur1, joueur2):
-        log.info("Demande au joueur adverse l'interception")
-        print("Au joueur de l'équipe {0}".format(joueur1.nEquipe))
-        print("Voulez-vous intercepter le lancer du joueur adverse {0} de coordonnées ({1},{2}) au joueur adverse {3} de coordonnées ({4},{5})".format(
-            prop[joueur1.numero], joueur1.pos[1], joueur1.pos[0], prop[joueur2.numero], joueur2.pos[1], joueur2.pos[0]))
-        print("\n , avec votre joueur {0} de coordonnées de coordonnées ({1},{2})".format(
-            prop[self.numero], self.pos[1], self.pos[0]))
-        print("\n")
-        print("Si oui, tapez 1. Sinon tapez 0")
-        intercepte = intInput("Interception: ")
-        if (intercepte == 1):
-            return True
-        else:
-            return False
 
     def passe(self, joueur2):
         log.info("Le joueur {0} essaie de passer au joueur {1}".format(
@@ -459,6 +447,7 @@ class joueur:
                         if self.jeu.ballon.porteur.nEquipe != 3:
                             self.jeu.ballon.porteur.porteur = True
                     joueur2.ko = True
+                    joueur2.koCount = 1
                     joueur2.porteur = False
                     if plaquer:
                         self.depRestant = 0
@@ -467,6 +456,7 @@ class joueur:
                         self.depRestant -= 1
                 else:
                     self.ko = True
+                    self.koCount = 1
         globalQueue.queue.put(self.jeu)
 
     def nobodyFront(self):
@@ -662,6 +652,16 @@ class equipe:
         self.coupRestant = 2
         for joueur in self.equipe:
             joueur.depRestant = bonus[joueur.prop][2]
+        for joueur in self.jeu.equipe1.equipe:
+            if joueur.ko and joueur.koCount <= -1:
+                joueur.ko = False
+                joueur.koCount = -1
+        for joueur in self.jeu.equipe2.equipe:
+            if joueur.ko and joueur.koCount <= -1:
+                joueur.ko = False
+                joueur.koCount = -1
+
+        globalQueue.queue.put(self.jeu)
         cont = True
         while cont:
             globalQueue.waitOut = True
@@ -693,6 +693,13 @@ class equipe:
                             j1.passe(j2)
                         else:
                             j1.placage(j2)
+        for joueur in self.jeu.equipe1.equipe:
+            if joueur.ko:
+                joueur.koCount -= 1
+        for joueur in self.jeu.equipe2.equipe:
+            if joueur.ko:
+                joueur.koCount -= 1
+
         if not cont:
             self.jeu.changeTour()
 
