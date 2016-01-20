@@ -29,6 +29,18 @@ class listen(qtc.QThread):
             self.emit(qtc.SIGNAL("update"), instant)
 
 
+class askInter(qtc.QThread):
+
+    def __init__(self, parent=None):
+        qtc.QThread.__init__(self, parent)
+
+    def run(self):
+        while True:
+            adv = globalQueue.interAdv.get()
+            self.emit(qtc.SIGNAL("interception"),
+                      "Voulez vous essayer d'intercepter la passe avec le joueur " + adv.numero + " ?")
+
+
 class depThread(qtc.QThread):
 
     def __init__(self, parent=None):
@@ -65,9 +77,6 @@ class gui1(qtg.QWidget):
         self.app = qtg.QApplication([])
         super(gui1, self).__init__()
         self.resize(800, 600)
-        self.buttonDeplace = qtg.QPushButton("Déplacer", self)
-        self.buttonDeplace.resize(50, 25)
-        self.buttonDeplace.move(20, 20)
         self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
         self.buttonFinTour.resize(50, 25)
         self.buttonFinTour.move(85, 20)
@@ -101,19 +110,28 @@ class gui1(qtg.QWidget):
         self.buttonBallon.move(67, 478)
         self.buttonBallon.setStyleSheet("background-color: transparent")
         self.buttonBallon.setIcon(qtg.QIcon("./images/ballon.png"))
-        self.buttonBallon.setIconSize(qtc.QSize(25, 25))
+        self.buttonBallon.setIconSize(qtc.QSize(20, 20))
         self.buttonBallon.show()
         self.show()
         self.thread = listen()
+        self.interc = askInter()
         self.depThread = depThread()
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
+        self.connect(self.interc, qtc.SIGNAL(
+            "interception"), self.askInterception)
         self.buttonFinTour.clicked.connect(self.finTour)
         self.depThread.start()
         self.thread.start()
+        self.interc.start()
         sys.exit(self.app.exec_())
 
-    def launchDep(self):
-        self.depThread.start()
+    def askInterception(self, str):
+        reply = qtg.QMessageBox.question(
+            self, 'Message', str, qtg.QMessageBox.Yes, qtg.QMessageBox.No)
+        if reply == qtg.QMessageBox.Yes:
+            globalQueue.askInter.put(True)
+        else:
+            globalQueue.askInter.put(False)
 
     def finTour(self):
         if globalQueue.waitOut:
@@ -123,8 +141,8 @@ class gui1(qtg.QWidget):
     def update(self, value):
         for i in range(6):
             if value.equipe1.equipe[i].ko:
-                self.buttonEquipe1[i].move(67 + (value.equipe1.equipe[i].pos[0]) * (46.7 - 10),
-                                           478 - value.equipe1.equipe[i].pos[1] * (47.2 + 10))
+                self.buttonEquipe1[i].move(67 - 10 + (value.equipe1.equipe[i].pos[0]) * (46.7),
+                                           478 + 10 - value.equipe1.equipe[i].pos[1] * (47.2))
                 self.buttonEquipe1[i].setIcon(
                     qtg.QIcon("./images/1_" + token[6]))
                 self.buttonEquipe1[i].setIconSize(qtc.QSize(25, 25))
@@ -139,9 +157,10 @@ class gui1(qtg.QWidget):
                 self.buttonEquipe1[i].show()
 
             if value.equipe2.equipe[i].ko:
-                print(value.equipe2.equipe[i].pos[0]), value.equipe2.equipe[i].pos[1])
-                self.buttonEquipe2[i].move(67 + (value.equipe2.equipe[i].pos[0]) * (46.7),
-                                           478 - value.equipe2.equipe[i].pos[1] * (47.2))
+                print(value.equipe2.equipe[i].pos[0],
+                      value.equipe2.equipe[i].pos[1])
+                self.buttonEquipe2[i].move(67 - 10 + (value.equipe2.equipe[i].pos[0]) * (46.7),
+                                           478 + 10 - value.equipe2.equipe[i].pos[1] * (47.2))
                 self.buttonEquipe2[i].setIcon(
                     qtg.QIcon("./images/2_" + token[6]))
                 self.buttonEquipe2[i].setIconSize(qtc.QSize(25, 25))
@@ -156,6 +175,6 @@ class gui1(qtg.QWidget):
                 self.buttonEquipe2[i].show()
 
         (i, j) = value.ballon.position
-        self.buttonBallon.move(67 + i * 46.7, 478 - j * 47.2)
+        self.buttonBallon.move(67 + 10 + i * 46.7, 478 - 10 - j * 47.2)
         self.buttonBallon.show()
         self.show()

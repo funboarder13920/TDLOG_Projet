@@ -361,12 +361,13 @@ class joueur:
                 self.jeu.ballon.porteur = joueur2
                 self.jeu.ballon.deplacement()
                 interc = self.jeu.interception(self, joueur2)
-                print(len(interc))
                 for adv in interc:
-                    if adv.askIntercepter(self, joueur2):
-                        if jeu.resolution(self, adv) <= 0:
+                    globalQueue.interAdv.put(adv)
+                    if globalQueue.askInter.get():
+                        if self.jeu.resolution(self, adv) <= 0:
                             adv.porteur = True
                             joueur2.porteur = False
+                            self.jeu.ballon.porteur = adv
                             self.jeu.ballon.deplacement()
                             break
                     else:
@@ -680,10 +681,8 @@ class equipe:
                     j2 = self.jeu.matrice[pos2[0]][pos2[1]][-1]
                     if sum(sub(pos1, pos2)) > 1:
                         if (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
-                            print("ici1")
                             j1.passe(j2)
                         else:
-                            print("ici2")
                             j1.tirAvant(pos2)
                     else:
                         if (j2.nEquipe == 3 or j2.ko) and j1.nEquipe == self.nEquipe:
