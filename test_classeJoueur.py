@@ -1,7 +1,7 @@
 import projet
 import unittest
 import unittest.mock
-import coverage
+#import coverage
 
 projet.log.propagate = False
 
@@ -392,3 +392,5 @@ class test_joueur(unittest.TestCase):
         self.jeu.equipe2.equipe[0].pos = (1,0)
         self.jeu.equipe2.equipe[0].porteur = True
         self.assertTrue(self.jeu.equipe2.equipe[0].onGrid((0,0)))
+
+unittest.main()
