@@ -68,9 +68,13 @@ class choixThread(threading.Thread):
         self.gui = gui
 
     def run(self):
+        if self.nb == 1:
+            self.gui.equipeActu = 1
         self.gui.choixPos(self.nb)
+        self.gui.equipeActu = 2
         if self.nb == 2:
             self.gui.buttonChoix.hide()
+            self.blockSend = True
 
 
 class buttonPos(qtg.QPushButton):
@@ -85,9 +89,9 @@ class buttonPos(qtg.QPushButton):
         if globalQueue.cond:
             x = QMouseEvent.x() + self.x()
             y = QMouseEvent.y() + self.y()
-            queuePos.put((x, y))
-        if self.nEquipe != 0:
-            print("clic")
+            if queuePos.empty():
+                queuePos.put((x, y))
+        if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
             self.parent.send(self, self.nJoueur, self.nEquipe)
 
 
@@ -99,23 +103,37 @@ class gui1(qtg.QWidget):
         self.endChoix = False
         self.nEquipeTemp = -1
         self.nJoueurTemp = -1
+        self.equipeActu = 0
         self.posTemp = (-1, -1)
         self.goChoix = queue.Queue()
         self.resize(800, 600)
         self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
-        self.buttonFinTour.resize(70, 25)
-        self.buttonFinTour.move(85, 20)
         self.button = buttonPos(self, 0, 0)
-        self.button.resize(700, 492)
         self.blockSend = False
-        self.button.move(20, 90)
-        self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
-        self.button.setIconSize(qtc.QSize(700, 492))
-        self.button.show()
         self.buttonEquipe1 = [None for j in range(6)]
         self.buttonEquipe2 = [None for j in range(6)]
         for i in range(6):
             self.buttonEquipe1[i] = buttonPos(self, 1, i)
+            self.buttonEquipe2[i] = buttonPos(self, 2, i)
+        self.buttonBallon = buttonPos(self, 0, 0)
+        self.thread = listen()
+        self.interc = askInter()
+        self.depThread = depThread()
+        self.buttonChoix = qtg.QPushButton("Fin du choix", self)
+        self.choix1 = choixThread(self, 1)
+        self.choix2 = choixThread(self, 2)
+        self.initAll()
+        sys.exit(self.app.exec_())
+
+    def initAll(self):
+        self.buttonFinTour.resize(70, 25)
+        self.buttonFinTour.move(85, 20)
+        self.button.resize(700, 492)
+        self.button.move(20, 90)
+        self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
+        self.button.setIconSize(qtc.QSize(700, 492))
+        self.button.show()
+        for i in range(6):
             self.buttonEquipe1[i].resize(46.7, 47.2)
             self.buttonEquipe1[i].move(67 + i * 46.7, 47.2)
             self.buttonEquipe1[i].setIcon(qtg.QIcon("./images/1_" + token[i]))
@@ -123,7 +141,6 @@ class gui1(qtg.QWidget):
             self.buttonEquipe1[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe1[i].show()
-            self.buttonEquipe2[i] = buttonPos(self, 2, i)
             self.buttonEquipe2[i].resize(46.7, 47.2)
             self.buttonEquipe2[i].move(67 + (7 + i) * 46.7, 47.2)
             self.buttonEquipe2[i].setIcon(qtg.QIcon("./images/2_" + token[i]))
@@ -131,7 +148,6 @@ class gui1(qtg.QWidget):
             self.buttonEquipe2[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe2[i].show()
-        self.buttonBallon = buttonPos(self, 0, 0)
         self.buttonBallon.resize(46.7, 47.2)
         self.buttonBallon.move(67, 478)
         self.buttonBallon.setStyleSheet("background-color: transparent")
@@ -139,18 +155,12 @@ class gui1(qtg.QWidget):
         self.buttonBallon.setIconSize(qtc.QSize(20, 20))
         self.buttonBallon.show()
         self.show()
-        self.thread = listen()
-        self.interc = askInter()
-        self.depThread = depThread()
-        self.buttonChoix = qtg.QPushButton("Fin du choix", self)
         self.buttonChoix.resize(70, 20)
         self.buttonChoix.move(160, 20)
         self.buttonChoix.clicked.connect(self.endChoixTrue)
         self.buttonChoix.show()
-        choix1 = choixThread(self, 1)
-        choix1.start()
-        choix2 = choixThread(self, 2)
-        choix2.start()
+        self.choix1.start()
+        self.choix2.start()
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
@@ -158,25 +168,24 @@ class gui1(qtg.QWidget):
         self.depThread.start()
         self.thread.start()
         self.interc.start()
-        sys.exit(self.app.exec_())
+
 
     def endChoixTrue(self):
         self.endChoix = True
+        if queuePos.empty():
+            queuePos.put((-1, -1))
+        if self.goChoix.empty():
+            self.goChoix.put(True)
 
     def send(self, button, nJoueur, nEquipe):
-        print("send")
         if not self.blockSend:
-            print("in send")
             self.nJoueurTemp = nJoueur
             self.nEquipeTemp = nEquipe
-            print(self.nEquipeTemp)
-            print(self.nJoueurTemp)
             self.posTemp = reverse((self.button.x(), self.button.y()))
             self.goChoix.put(True)
 
     def choixPos(self, nEquipe):
         globalQueue.waitChoix.get()
-        print("in")
         positions = [(-1, -1) for i in range(6)]
         k = 0
         while True:
@@ -187,44 +196,56 @@ class gui1(qtg.QWidget):
                 click = queuePos.get()
                 globalQueue.cond = False
                 (posx, posy) = reverse(click)
-                if (1 == nEquipe):
-                    if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
-                        if not (posx, posy) in positions:
-                            if not self.endChoix:
-                                if positions[self.nJoueurTemp] == (-1, -1):
-                                    k += 1
-                                positions[self.nJoueurTemp] = (posx, posy)
-                                self.buttonEquipe1[self.nJoueurTemp].move(
-                                    67 + posx * 46.7, 478 - posy * 47.2)
+                if not(self.endChoix):
+                    if (1 == self.nEquipeTemp):
+                        if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
+                            if not (posx, posy) in positions:
+                                if not self.endChoix:
+                                    if positions[self.nJoueurTemp] == (-1, -1):
+                                        k += 1
+                                    positions[self.nJoueurTemp] = (posx, posy)
+                                    self.buttonEquipe1[self.nJoueurTemp].move(
+                                        67 + posx * 46.7, 478 - posy * 47.2)
+                            else:
+                                print(
+                                    "Veuillez réessayer : la position choisie est déjà occupée.")
                         else:
                             print(
-                                "Veuillez réessayer : la position choisie est déjà occupée.")
+                                "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
                     else:
-                        print(
-                            "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
-                else:
-                    if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
-                        if not (posx, posy) in positions:
-                            if not self.endChoix:
-                                if positions[self.nJoueurTemp] == (-1, -1):
-                                    k += 1
-                                positions[self.nJoueurTemp] = (posx, posy)
-                                self.buttonEquipe2[self.nJoueurTemp].move(
-                                    67 + posx * 46.7, 478 - posy * 47.2)
+                        if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
+                            if not (posx, posy) in positions:
+                                if not self.endChoix:
+                                    if positions[self.nJoueurTemp] == (-1, -1):
+                                        k += 1
+                                    positions[self.nJoueurTemp] = (posx, posy)
+                                    self.buttonEquipe2[self.nJoueurTemp].move(
+                                        67 + posx * 46.7, 478 - posy * 47.2)
 
+                            else:
+                                print(
+                                    "Veuillez réessayer : la position choisie est déjà occupée.")
                         else:
                             print(
-                                "Veuillez réessayer : la position choisie est déjà occupée.")
-                    else:
-                        print(
-                            "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
+                                "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
+                    self.blockSend = False
+            else:
                 self.blockSend = False
             if k == 6 and self.endChoix:
                 globalQueue.sendPosition.put(positions)
                 self.endChoix = False
+                self.blockSend = False
+                if self.equipeActu == 2:
+                    self.blockSend = True
                 break
             else:
                 self.endChoix = False
+                self.blockSend = False
+
+            while not(queuePos.empty()):
+                queuePos.get()
+            while not(self.goChoix.empty()):
+                self.goChoix.get()
 
     def askInterception(self, str):
         reply = qtg.QMessageBox.question(
@@ -258,8 +279,6 @@ class gui1(qtg.QWidget):
                 self.buttonEquipe1[i].show()
 
             if value.equipe2.equipe[i].ko:
-                print(value.equipe2.equipe[i].pos[0],
-                      value.equipe2.equipe[i].pos[1])
                 self.buttonEquipe2[i].move(67 - 10 + (value.equipe2.equipe[i].pos[0]) * (46.7),
                                            478 + 10 - value.equipe2.equipe[i].pos[1] * (47.2))
                 self.buttonEquipe2[i].setIcon(
