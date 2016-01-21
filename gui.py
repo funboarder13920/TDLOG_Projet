@@ -2,6 +2,7 @@ import PyQt4.QtCore as qtc
 import PyQt4.QtGui as qtg
 import globalQueue
 import queue
+import threading
 import sys
 import random
 import time
@@ -59,10 +60,30 @@ class depThread(qtc.QThread):
                 globalQueue.queueAction.put((pos1, pos2))
 
 
+class choixThread(threading.Thread):
+
+    def __init__(self, gui, nb):
+        super().__init__()
+        self.nb = nb
+        self.gui = gui
+
+    def run(self):
+        self.gui.choixPos(self.nb)
+        if self.nb == 2:
+            self.gui.buttonChoix.hide()
+
+
 class buttonPos(qtg.QPushButton):
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, parent, nEquipe, nJoueur):
+        super(buttonPos,self).__init__(parent)
+        if nEquipe != 0:
+            print("ki")
+            self.clicked.connect(self.printoui)
+                #lambda x: parent.send(x, self, nEquipe, nJoueur))
+    
+    def printoui(self):
+        print("oui")
 
     def mousePressEvent(self, QMouseEvent):
         if globalQueue.cond:
@@ -76,12 +97,18 @@ class gui1(qtg.QWidget):
     def __init__(self, parent=None):
         self.app = qtg.QApplication([])
         super(gui1, self).__init__()
+        self.endChoix = False
+        self.nEquipeTemp = -1
+        self.nJoueurTemp = -1
+        self.posTemp = (-1, -1)
+        self.goChoix = queue.Queue()
         self.resize(800, 600)
         self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
         self.buttonFinTour.resize(70, 25)
         self.buttonFinTour.move(85, 20)
-        self.button = buttonPos(self)
+        self.button = buttonPos(self, 0, 0)
         self.button.resize(700, 492)
+        self.blockSend = False
         self.button.move(20, 90)
         self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
         self.button.setIconSize(qtc.QSize(700, 492))
@@ -89,7 +116,7 @@ class gui1(qtg.QWidget):
         self.buttonEquipe1 = [None for j in range(6)]
         self.buttonEquipe2 = [None for j in range(6)]
         for i in range(6):
-            self.buttonEquipe1[i] = buttonPos(self)
+            self.buttonEquipe1[i] = buttonPos(self, 1, i)
             self.buttonEquipe1[i].resize(46.7, 47.2)
             self.buttonEquipe1[i].move(67 + i * 46.7, 47.2)
             self.buttonEquipe1[i].setIcon(qtg.QIcon("./images/1_" + token[i]))
@@ -97,7 +124,7 @@ class gui1(qtg.QWidget):
             self.buttonEquipe1[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe1[i].show()
-            self.buttonEquipe2[i] = buttonPos(self)
+            self.buttonEquipe2[i] = buttonPos(self, 2, i)
             self.buttonEquipe2[i].resize(46.7, 47.2)
             self.buttonEquipe2[i].move(67 + (7 + i) * 46.7, 47.2)
             self.buttonEquipe2[i].setIcon(qtg.QIcon("./images/2_" + token[i]))
@@ -105,7 +132,7 @@ class gui1(qtg.QWidget):
             self.buttonEquipe2[i].setStyleSheet(
                 "background-color: transparent")
             self.buttonEquipe2[i].show()
-        self.buttonBallon = buttonPos(self)
+        self.buttonBallon = buttonPos(self, 0, 0)
         self.buttonBallon.resize(46.7, 47.2)
         self.buttonBallon.move(67, 478)
         self.buttonBallon.setStyleSheet("background-color: transparent")
@@ -116,6 +143,15 @@ class gui1(qtg.QWidget):
         self.thread = listen()
         self.interc = askInter()
         self.depThread = depThread()
+        self.buttonChoix = qtg.QPushButton("Fin du choix", self)
+        self.buttonChoix.resize(70, 20)
+        self.buttonChoix.move(160, 20)
+        self.buttonChoix.clicked.connect(self.endChoixTrue)
+        self.buttonChoix.show()
+        choix1 = choixThread(self, 1)
+        # choix1.start()
+        choix2 = choixThread(self, 2)
+        # choix2.start()
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
@@ -124,6 +160,75 @@ class gui1(qtg.QWidget):
         self.thread.start()
         self.interc.start()
         sys.exit(self.app.exec_())
+
+    def printoui(self):
+        print("oui")
+
+    def endChoixTrue(self):
+        self.endChoix = True
+
+    def send(self, button, nJoueur, nEquipe):
+        if not self.blockSend:
+            self.nJoueurTemp = nJoueur
+            self.nEquipeTemp = nEquipe
+            self.posTemp = reverse((self.button.x(), self.button.y()))
+            self.goChoix.put(True)
+
+    def choixPos(self, nEquipe):
+        print("in")
+        globalQueue.waitChoix.get()
+        print("in1")
+        positions = [(-1, -1) for i in range(6)]
+        k = 0
+        while True:
+            if self.nEquipeTemp == nEquipe:
+                self.goChoix.get()
+                self.blockSend = True
+                click = queuePos.get()
+                (posx, posy) = reverse(click)
+                if (1 == nEquipe):
+                    if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
+                        if not (posx, posy) in positions:
+                            if positions[self.nJoueurTemp] == (-1, -1):
+                                k += 1
+                            positions[self.nJoueurTemp] = (posx, posy)
+                            log.debug(
+                                "Append de ({0},{1})".format(posx, posy))
+                        else:
+                            print(
+                                "Veuillez réessayer : la position choisie est déjà occupée.")
+                            log.warning(
+                                "Position ({0},{1}) déjà occupée".format(posx, posy))
+                    else:
+                        print(
+                            "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
+                        log.warning(
+                            "({0},{1}) est hors limite".format(posx, posy))
+                else:
+                    if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
+                        if not (posx, posy) in positions:
+                            if positions[self.nJoueurTemp] == (-1, -1):
+                                k += 1
+                            positions[self.nJoueurTemp] = (posx, posy)
+                            log.info(
+                                "Append de ({0},{1})".format(posx, posy))
+                        else:
+                            print(
+                                "Veuillez réessayer : la position choisie est déjà occupée.")
+                            log.warning(
+                                "Position ({0},{1}) déjà occupée".format(posx, posy))
+                    else:
+                        print(
+                            "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
+                        log.warning(
+                            "({0},{1}) est hors limite".format(posx, posy))
+                self.blockSend = False
+                if k == 6 and self.endChoix:
+                    globalQueue.sendPosition.put(positions)
+                    self.endChoix = False
+                    break
+                else:
+                    self.endChoix = False
 
     def askInterception(self, str):
         reply = qtg.QMessageBox.question(

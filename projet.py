@@ -70,46 +70,8 @@ def inRangeGrid(pos):
 
 def choixPos(nEquipe):
     log.info("Choix de l'équipe {0} ...".format(nEquipe))
-    if not (nEquipe == 2 or nEquipe == 1):
-        log.error("Equipe {0} impossible".format(nEquipe))
-        assert nEquipe == 2 or nEquipe == 1
-    positions = []
-    k = 0
-    while k < 6:
-        print("\n")
-        # print "Joueur " , (k+1) , prop[k] , "..."
-        posx = intInput("x: ")
-        posy = intInput("y: ")
-        log.debug("Un joueur {0} est choisi sur ({1},{2})".format(
-            prop[k], posx, posy))
-        if (nEquipe == 1):
-            if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
-                if not (posx, posy) in positions:
-                    k += 1
-                    positions.append((posx, posy))
-                    log.debug("Append de ({0},{1})".format(posx, posy))
-                else:
-                    print("Veuillez réessayer : la position choisie est déjà occupée.")
-                    log.warning(
-                        "Position ({0},{1}) déjà occupée".format(posx, posy))
-            else:
-                print(
-                    "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
-                log.warning("({0},{1}) est hors limite".format(posx, posy))
-        else:
-            if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
-                if not (posx, posy) in positions:
-                    k += 1
-                    positions.append((posx, posy))
-                    log.info("Append de ({0},{1})".format(posx, posy))
-                else:
-                    print("Veuillez réessayer : la position choisie est déjà occupée.")
-                    log.warning(
-                        "Position ({0},{1}) déjà occupée".format(posx, posy))
-            else:
-                print(
-                    "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
-                log.warning("({0},{1}) est hors limite".format(posx, posy))
+    globalQueue.waitChoix.put(True)
+    positions = globalQueue.sendPosition.get()
     return positions
 
 
