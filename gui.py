@@ -70,6 +70,11 @@ class choixThread(threading.Thread):
     def run(self):
         if self.nb == 1:
             self.gui.equipeActu = 1
+        while not(queuePos.empty()):
+            queuePos.get()
+        while not(self.gui.goChoix.empty()):
+            self.gui.goChoix.get()
+        self.blockSend = False
         self.gui.choixPos(self.nb)
         self.gui.equipeActu = 2
         if self.nb == 2:
@@ -109,7 +114,7 @@ class gui1(qtg.QWidget):
         self.resize(800, 600)
         self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
         self.button = buttonPos(self, 0, 0)
-        self.blockSend = False
+        self.blockSend = True
         self.buttonEquipe1 = [None for j in range(6)]
         self.buttonEquipe2 = [None for j in range(6)]
         for i in range(6):
@@ -169,7 +174,6 @@ class gui1(qtg.QWidget):
         self.thread.start()
         self.interc.start()
 
-
     def endChoixTrue(self):
         self.endChoix = True
         if queuePos.empty():
@@ -182,6 +186,8 @@ class gui1(qtg.QWidget):
             self.nJoueurTemp = nJoueur
             self.nEquipeTemp = nEquipe
             self.posTemp = reverse((self.button.x(), self.button.y()))
+            while not(queuePos.empty()):
+                queuePos.get()
             self.goChoix.put(True)
 
     def choixPos(self, nEquipe):
