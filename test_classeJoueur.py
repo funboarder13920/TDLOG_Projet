@@ -1,7 +1,6 @@
 import projet
 import unittest
 import unittest.mock
-#import coverage
 
 projet.log.propagate = False
 
@@ -85,7 +84,7 @@ class test_joueur(unittest.TestCase):
         self.assertTrue(j2.ko)
         self.assertFalse(j1.porteur)
         self.assertFalse(j2.porteur)
-        self.assertEqual(j1.pos,(4,5))
+        self.assertEqual(j1.pos, (4, 5))
         self.assertEqual(self.jeu.ballon.position, (6, 5))
         self.assertEqual(self.jeu.ballon.porteur.nEquipe, 3)
 
@@ -226,13 +225,13 @@ class test_joueur(unittest.TestCase):
         j2.deplace((2, 0))
         self.jeu.ballon.porteur = j1
         self.jeu.ballon.deplacement()
-        j1.placage(j2,False)
+        j1.placage(j2, False)
         self.assertTrue(j2.ko)
         self.assertFalse(j2.porteur)
         self.assertTrue(j1.porteur)
-        self.assertEqual(self.jeu.ballon.position, (2,0))
+        self.assertEqual(self.jeu.ballon.position, (2, 0))
         self.assertEqual(self.jeu.ballon.porteur.nEquipe, 1)
-        self.assertEqual(j1.pos,(2,0))
+        self.assertEqual(j1.pos, (2, 0))
 
     def test_passe1(self):
         self.jeu.equipe1.equipe[0].pos = (5, 1)
@@ -347,50 +346,48 @@ class test_joueur(unittest.TestCase):
         (posx, posy) = self.jeu.equipe1.equipe[0].pos
         self.jeu.ballon.porteur = self.jeu.matrice[posx][posy][0]
         self.jeu.equipe1.equipe[0].pos = (5, 0)
-        dep = self.jeu.equipe1.equipe[0].depRestant 
+        dep = self.jeu.equipe1.equipe[0].depRestant
         self.jeu.equipe1.equipe[0].deplacement((5, 1))
         self.assertTrue(self.jeu.equipe1.equipe[0].porteur)
         self.assertEqual(self.jeu.ballon.porteur.numero, 0)
-        self.assertEqual(self.jeu.equipe1.equipe[0].depRestant ,dep-1)
+        self.assertEqual(self.jeu.equipe1.equipe[0].depRestant, dep - 1)
         self.jeu.equipe1.equipe[0].deplacement((5, 2))
         self.assertEqual(self.jeu.equipe1.equipe[0].nEquipe, 1)
         self.assertEqual(self.jeu.ballon.porteur.pos, (5, 2))
         self.assertEqual(self.jeu.ballon.position, (5, 2))
 
     def test_onGrid1(self):
-        self.jeu.equipe1.equipe[0].pos = (1,0)
-        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0,0)))
+        self.jeu.equipe1.equipe[0].pos = (1, 0)
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0, 0)))
 
     def test_onGrid2(self):
-        self.jeu.equipe1.equipe[0].pos = (11,0)
-        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((12,0)))
+        self.jeu.equipe1.equipe[0].pos = (11, 0)
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((12, 0)))
 
     def test_onGrid3(self):
-        self.jeu.equipe1.equipe[0].pos = (11,0)
+        self.jeu.equipe1.equipe[0].pos = (11, 0)
         self.jeu.equipe1.equipe[0].porteur = True
-        self.assertTrue(self.jeu.equipe1.equipe[0].onGrid((12,0)))
+        self.assertTrue(self.jeu.equipe1.equipe[0].onGrid((12, 0)))
 
     def test_onGrid3_bis(self):
-        self.jeu.equipe1.equipe[0].pos = (1,0)
+        self.jeu.equipe1.equipe[0].pos = (1, 0)
         self.jeu.equipe1.equipe[0].porteur = True
-        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0,0)))
+        self.assertFalse(self.jeu.equipe1.equipe[0].onGrid((0, 0)))
 
     def test_onGrid4(self):
-        self.jeu.equipe2.equipe[0].pos = (1,0)
-        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((0,0)))
+        self.jeu.equipe2.equipe[0].pos = (1, 0)
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((0, 0)))
 
     def test_onGrid5(self):
-        self.jeu.equipe2.equipe[0].pos = (11,0)
-        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12,0)))
+        self.jeu.equipe2.equipe[0].pos = (11, 0)
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12, 0)))
 
     def test_onGrid6(self):
-        self.jeu.equipe2.equipe[0].pos = (11,0)
+        self.jeu.equipe2.equipe[0].pos = (11, 0)
         self.jeu.equipe2.equipe[0].porteur = True
-        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12,0)))
+        self.assertFalse(self.jeu.equipe2.equipe[0].onGrid((12, 0)))
 
     def test_onGrid7(self):
-        self.jeu.equipe2.equipe[0].pos = (1,0)
+        self.jeu.equipe2.equipe[0].pos = (1, 0)
         self.jeu.equipe2.equipe[0].porteur = True
-        self.assertTrue(self.jeu.equipe2.equipe[0].onGrid((0,0)))
-
-unittest.main()
+        self.assertTrue(self.jeu.equipe2.equipe[0].onGrid((0, 0)))
