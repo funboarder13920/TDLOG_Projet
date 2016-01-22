@@ -7,6 +7,7 @@ import sys
 import random
 import time
 
+prop = ["ordinaire", "ordinaire", "dur", "costaud", "futé", "rapide"]
 token = ["normal1.png", "normal2.png", "dur.png",
          "costaud.png", "fute.png", "rapide.png", "ko.png"]
 
@@ -50,12 +51,16 @@ class depThread(qtc.QThread):
     def run(self):
         while True:
             wait = globalQueue.waitInput.get()
+            nEquipe = globalQueue.equipeJoue.get()
+            self.emit(qtc.SIGNAL("showEquipe"), nEquipe)
             if wait:
                 globalQueue.cond = True
                 click = queuePos.get()
                 pos1 = reverse(click)
+                self.emit(qtc.SIGNAL("showPlayerInfo"), pos1)
                 click = queuePos.get()
                 globalQueue.cond = False
+                self.emit(qtc.SIGNAL("hidePlayerInfo"))
                 pos2 = reverse(click)
                 globalQueue.queueAction.put((pos1, pos2))
 
@@ -106,6 +111,9 @@ class gui1(qtg.QWidget):
         self.app = qtg.QApplication([])
         super(gui1, self).__init__()
         self.endChoix = False
+        self.jeu = None
+        self.playerInfo = qtg.QTextEdit(self)
+        self.equipeInfo = qtg.QTextEdit(self)
         self.nEquipeTemp = -1
         self.nJoueurTemp = -1
         self.equipeActu = 0
@@ -139,6 +147,20 @@ class gui1(qtg.QWidget):
         self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
         self.button.setIconSize(qtc.QSize(700, 492))
         self.button.show()
+        self.playerInfo.setReadOnly(True)
+        self.playerInfo.move(80, 60)
+        self.playerInfo.setFontWeight(200)
+        self.playerInfo.resize(400, 35)
+        self.playerInfo.setStyleSheet(
+            "QFrame {background: rgba(0,255,0,0%); border: rgba(0,255,0,0%)}")
+        self.equipeInfo.setReadOnly(True)
+        self.equipeInfo.move(400, 20)
+        self.equipeInfo.setFontWeight(200)
+        self.equipeInfo.setFontPointSize(20)
+        self.equipeInfo.resize(400, 50)
+        self.equipeInfo.setStyleSheet(
+            "QFrame {background: rgba(0,255,0,0%); border: rgba(0,255,0,0%)}")
+        self.equipeInfo.show()
         for i in range(6):
             self.buttonEquipe1[i].resize(46.7, 47.2)
             self.buttonEquipe1[i].move(67 + i * 46.7, 47.2)
@@ -167,6 +189,13 @@ class gui1(qtg.QWidget):
         self.buttonChoix.show()
         self.choix1.start()
         self.choix2.start()
+        self.connect(self.depThread, qtc.SIGNAL(
+            "showPlayerInfo"), self.showPlayerInfo)
+        self.connect(self.depThread, qtc.SIGNAL(
+            "showEquipe"), self.showEquipe)
+
+        self.connect(self.depThread, qtc.SIGNAL(
+            "hidePlayerInfo"), self.hidePlayerInfo)
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
@@ -175,6 +204,25 @@ class gui1(qtg.QWidget):
         self.depThread.start()
         self.thread.start()
         self.interc.start()
+
+    def showEquipe(self, nEquipe):
+        if nEquipe == 1:
+            self.equipeInfo.setText("Equipe 1")
+        else:
+            self.equipeInfo.setText("Equipe 2")
+
+    def showPlayerInfo(self, pos1):
+        try:
+            if self.jeu.matrice[pos1[0]][pos1[1]][-1].nEquipe != 3:
+                joueur = self.jeu.matrice[pos1[0]][pos1[1]][-1]
+                self.playerInfo.setText("Le joueur {0} de l'équipe {1} a encore {2} déplacement(s) restant(s)".format(
+                    prop[joueur.numero], joueur.nEquipe, joueur.depRestant))
+                self.playerInfo.show()
+        except:
+            pass
+
+    def hidePlayerInfo(self):
+        self.playerInfo.hide()
 
     def changeAffich(self):
         self.buttonChoix.hide()
@@ -275,6 +323,7 @@ class gui1(qtg.QWidget):
             globalQueue.queueAction.put(["fin"])
 
     def update(self, value):
+        self.jeu = value
         for i in range(6):
             if value.equipe1.equipe[i].ko:
                 self.buttonEquipe1[i].move(67 - 10 + (value.equipe1.equipe[i].pos[0]) * (46.7),

@@ -67,7 +67,6 @@ class jeu:
         for i in range(nbLigne):
             for j in range(nbColonne):
                 joueur(None, self, 3, (j, i), "", 0)
-        os.system('clear')
         # TODO :Mettre ce texte dans une fonction printIntro
         print("****************************************** Kahmaté ******************************************")
         print("Auteurs : Valentin B., Quentin B., François D (2015) ")
@@ -84,8 +83,9 @@ class jeu:
         self.equipe1 = equipe(self, 1, positions1)
         self.equipe2 = equipe(self, 2, positions2)
         self.ballon = ballon((6, random.randint(1, 6)), self)
-        self.tour = 1
+        self.tour = random.randint(1,2)
         globalQueue.queue.put(self)
+        self.changeTour()
 
     def changeTour(self):
         log.info("Début des tours de jeu")
@@ -458,9 +458,8 @@ class equipe:
         self.nEquipe = nEquipe
         self.equipe = [joueur(self, jeu, nEquipe, positions[
                               i], prop[i], i) for i in range(6)]
-        self.interception = False
 
-    def joue(self, interception=False):
+    def joue(self):
         # Reinitialisation
         log.debug("L'équipe {0} joue un tour".format(self.nEquipe))
         self.coupRestant = 2
@@ -480,6 +479,7 @@ class equipe:
         while cont:
             globalQueue.waitOut = True
             globalQueue.waitInput.put(True)
+            globalQueue.equipeJoue.put(self.nEquipe)
             args = globalQueue.queueAction.get()
             globalQueue.waitOut = False
             if args[0] == "fin":
