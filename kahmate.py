@@ -30,5 +30,6 @@ class rules(threading.Thread):
 
 t1 = rules()
 t2 = guik()
+t1.setDaemon(True)
 t1.start()
 t2.start()

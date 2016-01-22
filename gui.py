@@ -93,7 +93,7 @@ class buttonPos(qtg.QPushButton):
     def mousePressEvent(self, QMouseEvent):
         if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
             self.parent.send(self, self.nJoueur, self.nEquipe)
-        elif globalQueue.cond:
+        if globalQueue.cond:
             x = QMouseEvent.x() + self.x()
             y = QMouseEvent.y() + self.y()
             if queuePos.empty():
@@ -192,9 +192,8 @@ class gui1(qtg.QWidget):
             self.nJoueurTemp = nJoueur
             self.nEquipeTemp = nEquipe
             self.posTemp = reverse((self.button.x(), self.button.y()))
-            while not(queuePos.empty()):
-                queuePos.get()
-            self.goChoix.put(True)
+            if self.goChoix.empty():
+                self.goChoix.put(True)
 
     def choixPos(self, nEquipe):
         globalQueue.waitChoix.get()
@@ -202,10 +201,18 @@ class gui1(qtg.QWidget):
         k = 0
         while True:
             if self.nEquipeTemp == nEquipe and not(self.endChoix):
-                self.goChoix.get()
+                if self.endChoix:
+                    continue
+                else:
+                    self.goChoix.get()
+                while not queuePos.empty():
+                    queuePos.get()
                 self.blockSend = True
                 globalQueue.cond = True
-                click = queuePos.get()
+                if self.endChoix:
+                    continue
+                else:
+                    click = queuePos.get()
                 globalQueue.cond = False
                 (posx, posy) = reverse(click)
                 if not(self.endChoix):
@@ -254,11 +261,6 @@ class gui1(qtg.QWidget):
                 self.endChoix = False
                 self.blockSend = False
 
-            while not(queuePos.empty()):
-                queuePos.get()
-            while not(self.goChoix.empty()):
-                self.goChoix.get()
-
     def askInterception(self, str):
         reply = qtg.QMessageBox.question(
             self, 'Message', str, qtg.QMessageBox.Yes, qtg.QMessageBox.No)
@@ -281,15 +283,6 @@ class gui1(qtg.QWidget):
                     qtg.QIcon("./images/1_" + token[6]))
                 self.buttonEquipe1[i].setIconSize(qtc.QSize(25, 25))
                 self.buttonEquipe1[i].show()
-
-            else:
-                self.buttonEquipe1[i].move(67 + (value.equipe1.equipe[i].pos[0]) * (46.7),
-                                           478 - value.equipe1.equipe[i].pos[1] * (47.2))
-                self.buttonEquipe1[i].setIcon(
-                    qtg.QIcon("./images/1_" + token[i]))
-                self.buttonEquipe1[i].setIconSize(qtc.QSize(35, 35))
-                self.buttonEquipe1[i].show()
-
             if value.equipe2.equipe[i].ko:
                 self.buttonEquipe2[i].move(67 - 10 + (value.equipe2.equipe[i].pos[0]) * (46.7),
                                            478 + 10 - value.equipe2.equipe[i].pos[1] * (47.2))
@@ -298,7 +291,16 @@ class gui1(qtg.QWidget):
                 self.buttonEquipe2[i].setIconSize(qtc.QSize(25, 25))
                 self.buttonEquipe2[i].show()
 
-            else:
+        for i in range(6):
+            if not value.equipe1.equipe[i].ko:
+                self.buttonEquipe1[i].move(67 + (value.equipe1.equipe[i].pos[0]) * (46.7),
+                                           478 - value.equipe1.equipe[i].pos[1] * (47.2))
+                self.buttonEquipe1[i].setIcon(
+                    qtg.QIcon("./images/1_" + token[i]))
+                self.buttonEquipe1[i].setIconSize(qtc.QSize(35, 35))
+                self.buttonEquipe1[i].show()
+
+            if not value.equipe2.equipe[i].ko:
                 self.buttonEquipe2[i].move(67 + (value.equipe2.equipe[i].pos[0]) * (46.7),
                                            478 - value.equipe2.equipe[i].pos[1] * (47.2))
                 self.buttonEquipe2[i].setIcon(
