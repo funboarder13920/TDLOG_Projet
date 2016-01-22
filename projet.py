@@ -257,9 +257,6 @@ class joueur:
             if self.porteur:
                 log.info("Le joueur est porteur, le ballon doit aussi se déplacer")
                 self.jeu.ballon.deplacement()
-            else:
-                log.error(
-                    "Le joueur doit être libre et se déplacer d'une seule valeur")
         else:
             log.error("Le joueur ne doit pas être KO")
         globalQueue.queue.put(self.jeu)
@@ -627,7 +624,7 @@ class equipe:
                 if inRangeGrid(pos1) and inRangeGrid(pos2):
                     j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
                     j2 = self.jeu.matrice[pos2[0]][pos2[1]][-1]
-                    if sum(sub(pos1, pos2)) > 1:
+                    if sum(absol(sub(pos1, pos2))) > 1:
                         if (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
                             j1.passe(j2)
                         else:
@@ -635,11 +632,13 @@ class equipe:
                     else:
                         if (j2.nEquipe == 3 or j2.ko) and j1.nEquipe == self.nEquipe:
                             j1.deplacement(pos2)
-                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != j1.nEquipe and j1.porteur):
+                            if j1.pos[0] == 0 or j1.pos[0]==12:
+                                break
+                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != j1.nEquipe and j1.porteur and j2.nEquipe!=3):
                             j1.placage(j2, False)
                         elif (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
                             j1.passe(j2)
-                        else:
+                        elif (j1.nEquipe ==self.nEquipe and j2.nEquipe != self.nEquipe and j2.nEquipe !=3):
                             j1.placage(j2)
         for joueur in self.jeu.equipe1.equipe:
             if joueur.ko:
@@ -650,6 +649,8 @@ class equipe:
 
         if not cont:
             self.jeu.changeTour()
+        else:
+            print("L'équipe " + str(self.nEquipe)+ " a gagné!")
 
     def forme(self):
         log.debug("Calcul de la forme de l'équipe {0}".format(self.nEquipe))

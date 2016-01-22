@@ -60,10 +60,10 @@ class depThread(qtc.QThread):
                 globalQueue.queueAction.put((pos1, pos2))
 
 
-class choixThread(threading.Thread):
+class choixThread(qtc.QThread):
 
     def __init__(self, gui, nb):
-        super().__init__()
+        qtc.QThread.__init__(self, None)
         self.nb = nb
         self.gui = gui
 
@@ -78,7 +78,7 @@ class choixThread(threading.Thread):
         self.gui.choixPos(self.nb)
         self.gui.equipeActu = 2
         if self.nb == 2:
-            self.gui.buttonChoix.hide()
+            self.emit(qtc.SIGNAL("play"))
             self.blockSend = True
 
 
@@ -91,13 +91,13 @@ class buttonPos(qtg.QPushButton):
         self.parent = parent
 
     def mousePressEvent(self, QMouseEvent):
-        if globalQueue.cond:
+        if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
+            self.parent.send(self, self.nJoueur, self.nEquipe)
+        elif globalQueue.cond:
             x = QMouseEvent.x() + self.x()
             y = QMouseEvent.y() + self.y()
             if queuePos.empty():
                 queuePos.put((x, y))
-        if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
-            self.parent.send(self, self.nJoueur, self.nEquipe)
 
 
 class gui1(qtg.QWidget):
@@ -133,6 +133,7 @@ class gui1(qtg.QWidget):
     def initAll(self):
         self.buttonFinTour.resize(70, 25)
         self.buttonFinTour.move(85, 20)
+        self.buttonFinTour.hide()
         self.button.resize(700, 492)
         self.button.move(20, 90)
         self.button.setIcon(qtg.QIcon("./images/plateau.jpg"))
@@ -160,8 +161,8 @@ class gui1(qtg.QWidget):
         self.buttonBallon.setIconSize(qtc.QSize(20, 20))
         self.buttonBallon.show()
         self.show()
-        self.buttonChoix.resize(70, 20)
-        self.buttonChoix.move(160, 20)
+        self.buttonChoix.resize(70, 25)
+        self.buttonChoix.move(85, 20)
         self.buttonChoix.clicked.connect(self.endChoixTrue)
         self.buttonChoix.show()
         self.choix1.start()
@@ -169,10 +170,15 @@ class gui1(qtg.QWidget):
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
+        self.connect(self.choix2, qtc.SIGNAL("play"), self.changeAffich)
         self.buttonFinTour.clicked.connect(self.finTour)
         self.depThread.start()
         self.thread.start()
         self.interc.start()
+
+    def changeAffich(self):
+        self.buttonChoix.hide()
+        self.buttonFinTour.show()
 
     def endChoixTrue(self):
         self.endChoix = True
