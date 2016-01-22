@@ -56,35 +56,38 @@ class depThread(qtc.QThread):
             if wait:
                 globalQueue.cond = True
                 click = queuePos.get()
-                pos1 = reverse(click)
-                self.emit(qtc.SIGNAL("showPlayerInfo"), pos1)
-                click = queuePos.get()
-                globalQueue.cond = False
-                self.emit(qtc.SIGNAL("hidePlayerInfo"))
-                pos2 = reverse(click)
-                globalQueue.queueAction.put((pos1, pos2))
+                if click != (-1, -1):
+                    pos1 = reverse(click)
+                    self.emit(qtc.SIGNAL("showPlayerInfo"), pos1)
+                    click = queuePos.get()
+                    globalQueue.cond = False
+                    self.emit(qtc.SIGNAL("hidePlayerInfo"))
+                    pos2 = reverse(click)
+                    globalQueue.queueAction.put((pos1, pos2))
 
 
 class choixThread(qtc.QThread):
 
-    def __init__(self, gui, nb):
+    def __init__(self, gui):
         qtc.QThread.__init__(self, None)
-        self.nb = nb
         self.gui = gui
 
     def run(self):
-        if self.nb == 1:
-            self.gui.equipeActu = 1
+        self.gui.equipeActu = 1
         while not(queuePos.empty()):
             queuePos.get()
         while not(self.gui.goChoix.empty()):
             self.gui.goChoix.get()
         self.blockSend = False
-        self.gui.choixPos(self.nb)
+        self.gui.choixPos(1)
+        while not(queuePos.empty()):
+            queuePos.get()
+        while not(self.gui.goChoix.empty()):
+            self.gui.goChoix.get()
         self.gui.equipeActu = 2
-        if self.nb == 2:
-            self.emit(qtc.SIGNAL("play"))
-            self.blockSend = True
+        self.gui.choixPos(2)
+        self.emit(qtc.SIGNAL("play"))
+        self.blockSend = True
 
 
 class buttonPos(qtg.QPushButton):
@@ -133,8 +136,7 @@ class gui1(qtg.QWidget):
         self.interc = askInter()
         self.depThread = depThread()
         self.buttonChoix = qtg.QPushButton("Fin du choix", self)
-        self.choix1 = choixThread(self, 1)
-        self.choix2 = choixThread(self, 2)
+        self.choix = choixThread(self)
         self.initAll()
         sys.exit(self.app.exec_())
 
@@ -154,7 +156,7 @@ class gui1(qtg.QWidget):
         self.playerInfo.setStyleSheet(
             "QFrame {background: rgba(0,255,0,0%); border: rgba(0,255,0,0%)}")
         self.equipeInfo.setReadOnly(True)
-        self.equipeInfo.move(400, 20)
+        self.equipeInfo.move(400, 15)
         self.equipeInfo.setFontWeight(200)
         self.equipeInfo.setFontPointSize(20)
         self.equipeInfo.resize(400, 50)
@@ -187,19 +189,17 @@ class gui1(qtg.QWidget):
         self.buttonChoix.move(85, 20)
         self.buttonChoix.clicked.connect(self.endChoixTrue)
         self.buttonChoix.show()
-        self.choix1.start()
-        self.choix2.start()
+        self.choix.start()
         self.connect(self.depThread, qtc.SIGNAL(
             "showPlayerInfo"), self.showPlayerInfo)
         self.connect(self.depThread, qtc.SIGNAL(
             "showEquipe"), self.showEquipe)
-
         self.connect(self.depThread, qtc.SIGNAL(
             "hidePlayerInfo"), self.hidePlayerInfo)
         self.connect(self.thread, qtc.SIGNAL("update"), self.update)
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
-        self.connect(self.choix2, qtc.SIGNAL("play"), self.changeAffich)
+        self.connect(self.choix, qtc.SIGNAL("play"), self.changeAffich)
         self.buttonFinTour.clicked.connect(self.finTour)
         self.depThread.start()
         self.thread.start()
@@ -207,15 +207,17 @@ class gui1(qtg.QWidget):
 
     def showEquipe(self, nEquipe):
         if nEquipe == 1:
+            self.equipeInfo.setTextColor(qtg.QColor("blue"))
             self.equipeInfo.setText("Equipe 1")
         else:
+            self.equipeInfo.setTextColor(qtg.QColor("red"))
             self.equipeInfo.setText("Equipe 2")
 
     def showPlayerInfo(self, pos1):
         try:
             if self.jeu.matrice[pos1[0]][pos1[1]][-1].nEquipe != 3:
                 joueur = self.jeu.matrice[pos1[0]][pos1[1]][-1]
-                self.playerInfo.setText("Le joueur {0} de l'équipe {1} a encore {2} déplacement(s) restant(s)".format(
+                self.playerInfo.setText("Le joueur {0} de l'équipe {1} a {2} déplacement(s) restant(s)".format(
                     prop[joueur.numero], joueur.nEquipe, joueur.depRestant))
                 self.playerInfo.show()
         except:
@@ -319,6 +321,9 @@ class gui1(qtg.QWidget):
 
     def finTour(self):
         if globalQueue.waitOut:
+            while(not queuePos.empty()):
+                queuePos.get()
+            queuePos.put((-1, -1))
             globalQueue.waitOut = False
             globalQueue.queueAction.put(["fin"])
 

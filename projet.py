@@ -83,9 +83,8 @@ class jeu:
         self.equipe1 = equipe(self, 1, positions1)
         self.equipe2 = equipe(self, 2, positions2)
         self.ballon = ballon((6, random.randint(1, 6)), self)
-        self.tour = random.randint(1,2)
+        self.tour = random.randint(1, 2)
         globalQueue.queue.put(self)
-        self.changeTour()
 
     def changeTour(self):
         log.info("Début des tours de jeu")
@@ -381,7 +380,7 @@ class joueur:
         log.info("Le joueur {0} essaie de plaquer le joueur {1}".format(
             self.numero, joueur2.numero))
         if sum(absol(sub(self.pos, joueur2.pos))) == 1 and (plaquer or self.depRestant > 1) and not(self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko):
-            if joueur2.nEquipe != 3 and joueur2.nEquipe != self.nEquipe and not (joueur2.ko or self.ko) and ((self.porteur and not(plaquer)) or (joueur2.porteur and plaquer)):
+            if joueur2.nEquipe != 3 and joueur2.nEquipe != self.nEquipe and not (joueur2.ko or self.ko) and ((self.porteur and not(plaquer) and self.depRestant > 1) or (joueur2.porteur and plaquer)):
                 resolution = self.jeu.resolution(self, joueur2)
                 if resolution > 0:
                     if resolution >= 2 and plaquer:
@@ -402,7 +401,7 @@ class joueur:
                 else:
                     self.ko = True
                     self.koCount = 1
-                    if not plaquer :
+                    if not plaquer:
                         joueur2.poseballon(self)
         globalQueue.queue.put(self.jeu)
 

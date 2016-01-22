@@ -25,7 +25,10 @@ class rules(threading.Thread):
 
     def run(self):
         jeu = projet.jeu()
-        jeu.equipe1.joue()
+        if jeu.tour == 1:
+            jeu.equipe1.joue()
+        else:
+            jeu.equipe2.joue()
         print("Fin du jeu")
 
 t1 = rules()
