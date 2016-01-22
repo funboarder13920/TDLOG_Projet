@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: latin-1 -*-
 import random
 import globalQueue
 import logging
@@ -69,7 +67,6 @@ class jeu:
         for i in range(nbLigne):
             for j in range(nbColonne):
                 joueur(None, self, 3, (j, i), "", 0)
-        os.system('clear')
         # TODO :Mettre ce texte dans une fonction printIntro
         print("****************************************** Kahmaté ******************************************")
         print("Auteurs : Valentin B., Quentin B., François D (2015) ")
@@ -78,7 +75,6 @@ class jeu:
         print("\n")
         print("Instructions: ")
         print("* Suivre les instructions de la console")
-        print("* Pour arrêter la partie : CTRL+D ")  # TODO : à implémenter
         print("**********************************************************************************************")
         print("\nChoix de la position des joueurs de l'équipe 1")
         positions1 = choixPos(1)
@@ -87,8 +83,9 @@ class jeu:
         self.equipe1 = equipe(self, 1, positions1)
         self.equipe2 = equipe(self, 2, positions2)
         self.ballon = ballon((6, random.randint(1, 6)), self)
-        self.tour = 1
+        self.tour = random.randint(1,2)
         globalQueue.queue.put(self)
+        self.changeTour()
 
     def changeTour(self):
         log.info("Début des tours de jeu")
@@ -257,9 +254,6 @@ class joueur:
             if self.porteur:
                 log.info("Le joueur est porteur, le ballon doit aussi se déplacer")
                 self.jeu.ballon.deplacement()
-            else:
-                log.error(
-                    "Le joueur doit être libre et se déplacer d'une seule valeur")
         else:
             log.error("Le joueur ne doit pas être KO")
         globalQueue.queue.put(self.jeu)
@@ -316,6 +310,73 @@ class joueur:
                 self.numero))
         globalQueue.queue.put(self.jeu)
 
+    def poseballon(self, joueur2):
+        log.debug("Plaquage classique ou passage en force")
+        if joueur2.pos[0] > self.pos[0]:
+            log.debug("Joueur plaqué à gauche du plaqueur")
+            if joueur2.pos[0] < nbColonne - 2:
+                self.jeu.ballon.position = add(
+                    self.jeu.ballon.position, (1, 0))
+            else:
+                log.debug("Joueur2 est sur le bord droit")
+                if joueur2.pos[1] < nbLigne / 2:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, 1))
+                else:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, -1))
+        elif joueur2.pos[0] < self.pos[0]:
+            log.debug("Joueur plaqué à droite du plaqueur")
+            if joueur2.pos[0] > 1:
+                self.jeu.ballon.position = add(
+                    self.jeu.ballon.position, (-1, 0))
+            else:
+                log.debug(
+                    "Cas particulier où le joueur plaqué est sur le bord gauche")
+                if joueur2.pos[1] < nbLigne / 2:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, 1))
+                else:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, -1))
+        else:
+            if joueur2.pos[1] < self.pos[1]:
+                log.debug(
+                    "Joueur plaqué au dessus du plaqueur")
+                if joueur2.pos[1] > 0:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, -1))
+                else:
+                    log.debug(
+                        "Le joueur plaqué est tout en haut")
+                    if joueur2.pos[0] < nbColonne / 2:
+                        self.jeu.ballon.position = add(
+                            self.jeu.ballon.position, (1, 0))
+                    else:
+                        self.jeu.ballon.position = add(
+                            self.jeu.ballon.position, (-1, 0))
+            else:
+                log.debug(
+                    "Joueur plaqué en dessous du plaqueur")
+                if joueur2.pos[1] < nbLigne - 1:
+                    self.jeu.ballon.position = add(
+                        self.jeu.ballon.position, (0, 1))
+                else:
+                    log.debug(
+                        "Le joueur plaqué est tout en bas")
+                    if joueur2.pos[0] < nbColonne / 2:
+                        self.jeu.ballon.position = add(
+                            self.jeu.ballon.position, (1, 0))
+                    else:
+                        self.jeu.ballon.position = add(
+                            self.jeu.ballon.position, (-1, 0))
+        log.debug(
+            "Un joueur sur la case du ballon qui le récupère")
+        self.jeu.ballon.porteur = self.jeu.matrice[
+            self.jeu.ballon.position[0]][self.jeu.ballon.position[1]][-1]
+        if self.jeu.ballon.porteur.nEquipe != 3:
+            self.jeu.ballon.porteur.porteur = True
+
     def placage(self, joueur2, plaquer=True):
         log.info("Le joueur {0} essaie de plaquer le joueur {1}".format(
             self.numero, joueur2.numero))
@@ -329,82 +390,20 @@ class joueur:
                         self.jeu.ballon.porteur = self
                         self.jeu.ballon.deplacement()
                     else:
-                        log.debug("Plaquage classique ou passage en force")
-                        if joueur2.pos[0] > self.pos[0]:
-                            log.debug("Joueur plaqué à gauche du plaqueur")
-                            if joueur2.pos[0] < nbColonne - 2:
-                                self.jeu.ballon.position = add(
-                                    self.jeu.ballon.position, (1, 0))
-                            else:
-                                log.debug("Joueur2 est sur le bord droit")
-                                if joueur2.pos[1] < nbLigne / 2:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, 1))
-                                else:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, -1))
-                        elif joueur2.pos[0] < self.pos[0]:
-                            log.debug("Joueur plaqué à droite du plaqueur")
-                            if joueur2.pos[0] > 1:
-                                self.jeu.ballon.position = add(
-                                    self.jeu.ballon.position, (-1, 0))
-                            else:
-                                log.debug(
-                                    "Cas particulier où le joueur plaqué est sur le bord gauche")
-                                if joueur2.pos[1] < nbLigne / 2:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, 1))
-                                else:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, -1))
-                        else:
-                            if joueur2.pos[1] < self.pos[1]:
-                                log.debug(
-                                    "Joueur plaqué au dessus du plaqueur")
-                                if joueur2.pos[1] > 0:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, -1))
-                                else:
-                                    log.debug(
-                                        "Le joueur plaqué est tout en haut")
-                                    if joueur2.pos[0] < nbColonne / 2:
-                                        self.jeu.ballon.position = add(
-                                            self.jeu.ballon.position, (1, 0))
-                                    else:
-                                        self.jeu.ballon.position = add(
-                                            self.jeu.ballon.position, (-1, 0))
-                            else:
-                                log.debug(
-                                    "Joueur plaqué en dessous du plaqueur")
-                                if joueur2.pos[1] < nbLigne - 1:
-                                    self.jeu.ballon.position = add(
-                                        self.jeu.ballon.position, (0, 1))
-                                else:
-                                    log.debug(
-                                        "Le joueur plaqué est tout en bas")
-                                    if joueur2.pos[0] < nbColonne / 2:
-                                        self.jeu.ballon.position = add(
-                                            self.jeu.ballon.position, (1, 0))
-                                    else:
-                                        self.jeu.ballon.position = add(
-                                            self.jeu.ballon.position, (-1, 0))
-                        log.debug(
-                            "Un joueur sur la case du ballon qui le récupère")
-                        self.jeu.ballon.porteur = self.jeu.matrice[
-                            self.jeu.ballon.position[0]][self.jeu.ballon.position[1]][-1]
-                        if self.jeu.ballon.porteur.nEquipe != 3:
-                            self.jeu.ballon.porteur.porteur = True
+                        self.poseballon(joueur2)
                     joueur2.ko = True
                     joueur2.koCount = 1
                     joueur2.porteur = False
                     if plaquer:
                         self.depRestant = 0
-                    elif not(self.ko):
+                    else:
                         self.deplacement(joueur2.pos)
                         self.depRestant -= 1
                 else:
                     self.ko = True
                     self.koCount = 1
+                    if not plaquer :
+                        joueur2.poseballon(self)
         globalQueue.queue.put(self.jeu)
 
     def nobodyFront(self):
@@ -464,137 +463,8 @@ class equipe:
         self.nEquipe = nEquipe
         self.equipe = [joueur(self, jeu, nEquipe, positions[
                               i], prop[i], i) for i in range(6)]
-        self.tutoriel = 1
-        self.interception = False
 
-    def optionJeu(self):
-        if (self.tutoriel == 1):
-            print("Pour passer la balle, entrez 0")
-            print("\n Pour vous déplacer, entrez 1")
-            print("\n Pour finir votre tour, entrez -1")
-            print("\n \n Voulez-vous désactiver le tutoriel?")
-            print("\n Si oui, tapez 0. Sinon, tapez 1")
-            activer_tutoriel = intInput("Tutoriel :")
-            self.tutoriel = activer_tutoriel
-            if (self.tutoriel == 0):
-                log.debug("Tutoriel désactivé")
-
-    def reglePasse(self):
-        if (self.tutoriel == 1):
-            print("RAPPEL DES REGLES DE PASSE")
-            print("Vous pouvez faire autant de passes que vous voulez")
-            print(
-                "\n Vous ne pouvez passer la balle qu'à un joueur à l'arrière du porteur")
-            print("\n Le receveur doit être positionné à 1 ou 2 cases de distance sur une ligne droite orthogonale ou diagonale")
-            print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-            print("\n \n Voulez-vous désactiver le tutoriel?")
-            print("\n Si oui, tapez 0. Sinon, tapez 1")
-            activer_tutoriel = intInput("Tutoriel :")
-            self.tutoriel = activer_tutoriel
-            if (activer_tutoriel == 0):
-                log.info("Tutoriel désactivé")
-
-    def regleDeplacement(self):
-        if (self.tutoriel == 1):
-            print("RAPPEL DES REGLES DE PASSE")
-            print("\n Vous ne pouvez pas déplacer plus de 2 joueurs différents par tour")
-            print(
-                "\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
-            print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
-            print(
-                "\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
-            print(
-                "\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
-            print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-            print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
-            print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")
-            print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-            print("\n \n Voulez-vous désactiver le tutoriel?")
-            print("\n Si oui, tapez 0. Sinon, tapez 1")
-            activer_tutoriel = intInput("Tutoriel :")
-            self.tutoriel = activer_tutoriel
-            if (activer_tutoriel == 0):
-                log.info("tutoriel désactivé")
-
-    def possibilitesDeplacement(self):
-        if (self.coupRestant == 2):
-            print("Vous pouvez encore déplacer 2 nouveaux joueurs ce tour")
-            print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[0].depRestant))
-            print("\n Rappel : le deuxième joueur ordinaire (numéro 1) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[1].depRestant))
-            print("\n Rappel : le gros costaud (numéro 2) peut encore se déplacer de {0} cases".format(
-                (self.equipe)[2].depRestant))
-            print("\n Rappel : le dur (numéro 3) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[3].depRestant))
-            print("\n Rappel : le rapide (numéro 4) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[4].depRestant))
-            print("\n Rappel : le futé (numéro 5) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[5].depRestant))
-        elif (self.coupRestant == 1):
-            k = 0
-            while k < 6:
-                if (not (self.equipe[k].depRestant == bonus[self.equipe[k].prop][2])):
-                    break
-            # KO bien gérés?
-            print("Vous pouvez encore déplacer un nouveau joueur ce tour")
-            print(
-                "\n Le joueur {0} de numéro {1} s'est déjà déplacé ".format(prop[k], k))
-            print("Vous pouvez encore déplacer 1 nouveau joueur ce tour")
-            print("\n Rappel : le premier joueur ordinaire (numéro 0) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[0].depRestant))
-            print("\n Rappel : le premier joueur ordinaire (numéro 1) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[1].depRestant))
-            print("\n Rappel : le gros costaud (numéro 2) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[2].depRestant))
-            print("\n Rappel : le dur (numéro 3) peut encore se déplacer de {0} cases".format(
-                (self.equipe)[3].depRestant))
-            print("\n Rappel : le rapide (numéro 4) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[4].depRestant))
-            print("\n Rappel : le futé (numéro 5) peut encore se déplacer de {0} cases ".format(
-                (self.equipe)[5].depRestant))
-        else:
-            k1 = 0
-            k2 = 0
-            i = 0
-            while k2 < 6:
-                if ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i == 0)):
-                    k1 = k2
-                    i += 1
-                elif ((not (self.equipe[k2].depRestant == bonus[self.equipe[k2].prop][2])) and (i == 1)):
-                    break
-            # KO bien gérés?
-            print("Vous ne pouvez plus déplacer de nouveau joueur ce tour")
-            print("\n Le joueur {0} de numéro {1} peut encore se déplacer de {2}".format(
-                prop[k1], k1, self.equipe[k1].depRestant))
-            print("\n Le joueur {0} de numéro {1} peut encore se déplacer de {2}".format(
-                (prop[k2], k2, self.equipe[k2].depRestant)))
-            print("\n Rappel : le joueur {0} (numéro {1}) peut encore se déplacer de {2} cases ".format(
-                (self.equipe)[0].depRestant))
-
-    def reglePlaquage(self):
-        if (self.tutoriel == 1):
-            print("RAPPEL DES REGLES DE PLAQUAGE")
-            print("\n Vous devez être à côté d'un joueur pour le plaquer")
-            print(
-                "\n Toutefois, vous pouvez utiliser vos déplacements dans l'ordre que vous voulez")
-            print("Vous ne pouvez pas courir sur un autre joueur à moins qu'il ne soit KO ou que vous forciez le passage")
-            print(
-                "\n Rappel : les joueurs ordinaires (joueur 0 et 1) peuvent se déplacer de 3 cases par tour")
-            print(
-                "\n Rappel : le gros costaud (joueur 2) peut se déplacer de 2 cases par tour")
-            print("\n Rappel : le dur (joueur 3) peut se déplacer de 3 cases par tour")
-            print("\n Rappel : le rapide (joueur 4) peut se déplacer de 4 cases par tour")
-            print("\n Rappel : le futé (joueur 5) peut se déplacer de 3 cases par tour")
-            print("\n Attention, si un joueur adverse est sur la trajectoire de la balle, il risque de l'intercepter")
-            print("\n \n Voulez-vous désactiver le tutoriel?")
-            print("\n Si oui, tapez 0. Sinon, tapez 1")
-            activer_tutoriel = intInput("Tutoriel :")
-            self.tutoriel = activer_tutoriel
-            if (self.tutoriel == 0):
-                log.info("Tutoriel désactivé")
-
-    def joue(self, interception=False):
+    def joue(self):
         # Reinitialisation
         log.debug("L'équipe {0} joue un tour".format(self.nEquipe))
         self.coupRestant = 2
@@ -614,6 +484,7 @@ class equipe:
         while cont:
             globalQueue.waitOut = True
             globalQueue.waitInput.put(True)
+            globalQueue.equipeJoue.put(self.nEquipe)
             args = globalQueue.queueAction.get()
             globalQueue.waitOut = False
             if args[0] == "fin":
@@ -627,7 +498,7 @@ class equipe:
                 if inRangeGrid(pos1) and inRangeGrid(pos2):
                     j1 = self.jeu.matrice[pos1[0]][pos1[1]][-1]
                     j2 = self.jeu.matrice[pos2[0]][pos2[1]][-1]
-                    if sum(sub(pos1, pos2)) > 1:
+                    if sum(absol(sub(pos1, pos2))) > 1:
                         if (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
                             j1.passe(j2)
                         else:
@@ -635,11 +506,13 @@ class equipe:
                     else:
                         if (j2.nEquipe == 3 or j2.ko) and j1.nEquipe == self.nEquipe:
                             j1.deplacement(pos2)
-                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != j1.nEquipe and j1.porteur):
+                            if j1.pos[0] == 0 or j1.pos[0] == 12:
+                                break
+                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != j1.nEquipe and j1.porteur and j2.nEquipe != 3):
                             j1.placage(j2, False)
                         elif (j1.nEquipe == self.nEquipe and j2.nEquipe == j1.nEquipe):
                             j1.passe(j2)
-                        else:
+                        elif (j1.nEquipe == self.nEquipe and j2.nEquipe != self.nEquipe and j2.nEquipe != 3):
                             j1.placage(j2)
         for joueur in self.jeu.equipe1.equipe:
             if joueur.ko:
@@ -650,6 +523,8 @@ class equipe:
 
         if not cont:
             self.jeu.changeTour()
+        else:
+            print("L'équipe " + str(self.nEquipe) + " a gagné!")
 
     def forme(self):
         log.debug("Calcul de la forme de l'équipe {0}".format(self.nEquipe))
