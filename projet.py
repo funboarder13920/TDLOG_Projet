@@ -7,7 +7,7 @@ import os
 
 logging.config.fileConfig("log.conf")
 log = logging.getLogger("application")
-log.propagate = False
+log.propagate = True
 nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire", "ordinaire", "dur", "costaud", "fute", "rapide"]
@@ -482,8 +482,9 @@ class equipe:
         cont = True
         while cont:
             globalQueue.waitOut = True
-            globalQueue.waitInput.put(True)
-            globalQueue.equipeJoue.put(self.nEquipe)
+            if globalQueue.waitInput.empty():
+                globalQueue.waitInput.put(True)
+                globalQueue.equipeJoue.put(self.nEquipe)
             args = globalQueue.queueAction.get()
             globalQueue.waitOut = False
             if args[0] == "fin":

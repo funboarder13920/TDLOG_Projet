@@ -2,6 +2,8 @@ import PyQt4.QtCore as qtc
 import PyQt4.QtGui as qtg
 import globalQueue
 import queue
+import logging
+import logging.config
 import threading
 import sys
 import random
@@ -14,6 +16,8 @@ token = ["normal1.png", "normal2.png", "dur.png",
 
 queuePos = queue.Queue()
 queueListen = queue.Queue()
+log = logging.getLogger("gui")
+log.propagate = True
 
 
 def reverse(click):
@@ -50,8 +54,10 @@ class depThread(qtc.QThread):
 
     def run(self):
         while True:
+            print("depThread: reception de l'équipe qui attend une action")
             wait = globalQueue.waitInput.get()
             nEquipe = globalQueue.equipeJoue.get()
+            print("depThread: équipe reçue")
             self.emit(qtc.SIGNAL("showEquipe"), nEquipe)
             if wait:
                 globalQueue.cond = True
@@ -60,10 +66,11 @@ class depThread(qtc.QThread):
                     pos1 = reverse(click)
                     self.emit(qtc.SIGNAL("showPlayerInfo"), pos1)
                     click = queuePos.get()
-                    globalQueue.cond = False
-                    self.emit(qtc.SIGNAL("hidePlayerInfo"))
-                    pos2 = reverse(click)
-                    globalQueue.queueAction.put((pos1, pos2))
+                    if click != (-1, -1):
+                        globalQueue.cond = False
+                        self.emit(qtc.SIGNAL("hidePlayerInfo"))
+                        pos2 = reverse(click)
+                        globalQueue.queueAction.put((pos1, pos2))
 
 
 class choixThread(qtc.QThread):
@@ -73,6 +80,7 @@ class choixThread(qtc.QThread):
         self.gui = gui
 
     def run(self):
+        print("ChoixThread : enter")
         self.gui.equipeActu = 1
         while not(queuePos.empty()):
             queuePos.get()
@@ -99,6 +107,7 @@ class buttonPos(qtg.QPushButton):
         self.parent = parent
 
     def mousePressEvent(self, QMouseEvent):
+        print("click bouton")
         if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
             self.parent.send(self, self.nJoueur, self.nEquipe)
         if globalQueue.cond:
@@ -138,6 +147,7 @@ class gui1(qtg.QWidget):
         self.buttonChoix = qtg.QPushButton("Fin du choix", self)
         self.choix = choixThread(self)
         self.initAll()
+        print("fin de l'initialisation")
         sys.exit(self.app.exec_())
 
     def initAll(self):
@@ -204,8 +214,10 @@ class gui1(qtg.QWidget):
         self.depThread.start()
         self.thread.start()
         self.interc.start()
+        print("initAll : fin de l'affichage")
 
     def showEquipe(self, nEquipe):
+        print("showEquip: affiche équipe")
         if nEquipe == 1:
             self.equipeInfo.setTextColor(qtg.QColor("blue"))
             self.equipeInfo.setText("Equipe 1")
@@ -215,13 +227,14 @@ class gui1(qtg.QWidget):
 
     def showPlayerInfo(self, pos1):
         try:
+            print("showPlayerInfo: Affiche les infos du joueur")
             if self.jeu.matrice[pos1[0]][pos1[1]][-1].nEquipe != 3:
                 joueur = self.jeu.matrice[pos1[0]][pos1[1]][-1]
                 self.playerInfo.setText("Le joueur {0} de l'équipe {1} a {2} déplacement(s) restant(s)".format(
                     prop[joueur.numero], joueur.nEquipe, joueur.depRestant))
                 self.playerInfo.show()
         except:
-            pass
+            print("showPlayerInfo: Fail de l'affichage des infos du joueur")
 
     def hidePlayerInfo(self):
         self.playerInfo.hide()
@@ -231,73 +244,85 @@ class gui1(qtg.QWidget):
         self.buttonFinTour.show()
 
     def endChoixTrue(self):
+        print("endChoixTrue: mettre fin au choix")
         self.endChoix = True
         if queuePos.empty():
+            print("endChoixTrue: remplir queue.pos pour finir la thread")
             queuePos.put((-1, -1))
         if self.goChoix.empty():
+            print("endChoixTrue: remplir goChoix pour sortir d'une thread")
             self.goChoix.put(True)
 
     def send(self, button, nJoueur, nEquipe):
         if not self.blockSend:
+            print("Send: envoyer les infos du joueur sur lequel on vient de cliquer")
             self.nJoueurTemp = nJoueur
             self.nEquipeTemp = nEquipe
             self.posTemp = reverse((self.button.x(), self.button.y()))
             if self.goChoix.empty():
+                print("Send: Maintenant il faut une position sur le plateau")
                 self.goChoix.put(True)
 
     def choixPos(self, nEquipe):
         globalQueue.waitChoix.get()
         positions = [(-1, -1) for i in range(6)]
         k = 0
+        print("ChoixPos: enter")
         while True:
             if self.nEquipeTemp == nEquipe and not(self.endChoix):
                 if self.endChoix:
                     continue
                 else:
+                    print("choixPos: récupérer goChoix")
                     self.goChoix.get()
+                    print("choixPos: goChoix a été correctement récupéré")
+                stop = False
                 while not queuePos.empty():
-                    queuePos.get()
-                self.blockSend = True
-                globalQueue.cond = True
-                if self.endChoix:
-                    continue
-                else:
-                    click = queuePos.get()
-                globalQueue.cond = False
-                (posx, posy) = reverse(click)
-                if not(self.endChoix):
-                    if (1 == self.nEquipeTemp):
-                        if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
-                            if not (posx, posy) in positions:
-                                if not self.endChoix:
-                                    if positions[self.nJoueurTemp] == (-1, -1):
-                                        k += 1
-                                    positions[self.nJoueurTemp] = (posx, posy)
-                                    self.buttonEquipe1[self.nJoueurTemp].move(
-                                        67 + posx * 46.7, 478 - posy * 47.2)
-                            else:
-                                print(
-                                    "Veuillez réessayer : la position choisie est déjà occupée.")
-                        else:
-                            print(
-                                "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
+                    if queuePos.get()==(-1,-1):
+                        stop = True
+                    print("choixPos: vider queue.pos")
+                if not(stop):
+                    self.blockSend = True
+                    globalQueue.cond = True
+                    if self.endChoix:
+                        continue
                     else:
-                        if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
-                            if not (posx, posy) in positions:
-                                if not self.endChoix:
-                                    if positions[self.nJoueurTemp] == (-1, -1):
-                                        k += 1
-                                    positions[self.nJoueurTemp] = (posx, posy)
-                                    self.buttonEquipe2[self.nJoueurTemp].move(
-                                        67 + posx * 46.7, 478 - posy * 47.2)
-
+                        click = queuePos.get()
+                    globalQueue.cond = False
+                    (posx, posy) = reverse(click)
+                    if not(self.endChoix):
+                        if (1 == self.nEquipeTemp):
+                            if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
+                                if not (posx, posy) in positions:
+                                    if not self.endChoix:
+                                        if positions[self.nJoueurTemp] == (-1, -1):
+                                            k += 1
+                                        positions[self.nJoueurTemp] = (posx, posy)
+                                        self.buttonEquipe1[self.nJoueurTemp].move(
+                                            67 + posx * 46.7, 478 - posy * 47.2)
+                                else:
+                                    print(
+                                        "Veuillez réessayer : la position choisie est déjà occupée.")
                             else:
                                 print(
-                                    "Veuillez réessayer : la position choisie est déjà occupée.")
+                                    "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et 0<=y<=7")
                         else:
-                            print(
-                                "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
-                    self.blockSend = False
+                            if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
+                                if not (posx, posy) in positions:
+                                    if not self.endChoix:
+                                        if positions[self.nJoueurTemp] == (-1, -1):
+                                            k += 1
+                                        positions[self.nJoueurTemp] = (posx, posy)
+                                        self.buttonEquipe2[self.nJoueurTemp].move(
+                                            67 + posx * 46.7, 478 - posy * 47.2)
+
+                                else:
+                                    print(
+                                        "Veuillez réessayer : la position choisie est déjà occupée.")
+                            else:
+                                print(
+                                    "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
+                        self.blockSend = False
             else:
                 self.blockSend = False
             if k == 6 and self.endChoix:
@@ -310,6 +335,7 @@ class gui1(qtg.QWidget):
             else:
                 self.endChoix = False
                 self.blockSend = False
+            self.blockSend = False
 
     def askInterception(self, str):
         reply = qtg.QMessageBox.question(
