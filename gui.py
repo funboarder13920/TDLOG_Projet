@@ -109,11 +109,14 @@ class buttonPos(qtg.QPushButton):
     def mousePressEvent(self, QMouseEvent):
         print("click bouton")
         if self.nEquipe == self.parent.equipeActu and self.nEquipe != 0:
+            print("bouton joueur")
             self.parent.send(self, self.nJoueur, self.nEquipe)
         if globalQueue.cond:
+            print("bouton plateau")
             x = QMouseEvent.x() + self.x()
             y = QMouseEvent.y() + self.y()
             if queuePos.empty():
+                print("on remplit la pos")
                 queuePos.put((x, y))
 
 
@@ -254,6 +257,7 @@ class gui1(qtg.QWidget):
             self.goChoix.put(True)
 
     def send(self, button, nJoueur, nEquipe):
+        print("Fonction send")
         if not self.blockSend:
             print("Send: envoyer les infos du joueur sur lequel on vient de cliquer")
             self.nJoueurTemp = nJoueur
@@ -274,20 +278,24 @@ class gui1(qtg.QWidget):
                     continue
                 else:
                     print("choixPos: récupérer goChoix")
+                    print(self.goChoix.empty())
                     self.goChoix.get()
                     print("choixPos: goChoix a été correctement récupéré")
                 stop = False
+                self.blockSend = True
                 while not queuePos.empty():
                     if queuePos.get()==(-1,-1):
                         stop = True
                     print("choixPos: vider queue.pos")
                 if not(stop):
-                    self.blockSend = True
+                    print("choixPos: en attente du clic")
                     globalQueue.cond = True
                     if self.endChoix:
                         continue
                     else:
+                        print("choixpos: récupération du clic")
                         click = queuePos.get()
+                        print("choixpos: clic récupéré")
                     globalQueue.cond = False
                     (posx, posy) = reverse(click)
                     if not(self.endChoix):
@@ -322,7 +330,8 @@ class gui1(qtg.QWidget):
                             else:
                                 print(
                                     "Veuillez réessayer : la position choisie est hors limite. Il faut que 1=<x<=2 et que 0<=y<=7")
-                        self.blockSend = False
+                    print("choixpos: fin de l'ajout")
+                    self.blockSend = False
             else:
                 self.blockSend = False
             if k == 6 and self.endChoix:
@@ -336,6 +345,7 @@ class gui1(qtg.QWidget):
                 self.endChoix = False
                 self.blockSend = False
             self.blockSend = False
+            self.nEquipe = -1
 
     def askInterception(self, str):
         reply = qtg.QMessageBox.question(
