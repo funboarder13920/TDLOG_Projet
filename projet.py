@@ -16,6 +16,7 @@ bonus = {"ordinaire": (0, 0, 3), "dur": (1, 0, 3), "costaud": (
 
 crash = pyglet.media.load("crash.mp3", streaming=False)
 swoosh = pyglet.media.load("swoosh.mp3", streaming=False)
+firework = pyglet.media.load("Fireworks.mp3", streaming=False)
 
 
 def add(p1, p2):
@@ -236,11 +237,11 @@ class joueur:
         # d'au plus 1
         if not self.ko:
             if self.depRestant > 0 and sum(absol(sub(self.pos, pos))) == 1 and self.jeu.libre(pos, self.depRestant) and self.onGrid(pos):
-                swoosh.play()
                 if self.depRestant == bonus[self.prop][2]:
                     # Le joueur ne s'est pas encore déplacé
                     if self.equipe.coupRestant > 0:
                         self.equipe.coupRestant -= 1
+                        swoosh.play()
                         self.deplace(pos)
                         if self.jeu.ballon.position == pos:
                             self.porteur = True
@@ -249,6 +250,7 @@ class joueur:
                         log.error(
                             "Vous ne pouvez pas déplacer plus de joueurs")
                 else:
+                    swoosh.play()
                     self.deplace(pos)
                     if self.jeu.ballon.position == pos:
                         self.porteur = True
@@ -531,6 +533,7 @@ class equipe:
         if not cont:
             self.jeu.changeTour()
         else:
+            firework.play()
             print("L'équipe " + str(self.nEquipe) + " a gagné!")
 
     def forme(self):
