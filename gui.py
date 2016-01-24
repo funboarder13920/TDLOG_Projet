@@ -4,10 +4,9 @@ import globalQueue
 import queue
 import logging
 import logging.config
-import threading
 import sys
-import random
-import time
+import pyglet
+swoosh = pyglet.media.load("swoosh.mp3", streaming=False)
 
 prop = ["ordinaire", "ordinaire", "dur", "costaud", "futé", "rapide"]
 token = ["normal1.png", "normal2.png", "dur.png",
@@ -88,6 +87,7 @@ class choixThread(qtc.QThread):
             self.gui.goChoix.get()
         self.blockSend = False
         self.gui.choixPos(1)
+        swoosh.play()
         while not(queuePos.empty()):
             queuePos.get()
         while not(self.gui.goChoix.empty()):
@@ -284,7 +284,7 @@ class gui1(qtg.QWidget):
                 stop = False
                 self.blockSend = True
                 while not queuePos.empty():
-                    if queuePos.get()==(-1,-1):
+                    if queuePos.get() == (-1, -1):
                         stop = True
                     print("choixPos: vider queue.pos")
                 if not(stop):
@@ -303,9 +303,11 @@ class gui1(qtg.QWidget):
                             if (posx >= 1 and posx <= 2 and posy >= 0 and posy < 8):
                                 if not (posx, posy) in positions:
                                     if not self.endChoix:
+                                        swoosh.play()
                                         if positions[self.nJoueurTemp] == (-1, -1):
                                             k += 1
-                                        positions[self.nJoueurTemp] = (posx, posy)
+                                        positions[self.nJoueurTemp] = (
+                                            posx, posy)
                                         self.buttonEquipe1[self.nJoueurTemp].move(
                                             67 + posx * 46.7, 478 - posy * 47.2)
                                 else:
@@ -318,9 +320,11 @@ class gui1(qtg.QWidget):
                             if (posx >= 10 and posx <= 11 and posy >= 0 and posy < 8):
                                 if not (posx, posy) in positions:
                                     if not self.endChoix:
+                                        swoosh.play()
                                         if positions[self.nJoueurTemp] == (-1, -1):
                                             k += 1
-                                        positions[self.nJoueurTemp] = (posx, posy)
+                                        positions[self.nJoueurTemp] = (
+                                            posx, posy)
                                         self.buttonEquipe2[self.nJoueurTemp].move(
                                             67 + posx * 46.7, 478 - posy * 47.2)
 

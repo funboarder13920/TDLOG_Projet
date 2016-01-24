@@ -2,8 +2,7 @@ import random
 import globalQueue
 import logging
 import logging.config
-import copy
-import os
+import pyglet
 
 logging.config.fileConfig("log.conf")
 log = logging.getLogger("application")
@@ -14,6 +13,9 @@ prop = ["ordinaire", "ordinaire", "dur", "costaud", "fute", "rapide"]
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {"ordinaire": (0, 0, 3), "dur": (1, 0, 3), "costaud": (
     2, 1, 2), "fute": (0, 1, 3), "rapide": (-1, -1, 4)}
+
+crash = pyglet.media.load("crash.mp3", streaming=False)
+swoosh = pyglet.media.load("swoosh.mp3", streaming=False)
 
 
 def add(p1, p2):
@@ -234,6 +236,7 @@ class joueur:
         # d'au plus 1
         if not self.ko:
             if self.depRestant > 0 and sum(absol(sub(self.pos, pos))) == 1 and self.jeu.libre(pos, self.depRestant) and self.onGrid(pos):
+                swoosh.play()
                 if self.depRestant == bonus[self.prop][2]:
                     # Le joueur ne s'est pas encore déplacé
                     if self.equipe.coupRestant > 0:
@@ -285,6 +288,7 @@ class joueur:
             self.numero, joueur2.numero))
         if self.porteur:
             if self.enArriere(joueur2):
+                swoosh.play()
                 self.porteur = False
                 joueur2.porteur = True
                 self.jeu.ballon.porteur = joueur2
@@ -294,6 +298,7 @@ class joueur:
                     globalQueue.interAdv.put(adv)
                     if globalQueue.askInter.get():
                         if self.jeu.resolution(self, adv) <= 0:
+                            crash.play()
                             adv.porteur = True
                             joueur2.porteur = False
                             self.jeu.ballon.porteur = adv
@@ -381,6 +386,7 @@ class joueur:
             self.numero, joueur2.numero))
         if sum(absol(sub(self.pos, joueur2.pos))) == 1 and (plaquer or self.depRestant > 1) and not(self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko):
             if joueur2.nEquipe != 3 and joueur2.nEquipe != self.nEquipe and not (joueur2.ko or self.ko) and ((self.porteur and not(plaquer) and self.depRestant > 1) or (joueur2.porteur and plaquer)):
+                crash.play()
                 resolution = self.jeu.resolution(self, joueur2)
                 if resolution > 0:
                     if resolution >= 2 and plaquer:
@@ -433,6 +439,7 @@ class joueur:
         log.info("Le joueur {0} essaie de tirer en avant".format(self.numero))
         if self.porteur:
             if self.nobodyFront() and self.front(pos):
+                swoosh.play()
                 self.porteur = False
                 self.jeu.ballon.position = pos
                 self.jeu.ballon.porteur = self.jeu.matrice[pos[0]][pos[1]][-1]
