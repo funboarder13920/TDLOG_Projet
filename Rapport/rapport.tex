@@ -47,14 +47,14 @@ citecolor=black,	%couleur des références
 
 \section{Objectif initial}
 
-\begin{itemize}
+Notre objectif initial fut de r\'ealiser un jeu de Kahmat\'e fonctionnel, et d'impl\'ementer une intelligence artificielle. Nous pensions d'abord en finir rapidement avec l'implémen-tation du jeu, pour pouvoir ensuite nous consacrer pleinement \`a l'intelligence artificielle, la partie la plus difficile \`a encoder selon nous.
 
-\item Notre objectif initial fut de r\'ealiser un jeu de Kahmat\'e fonctionnel, et d'impl\'ementer une intelligence artificielle. Nous pensions d'abord en finir rapidement avec l' implémentation du jeu, pour pouvoir ensuite nous consacrer pleinement \`a l'intelligence artificielle, la partie la plus difficile \`a encoder selon nous. \\
-\item Le but \'etait donc d'abord fonctionnel : rendre un jeu qui marche. L'unique contrainte non-fonctionnelle que nous nous \'etions fix\'es : une certaine robustesse aux bugs. La performance, en revanche, n'est que peu rentr\'ee en ligne de compte, sauf lorsque nous avons pens\'e \`a faire une IA. \\
-\item Dans l'esprit du cours de d\'eveloppment logiciel, nous n'avions pas de contrainte pr\'ecise quant au travail \`a accomplir : nous \'etions libres de faire les choix que nous souhaitions pour mener \`a bien notre travail. \\
-\item En d\'efinitive, nous avions donc carte blanche pour accomplir notre but m\^eme si notre encadrant, Xavier Clerc, \'etait pr\'esent pour nous apporter son exp\'erience et ses conseils. \\
- 
-\end{itemize}
+
+Le but \'etait donc d'abord fonctionnel : rendre un jeu qui marche. L'unique contrainte non-fonctionnelle que nous nous \'etions fix\'es : une certaine robustesse aux bugs. La performance, en revanche, n'est que peu rentr\'ee en ligne de compte, sauf lorsque nous avons pens\'e \`a faire une IA.
+
+Dans l'esprit du cours de d\'eveloppment logiciel, nous n'avions pas de contrainte pr\'ecise quant au travail \`a accomplir : nous \'etions libres de faire les choix que nous souhaitions pour mener \`a bien notre travail.
+
+En d\'efinitive, nous avions donc carte blanche pour accomplir notre but m\^eme si notre encadrant, Xavier Clerc, \'etait pr\'esent pour nous apporter son exp\'erience et ses conseils.
 
  
 \section{Technologies mises en oeuvre}
@@ -65,7 +65,6 @@ Nous avons cod\'e notre jeu de Kahmat\'e en langage Python. Cela nous a grandeme
 
 \subsubsection{Fichier central}
  Il nous a ainsi \'et\'e facile d'organiser notre fichier principal, \textbf{projet.py}. Celui-ci se d\'ecompose principalement en quatre classes :
-\\
 \begin{itemize} 
 \item Une pour le ballon contenant les instances qui concernent le porteur et le d\'eplacement du ballon.\\
 \item Une pour les joueurs o\`u se trouvent les m\'ethodes les plus importantes du jeu : celles pour d\'eplacer les joueurs (\textbf{deplace} et \textbf{deplacement}), pour plaquer (\textbf{placage}), pour passer en force, pour faire une passe et pour tirer en avant. \\
@@ -75,18 +74,17 @@ Nous avons cod\'e notre jeu de Kahmat\'e en langage Python. Cela nous a grandeme
 
 \subsubsection{Fichiers annexes}
 Autour du fichier central, \textbf{projet.py}, qui contient le coeur du jeu, nous avons ajout\'e de nombreux fichiers secondaires :
-\\
 \begin{itemize}
 
 \item Plusieurs fichiers pour r\'ealiser les tests, un pour l'interface graphique, un autre pour la gestion des queues et un dernier pour lancer le jeu. Nous voulions assurer une couverture de code maximale.
 A cet \'egard, Python possède un grand nombre de biblioth\`eques qui se sont r\'ev\'el\'ees tr\`es utiles, en particulier celles relatives aux tests :
-\\
-- \textbf{unittest} nous a permis de tester notre code et nos fonctions, notamment les principales m\'ethodes de la classe Joueur : \textbf{d\'eplace}, 
+\begin{itemize}
+\item \textbf{unittest} nous a permis de tester notre code et nos fonctions, notamment les principales m\'ethodes de la classe Joueur : \textbf{d\'eplace}, 
 \textbf{d\'eplacement} et \textbf{placage}.
-\\
-- Le module \textbf{coverage} a permis de v\'erifier dans quelle mesure les nombreuses fonctions, correspondant \`a toutes les actions diff\'erentes, \'etaient bien parcourues par les tests.
+\item Le module \textbf{coverage} a permis de v\'erifier dans quelle mesure les nombreuses fonctions, correspondant \`a toutes les actions diff\'erentes, \'etaient bien parcourues par les tests.
+\end{itemize}
 
-\item Quant \`a l'interface graphique, nous avons utili\'e des bibliothèques telles que \textit{Threading} ou encore \textit{PyQt} pour construire notre jeu et faire en sorte que les actions r\'ealis\'ees avec la souris soient effectives : nous avons mod\'elis\'e les joueurs et leurs actions par des boutons cliquables. Il a donc fallu lier \`a chaque bouton un objet ou une m\'ethode.
+\item Quant \`a l'interface graphique, nous avons utilis\'e des bibliothèques telles que \textit{Threading} ou encore \textit{PyQt} pour construire notre jeu et faire en sorte que les actions r\'ealis\'ees avec la souris soient effectives : nous avons mod\'elis\'e les joueurs et leurs actions par des boutons cliquables. Il a donc fallu lier \`a chaque bouton un objet ou une m\'ethode.
 
 \end{itemize}
 \section{Gestion du projet}
@@ -97,12 +95,11 @@ Pour mener bien notre projet, nous avons utilis\'e divers outils de communicatio
 \begin{figure}[!h]
 	\begin{center}
 	\includegraphics[scale=0.4]{github.png}
-	\label{1}
 	\caption{GitHub du projet}
 	\end{center}
 \end{figure}
 
-Pour g\'erer le partage du code de façon efficace, nous nous sommes servis de Github, une plate-forme permettant l'\'echange de fichiers. L'avantage de Github est qu'il permet \'a chacun de modifier librement le code fait par les autres (\'eventuellement en passant par les branch) sans que cela affecte la totalit\'e. Ensuite, il suffit de push pour partager les modifications effectu\'ees avec tous les autres aussit\^ot qu'ils feront un pull. De cette facon, la coordination entre nous s'est retrouv\'ee consid\'erablement simplifi\'ee car \`a chaque pull, c'est Github lui-m\^eme qui se charge d'int\'egrer automatiquement les nouveaut\'es. 
+Pour g\'erer le partage du code de façon efficace, nous nous sommes servis de Github, une plate-forme permettant l'\'echange de fichiers. L'avantage de Github est qu'il permet à chacun de modifier librement le code fait par les autres sans que cela affecte la totalit\'e. Ensuite, il suffit de push pour partager les modifications effectu\'ees avec tous les autres aussit\^ot qu'ils feront un pull. De cette facon, la coordination entre nous s'est retrouv\'ee consid\'erablement simplifi\'ee car \`a chaque pull, c'est Github lui-m\^eme qui se charge d'int\'egrer automatiquement les nouveaut\'es. 
 
 En cas de conflit, il le signale pour que l'utilisateur le r\`egle manuellement. Pour communiquer, nous avons bien \'evidemment \'echang\'e des mails, mais l'utilisation d'un tchat nous a vite paru indispensable, c'est pourquoi nous nous sommes tourn\'es vers Slack. 
 
@@ -112,7 +109,6 @@ En cas de conflit, il le signale pour que l'utilisateur le r\`egle manuellement.
 \begin{figure}[!h]
 	\begin{center}
 	\includegraphics[scale=0.4]{slack.png}
-	\label{1}
 	\caption{Slack du projet}
 	\end{center}
 \end{figure}
@@ -125,7 +121,6 @@ Slack nous a permis d'avoir des \'echanges plus efficaces et de dynamiser notre 
 \begin{figure}[!h]
 	\begin{center}
 	\includegraphics[scale=0.4]{trello.png}
-	\label{1}
 	\caption{Trello du projet}
 	\end{center}
 \end{figure}
@@ -145,10 +140,10 @@ De cette facon, il \'etait tr\'es simple de savoir ce que chacun \'etait en trai
 \begin{itemize}
 \item Valentin a \'ecrit les tests, les classes du jeu, quelques fonctions du jeu et s'est en grande partie occup\'e de l'interface graphique.
 \item Quentin s'est charg\'e d'\'ecrire les m\'ethodes principales (placage, deplace, deplacement) en essayant de trouver des compromis pour faciliter l'\'ecriture du code tout en respectant les règles du jeu. 
-\item Francois a \'ecrit les log d\'erreurs, comment\'e le code et organis\'e la r\'edaction du rapport.
+\item Francois a \'ecrit les log d'erreurs, comment\'e le code et organis\'e la r\'edaction du rapport.
 
-\item Nous avons tous particip\'e au debug du programme suite aux tests. Lorsque les erreurs \'etaient simples \`a corriger (par exemple, oubli d'un self en argument d'une m\'ethode), chacun s'en occupait de son c\^ot\'e. \\
-En revanche, lorsqu'il s'agissait d'une erreur dans le comportement d'une fonction, c'\'etait celui qui l'avait cod\'ee qui devait la r\'eviser. De cette manière, chacun avait des parties du code qu'il connaissait mieux que les autres et qu'il était le plus à même de corriger ou de modifier.
+\item Nous avons tous particip\'e au debug du programme suite aux tests. Lorsque les erreurs \'etaient simples \`a corriger chacun s'en occupait de son c\^ot\'e. \\
+En revanche, lorsqu'il s'agissait d'une erreur dans le comportement d'une fonction, celui qui l'avait cod\'ee qui devait la r\'eviser. De cette manière, chacun avait des parties du code qu'il connaissait mieux que les autres et qu'il était le plus à même de corriger ou de modifier.
 
 De plus, car les tests n'ont pas forcément été écrits par celui qui a cod\'e les méthodes, ils ont \'et\'e r\'ealis\'es en bo\^ite noire (ou grise tout du moins). Ainsi, nos tests se sont trouv\'es \^etre plus diversifi\'es, et donc plus efficaces que si chacun avait cod\'e des tests pour les fonctions qu'il avait \'ecrites. 
 
@@ -187,20 +182,17 @@ Nous nous sommes donc concentr\'es sur l'interface graphique, qui, bien que plus
 
 \subsection{Debugger}
 
-\begin{itemize}
-
-
-\item La gestion de projet en V nous a \'et\'e assez b\'en\'efique pour ce programme. En effet, les diff\'erentes classes et m\'ethodes \'etaient imbriqu\'ees les unes dans les autres. Par cons\'equent, tout test unitaire \'etait impossible (ou presque). \\
-En premier lieu, nous avons donc pleinement mis \`a profit le concept de mock object.
+La gestion de projet en V nous a \'et\'e assez b\'en\'efique pour ce programme. En effet, les diff\'erentes classes et m\'ethodes \'etaient imbriqu\'ees les unes dans les autres. Par cons\'equent, tout test unitaire \'etait impossible (ou presque). En premier lieu, nous avons donc pleinement mis \`a profit le concept de mock object.
 Par la suite, nous avons pu repasser \`a des tests de niveau de granularit\'e plus \'elev\'es : par int\'egration ou par validation.
 
-\item Nous avons rencontr\'e un certain nombre de r\'egressions, par exemple lors de la mise en place des logs. Ces régressions ont pu être corrigées rapidement et efficacement grâce aux tests déjà mis en place.
+Nous avons rencontr\'e un certain nombre de r\'egressions, par exemple lors de la mise en place des logs. Ces régressions ont pu être corrigées rapidement et efficacement grâce aux tests déjà mis en place.
 
-\end{itemize}
+Depuis que l'interface graphique a \'et\'e int\'egr\'ee, il ne nous est plus possible de lancer les tests. En effet, nous lancions ces derniers depuis la version de notre jeu avec une interface utilisateur sur la console. Bien entendu, nous avons bien v\'erifi\'e que les fonctions r\'epondaient au cahier des charges avant de finalement les int\'egrer dans l'interface.
+
 
 \subsection{R\`egles}
 
-Nous nous sommes rendus compte que nous avons mal interprété un point de d\'etail des r\`egles. En effet, l'utilisation de telle ou telle carte Forme, qui participe \`a la r\'esolution des actions, doit \^etre un choix du joueur et non pas le fait du hasard. Contraint par le temps, nous n'avons pas pu corriger cette interprétation qui selon nous n'empêche pas le joueur de jouer et ne fait perdre aucune saveur au jeu.
+Nous nous sommes rendus compte que nous avions mal interprété un point de d\'etail des r\`egles. En effet, l'utilisation de telle ou telle carte Forme, qui participe \`a la r\'esolution des actions, doit \^etre un choix du joueur et non pas le fait du hasard. Contraint par le temps, nous n'avons pas pu corriger cette interprétation qui selon nous n'empêche pas le joueur de jouer et ne fait perdre aucune saveur au jeu.
 
 \section{Les r\'esultats obtenus}
 
@@ -208,20 +200,20 @@ Nous nous sommes rendus compte que nous avons mal interprété un point de d\'etai
 
 Ainsi, il est possible de jouer au jeu int\'egralement avec la souris : au d\'ebut, le jeu nous invite \`a positionner les joueurs de chaque \'equipe. Pour cela, il suffit de cliquer sur le joueur puis sur la case o\`u on veut le placer. Ensuite, le jeu commence. Pour jouer, on clique une première fois sur le joueur qu'on veut utiliser puis on clique sur une autre case.
 
-En fonction de la case choisie, une action va se 
-d\'eclencher : une passe si on clique sur un joueur en arri\`ere, un tir en avant si on clique sur une case devant le joueur et qui ne soit pas juste devant lui, un d\'eplacement si on clique sur une case voisine non occup\'ee ou un plaquage (ou passage en force) dans le cas contraire. Cette technique de programmation fonctionne car au plus une action peut \^etre r\'ealis\'ee suivant la case de notre second clique. En effet, notre m\'ethode deplacement a \'et\'e cod\'ee pour ne permettre de se d\'eplacer que d'une case la fois. De cette mani\`ere, un d\'eplacement et un tir en avant ne peuvent par exemple pas \^etre confondus.
 
-En d\'efinitive, \`a la fin de la p\'eriode de d\'eveloppement, nous sommes parvenus \`a cr\'eer notre jeu de Kahmate.
+En fonction de la case choisie, une action va se d\'eclencher : une passe si on clique sur un joueur en arri\`ere, un tir en avant si on clique sur une case devant le joueur et qui ne soit pas juste devant lui, un d\'eplacement si on clique sur une case voisine non occup\'ee ou un plaquage (ou passage en force) dans le cas contraire. Cette technique de programmation fonctionne car au plus une action peut \^etre r\'ealis\'ee suivant la case de notre second clique. En effet, notre m\'ethode deplacement a \'et\'e cod\'ee pour ne permettre de se d\'eplacer que d'une case la fois. De cette mani\`ere, un d\'eplacement et un tir en avant ne peuvent par exemple pas \^etre confondus.
+
+En d\'efinitive, \`a la fin de la p\'eriode de d\'eveloppement, nous sommes parvenus \`a cr\'eer notre jeu de Kahmate.\\
+
+\begin{figure}[!h]
+	\begin{center}
+	\includegraphics[scale=0.5]{kahamate.png}
+	\caption{L'interface graphique de notre Kahmaté}
+	\end{center}
+\end{figure}
+
 
 \subsection{Conclusion}
-\begin{itemize}
-
-
-\item Ce jeu est op\'erationnel, il est possible d'y jouer \`a deux sur une m\^eme machine.
-\item Les fonctionnalits principales ont \'et\'e testées plusieurs fois dans des cas distincts (test par \'enum\'eration, principalement) et semblent satisfaisantes. 
-\item On peut enti\`erement jouer \`a la souris gr\^ace l'interface graphique.
-
-\item Il y a une divergence par rapport à ce qui \'etait pr\'evu au d\'epart puisque l'intelligence artificielle n'a finalement pas vu le jour, mais son absence a \'et\'e compensée par une meilleure interface graphique. Cela mis \`a part, le r\'esultat final nous para\^it en accord avec ce que nous avions annonc\'e au d\'ebut.
-\end{itemize}
+Notre jeu est op\'erationnel, il est possible d'y jouer \`a deux sur une m\^eme machine. Les fonctionnalités principales ont \'et\'e testées plusieurs fois dans des cas distincts (test par \'enum\'eration, principalement) et semblent satisfaisantes. On peut enti\`erement jouer \`a la souris gr\^ace l'interface graphique.Il y a une divergence par rapport à ce qui \'etait pr\'evu au d\'epart puisque l'intelligence artificielle n'a finalement pas vu le jour, mais son absence a \'et\'e compensée par une meilleure interface graphique. Cela mis \`a part, le r\'esultat final nous para\^it en accord avec ce que nous avions annonc\'e au d\'ebut.
 
 \end{document}

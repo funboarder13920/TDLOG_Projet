@@ -1,897 +1,1039 @@
-2016-01-24 17:05:42,371 - application - INFO - Création du jeu
-2016-01-24 17:05:42,372 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,372 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,373 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,374 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,375 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,375 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,375 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,375 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,376 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,378 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,379 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,380 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,381 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,382 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,383 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,384 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,386 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,386 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,386 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,386 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:05:42,503 - application - INFO - Choix de l'équipe 1 ...
-2016-01-24 17:05:54,034 - application - INFO - Choix de l'équipe 2 ...
-2016-01-24 17:06:40,454 - application - DEBUG - Initialisation de l'équipe 1
-2016-01-24 17:06:40,454 - application - DEBUG - Initialisation du joueur 0 de l'équipe 1
-2016-01-24 17:06:40,454 - application - DEBUG - Initialisation du joueur 1 de l'équipe 1
-2016-01-24 17:06:40,454 - application - DEBUG - Initialisation du joueur 2 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 3 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 4 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 5 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 0 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 1 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 2 de l'équipe 1
-2016-01-24 17:06:40,455 - application - DEBUG - Initialisation du joueur 3 de l'équipe 1
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 4 de l'équipe 1
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 5 de l'équipe 1
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation de l'équipe 2
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 0 de l'équipe 2
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 1 de l'équipe 2
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 2 de l'équipe 2
-2016-01-24 17:06:40,456 - application - DEBUG - Initialisation du joueur 3 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 4 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 5 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 0 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 1 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 2 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 3 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 4 de l'équipe 2
-2016-01-24 17:06:40,457 - application - DEBUG - Initialisation du joueur 5 de l'équipe 2
-2016-01-24 17:06:40,458 - application - DEBUG - Initialisation du ballon à la position (6,5)
-2016-01-24 17:06:40,458 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:06:45,942 - application - INFO - Déplacement du joueur 1
-2016-01-24 17:06:45,943 - application - DEBUG - Test Libre de la position (3,5)
-2016-01-24 17:06:45,943 - application - DEBUG - Résultat : True
-2016-01-24 17:06:45,944 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:45,945 - application - DEBUG - Le joueur 1 se déplace à (3,5)
-2016-01-24 17:06:45,945 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:46,818 - application - INFO - Déplacement du joueur 1
-2016-01-24 17:06:46,819 - application - DEBUG - Test Libre de la position (4,5)
-2016-01-24 17:06:46,819 - application - DEBUG - Résultat : True
-2016-01-24 17:06:46,819 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:46,820 - application - DEBUG - Le joueur 1 se déplace à (4,5)
-2016-01-24 17:06:46,821 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:47,468 - application - INFO - Déplacement du joueur 1
-2016-01-24 17:06:47,469 - application - DEBUG - Test Libre de la position (5,5)
-2016-01-24 17:06:47,469 - application - DEBUG - Résultat : True
-2016-01-24 17:06:47,469 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:47,471 - application - DEBUG - Le joueur 1 se déplace à (5,5)
-2016-01-24 17:06:47,471 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:48,134 - application - INFO - Déplacement du joueur 1
-2016-01-24 17:06:50,589 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:06:50,591 - application - DEBUG - Test Libre de la position (3,1)
-2016-01-24 17:06:50,592 - application - DEBUG - Résultat : True
-2016-01-24 17:06:50,592 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:50,595 - application - DEBUG - Le joueur 5 se déplace à (3,1)
-2016-01-24 17:06:50,595 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:52,460 - application - DEBUG - Test fin du tour
-2016-01-24 17:06:52,460 - application - DEBUG - Le tour est fini
-2016-01-24 17:06:52,460 - application - INFO - Début des tours de jeu
-2016-01-24 17:06:52,461 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:06:52,462 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:06:54,215 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:54,216 - application - DEBUG - Test Libre de la position (9,5)
-2016-01-24 17:06:54,216 - application - DEBUG - Résultat : True
-2016-01-24 17:06:54,216 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:54,217 - application - DEBUG - Le joueur 0 se déplace à (9,5)
-2016-01-24 17:06:54,217 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:54,965 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:54,967 - application - DEBUG - Test Libre de la position (8,5)
-2016-01-24 17:06:54,967 - application - DEBUG - Résultat : True
-2016-01-24 17:06:54,967 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:54,968 - application - DEBUG - Le joueur 0 se déplace à (8,5)
-2016-01-24 17:06:54,968 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:55,678 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:55,679 - application - DEBUG - Test Libre de la position (7,5)
-2016-01-24 17:06:55,679 - application - DEBUG - Résultat : True
-2016-01-24 17:06:55,680 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:55,681 - application - DEBUG - Le joueur 0 se déplace à (7,5)
-2016-01-24 17:06:55,681 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:56,929 - application - DEBUG - Test fin du tour
-2016-01-24 17:06:56,930 - application - DEBUG - Le tour est fini
-2016-01-24 17:06:56,930 - application - INFO - Début des tours de jeu
-2016-01-24 17:06:56,931 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:06:56,931 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:06:58,014 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:58,015 - application - DEBUG - Test Libre de la position (2,4)
-2016-01-24 17:06:58,016 - application - DEBUG - Résultat : True
-2016-01-24 17:06:58,016 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:58,017 - application - DEBUG - Le joueur 0 se déplace à (2,4)
-2016-01-24 17:06:58,018 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:58,820 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:58,821 - application - DEBUG - Test Libre de la position (3,4)
-2016-01-24 17:06:58,821 - application - DEBUG - Résultat : True
-2016-01-24 17:06:58,822 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:58,823 - application - DEBUG - Le joueur 0 se déplace à (3,4)
-2016-01-24 17:06:58,823 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:06:59,454 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:06:59,457 - application - DEBUG - Test Libre de la position (4,4)
-2016-01-24 17:06:59,457 - application - DEBUG - Résultat : True
-2016-01-24 17:06:59,458 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:06:59,461 - application - DEBUG - Le joueur 0 se déplace à (4,4)
-2016-01-24 17:06:59,461 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:00,671 - application - INFO - Déplacement du joueur 1
-2016-01-24 17:07:00,672 - application - DEBUG - Test Libre de la position (6,5)
-2016-01-24 17:07:00,672 - application - DEBUG - Résultat : True
-2016-01-24 17:07:00,673 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:00,674 - application - DEBUG - Le joueur 1 se déplace à (6,5)
-2016-01-24 17:07:00,674 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:00,675 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:00,675 - application - DEBUG - Le ballon se deplace à la postion (6,5)
-2016-01-24 17:07:01,982 - application - INFO - Le joueur 1 essaie de passer au joueur 0
-2016-01-24 17:07:01,983 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:07:01,984 - application - DEBUG - Le ballon se deplace à la postion (4,4)
-2016-01-24 17:07:01,984 - application - INFO - Interception entre (6,5) et (4,4)
-2016-01-24 17:07:01,985 - application - DEBUG - droite((5.5, 4.5),(3.5, 3.5))
-2016-01-24 17:07:01,985 - application - DEBUG - droite((6.5, 5.5),(4.5, 4.5))
-2016-01-24 17:07:01,986 - application - DEBUG - droite((5.5, 5.5),(3.5, 4.5))
-2016-01-24 17:07:01,986 - application - DEBUG - droite((6.5, 4.5),(4.5, 3.5))
-2016-01-24 17:07:01,986 - application - DEBUG - droite((6, 5),(6.5, 5))
-2016-01-24 17:07:01,986 - application - DEBUG - droite((4, 4),(4.5, 4))
-2016-01-24 17:07:01,987 - application - DEBUG - droite((6, 5),(6, 5.5))
-2016-01-24 17:07:01,987 - application - DEBUG - droite((4, 4),(4, 4.5))
-2016-01-24 17:07:03,019 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:03,020 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:03,021 - application - DEBUG - Le ballon se deplace à la postion (4,4)
-2016-01-24 17:07:04,588 - application - DEBUG - Test fin du tour
-2016-01-24 17:07:04,588 - application - DEBUG - Le tour est fini
-2016-01-24 17:07:04,588 - application - INFO - Début des tours de jeu
-2016-01-24 17:07:04,589 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:07:04,590 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:07:06,178 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:06,178 - application - DEBUG - Test Libre de la position (7,4)
-2016-01-24 17:07:06,179 - application - DEBUG - Résultat : True
-2016-01-24 17:07:06,179 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:06,180 - application - DEBUG - Le joueur 0 se déplace à (7,4)
-2016-01-24 17:07:06,180 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:07,062 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:07,069 - application - DEBUG - Test Libre de la position (6,4)
-2016-01-24 17:07:07,070 - application - DEBUG - Résultat : True
-2016-01-24 17:07:07,070 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:07,074 - application - DEBUG - Le joueur 0 se déplace à (6,4)
-2016-01-24 17:07:07,075 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:07,899 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:07,900 - application - DEBUG - Test Libre de la position (5,4)
-2016-01-24 17:07:07,900 - application - DEBUG - Résultat : True
-2016-01-24 17:07:07,900 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:07,901 - application - DEBUG - Le joueur 0 se déplace à (5,4)
-2016-01-24 17:07:07,901 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:08,980 - application - INFO - Le joueur 0 essaie de plaquer le joueur 0
-2016-01-24 17:07:08,983 - application - INFO - Résolution attaquant0/équipe 2 - défenseur 0/équipe 1
-2016-01-24 17:07:08,989 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:07:08,990 - application - DEBUG - La carte 1 de l'équipe 2 a été utilisée 
-2016-01-24 17:07:08,990 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:07:08,991 - application - DEBUG - La carte 5 de l'équipe 1 a été utilisée 
-2016-01-24 17:07:08,996 - application - DEBUG - Résultat : -4
-2016-01-24 17:07:16,374 - application - DEBUG - Test fin du tour
-2016-01-24 17:07:16,375 - application - DEBUG - Le tour est fini
-2016-01-24 17:07:16,375 - application - INFO - Début des tours de jeu
-2016-01-24 17:07:16,375 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:07:16,376 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:07:18,299 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:18,299 - application - DEBUG - Test Libre de la position (5,4)
-2016-01-24 17:07:18,300 - application - DEBUG - Résultat : True
-2016-01-24 17:07:18,300 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:18,301 - application - DEBUG - Le joueur 0 se déplace à (5,4)
-2016-01-24 17:07:18,302 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:18,302 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:18,302 - application - DEBUG - Le ballon se deplace à la postion (5,4)
-2016-01-24 17:07:19,633 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:19,634 - application - DEBUG - Test Libre de la position (6,4)
-2016-01-24 17:07:19,634 - application - DEBUG - Résultat : True
-2016-01-24 17:07:19,635 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:19,636 - application - DEBUG - Le joueur 0 se déplace à (6,4)
-2016-01-24 17:07:19,636 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:19,637 - application - DEBUG - Le ballon se deplace à la postion (6,4)
-2016-01-24 17:07:21,558 - application - INFO - Le joueur 0 essaie de passer au joueur 0
-2016-01-24 17:07:21,560 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:07:21,560 - application - ERROR - La passe est impossible car le joueur 0 n'est pas derrière
-2016-01-24 17:07:23,280 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:23,285 - application - DEBUG - Test Libre de la position (7,4)
-2016-01-24 17:07:23,286 - application - DEBUG - Résultat : True
-2016-01-24 17:07:23,286 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:07:23,288 - application - DEBUG - Le joueur 0 se déplace à (7,4)
-2016-01-24 17:07:23,288 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:07:23,288 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:23,289 - application - DEBUG - Le ballon se deplace à la postion (7,4)
-2016-01-24 17:07:25,088 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:07:25,089 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:07:25,090 - application - DEBUG - Le ballon se deplace à la postion (7,4)
-2016-01-24 17:14:10,251 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:14:10,251 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:14:10,251 - application - DEBUG - Le ballon se deplace à la postion (7,4)
-2016-01-24 17:14:12,994 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:12,994 - application - DEBUG - Test Libre de la position (4,1)
-2016-01-24 17:14:12,994 - application - DEBUG - Résultat : True
-2016-01-24 17:14:12,994 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:13,009 - application - DEBUG - Le joueur 5 se déplace à (4,1)
-2016-01-24 17:14:13,009 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:14,026 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:14,026 - application - DEBUG - Test Libre de la position (5,1)
-2016-01-24 17:14:14,026 - application - DEBUG - Résultat : True
-2016-01-24 17:14:14,026 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:14,026 - application - DEBUG - Le joueur 5 se déplace à (5,1)
-2016-01-24 17:14:14,026 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:15,476 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:15,476 - application - DEBUG - Test Libre de la position (5,2)
-2016-01-24 17:14:15,476 - application - DEBUG - Résultat : True
-2016-01-24 17:14:15,476 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:15,476 - application - DEBUG - Le joueur 5 se déplace à (5,2)
-2016-01-24 17:14:15,476 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:16,648 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:16,648 - application - DEBUG - Test Libre de la position (6,2)
-2016-01-24 17:14:16,648 - application - DEBUG - Résultat : True
-2016-01-24 17:14:16,648 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:16,648 - application - DEBUG - Le joueur 5 se déplace à (6,2)
-2016-01-24 17:14:16,648 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:18,012 - application - DEBUG - Test fin du tour
-2016-01-24 17:14:18,012 - application - DEBUG - Le tour est fini
-2016-01-24 17:14:18,012 - application - INFO - Début des tours de jeu
-2016-01-24 17:14:18,012 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:14:18,012 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:14:19,418 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:19,418 - application - DEBUG - Test Libre de la position (9,4)
-2016-01-24 17:14:19,418 - application - DEBUG - Résultat : True
-2016-01-24 17:14:19,418 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:19,418 - application - DEBUG - Le joueur 5 se déplace à (9,4)
-2016-01-24 17:14:19,418 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:20,199 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:14:20,199 - application - DEBUG - Test Libre de la position (8,4)
-2016-01-24 17:14:20,199 - application - DEBUG - Résultat : True
-2016-01-24 17:14:20,199 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:14:20,199 - application - DEBUG - Le joueur 5 se déplace à (8,4)
-2016-01-24 17:14:20,199 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:14:22,308 - application - INFO - Le joueur 5 essaie de plaquer le joueur 0
-2016-01-24 17:14:22,324 - application - INFO - Résolution attaquant5/équipe 2 - défenseur 0/équipe 1
-2016-01-24 17:14:22,324 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:14:22,324 - application - DEBUG - La carte 4 de l'équipe 2 a été utilisée 
-2016-01-24 17:14:22,324 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:14:22,324 - application - DEBUG - La carte 1 de l'équipe 1 a été utilisée 
-2016-01-24 17:14:22,324 - application - DEBUG - Résultat : 3
-2016-01-24 17:14:22,324 - application - DEBUG - Plaquage parfait
-2016-01-24 17:14:22,324 - application - DEBUG - Le ballon se deplace à la postion (8,4)
-2016-01-24 17:22:33,593 - application - INFO - Le joueur 5 essaie de passer au joueur 5
-2016-01-24 17:22:33,593 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:22:33,593 - application - ERROR - La passe est impossible car le joueur 5 n'est pas derrière
-2016-01-24 17:22:36,692 - application - INFO - Le joueur 5 essaie de passer au joueur 4
-2016-01-24 17:22:36,692 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:22:36,692 - application - ERROR - La passe est impossible car le joueur 5 n'est pas derrière
-2016-01-24 17:22:38,301 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:22:38,348 - application - DEBUG - Test Libre de la position (9,1)
-2016-01-24 17:22:38,348 - application - DEBUG - Résultat : True
-2016-01-24 17:22:38,364 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:22:38,458 - application - DEBUG - Le joueur 4 se déplace à (9,1)
-2016-01-24 17:22:38,458 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:22:40,969 - application - INFO - Le joueur 5 essaie de passer au joueur 4
-2016-01-24 17:22:40,971 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:22:40,971 - application - ERROR - La passe est impossible car le joueur 5 n'est pas derrière
-2016-01-24 17:22:42,982 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:22:42,982 - application - DEBUG - Test Libre de la position (9,2)
-2016-01-24 17:22:42,982 - application - DEBUG - Résultat : True
-2016-01-24 17:22:42,982 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:22:42,982 - application - DEBUG - Le joueur 4 se déplace à (9,2)
-2016-01-24 17:22:42,982 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:22:45,105 - application - INFO - Le joueur 5 essaie de passer au joueur 4
-2016-01-24 17:22:45,105 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:22:45,120 - application - DEBUG - Le ballon se deplace à la postion (9,2)
-2016-01-24 17:22:45,120 - application - INFO - Interception entre (8,4) et (9,2)
-2016-01-24 17:22:45,120 - application - DEBUG - droite((7.5, 3.5),(8.5, 1.5))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((8.5, 4.5),(9.5, 2.5))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((7.5, 4.5),(8.5, 2.5))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((8.5, 3.5),(9.5, 1.5))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((8, 4),(8.5, 4))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((9, 2),(9.5, 2))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((8, 4),(8, 4.5))
-2016-01-24 17:22:45,120 - application - DEBUG - droite((9, 2),(9, 2.5))
-2016-01-24 17:22:46,603 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:22:46,603 - application - DEBUG - Test Libre de la position (8,2)
-2016-01-24 17:22:46,619 - application - DEBUG - Résultat : True
-2016-01-24 17:22:46,619 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:22:46,619 - application - DEBUG - Le joueur 4 se déplace à (8,2)
-2016-01-24 17:22:46,619 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:22:46,619 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:22:46,619 - application - DEBUG - Le ballon se deplace à la postion (8,2)
-2016-01-24 17:22:47,877 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:22:47,877 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:22:47,893 - application - DEBUG - Le ballon se deplace à la postion (8,2)
-2016-01-24 17:22:52,208 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:22:52,208 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:22:52,208 - application - DEBUG - Le ballon se deplace à la postion (8,2)
-2016-01-24 17:22:57,360 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:22:57,360 - application - DEBUG - Test Libre de la position (6,4)
-2016-01-24 17:22:57,360 - application - DEBUG - Résultat : True
-2016-01-24 17:22:57,360 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:22:57,360 - application - ERROR - Vous ne pouvez pas déplacer plus de joueurs
-2016-01-24 17:23:00,098 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:23:00,099 - application - DEBUG - Test Libre de la position (6,4)
-2016-01-24 17:23:00,099 - application - DEBUG - Résultat : True
-2016-01-24 17:23:00,099 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:23:00,099 - application - ERROR - Vous ne pouvez pas déplacer plus de joueurs
-2016-01-24 17:23:03,800 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:23:03,803 - application - DEBUG - Test Libre de la position (10,4)
-2016-01-24 17:23:03,803 - application - DEBUG - Résultat : True
-2016-01-24 17:23:03,804 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:23:03,807 - application - ERROR - Vous ne pouvez pas déplacer plus de joueurs
-2016-01-24 17:23:05,692 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:23:05,707 - application - DEBUG - Test Libre de la position (11,3)
-2016-01-24 17:23:05,707 - application - DEBUG - Résultat : True
-2016-01-24 17:23:05,707 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:23:05,707 - application - ERROR - Vous ne pouvez pas déplacer plus de joueurs
-2016-01-24 17:25:39,705 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:25:39,705 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:25:39,705 - application - DEBUG - Le ballon se deplace à la postion (8,2)
-2016-01-24 17:25:41,391 - application - DEBUG - Test fin du tour
-2016-01-24 17:25:41,391 - application - DEBUG - Le tour est fini
-2016-01-24 17:25:41,391 - application - INFO - Début des tours de jeu
-2016-01-24 17:25:41,391 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:25:41,391 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:25:42,682 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:25:42,682 - application - DEBUG - Test Libre de la position (7,2)
-2016-01-24 17:25:42,682 - application - DEBUG - Résultat : True
-2016-01-24 17:25:42,682 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:25:42,682 - application - DEBUG - Le joueur 5 se déplace à (7,2)
-2016-01-24 17:25:42,682 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:25:44,610 - application - INFO - Le joueur 5 essaie de plaquer le joueur 4
-2016-01-24 17:25:44,616 - application - INFO - Résolution attaquant5/équipe 1 - défenseur 4/équipe 2
-2016-01-24 17:25:44,618 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:25:44,620 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
-2016-01-24 17:25:44,620 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:25:44,621 - application - DEBUG - La carte 3 de l'équipe 2 a été utilisée 
-2016-01-24 17:25:44,623 - application - DEBUG - Résultat : -6
-2016-01-24 17:25:46,684 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:25:46,699 - application - DEBUG - Test Libre de la position (3,2)
-2016-01-24 17:25:46,699 - application - DEBUG - Résultat : True
-2016-01-24 17:25:46,699 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:25:46,699 - application - DEBUG - Le joueur 4 se déplace à (3,2)
-2016-01-24 17:25:46,699 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:25:47,314 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:25:47,314 - application - DEBUG - Test Libre de la position (4,2)
-2016-01-24 17:25:47,314 - application - DEBUG - Résultat : True
-2016-01-24 17:25:47,314 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:25:47,314 - application - DEBUG - Le joueur 4 se déplace à (4,2)
-2016-01-24 17:25:47,314 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:25:47,933 - application - INFO - Le joueur 4 essaie de passer au joueur 4
-2016-01-24 17:25:47,948 - application - ERROR - La passe est impossible car le joueur 4 n'est pas porteur
-2016-01-24 17:25:57,269 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:25:57,284 - application - DEBUG - Test Libre de la position (5,2)
-2016-01-24 17:25:57,284 - application - DEBUG - Résultat : True
-2016-01-24 17:25:57,284 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:25:57,284 - application - DEBUG - Le joueur 4 se déplace à (5,2)
-2016-01-24 17:25:57,284 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:25:58,660 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:25:59,960 - application - DEBUG - Test fin du tour
-2016-01-24 17:25:59,960 - application - DEBUG - Le tour est fini
-2016-01-24 17:25:59,960 - application - INFO - Début des tours de jeu
-2016-01-24 17:25:59,960 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:25:59,960 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:26:04,718 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:04,718 - application - DEBUG - Test Libre de la position (7,2)
-2016-01-24 17:26:04,718 - application - DEBUG - Résultat : True
-2016-01-24 17:26:04,718 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:04,718 - application - DEBUG - Le joueur 4 se déplace à (7,2)
-2016-01-24 17:26:04,718 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:04,733 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:26:04,733 - application - DEBUG - Le ballon se deplace à la postion (7,2)
-2016-01-24 17:26:05,820 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:05,820 - application - DEBUG - Test Libre de la position (6,2)
-2016-01-24 17:26:05,820 - application - DEBUG - Résultat : True
-2016-01-24 17:26:05,836 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:05,836 - application - DEBUG - Le joueur 4 se déplace à (6,2)
-2016-01-24 17:26:05,836 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:26:05,836 - application - DEBUG - Le ballon se deplace à la postion (6,2)
-2016-01-24 17:26:07,127 - application - INFO - Le joueur 4 essaie de plaquer le joueur 4
-2016-01-24 17:26:16,484 - application - INFO - Déplacement du joueur 0
-2016-01-24 17:26:16,500 - application - DEBUG - Test Libre de la position (6,4)
-2016-01-24 17:26:16,500 - application - DEBUG - Résultat : True
-2016-01-24 17:26:16,500 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:16,500 - application - DEBUG - Le joueur 0 se déplace à (6,4)
-2016-01-24 17:26:16,500 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:20,136 - application - INFO - Le joueur 4 essaie de tirer en avant
-2016-01-24 17:26:20,152 - application - DEBUG - Test personne en face
-2016-01-24 17:26:20,152 - application - DEBUG - Résultat : Vrai
-2016-01-24 17:26:20,152 - application - DEBUG - Test endroit où on envoie le ballon
-2016-01-24 17:26:23,017 - application - DEBUG - Test fin du tour
-2016-01-24 17:26:23,017 - application - DEBUG - Le tour est fini
-2016-01-24 17:26:23,018 - application - INFO - Début des tours de jeu
-2016-01-24 17:26:23,019 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:26:23,020 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:26:27,066 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:26:27,066 - application - DEBUG - Test Libre de la position (7,1)
-2016-01-24 17:26:27,066 - application - DEBUG - Résultat : True
-2016-01-24 17:26:27,066 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:27,066 - application - DEBUG - Le joueur 5 se déplace à (7,1)
-2016-01-24 17:26:27,066 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:28,227 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:26:28,227 - application - DEBUG - Test Libre de la position (6,1)
-2016-01-24 17:26:28,227 - application - DEBUG - Résultat : True
-2016-01-24 17:26:28,227 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:28,242 - application - DEBUG - Le joueur 5 se déplace à (6,1)
-2016-01-24 17:26:28,242 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:29,301 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:26:29,301 - application - DEBUG - Test Libre de la position (6,0)
-2016-01-24 17:26:29,301 - application - DEBUG - Résultat : True
-2016-01-24 17:26:29,301 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:29,301 - application - DEBUG - Le joueur 5 se déplace à (6,0)
-2016-01-24 17:26:29,301 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:30,687 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:26:30,687 - application - DEBUG - Test Libre de la position (5,0)
-2016-01-24 17:26:30,687 - application - DEBUG - Résultat : True
-2016-01-24 17:26:30,687 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:30,687 - application - DEBUG - Le joueur 5 se déplace à (5,0)
-2016-01-24 17:26:30,687 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:32,481 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:32,481 - application - DEBUG - Test Libre de la position (5,1)
-2016-01-24 17:26:32,481 - application - DEBUG - Résultat : True
-2016-01-24 17:26:32,481 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:32,481 - application - DEBUG - Le joueur 4 se déplace à (5,1)
-2016-01-24 17:26:32,481 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:37,223 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:37,223 - application - DEBUG - Test Libre de la position (4,1)
-2016-01-24 17:26:37,223 - application - DEBUG - Résultat : True
-2016-01-24 17:26:37,223 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:37,223 - application - DEBUG - Le joueur 4 se déplace à (4,1)
-2016-01-24 17:26:37,223 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:45,067 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:26:47,731 - application - DEBUG - Test fin du tour
-2016-01-24 17:26:47,746 - application - DEBUG - Le tour est fini
-2016-01-24 17:26:47,746 - application - INFO - Début des tours de jeu
-2016-01-24 17:26:47,746 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:26:47,746 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:26:49,797 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:49,797 - application - DEBUG - Test Libre de la position (5,2)
-2016-01-24 17:26:49,797 - application - DEBUG - Résultat : True
-2016-01-24 17:26:49,797 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:49,797 - application - DEBUG - Le joueur 4 se déplace à (5,2)
-2016-01-24 17:26:49,797 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:56,833 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:26:56,849 - application - DEBUG - Test Libre de la position (5,1)
-2016-01-24 17:26:56,849 - application - DEBUG - Résultat : True
-2016-01-24 17:26:56,849 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:26:56,849 - application - DEBUG - Le joueur 4 se déplace à (5,1)
-2016-01-24 17:26:56,849 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:26:58,864 - application - DEBUG - Test fin du tour
-2016-01-24 17:26:58,864 - application - DEBUG - Le tour est fini
-2016-01-24 17:26:58,864 - application - INFO - Début des tours de jeu
-2016-01-24 17:26:58,864 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:26:58,864 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:27:02,079 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:27:02,079 - application - DEBUG - Test Libre de la position (4,0)
-2016-01-24 17:27:02,079 - application - DEBUG - Résultat : True
-2016-01-24 17:27:02,079 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:02,079 - application - DEBUG - Le joueur 5 se déplace à (4,0)
-2016-01-24 17:27:02,079 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:03,068 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:27:03,068 - application - DEBUG - Test Libre de la position (3,0)
-2016-01-24 17:27:03,068 - application - DEBUG - Résultat : True
-2016-01-24 17:27:03,068 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:03,068 - application - DEBUG - Le joueur 5 se déplace à (3,0)
-2016-01-24 17:27:03,068 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:03,068 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:03,083 - application - DEBUG - Le ballon se deplace à la postion (3,0)
-2016-01-24 17:27:07,181 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:27:07,181 - application - DEBUG - Test Libre de la position (4,0)
-2016-01-24 17:27:07,181 - application - DEBUG - Résultat : True
-2016-01-24 17:27:07,181 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:07,197 - application - DEBUG - Le joueur 5 se déplace à (4,0)
-2016-01-24 17:27:07,197 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:07,197 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:07,197 - application - DEBUG - Le ballon se deplace à la postion (4,0)
-2016-01-24 17:27:08,975 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:27:08,975 - application - DEBUG - Test Libre de la position (5,0)
-2016-01-24 17:27:08,975 - application - DEBUG - Résultat : True
-2016-01-24 17:27:08,975 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:08,975 - application - DEBUG - Le joueur 5 se déplace à (5,0)
-2016-01-24 17:27:08,975 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:08,975 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:08,991 - application - DEBUG - Le ballon se deplace à la postion (5,0)
-2016-01-24 17:27:10,772 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:27:10,772 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:10,772 - application - DEBUG - Le ballon se deplace à la postion (5,0)
-2016-01-24 17:27:14,913 - application - INFO - Le joueur 5 essaie de tirer en avant
-2016-01-24 17:27:14,913 - application - DEBUG - Test personne en face
-2016-01-24 17:27:14,913 - application - DEBUG - Test personne en face
-2016-01-24 17:27:14,913 - application - ERROR - Le tir en avant est impossible car le joueur 5 a un joueur devant lui
-2016-01-24 17:27:17,270 - application - INFO - Le joueur 5 essaie de tirer en avant
-2016-01-24 17:27:17,270 - application - DEBUG - Test personne en face
-2016-01-24 17:27:17,270 - application - DEBUG - Test personne en face
-2016-01-24 17:27:17,270 - application - ERROR - Le tir en avant est impossible car le joueur 5 a un joueur devant lui
-2016-01-24 17:27:21,970 - application - INFO - Le joueur 5 essaie de passer au joueur 4
-2016-01-24 17:27:21,970 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:27:21,970 - application - DEBUG - Le ballon se deplace à la postion (4,1)
-2016-01-24 17:27:21,970 - application - INFO - Interception entre (5,0) et (4,1)
-2016-01-24 17:27:21,985 - application - DEBUG - droite((4.5, -0.5),(3.5, 0.5))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((5.5, 0.5),(4.5, 1.5))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((4.5, 0.5),(3.5, 1.5))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((5.5, -0.5),(4.5, 0.5))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((5, 0),(5.5, 0))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((4, 1),(4.5, 1))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((5, 0),(5, 0.5))
-2016-01-24 17:27:21,985 - application - DEBUG - droite((4, 1),(4, 1.5))
-2016-01-24 17:27:27,933 - application - DEBUG - Test fin du tour
-2016-01-24 17:27:27,933 - application - DEBUG - Le tour est fini
-2016-01-24 17:27:27,933 - application - INFO - Début des tours de jeu
-2016-01-24 17:27:27,934 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:27:27,934 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:27:34,160 - application - INFO - Le joueur 4 essaie de passer au joueur 4
-2016-01-24 17:27:34,160 - application - ERROR - La passe est impossible car le joueur 4 n'est pas porteur
-2016-01-24 17:27:40,416 - application - INFO - Le joueur 4 essaie de plaquer le joueur 4
-2016-01-24 17:27:40,416 - application - INFO - Résolution attaquant4/équipe 2 - défenseur 4/équipe 1
-2016-01-24 17:27:40,416 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:27:40,416 - application - DEBUG - La carte 2 de l'équipe 2 a été utilisée 
-2016-01-24 17:27:40,416 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:27:40,416 - application - DEBUG - La carte 1 de l'équipe 1 a été utilisée 
-2016-01-24 17:27:40,416 - application - DEBUG - Résultat : -1
-2016-01-24 17:27:43,799 - application - INFO - Déplacement du joueur 3
-2016-01-24 17:27:43,799 - application - DEBUG - Test Libre de la position (10,1)
-2016-01-24 17:27:43,799 - application - DEBUG - Résultat : True
-2016-01-24 17:27:43,799 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:43,799 - application - DEBUG - Le joueur 3 se déplace à (10,1)
-2016-01-24 17:27:43,799 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:44,869 - application - INFO - Déplacement du joueur 3
-2016-01-24 17:27:44,869 - application - DEBUG - Test Libre de la position (9,1)
-2016-01-24 17:27:44,869 - application - DEBUG - Résultat : True
-2016-01-24 17:27:44,869 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:44,869 - application - DEBUG - Le joueur 3 se déplace à (9,1)
-2016-01-24 17:27:44,869 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:45,757 - application - INFO - Déplacement du joueur 3
-2016-01-24 17:27:47,643 - application - DEBUG - Test fin du tour
-2016-01-24 17:27:47,643 - application - DEBUG - Le tour est fini
-2016-01-24 17:27:47,643 - application - INFO - Début des tours de jeu
-2016-01-24 17:27:47,659 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:27:47,659 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:27:52,098 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:27:52,098 - application - DEBUG - Test Libre de la position (5,1)
-2016-01-24 17:27:52,098 - application - DEBUG - Résultat : True
-2016-01-24 17:27:52,098 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:52,098 - application - DEBUG - Le joueur 4 se déplace à (5,1)
-2016-01-24 17:27:52,098 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:27:52,098 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:52,114 - application - DEBUG - Le ballon se deplace à la postion (5,1)
-2016-01-24 17:27:53,582 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:27:53,584 - application - DEBUG - Test Libre de la position (6,1)
-2016-01-24 17:27:53,585 - application - DEBUG - Résultat : True
-2016-01-24 17:27:53,586 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:27:53,589 - application - DEBUG - Le joueur 4 se déplace à (6,1)
-2016-01-24 17:27:53,590 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:27:53,594 - application - DEBUG - Le ballon se deplace à la postion (6,1)
-2016-01-24 17:27:57,122 - application - INFO - Le joueur 4 essaie de passer au joueur 4
-2016-01-24 17:27:57,122 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:27:57,122 - application - ERROR - La passe est impossible car le joueur 4 n'est pas derrière
-2016-01-24 17:28:10,588 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:28:10,588 - application - DEBUG - Test Libre de la position (6,2)
-2016-01-24 17:28:10,588 - application - DEBUG - Résultat : True
-2016-01-24 17:28:10,588 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:10,588 - application - DEBUG - Le joueur 4 se déplace à (6,2)
-2016-01-24 17:28:10,588 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:10,588 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:28:10,604 - application - DEBUG - Le ballon se deplace à la postion (6,2)
-2016-01-24 17:28:13,583 - application - DEBUG - Test fin du tour
-2016-01-24 17:28:13,583 - application - DEBUG - Le tour est fini
-2016-01-24 17:28:13,599 - application - INFO - Début des tours de jeu
-2016-01-24 17:28:13,599 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:28:13,599 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:28:15,866 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:28:15,882 - application - DEBUG - Test Libre de la position (9,3)
-2016-01-24 17:28:15,882 - application - DEBUG - Résultat : True
-2016-01-24 17:28:15,882 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:15,882 - application - DEBUG - Le joueur 2 se déplace à (9,3)
-2016-01-24 17:28:15,882 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:22,936 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:28:22,936 - application - DEBUG - Test Libre de la position (8,3)
-2016-01-24 17:28:22,951 - application - DEBUG - Résultat : True
-2016-01-24 17:28:22,951 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:22,951 - application - DEBUG - Le joueur 2 se déplace à (8,3)
-2016-01-24 17:28:22,951 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:25,305 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:28:25,320 - application - DEBUG - Test Libre de la position (6,1)
-2016-01-24 17:28:25,320 - application - DEBUG - Résultat : True
-2016-01-24 17:28:25,320 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:25,320 - application - DEBUG - Le joueur 4 se déplace à (6,1)
-2016-01-24 17:28:25,320 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:26,589 - application - INFO - Le joueur 4 essaie de plaquer le joueur 4
-2016-01-24 17:28:26,593 - application - INFO - Résolution attaquant4/équipe 2 - défenseur 4/équipe 1
-2016-01-24 17:28:26,594 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:28:26,594 - application - DEBUG - La carte 1 de l'équipe 2 a été utilisée 
-2016-01-24 17:28:26,594 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:28:26,594 - application - DEBUG - La carte 1 de l'équipe 1 a été utilisée 
-2016-01-24 17:28:26,596 - application - DEBUG - Résultat : -3
-2016-01-24 17:28:35,705 - application - DEBUG - Test fin du tour
-2016-01-24 17:28:35,705 - application - DEBUG - Le tour est fini
-2016-01-24 17:28:35,705 - application - INFO - Début des tours de jeu
-2016-01-24 17:28:35,705 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:28:35,705 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:28:45,693 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:28:45,709 - application - DEBUG - Test Libre de la position (7,2)
-2016-01-24 17:28:45,709 - application - DEBUG - Résultat : True
-2016-01-24 17:28:45,709 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:45,709 - application - DEBUG - Le joueur 4 se déplace à (7,2)
-2016-01-24 17:28:45,709 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:45,709 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:28:45,709 - application - DEBUG - Le ballon se deplace à la postion (7,2)
-2016-01-24 17:28:48,025 - application - INFO - Le joueur 4 essaie de tirer en avant
-2016-01-24 17:28:48,025 - application - DEBUG - Test personne en face
-2016-01-24 17:28:48,025 - application - DEBUG - Résultat : Vrai
-2016-01-24 17:28:48,025 - application - DEBUG - Test endroit où on envoie le ballon
-2016-01-24 17:28:48,025 - application - DEBUG - Test personne en face
-2016-01-24 17:28:48,025 - application - DEBUG - Résultat : Vrai
-2016-01-24 17:28:48,025 - application - DEBUG - Test endroit où on envoie le ballon
-2016-01-24 17:28:48,025 - application - ERROR - La case choisie n'est pas en avant du joueur 4
-2016-01-24 17:28:49,913 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:28:49,913 - application - DEBUG - Test Libre de la position (8,2)
-2016-01-24 17:28:49,913 - application - DEBUG - Résultat : True
-2016-01-24 17:28:49,913 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:49,913 - application - DEBUG - Le joueur 4 se déplace à (8,2)
-2016-01-24 17:28:49,913 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:49,913 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:28:49,913 - application - DEBUG - Le ballon se deplace à la postion (8,2)
-2016-01-24 17:28:52,074 - application - INFO - Le joueur 4 essaie de tirer en avant
-2016-01-24 17:28:52,074 - application - DEBUG - Test personne en face
-2016-01-24 17:28:52,074 - application - DEBUG - Résultat : Vrai
-2016-01-24 17:28:52,074 - application - DEBUG - Test endroit où on envoie le ballon
-2016-01-24 17:28:53,901 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:28:53,901 - application - DEBUG - Test Libre de la position (6,0)
-2016-01-24 17:28:53,901 - application - DEBUG - Résultat : True
-2016-01-24 17:28:53,901 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:53,901 - application - DEBUG - Le joueur 5 se déplace à (6,0)
-2016-01-24 17:28:53,901 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:54,702 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:28:54,702 - application - DEBUG - Test Libre de la position (7,0)
-2016-01-24 17:28:54,702 - application - DEBUG - Résultat : True
-2016-01-24 17:28:54,702 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:54,702 - application - DEBUG - Le joueur 5 se déplace à (7,0)
-2016-01-24 17:28:54,702 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:55,514 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:28:55,514 - application - DEBUG - Test Libre de la position (8,0)
-2016-01-24 17:28:55,514 - application - DEBUG - Résultat : True
-2016-01-24 17:28:55,514 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:55,514 - application - DEBUG - Le joueur 5 se déplace à (8,0)
-2016-01-24 17:28:55,514 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:56,387 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:28:56,387 - application - DEBUG - Test Libre de la position (9,0)
-2016-01-24 17:28:56,402 - application - DEBUG - Résultat : True
-2016-01-24 17:28:56,402 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:28:56,402 - application - DEBUG - Le joueur 5 se déplace à (9,0)
-2016-01-24 17:28:56,402 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:28:57,349 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:28:59,224 - application - DEBUG - Test fin du tour
-2016-01-24 17:28:59,224 - application - DEBUG - Le tour est fini
-2016-01-24 17:28:59,224 - application - INFO - Début des tours de jeu
-2016-01-24 17:28:59,224 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:28:59,224 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:29:01,710 - application - INFO - Déplacement du joueur 3
-2016-01-24 17:29:01,710 - application - DEBUG - Test Libre de la position (10,1)
-2016-01-24 17:29:01,710 - application - DEBUG - Résultat : True
-2016-01-24 17:29:01,710 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:01,710 - application - DEBUG - Le joueur 3 se déplace à (10,1)
-2016-01-24 17:29:01,710 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:03,159 - application - INFO - Déplacement du joueur 3
-2016-01-24 17:29:03,159 - application - DEBUG - Test Libre de la position (10,0)
-2016-01-24 17:29:03,159 - application - DEBUG - Résultat : True
-2016-01-24 17:29:03,159 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:03,159 - application - DEBUG - Le joueur 3 se déplace à (10,0)
-2016-01-24 17:29:03,159 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:14,529 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:29:14,529 - application - DEBUG - Test Libre de la position (9,3)
-2016-01-24 17:29:14,529 - application - DEBUG - Résultat : True
-2016-01-24 17:29:14,545 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:14,545 - application - DEBUG - Le joueur 2 se déplace à (9,3)
-2016-01-24 17:29:14,545 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:15,904 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:29:15,919 - application - DEBUG - Test Libre de la position (10,3)
-2016-01-24 17:29:15,919 - application - DEBUG - Résultat : True
-2016-01-24 17:29:15,919 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:15,919 - application - DEBUG - Le joueur 2 se déplace à (10,3)
-2016-01-24 17:29:15,919 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:17,149 - application - INFO - Déplacement du joueur 2
-2016-01-24 17:29:17,149 - application - DEBUG - Test Libre de la position (10,2)
-2016-01-24 17:29:17,149 - application - DEBUG - Résultat : True
-2016-01-24 17:29:17,149 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:17,149 - application - DEBUG - Le joueur 2 se déplace à (10,2)
-2016-01-24 17:29:17,149 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:36,581 - application - DEBUG - Test fin du tour
-2016-01-24 17:29:36,581 - application - DEBUG - Le tour est fini
-2016-01-24 17:29:36,581 - application - INFO - Début des tours de jeu
-2016-01-24 17:29:36,581 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:29:36,581 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:29:49,764 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:29:49,764 - application - DEBUG - Test Libre de la position (8,1)
-2016-01-24 17:29:49,764 - application - DEBUG - Résultat : True
-2016-01-24 17:29:49,780 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:49,780 - application - DEBUG - Le joueur 4 se déplace à (8,1)
-2016-01-24 17:29:49,780 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:57,008 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:29:57,008 - application - DEBUG - Test Libre de la position (9,1)
-2016-01-24 17:29:57,024 - application - DEBUG - Résultat : True
-2016-01-24 17:29:57,024 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:57,024 - application - DEBUG - Le joueur 5 se déplace à (9,1)
-2016-01-24 17:29:57,024 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:58,664 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:29:58,664 - application - DEBUG - Test Libre de la position (10,1)
-2016-01-24 17:29:58,664 - application - DEBUG - Résultat : True
-2016-01-24 17:29:58,664 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:58,664 - application - DEBUG - Le joueur 5 se déplace à (10,1)
-2016-01-24 17:29:58,664 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:29:59,641 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:29:59,641 - application - DEBUG - Test Libre de la position (11,1)
-2016-01-24 17:29:59,641 - application - DEBUG - Résultat : True
-2016-01-24 17:29:59,641 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:29:59,641 - application - DEBUG - Le joueur 5 se déplace à (11,1)
-2016-01-24 17:29:59,641 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:00,664 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:30:00,664 - application - DEBUG - Test Libre de la position (11,0)
-2016-01-24 17:30:00,664 - application - DEBUG - Résultat : True
-2016-01-24 17:30:00,664 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:00,664 - application - DEBUG - Le joueur 5 se déplace à (11,0)
-2016-01-24 17:30:00,664 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:00,680 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:30:00,680 - application - DEBUG - Le ballon se deplace à la postion (11,0)
-2016-01-24 17:30:02,568 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:30:02,570 - application - DEBUG - Test Libre de la position (9,1)
-2016-01-24 17:30:02,571 - application - DEBUG - Résultat : True
-2016-01-24 17:30:02,571 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:02,574 - application - DEBUG - Le joueur 4 se déplace à (9,1)
-2016-01-24 17:30:02,574 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:04,419 - application - INFO - Déplacement du joueur 4
-2016-01-24 17:30:04,421 - application - DEBUG - Test Libre de la position (10,1)
-2016-01-24 17:30:04,421 - application - DEBUG - Résultat : True
-2016-01-24 17:30:04,422 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:04,423 - application - DEBUG - Le joueur 4 se déplace à (10,1)
-2016-01-24 17:30:04,424 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:06,287 - application - INFO - Le joueur 5 essaie de passer au joueur 4
-2016-01-24 17:30:06,291 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
-2016-01-24 17:30:06,292 - application - DEBUG - Le ballon se deplace à la postion (10,1)
-2016-01-24 17:30:06,293 - application - INFO - Interception entre (11,0) et (10,1)
-2016-01-24 17:30:06,294 - application - DEBUG - droite((10.5, -0.5),(9.5, 0.5))
-2016-01-24 17:30:06,294 - application - DEBUG - droite((11.5, 0.5),(10.5, 1.5))
-2016-01-24 17:30:06,295 - application - DEBUG - droite((10.5, 0.5),(9.5, 1.5))
-2016-01-24 17:30:06,295 - application - DEBUG - droite((11.5, -0.5),(10.5, 0.5))
-2016-01-24 17:30:06,295 - application - DEBUG - droite((11, 0),(11.5, 0))
-2016-01-24 17:30:06,296 - application - DEBUG - droite((10, 1),(10.5, 1))
-2016-01-24 17:30:06,296 - application - DEBUG - droite((11, 0),(11, 0.5))
-2016-01-24 17:30:06,296 - application - DEBUG - droite((10, 1),(10, 1.5))
-2016-01-24 17:30:19,402 - application - DEBUG - Test fin du tour
-2016-01-24 17:30:19,402 - application - DEBUG - Le tour est fini
-2016-01-24 17:30:19,402 - application - INFO - Début des tours de jeu
-2016-01-24 17:30:19,403 - application - INFO - Tour de jeu équipe 2
-2016-01-24 17:30:19,404 - application - DEBUG - L'équipe 2 joue un tour
-2016-01-24 17:30:22,160 - application - INFO - Le joueur 3 essaie de plaquer le joueur 4
-2016-01-24 17:30:22,160 - application - INFO - Résolution attaquant3/équipe 2 - défenseur 4/équipe 1
-2016-01-24 17:30:22,160 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:30:22,160 - application - DEBUG - La carte 0 de l'équipe 2 a été utilisée 
-2016-01-24 17:30:22,160 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:30:22,160 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
-2016-01-24 17:30:22,160 - application - DEBUG - Résultat : -1
-2016-01-24 17:30:25,440 - application - INFO - Le joueur 2 essaie de plaquer le joueur 4
-2016-01-24 17:30:25,440 - application - INFO - Résolution attaquant2/équipe 2 - défenseur 4/équipe 1
-2016-01-24 17:30:25,440 - application - DEBUG - Calcul de la forme de l'équipe 2
-2016-01-24 17:30:25,440 - application - DEBUG - Toutes les cartes de l'équipe 2 ont été utilisées
-2016-01-24 17:30:25,440 - application - DEBUG - La carte 1 de l'équipe 2 a été utilisée 
-2016-01-24 17:30:25,440 - application - DEBUG - Calcul de la forme de l'équipe 1
-2016-01-24 17:30:25,440 - application - DEBUG - Toutes les cartes de l'équipe 1 ont été utilisées
-2016-01-24 17:30:25,440 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
-2016-01-24 17:30:25,440 - application - DEBUG - Résultat : 1
-2016-01-24 17:30:25,440 - application - DEBUG - Plaquage classique ou passage en force
-2016-01-24 17:30:25,440 - application - DEBUG - Joueur plaqué au dessus du plaqueur
-2016-01-24 17:30:25,440 - application - DEBUG - Un joueur sur la case du ballon qui le récupère
-2016-01-24 17:30:31,109 - application - DEBUG - Test fin du tour
-2016-01-24 17:30:31,109 - application - DEBUG - Le tour est fini
-2016-01-24 17:30:31,109 - application - INFO - Début des tours de jeu
-2016-01-24 17:30:31,109 - application - INFO - Tour de jeu équipe 1
-2016-01-24 17:30:31,109 - application - DEBUG - L'équipe 1 joue un tour
-2016-01-24 17:30:35,186 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:30:35,186 - application - DEBUG - Test Libre de la position (10,0)
-2016-01-24 17:30:35,202 - application - DEBUG - Résultat : True
-2016-01-24 17:30:35,202 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:35,202 - application - DEBUG - Le joueur 5 se déplace à (10,0)
-2016-01-24 17:30:35,202 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:35,202 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:30:35,202 - application - DEBUG - Le ballon se deplace à la postion (10,0)
-2016-01-24 17:30:36,415 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:30:36,415 - application - DEBUG - Test Libre de la position (11,0)
-2016-01-24 17:30:36,431 - application - DEBUG - Résultat : True
-2016-01-24 17:30:36,431 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:36,431 - application - DEBUG - Le joueur 5 se déplace à (11,0)
-2016-01-24 17:30:36,431 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:30:36,431 - application - DEBUG - Le ballon se deplace à la postion (11,0)
-2016-01-24 17:30:37,736 - application - INFO - Déplacement du joueur 5
-2016-01-24 17:30:37,736 - application - DEBUG - Test Libre de la position (12,0)
-2016-01-24 17:30:37,736 - application - DEBUG - Résultat : True
-2016-01-24 17:30:37,736 - application - DEBUG - Test si la postion du joueur est bonne
-2016-01-24 17:30:37,736 - application - DEBUG - Le joueur 5 se déplace à (12,0)
-2016-01-24 17:30:37,736 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
-2016-01-24 17:30:37,736 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
-2016-01-24 17:30:37,736 - application - DEBUG - Le ballon se deplace à la postion (12,0)
+2016-01-24 19:19:06,519 - application - INFO - Création du jeu
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,535 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,550 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:19:06,613 - application - INFO - Choix de l'équipe 1 ...
+2016-01-24 19:19:38,929 - application - INFO - Choix de l'équipe 2 ...
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 0 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 1 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 2 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 3 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 4 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 5 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 0 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 1 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 2 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 3 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 4 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 5 de l'équipe 1
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 0 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 1 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 2 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 3 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 4 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 5 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 0 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 1 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 2 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 3 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 4 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du joueur 5 de l'équipe 2
+2016-01-24 19:20:05,205 - application - DEBUG - Initialisation du ballon à la position (6,3)
+2016-01-24 19:20:05,205 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:20:09,793 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:20:09,793 - application - DEBUG - Test Libre de la position (9,3)
+2016-01-24 19:20:09,793 - application - DEBUG - Résultat : True
+2016-01-24 19:20:09,793 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:09,793 - application - DEBUG - Le joueur 5 se déplace à (9,3)
+2016-01-24 19:20:09,793 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:10,795 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:20:10,795 - application - DEBUG - Test Libre de la position (8,3)
+2016-01-24 19:20:10,795 - application - DEBUG - Résultat : True
+2016-01-24 19:20:10,795 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:10,795 - application - DEBUG - Le joueur 5 se déplace à (8,3)
+2016-01-24 19:20:10,795 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:11,675 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:20:11,675 - application - DEBUG - Test Libre de la position (7,3)
+2016-01-24 19:20:11,675 - application - DEBUG - Résultat : True
+2016-01-24 19:20:11,675 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:11,675 - application - DEBUG - Le joueur 5 se déplace à (7,3)
+2016-01-24 19:20:11,675 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:13,082 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:20:13,082 - application - DEBUG - Test Libre de la position (6,3)
+2016-01-24 19:20:13,082 - application - DEBUG - Résultat : True
+2016-01-24 19:20:13,082 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:13,082 - application - DEBUG - Le joueur 5 se déplace à (6,3)
+2016-01-24 19:20:13,082 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:13,082 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:20:13,082 - application - DEBUG - Le ballon se deplace à la postion (6,3)
+2016-01-24 19:20:43,369 - application - INFO - Le joueur 4 essaie de passer au joueur 4
+2016-01-24 19:20:43,384 - application - ERROR - La passe est impossible car le joueur 4 n'est pas porteur
+2016-01-24 19:20:44,685 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:20:44,685 - application - DEBUG - Test Libre de la position (9,4)
+2016-01-24 19:20:44,685 - application - DEBUG - Résultat : True
+2016-01-24 19:20:44,685 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:44,685 - application - DEBUG - Le joueur 4 se déplace à (9,4)
+2016-01-24 19:20:44,685 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:45,553 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:20:45,569 - application - DEBUG - Test Libre de la position (8,4)
+2016-01-24 19:20:45,569 - application - DEBUG - Résultat : True
+2016-01-24 19:20:45,569 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:45,569 - application - DEBUG - Le joueur 4 se déplace à (8,4)
+2016-01-24 19:20:45,569 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:46,640 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:20:46,640 - application - DEBUG - Test Libre de la position (7,4)
+2016-01-24 19:20:46,640 - application - DEBUG - Résultat : True
+2016-01-24 19:20:46,640 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:20:46,640 - application - DEBUG - Le joueur 4 se déplace à (7,4)
+2016-01-24 19:20:46,640 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:20:56,992 - application - INFO - Le joueur 5 essaie de passer au joueur 4
+2016-01-24 19:20:57,002 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
+2016-01-24 19:20:57,003 - application - DEBUG - Le ballon se deplace à la postion (7,4)
+2016-01-24 19:20:57,003 - application - INFO - Interception entre (6,3) et (7,4)
+2016-01-24 19:20:57,005 - application - DEBUG - droite((5.5, 2.5),(6.5, 3.5))
+2016-01-24 19:20:57,006 - application - DEBUG - droite((6.5, 3.5),(7.5, 4.5))
+2016-01-24 19:20:57,006 - application - DEBUG - droite((5.5, 3.5),(6.5, 4.5))
+2016-01-24 19:20:57,006 - application - DEBUG - droite((6.5, 2.5),(7.5, 3.5))
+2016-01-24 19:20:57,007 - application - DEBUG - droite((6, 3),(6.5, 3))
+2016-01-24 19:20:57,007 - application - DEBUG - droite((7, 4),(7.5, 4))
+2016-01-24 19:20:57,007 - application - DEBUG - droite((6, 3),(6, 3.5))
+2016-01-24 19:20:57,008 - application - DEBUG - droite((7, 4),(7, 4.5))
+2016-01-24 19:20:59,004 - application - DEBUG - Test fin du tour
+2016-01-24 19:20:59,004 - application - DEBUG - Le tour est fini
+2016-01-24 19:20:59,004 - application - INFO - Début des tours de jeu
+2016-01-24 19:20:59,004 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:20:59,004 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:21:05,758 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:05,758 - application - DEBUG - Test Libre de la position (3,3)
+2016-01-24 19:21:05,758 - application - DEBUG - Résultat : True
+2016-01-24 19:21:05,758 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:05,758 - application - DEBUG - Le joueur 4 se déplace à (3,3)
+2016-01-24 19:21:05,774 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:07,441 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:07,456 - application - DEBUG - Test Libre de la position (4,3)
+2016-01-24 19:21:07,456 - application - DEBUG - Résultat : True
+2016-01-24 19:21:07,456 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:07,456 - application - DEBUG - Le joueur 4 se déplace à (4,3)
+2016-01-24 19:21:07,456 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:11,220 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:21:11,220 - application - DEBUG - Test Libre de la position (2,5)
+2016-01-24 19:21:11,220 - application - DEBUG - Résultat : True
+2016-01-24 19:21:11,220 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:11,235 - application - DEBUG - Le joueur 2 se déplace à (2,5)
+2016-01-24 19:21:11,235 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:12,314 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:21:12,314 - application - DEBUG - Test Libre de la position (3,5)
+2016-01-24 19:21:12,314 - application - DEBUG - Résultat : True
+2016-01-24 19:21:12,314 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:12,314 - application - DEBUG - Le joueur 2 se déplace à (3,5)
+2016-01-24 19:21:12,329 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:18,941 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:21:18,941 - application - DEBUG - Test Libre de la position (3,4)
+2016-01-24 19:21:18,941 - application - DEBUG - Résultat : True
+2016-01-24 19:21:18,941 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:18,941 - application - DEBUG - Le joueur 2 se déplace à (3,4)
+2016-01-24 19:21:18,941 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:23,509 - application - DEBUG - Test fin du tour
+2016-01-24 19:21:23,509 - application - DEBUG - Le tour est fini
+2016-01-24 19:21:23,509 - application - INFO - Début des tours de jeu
+2016-01-24 19:21:23,525 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:21:23,525 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:21:27,775 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:27,791 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:21:27,791 - application - DEBUG - Résultat : True
+2016-01-24 19:21:27,791 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:27,791 - application - DEBUG - Le joueur 4 se déplace à (6,4)
+2016-01-24 19:21:27,791 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:27,791 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:21:27,791 - application - DEBUG - Le ballon se deplace à la postion (6,4)
+2016-01-24 19:21:33,166 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:33,181 - application - DEBUG - Test Libre de la position (6,5)
+2016-01-24 19:21:33,181 - application - DEBUG - Résultat : True
+2016-01-24 19:21:33,181 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:33,197 - application - DEBUG - Le joueur 4 se déplace à (6,5)
+2016-01-24 19:21:33,197 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:33,197 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:21:33,197 - application - DEBUG - Le ballon se deplace à la postion (6,5)
+2016-01-24 19:21:40,316 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:40,316 - application - DEBUG - Test Libre de la position (5,5)
+2016-01-24 19:21:40,316 - application - DEBUG - Résultat : True
+2016-01-24 19:21:40,316 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:40,316 - application - DEBUG - Le joueur 4 se déplace à (5,5)
+2016-01-24 19:21:40,316 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:40,316 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:21:40,316 - application - DEBUG - Le ballon se deplace à la postion (5,5)
+2016-01-24 19:21:41,829 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:21:41,845 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:21:41,845 - application - DEBUG - Résultat : True
+2016-01-24 19:21:41,845 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:41,845 - application - DEBUG - Le joueur 5 se déplace à (6,4)
+2016-01-24 19:21:41,845 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:43,095 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:21:43,111 - application - DEBUG - Test Libre de la position (6,5)
+2016-01-24 19:21:43,111 - application - DEBUG - Résultat : True
+2016-01-24 19:21:43,111 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:43,111 - application - DEBUG - Le joueur 5 se déplace à (6,5)
+2016-01-24 19:21:43,111 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:21:46,593 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:21:46,608 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:21:46,608 - application - DEBUG - Le ballon se deplace à la postion (5,5)
+2016-01-24 19:21:57,303 - application - DEBUG - Test fin du tour
+2016-01-24 19:21:57,319 - application - DEBUG - Le tour est fini
+2016-01-24 19:21:57,319 - application - INFO - Début des tours de jeu
+2016-01-24 19:21:57,319 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:21:57,319 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:21:59,322 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:21:59,322 - application - DEBUG - Test Libre de la position (4,4)
+2016-01-24 19:21:59,322 - application - DEBUG - Résultat : True
+2016-01-24 19:21:59,322 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:21:59,322 - application - DEBUG - Le joueur 2 se déplace à (4,4)
+2016-01-24 19:21:59,322 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:02,596 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:23:02,596 - application - DEBUG - Test Libre de la position (5,4)
+2016-01-24 19:23:02,596 - application - DEBUG - Résultat : True
+2016-01-24 19:23:02,596 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:02,611 - application - DEBUG - Le joueur 2 se déplace à (5,4)
+2016-01-24 19:23:02,611 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:05,747 - application - INFO - Le joueur 2 essaie de plaquer le joueur 4
+2016-01-24 19:23:05,763 - application - INFO - Résolution attaquant2/équipe 1 - défenseur 4/équipe 2
+2016-01-24 19:23:05,763 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:23:05,763 - application - DEBUG - La carte 4 de l'équipe 1 a été utilisée 
+2016-01-24 19:23:05,763 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:23:05,763 - application - DEBUG - La carte 2 de l'équipe 2 a été utilisée 
+2016-01-24 19:23:05,763 - application - DEBUG - Résultat : 2
+2016-01-24 19:23:05,763 - application - DEBUG - Plaquage parfait
+2016-01-24 19:23:05,763 - application - DEBUG - Le ballon se deplace à la postion (5,4)
+2016-01-24 19:23:15,126 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:23:15,126 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:23:15,142 - application - DEBUG - Le ballon se deplace à la postion (5,4)
+2016-01-24 19:23:16,766 - application - INFO - Le joueur 2 essaie de passer au joueur 2
+2016-01-24 19:23:16,766 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
+2016-01-24 19:23:16,766 - application - ERROR - La passe est impossible car le joueur 2 n'est pas derrière
+2016-01-24 19:23:19,053 - application - INFO - Le joueur 4 essaie de passer au joueur 4
+2016-01-24 19:23:19,069 - application - ERROR - La passe est impossible car le joueur 4 n'est pas porteur
+2016-01-24 19:23:29,400 - application - INFO - Le joueur 2 essaie de passer au joueur 4
+2016-01-24 19:23:29,415 - application - DEBUG - Test si le joueur 2 est derrière joueur 1
+2016-01-24 19:23:29,415 - application - DEBUG - Le ballon se deplace à la postion (4,3)
+2016-01-24 19:23:29,415 - application - INFO - Interception entre (5,4) et (4,3)
+2016-01-24 19:23:29,415 - application - DEBUG - droite((4.5, 3.5),(3.5, 2.5))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((5.5, 4.5),(4.5, 3.5))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((4.5, 4.5),(3.5, 3.5))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((5.5, 3.5),(4.5, 2.5))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((5, 4),(5.5, 4))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((4, 3),(4.5, 3))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((5, 4),(5, 4.5))
+2016-01-24 19:23:29,415 - application - DEBUG - droite((4, 3),(4, 3.5))
+2016-01-24 19:23:31,057 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:23:31,057 - application - DEBUG - Test Libre de la position (5,3)
+2016-01-24 19:23:31,073 - application - DEBUG - Résultat : True
+2016-01-24 19:23:31,073 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:31,073 - application - DEBUG - Le joueur 4 se déplace à (5,3)
+2016-01-24 19:23:31,073 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:31,073 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:23:31,073 - application - DEBUG - Le ballon se deplace à la postion (5,3)
+2016-01-24 19:23:32,382 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:23:32,397 - application - DEBUG - Test Libre de la position (6,3)
+2016-01-24 19:23:32,397 - application - DEBUG - Résultat : True
+2016-01-24 19:23:32,397 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:32,397 - application - DEBUG - Le joueur 4 se déplace à (6,3)
+2016-01-24 19:23:32,397 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:32,397 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:23:32,397 - application - DEBUG - Le ballon se deplace à la postion (6,3)
+2016-01-24 19:23:33,774 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:23:33,774 - application - DEBUG - Test Libre de la position (7,3)
+2016-01-24 19:23:33,774 - application - DEBUG - Résultat : True
+2016-01-24 19:23:33,774 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:33,774 - application - DEBUG - Le joueur 4 se déplace à (7,3)
+2016-01-24 19:23:33,774 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:33,774 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:23:33,774 - application - DEBUG - Le ballon se deplace à la postion (7,3)
+2016-01-24 19:23:35,118 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:23:35,118 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:23:35,118 - application - DEBUG - Le ballon se deplace à la postion (7,3)
+2016-01-24 19:23:39,851 - application - DEBUG - Test fin du tour
+2016-01-24 19:23:39,851 - application - DEBUG - Le tour est fini
+2016-01-24 19:23:39,851 - application - INFO - Début des tours de jeu
+2016-01-24 19:23:39,851 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:23:39,851 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:23:44,641 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:23:44,641 - application - DEBUG - Test Libre de la position (11,3)
+2016-01-24 19:23:44,641 - application - DEBUG - Résultat : True
+2016-01-24 19:23:44,641 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:44,641 - application - DEBUG - Le joueur 2 se déplace à (11,3)
+2016-01-24 19:23:44,641 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:46,203 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:23:46,203 - application - DEBUG - Test Libre de la position (10,3)
+2016-01-24 19:23:46,203 - application - DEBUG - Résultat : True
+2016-01-24 19:23:46,203 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:46,203 - application - DEBUG - Le joueur 2 se déplace à (10,3)
+2016-01-24 19:23:46,203 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:23:47,847 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:23:47,847 - application - DEBUG - Test Libre de la position (9,3)
+2016-01-24 19:23:47,847 - application - DEBUG - Résultat : True
+2016-01-24 19:23:47,847 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:23:47,847 - application - DEBUG - Le joueur 2 se déplace à (9,3)
+2016-01-24 19:23:47,847 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:04,851 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:24:04,851 - application - DEBUG - Test Libre de la position (10,2)
+2016-01-24 19:24:04,851 - application - DEBUG - Résultat : True
+2016-01-24 19:24:04,851 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:04,851 - application - DEBUG - Le joueur 1 se déplace à (10,2)
+2016-01-24 19:24:04,851 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:06,150 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:24:06,165 - application - DEBUG - Test Libre de la position (9,2)
+2016-01-24 19:24:06,165 - application - DEBUG - Résultat : True
+2016-01-24 19:24:06,165 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:06,165 - application - DEBUG - Le joueur 1 se déplace à (9,2)
+2016-01-24 19:24:06,165 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:10,352 - application - INFO - Le joueur 1 essaie de passer au joueur 1
+2016-01-24 19:24:10,367 - application - ERROR - La passe est impossible car le joueur 1 n'est pas porteur
+2016-01-24 19:24:13,071 - application - INFO - Le joueur 1 essaie de passer au joueur 1
+2016-01-24 19:24:13,071 - application - ERROR - La passe est impossible car le joueur 1 n'est pas porteur
+2016-01-24 19:24:14,165 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:24:14,165 - application - DEBUG - Test Libre de la position (8,2)
+2016-01-24 19:24:14,165 - application - DEBUG - Résultat : True
+2016-01-24 19:24:14,165 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:14,165 - application - DEBUG - Le joueur 1 se déplace à (8,2)
+2016-01-24 19:24:14,165 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:15,524 - application - DEBUG - Test fin du tour
+2016-01-24 19:24:15,524 - application - DEBUG - Le tour est fini
+2016-01-24 19:24:15,524 - application - INFO - Début des tours de jeu
+2016-01-24 19:24:15,524 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:24:15,524 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:24:23,662 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:24:23,662 - application - DEBUG - Test Libre de la position (8,3)
+2016-01-24 19:24:23,662 - application - DEBUG - Résultat : True
+2016-01-24 19:24:23,662 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:23,662 - application - DEBUG - Le joueur 4 se déplace à (8,3)
+2016-01-24 19:24:23,662 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:23,662 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:24:23,662 - application - DEBUG - Le ballon se deplace à la postion (8,3)
+2016-01-24 19:24:27,101 - application - INFO - Le joueur 4 essaie de plaquer le joueur 2
+2016-01-24 19:24:27,116 - application - INFO - Résolution attaquant4/équipe 1 - défenseur 2/équipe 2
+2016-01-24 19:24:27,127 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:24:27,128 - application - DEBUG - La carte 1 de l'équipe 1 a été utilisée 
+2016-01-24 19:24:27,128 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:24:27,128 - application - DEBUG - La carte 4 de l'équipe 2 a été utilisée 
+2016-01-24 19:24:27,155 - application - DEBUG - Résultat : -4
+2016-01-24 19:24:27,155 - application - DEBUG - Plaquage classique ou passage en force
+2016-01-24 19:24:27,155 - application - DEBUG - Joueur plaqué à droite du plaqueur
+2016-01-24 19:24:27,155 - application - DEBUG - Un joueur sur la case du ballon qui le récupère
+2016-01-24 19:24:30,645 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:24:30,661 - application - DEBUG - Test Libre de la position (5,3)
+2016-01-24 19:24:30,661 - application - DEBUG - Résultat : True
+2016-01-24 19:24:30,661 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:30,661 - application - DEBUG - Le joueur 2 se déplace à (5,3)
+2016-01-24 19:24:30,661 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:31,739 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:24:31,739 - application - DEBUG - Test Libre de la position (6,3)
+2016-01-24 19:24:31,739 - application - DEBUG - Résultat : True
+2016-01-24 19:24:31,739 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:31,755 - application - DEBUG - Le joueur 2 se déplace à (6,3)
+2016-01-24 19:24:31,755 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:33,059 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:24:33,059 - application - DEBUG - Test Libre de la position (7,3)
+2016-01-24 19:24:33,059 - application - DEBUG - Résultat : True
+2016-01-24 19:24:33,059 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:33,059 - application - DEBUG - Le joueur 2 se déplace à (7,3)
+2016-01-24 19:24:33,059 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:33,059 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:24:33,059 - application - DEBUG - Le ballon se deplace à la postion (7,3)
+2016-01-24 19:24:36,152 - application - DEBUG - Test fin du tour
+2016-01-24 19:24:36,152 - application - DEBUG - Le tour est fini
+2016-01-24 19:24:36,152 - application - INFO - Début des tours de jeu
+2016-01-24 19:24:36,168 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:24:36,168 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:24:45,114 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:24:45,130 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:24:45,130 - application - DEBUG - Résultat : True
+2016-01-24 19:24:45,130 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:45,130 - application - DEBUG - Le joueur 5 se déplace à (6,4)
+2016-01-24 19:24:45,130 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:46,238 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:24:46,239 - application - DEBUG - Test Libre de la position (7,4)
+2016-01-24 19:24:46,239 - application - DEBUG - Résultat : True
+2016-01-24 19:24:46,240 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:46,241 - application - DEBUG - Le joueur 5 se déplace à (7,4)
+2016-01-24 19:24:46,241 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:47,495 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:24:47,511 - application - DEBUG - Test Libre de la position (8,4)
+2016-01-24 19:24:47,511 - application - DEBUG - Résultat : True
+2016-01-24 19:24:47,511 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:47,511 - application - DEBUG - Le joueur 5 se déplace à (8,4)
+2016-01-24 19:24:47,511 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:49,385 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:24:49,385 - application - DEBUG - Test Libre de la position (5,4)
+2016-01-24 19:24:49,385 - application - DEBUG - Résultat : True
+2016-01-24 19:24:49,385 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:49,385 - application - DEBUG - Le joueur 4 se déplace à (5,4)
+2016-01-24 19:24:49,385 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:50,713 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:24:50,713 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:24:50,729 - application - DEBUG - Résultat : True
+2016-01-24 19:24:50,729 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:50,729 - application - DEBUG - Le joueur 4 se déplace à (6,4)
+2016-01-24 19:24:50,729 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:51,979 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:24:51,994 - application - DEBUG - Test Libre de la position (7,4)
+2016-01-24 19:24:51,994 - application - DEBUG - Résultat : True
+2016-01-24 19:24:51,994 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:51,994 - application - DEBUG - Le joueur 4 se déplace à (7,4)
+2016-01-24 19:24:51,994 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:24:53,500 - application - INFO - Le joueur 4 essaie de plaquer le joueur 2
+2016-01-24 19:24:53,500 - application - INFO - Résolution attaquant4/équipe 2 - défenseur 2/équipe 1
+2016-01-24 19:24:53,500 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:24:53,500 - application - DEBUG - La carte 2 de l'équipe 2 a été utilisée 
+2016-01-24 19:24:53,500 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:24:53,500 - application - DEBUG - La carte 1 de l'équipe 1 a été utilisée 
+2016-01-24 19:24:53,516 - application - DEBUG - Résultat : 1
+2016-01-24 19:24:53,516 - application - DEBUG - Plaquage classique ou passage en force
+2016-01-24 19:24:53,516 - application - DEBUG - Joueur plaqué au dessus du plaqueur
+2016-01-24 19:24:53,516 - application - DEBUG - Un joueur sur la case du ballon qui le récupère
+2016-01-24 19:24:56,326 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:24:56,326 - application - DEBUG - Test Libre de la position (7,2)
+2016-01-24 19:24:56,326 - application - DEBUG - Résultat : True
+2016-01-24 19:24:56,326 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:24:56,326 - application - ERROR - Vous ne pouvez pas déplacer plus de joueurs
+2016-01-24 19:24:58,440 - application - DEBUG - Test fin du tour
+2016-01-24 19:24:58,440 - application - DEBUG - Le tour est fini
+2016-01-24 19:24:58,440 - application - INFO - Début des tours de jeu
+2016-01-24 19:24:58,440 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:24:58,440 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:25:04,390 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:25:04,390 - application - DEBUG - Test Libre de la position (7,3)
+2016-01-24 19:25:04,390 - application - DEBUG - Résultat : True
+2016-01-24 19:25:04,390 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:04,390 - application - DEBUG - Le joueur 4 se déplace à (7,3)
+2016-01-24 19:25:04,390 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:04,390 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:25:06,213 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:25:06,213 - application - DEBUG - Test Libre de la position (7,2)
+2016-01-24 19:25:06,213 - application - DEBUG - Résultat : True
+2016-01-24 19:25:06,213 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:06,213 - application - DEBUG - Le joueur 4 se déplace à (7,2)
+2016-01-24 19:25:06,213 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:25:06,213 - application - DEBUG - Le ballon se deplace à la postion (7,2)
+2016-01-24 19:25:11,946 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:25:11,946 - application - DEBUG - Test Libre de la position (7,1)
+2016-01-24 19:25:11,946 - application - DEBUG - Résultat : True
+2016-01-24 19:25:11,946 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:11,946 - application - DEBUG - Le joueur 4 se déplace à (7,1)
+2016-01-24 19:25:11,946 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:11,946 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:25:11,946 - application - DEBUG - Le ballon se deplace à la postion (7,1)
+2016-01-24 19:25:13,390 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:25:13,390 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:25:13,390 - application - DEBUG - Le ballon se deplace à la postion (7,1)
+2016-01-24 19:25:16,912 - application - INFO - Le joueur 4 essaie de tirer en avant
+2016-01-24 19:25:16,912 - application - DEBUG - Test personne en face
+2016-01-24 19:25:16,912 - application - DEBUG - Résultat : Vrai
+2016-01-24 19:25:16,912 - application - DEBUG - Test endroit où on envoie le ballon
+2016-01-24 19:25:24,268 - application - INFO - Le joueur 0 essaie de passer au joueur 0
+2016-01-24 19:25:24,268 - application - ERROR - La passe est impossible car le joueur 0 n'est pas porteur
+2016-01-24 19:25:26,006 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:26,006 - application - DEBUG - Test Libre de la position (3,4)
+2016-01-24 19:25:26,006 - application - DEBUG - Résultat : True
+2016-01-24 19:25:26,006 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:26,006 - application - DEBUG - Le joueur 5 se déplace à (3,4)
+2016-01-24 19:25:26,006 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:26,866 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:26,866 - application - DEBUG - Test Libre de la position (3,3)
+2016-01-24 19:25:26,866 - application - DEBUG - Résultat : True
+2016-01-24 19:25:26,866 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:26,866 - application - DEBUG - Le joueur 5 se déplace à (3,3)
+2016-01-24 19:25:26,866 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:27,693 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:27,693 - application - DEBUG - Test Libre de la position (3,2)
+2016-01-24 19:25:27,693 - application - DEBUG - Résultat : True
+2016-01-24 19:25:27,693 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:27,693 - application - DEBUG - Le joueur 5 se déplace à (3,2)
+2016-01-24 19:25:27,693 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:28,761 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:28,777 - application - DEBUG - Test Libre de la position (3,1)
+2016-01-24 19:25:28,777 - application - DEBUG - Résultat : True
+2016-01-24 19:25:28,777 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:28,777 - application - DEBUG - Le joueur 5 se déplace à (3,1)
+2016-01-24 19:25:28,777 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:29,589 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:31,453 - application - DEBUG - Test fin du tour
+2016-01-24 19:25:31,453 - application - DEBUG - Le tour est fini
+2016-01-24 19:25:31,453 - application - INFO - Début des tours de jeu
+2016-01-24 19:25:31,453 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:25:31,453 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:25:37,403 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:25:37,403 - application - DEBUG - Test Libre de la position (9,2)
+2016-01-24 19:25:37,403 - application - DEBUG - Résultat : True
+2016-01-24 19:25:37,403 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:37,403 - application - DEBUG - Le joueur 1 se déplace à (9,2)
+2016-01-24 19:25:37,403 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:38,326 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:25:38,326 - application - DEBUG - Test Libre de la position (10,2)
+2016-01-24 19:25:38,326 - application - DEBUG - Résultat : True
+2016-01-24 19:25:38,326 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:38,341 - application - DEBUG - Le joueur 1 se déplace à (10,2)
+2016-01-24 19:25:38,341 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:43,584 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:25:43,600 - application - DEBUG - Test Libre de la position (10,1)
+2016-01-24 19:25:43,600 - application - DEBUG - Résultat : True
+2016-01-24 19:25:43,600 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:43,600 - application - DEBUG - Le joueur 1 se déplace à (10,1)
+2016-01-24 19:25:43,600 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:44,559 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:25:52,161 - application - INFO - Le joueur 5 essaie de passer au joueur 5
+2016-01-24 19:25:52,177 - application - ERROR - La passe est impossible car le joueur 5 n'est pas porteur
+2016-01-24 19:25:55,761 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:55,767 - application - DEBUG - Test Libre de la position (9,4)
+2016-01-24 19:25:55,767 - application - DEBUG - Résultat : True
+2016-01-24 19:25:55,768 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:55,769 - application - DEBUG - Le joueur 5 se déplace à (9,4)
+2016-01-24 19:25:55,769 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:25:59,041 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:25:59,041 - application - DEBUG - Test Libre de la position (9,5)
+2016-01-24 19:25:59,041 - application - DEBUG - Résultat : True
+2016-01-24 19:25:59,056 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:25:59,056 - application - DEBUG - Le joueur 5 se déplace à (9,5)
+2016-01-24 19:25:59,056 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:02,645 - application - DEBUG - Test fin du tour
+2016-01-24 19:26:02,661 - application - DEBUG - Le tour est fini
+2016-01-24 19:26:02,661 - application - INFO - Début des tours de jeu
+2016-01-24 19:26:02,661 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:26:02,661 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:26:07,839 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:07,854 - application - DEBUG - Test Libre de la position (3,0)
+2016-01-24 19:26:07,854 - application - DEBUG - Résultat : True
+2016-01-24 19:26:07,854 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:07,854 - application - DEBUG - Le joueur 5 se déplace à (3,0)
+2016-01-24 19:26:07,854 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:08,526 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:08,526 - application - DEBUG - Test Libre de la position (4,0)
+2016-01-24 19:26:08,526 - application - DEBUG - Résultat : True
+2016-01-24 19:26:08,526 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:08,526 - application - DEBUG - Le joueur 5 se déplace à (4,0)
+2016-01-24 19:26:08,526 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:09,210 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:09,210 - application - DEBUG - Test Libre de la position (5,0)
+2016-01-24 19:26:09,210 - application - DEBUG - Résultat : True
+2016-01-24 19:26:09,210 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:09,210 - application - DEBUG - Le joueur 5 se déplace à (5,0)
+2016-01-24 19:26:09,210 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:09,960 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:09,960 - application - DEBUG - Test Libre de la position (6,0)
+2016-01-24 19:26:09,960 - application - DEBUG - Résultat : True
+2016-01-24 19:26:09,960 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:09,975 - application - DEBUG - Le joueur 5 se déplace à (6,0)
+2016-01-24 19:26:09,975 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:15,621 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:15,621 - application - DEBUG - Test Libre de la position (7,0)
+2016-01-24 19:26:15,621 - application - DEBUG - Résultat : True
+2016-01-24 19:26:15,636 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:15,636 - application - DEBUG - Le joueur 4 se déplace à (7,0)
+2016-01-24 19:26:15,636 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:16,390 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:16,390 - application - DEBUG - Test Libre de la position (8,0)
+2016-01-24 19:26:16,390 - application - DEBUG - Résultat : True
+2016-01-24 19:26:16,390 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:16,390 - application - DEBUG - Le joueur 4 se déplace à (8,0)
+2016-01-24 19:26:16,390 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:17,202 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:17,210 - application - DEBUG - Test Libre de la position (9,0)
+2016-01-24 19:26:17,210 - application - DEBUG - Résultat : True
+2016-01-24 19:26:17,210 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:17,211 - application - DEBUG - Le joueur 4 se déplace à (9,0)
+2016-01-24 19:26:17,212 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:17,901 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:20,823 - application - DEBUG - Test fin du tour
+2016-01-24 19:26:20,823 - application - DEBUG - Le tour est fini
+2016-01-24 19:26:20,823 - application - INFO - Début des tours de jeu
+2016-01-24 19:26:20,823 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:26:20,823 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:26:24,110 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:26:24,125 - application - DEBUG - Test Libre de la position (10,0)
+2016-01-24 19:26:24,125 - application - DEBUG - Résultat : True
+2016-01-24 19:26:24,125 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:24,125 - application - DEBUG - Le joueur 1 se déplace à (10,0)
+2016-01-24 19:26:24,125 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:24,125 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:26:24,125 - application - DEBUG - Le ballon se deplace à la postion (10,0)
+2016-01-24 19:26:25,342 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:26:25,342 - application - DEBUG - Test Libre de la position (10,1)
+2016-01-24 19:26:25,342 - application - DEBUG - Résultat : True
+2016-01-24 19:26:25,342 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:25,357 - application - DEBUG - Le joueur 1 se déplace à (10,1)
+2016-01-24 19:26:25,357 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:25,357 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:26:25,357 - application - DEBUG - Le ballon se deplace à la postion (10,1)
+2016-01-24 19:26:26,397 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:26:26,397 - application - DEBUG - Test Libre de la position (9,1)
+2016-01-24 19:26:26,397 - application - DEBUG - Résultat : True
+2016-01-24 19:26:26,397 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:26,397 - application - DEBUG - Le joueur 1 se déplace à (9,1)
+2016-01-24 19:26:26,397 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:26,397 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:26:26,397 - application - DEBUG - Le ballon se deplace à la postion (9,1)
+2016-01-24 19:26:28,123 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:28,139 - application - DEBUG - Test Libre de la position (8,4)
+2016-01-24 19:26:28,139 - application - DEBUG - Résultat : True
+2016-01-24 19:26:28,139 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:28,155 - application - DEBUG - Le joueur 4 se déplace à (8,4)
+2016-01-24 19:26:28,155 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:29,170 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:26:29,186 - application - DEBUG - Test Libre de la position (9,4)
+2016-01-24 19:26:29,186 - application - DEBUG - Résultat : True
+2016-01-24 19:26:29,186 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:29,186 - application - DEBUG - Le joueur 4 se déplace à (9,4)
+2016-01-24 19:26:29,186 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:33,549 - application - INFO - Le joueur 1 essaie de tirer en avant
+2016-01-24 19:26:33,549 - application - DEBUG - Test personne en face
+2016-01-24 19:26:33,549 - application - DEBUG - Résultat : Vrai
+2016-01-24 19:26:33,549 - application - DEBUG - Test endroit où on envoie le ballon
+2016-01-24 19:26:33,549 - application - DEBUG - Test personne en face
+2016-01-24 19:26:33,564 - application - DEBUG - Résultat : Vrai
+2016-01-24 19:26:33,564 - application - DEBUG - Test endroit où on envoie le ballon
+2016-01-24 19:26:33,564 - application - ERROR - La case choisie n'est pas en avant du joueur 1
+2016-01-24 19:26:36,962 - application - INFO - Le joueur 1 essaie de tirer en avant
+2016-01-24 19:26:36,962 - application - DEBUG - Test personne en face
+2016-01-24 19:26:36,962 - application - DEBUG - Résultat : Vrai
+2016-01-24 19:26:36,962 - application - DEBUG - Test endroit où on envoie le ballon
+2016-01-24 19:26:44,163 - application - DEBUG - Test fin du tour
+2016-01-24 19:26:44,163 - application - DEBUG - Le tour est fini
+2016-01-24 19:26:44,163 - application - INFO - Début des tours de jeu
+2016-01-24 19:26:44,163 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:26:44,163 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:26:53,253 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:26:53,253 - application - DEBUG - Test Libre de la position (6,3)
+2016-01-24 19:26:53,253 - application - DEBUG - Résultat : True
+2016-01-24 19:26:53,253 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:53,269 - application - DEBUG - Le joueur 2 se déplace à (6,3)
+2016-01-24 19:26:53,269 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:54,409 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:26:54,409 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:26:54,409 - application - DEBUG - Résultat : True
+2016-01-24 19:26:54,409 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:54,409 - application - DEBUG - Le joueur 2 se déplace à (6,4)
+2016-01-24 19:26:54,409 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:55,613 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:26:55,629 - application - DEBUG - Test Libre de la position (6,5)
+2016-01-24 19:26:55,629 - application - DEBUG - Résultat : True
+2016-01-24 19:26:55,629 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:55,629 - application - DEBUG - Le joueur 2 se déplace à (6,5)
+2016-01-24 19:26:55,629 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:57,260 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:57,265 - application - DEBUG - Test Libre de la position (6,1)
+2016-01-24 19:26:57,266 - application - DEBUG - Résultat : True
+2016-01-24 19:26:57,266 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:57,267 - application - DEBUG - Le joueur 5 se déplace à (6,1)
+2016-01-24 19:26:57,268 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:58,233 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:58,233 - application - DEBUG - Test Libre de la position (6,2)
+2016-01-24 19:26:58,233 - application - DEBUG - Résultat : True
+2016-01-24 19:26:58,233 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:58,233 - application - DEBUG - Le joueur 5 se déplace à (6,2)
+2016-01-24 19:26:58,233 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:26:59,108 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:26:59,124 - application - DEBUG - Test Libre de la position (6,3)
+2016-01-24 19:26:59,124 - application - DEBUG - Résultat : True
+2016-01-24 19:26:59,124 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:26:59,124 - application - DEBUG - Le joueur 5 se déplace à (6,3)
+2016-01-24 19:26:59,124 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:00,835 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:00,850 - application - DEBUG - Test Libre de la position (6,4)
+2016-01-24 19:27:00,850 - application - DEBUG - Résultat : True
+2016-01-24 19:27:00,850 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:00,850 - application - DEBUG - Le joueur 5 se déplace à (6,4)
+2016-01-24 19:27:00,850 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:08,250 - application - DEBUG - Test fin du tour
+2016-01-24 19:27:08,250 - application - DEBUG - Le tour est fini
+2016-01-24 19:27:08,250 - application - INFO - Début des tours de jeu
+2016-01-24 19:27:08,250 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:27:08,250 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:27:10,220 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:10,220 - application - DEBUG - Test Libre de la position (8,5)
+2016-01-24 19:27:10,220 - application - DEBUG - Résultat : True
+2016-01-24 19:27:10,220 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:10,220 - application - DEBUG - Le joueur 5 se déplace à (8,5)
+2016-01-24 19:27:10,220 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:11,062 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:11,062 - application - DEBUG - Test Libre de la position (8,6)
+2016-01-24 19:27:11,062 - application - DEBUG - Résultat : True
+2016-01-24 19:27:11,062 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:11,062 - application - DEBUG - Le joueur 5 se déplace à (8,6)
+2016-01-24 19:27:11,062 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:12,046 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:12,062 - application - DEBUG - Test Libre de la position (8,7)
+2016-01-24 19:27:12,062 - application - DEBUG - Résultat : True
+2016-01-24 19:27:12,062 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:12,062 - application - DEBUG - Le joueur 5 se déplace à (8,7)
+2016-01-24 19:27:12,062 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:13,109 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:13,109 - application - DEBUG - Test Libre de la position (7,7)
+2016-01-24 19:27:13,109 - application - DEBUG - Résultat : True
+2016-01-24 19:27:13,109 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:13,109 - application - DEBUG - Le joueur 5 se déplace à (7,7)
+2016-01-24 19:27:13,109 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:15,252 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:27:15,252 - application - DEBUG - Test Libre de la position (9,6)
+2016-01-24 19:27:15,267 - application - DEBUG - Résultat : True
+2016-01-24 19:27:15,267 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:15,267 - application - DEBUG - Le joueur 0 se déplace à (9,6)
+2016-01-24 19:27:15,267 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:16,521 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:27:16,537 - application - DEBUG - Test Libre de la position (8,6)
+2016-01-24 19:27:16,537 - application - DEBUG - Résultat : True
+2016-01-24 19:27:16,537 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:16,537 - application - DEBUG - Le joueur 0 se déplace à (8,6)
+2016-01-24 19:27:16,537 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:19,339 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:27:19,339 - application - DEBUG - Test Libre de la position (7,6)
+2016-01-24 19:27:19,339 - application - DEBUG - Résultat : True
+2016-01-24 19:27:19,339 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:19,339 - application - DEBUG - Le joueur 0 se déplace à (7,6)
+2016-01-24 19:27:19,339 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:20,507 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:27:21,750 - application - DEBUG - Test fin du tour
+2016-01-24 19:27:21,750 - application - DEBUG - Le tour est fini
+2016-01-24 19:27:21,750 - application - INFO - Début des tours de jeu
+2016-01-24 19:27:21,750 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:27:21,750 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:27:25,461 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:27:25,477 - application - DEBUG - Test Libre de la position (6,6)
+2016-01-24 19:27:25,477 - application - DEBUG - Résultat : True
+2016-01-24 19:27:25,477 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:25,477 - application - DEBUG - Le joueur 2 se déplace à (6,6)
+2016-01-24 19:27:25,477 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:27,098 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:27:27,098 - application - DEBUG - Test Libre de la position (6,7)
+2016-01-24 19:27:27,098 - application - DEBUG - Résultat : True
+2016-01-24 19:27:27,098 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:27,098 - application - DEBUG - Le joueur 2 se déplace à (6,7)
+2016-01-24 19:27:27,098 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:27,098 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:27:27,098 - application - DEBUG - Le ballon se deplace à la postion (6,7)
+2016-01-24 19:27:31,067 - application - INFO - Le joueur 2 essaie de plaquer le joueur 5
+2016-01-24 19:27:36,475 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:36,491 - application - DEBUG - Test Libre de la position (5,4)
+2016-01-24 19:27:36,491 - application - DEBUG - Résultat : True
+2016-01-24 19:27:36,491 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:36,491 - application - DEBUG - Le joueur 5 se déplace à (5,4)
+2016-01-24 19:27:36,491 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:37,340 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:37,340 - application - DEBUG - Test Libre de la position (5,5)
+2016-01-24 19:27:37,340 - application - DEBUG - Résultat : True
+2016-01-24 19:27:37,340 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:37,356 - application - DEBUG - Le joueur 5 se déplace à (5,5)
+2016-01-24 19:27:37,356 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:38,294 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:38,294 - application - DEBUG - Test Libre de la position (5,6)
+2016-01-24 19:27:38,294 - application - DEBUG - Résultat : True
+2016-01-24 19:27:38,294 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:38,294 - application - DEBUG - Le joueur 5 se déplace à (5,6)
+2016-01-24 19:27:38,294 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:40,251 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:27:40,266 - application - DEBUG - Test Libre de la position (5,7)
+2016-01-24 19:27:40,266 - application - DEBUG - Résultat : True
+2016-01-24 19:27:40,266 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:40,266 - application - DEBUG - Le joueur 5 se déplace à (5,7)
+2016-01-24 19:27:40,266 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:42,389 - application - DEBUG - Test fin du tour
+2016-01-24 19:27:42,389 - application - DEBUG - Le tour est fini
+2016-01-24 19:27:42,389 - application - INFO - Début des tours de jeu
+2016-01-24 19:27:42,389 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:27:42,389 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:27:49,772 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:27:49,772 - application - DEBUG - Test Libre de la position (9,5)
+2016-01-24 19:27:49,772 - application - DEBUG - Résultat : True
+2016-01-24 19:27:49,772 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:49,772 - application - DEBUG - Le joueur 4 se déplace à (9,5)
+2016-01-24 19:27:49,772 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:50,886 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:27:50,886 - application - DEBUG - Test Libre de la position (9,6)
+2016-01-24 19:27:50,886 - application - DEBUG - Résultat : True
+2016-01-24 19:27:50,886 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:50,886 - application - DEBUG - Le joueur 4 se déplace à (9,6)
+2016-01-24 19:27:50,886 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:53,089 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:27:53,089 - application - DEBUG - Test Libre de la position (9,7)
+2016-01-24 19:27:53,089 - application - DEBUG - Résultat : True
+2016-01-24 19:27:53,089 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:53,089 - application - DEBUG - Le joueur 4 se déplace à (9,7)
+2016-01-24 19:27:53,089 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:54,882 - application - INFO - Déplacement du joueur 3
+2016-01-24 19:27:54,882 - application - DEBUG - Test Libre de la position (10,5)
+2016-01-24 19:27:54,882 - application - DEBUG - Résultat : True
+2016-01-24 19:27:54,882 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:27:54,882 - application - DEBUG - Le joueur 3 se déplace à (10,5)
+2016-01-24 19:27:54,882 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:27:57,810 - application - DEBUG - Test fin du tour
+2016-01-24 19:27:57,810 - application - DEBUG - Le tour est fini
+2016-01-24 19:27:57,810 - application - INFO - Début des tours de jeu
+2016-01-24 19:27:57,810 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:27:57,810 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:28:04,434 - application - INFO - Le joueur 2 essaie de plaquer le joueur 5
+2016-01-24 19:28:04,449 - application - INFO - Résolution attaquant2/équipe 1 - défenseur 5/équipe 2
+2016-01-24 19:28:04,449 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:28:04,449 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
+2016-01-24 19:28:04,449 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:28:04,449 - application - DEBUG - La carte 0 de l'équipe 2 a été utilisée 
+2016-01-24 19:28:04,449 - application - DEBUG - Résultat : 2
+2016-01-24 19:28:04,449 - application - DEBUG - Plaquage classique ou passage en force
+2016-01-24 19:28:04,449 - application - DEBUG - Joueur plaqué à gauche du plaqueur
+2016-01-24 19:28:04,449 - application - DEBUG - Un joueur sur la case du ballon qui le récupère
+2016-01-24 19:28:04,449 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:28:04,449 - application - DEBUG - Test Libre de la position (7,7)
+2016-01-24 19:28:04,449 - application - DEBUG - Résultat : True
+2016-01-24 19:28:04,449 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:04,449 - application - DEBUG - Le joueur 2 se déplace à (7,7)
+2016-01-24 19:28:04,449 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:28:04,449 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:28:04,465 - application - DEBUG - Le ballon se deplace à la postion (7,7)
+2016-01-24 19:28:10,193 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:28:10,193 - application - DEBUG - Test Libre de la position (8,7)
+2016-01-24 19:28:10,193 - application - DEBUG - Résultat : True
+2016-01-24 19:28:10,193 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:10,193 - application - DEBUG - Le joueur 2 se déplace à (8,7)
+2016-01-24 19:28:10,193 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:28:10,193 - application - DEBUG - Le ballon se deplace à la postion (8,7)
+2016-01-24 19:28:12,177 - application - INFO - Déplacement du joueur 5
+2016-01-24 19:28:12,193 - application - DEBUG - Test Libre de la position (6,7)
+2016-01-24 19:28:12,193 - application - DEBUG - Résultat : True
+2016-01-24 19:28:12,193 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:12,193 - application - DEBUG - Le joueur 5 se déplace à (6,7)
+2016-01-24 19:28:12,193 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:28:17,189 - application - INFO - Le joueur 2 essaie de plaquer le joueur 4
+2016-01-24 19:28:19,585 - application - INFO - Le joueur 2 essaie de plaquer le joueur 4
+2016-01-24 19:28:32,348 - application - DEBUG - Test fin du tour
+2016-01-24 19:28:32,348 - application - DEBUG - Le tour est fini
+2016-01-24 19:28:32,348 - application - INFO - Début des tours de jeu
+2016-01-24 19:28:32,348 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:28:32,348 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:28:35,566 - application - INFO - Déplacement du joueur 3
+2016-01-24 19:28:35,582 - application - DEBUG - Test Libre de la position (10,6)
+2016-01-24 19:28:35,582 - application - DEBUG - Résultat : True
+2016-01-24 19:28:35,582 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:35,582 - application - DEBUG - Le joueur 3 se déplace à (10,6)
+2016-01-24 19:28:35,582 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:28:39,368 - application - INFO - Le joueur 3 essaie de passer au joueur 3
+2016-01-24 19:28:39,384 - application - ERROR - La passe est impossible car le joueur 3 n'est pas porteur
+2016-01-24 19:28:43,363 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:28:43,372 - application - DEBUG - Test Libre de la position (8,6)
+2016-01-24 19:28:43,372 - application - DEBUG - Résultat : True
+2016-01-24 19:28:43,372 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:43,372 - application - DEBUG - Le joueur 0 se déplace à (8,6)
+2016-01-24 19:28:43,372 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:28:48,183 - application - DEBUG - Test fin du tour
+2016-01-24 19:28:48,183 - application - DEBUG - Le tour est fini
+2016-01-24 19:28:48,183 - application - INFO - Début des tours de jeu
+2016-01-24 19:28:48,183 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:28:48,183 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:28:57,739 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:28:57,739 - application - DEBUG - Test Libre de la position (8,0)
+2016-01-24 19:28:57,739 - application - DEBUG - Résultat : True
+2016-01-24 19:28:57,755 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:28:57,755 - application - DEBUG - Le joueur 4 se déplace à (8,0)
+2016-01-24 19:28:57,755 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:05,704 - application - INFO - Le joueur 2 essaie de tirer en avant
+2016-01-24 19:29:05,720 - application - DEBUG - Test personne en face
+2016-01-24 19:29:05,720 - application - DEBUG - Résultat : Vrai
+2016-01-24 19:29:05,720 - application - DEBUG - Test endroit où on envoie le ballon
+2016-01-24 19:29:08,706 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:29:08,706 - application - DEBUG - Test Libre de la position (9,0)
+2016-01-24 19:29:08,706 - application - DEBUG - Résultat : True
+2016-01-24 19:29:08,706 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:08,706 - application - DEBUG - Le joueur 4 se déplace à (9,0)
+2016-01-24 19:29:08,706 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:10,096 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:29:10,096 - application - DEBUG - Test Libre de la position (10,0)
+2016-01-24 19:29:10,096 - application - DEBUG - Résultat : True
+2016-01-24 19:29:10,096 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:10,096 - application - DEBUG - Le joueur 4 se déplace à (10,0)
+2016-01-24 19:29:10,096 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:10,096 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:29:10,096 - application - DEBUG - Le ballon se deplace à la postion (10,0)
+2016-01-24 19:29:11,770 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:29:11,770 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:29:11,770 - application - DEBUG - Le ballon se deplace à la postion (10,0)
+2016-01-24 19:29:16,937 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:29:16,937 - application - DEBUG - Test Libre de la position (2,0)
+2016-01-24 19:29:16,937 - application - DEBUG - Résultat : True
+2016-01-24 19:29:16,937 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:16,952 - application - DEBUG - Le joueur 0 se déplace à (2,0)
+2016-01-24 19:29:16,952 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:17,689 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:29:17,705 - application - DEBUG - Test Libre de la position (3,0)
+2016-01-24 19:29:17,705 - application - DEBUG - Résultat : True
+2016-01-24 19:29:17,705 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:17,705 - application - DEBUG - Le joueur 0 se déplace à (3,0)
+2016-01-24 19:29:17,705 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:18,377 - application - INFO - Déplacement du joueur 0
+2016-01-24 19:29:18,377 - application - DEBUG - Test Libre de la position (4,0)
+2016-01-24 19:29:18,377 - application - DEBUG - Résultat : True
+2016-01-24 19:29:18,377 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:18,377 - application - DEBUG - Le joueur 0 se déplace à (4,0)
+2016-01-24 19:29:18,377 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:20,410 - application - DEBUG - Test fin du tour
+2016-01-24 19:29:20,410 - application - DEBUG - Le tour est fini
+2016-01-24 19:29:20,410 - application - INFO - Début des tours de jeu
+2016-01-24 19:29:20,410 - application - INFO - Tour de jeu équipe 2
+2016-01-24 19:29:20,410 - application - DEBUG - L'équipe 2 joue un tour
+2016-01-24 19:29:25,735 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:29:25,751 - application - DEBUG - Test Libre de la position (10,1)
+2016-01-24 19:29:25,751 - application - DEBUG - Résultat : True
+2016-01-24 19:29:25,751 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:25,751 - application - DEBUG - Le joueur 1 se déplace à (10,1)
+2016-01-24 19:29:25,751 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:26,927 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:29:26,927 - application - DEBUG - Test Libre de la position (11,1)
+2016-01-24 19:29:26,927 - application - DEBUG - Résultat : True
+2016-01-24 19:29:26,927 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:26,927 - application - DEBUG - Le joueur 1 se déplace à (11,1)
+2016-01-24 19:29:26,927 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:28,212 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:29:28,212 - application - DEBUG - Test Libre de la position (10,3)
+2016-01-24 19:29:28,212 - application - DEBUG - Résultat : True
+2016-01-24 19:29:28,212 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:28,212 - application - DEBUG - Le joueur 2 se déplace à (10,3)
+2016-01-24 19:29:28,212 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:29,063 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:29:29,063 - application - DEBUG - Test Libre de la position (10,2)
+2016-01-24 19:29:29,063 - application - DEBUG - Résultat : True
+2016-01-24 19:29:29,063 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:29,063 - application - DEBUG - Le joueur 2 se déplace à (10,2)
+2016-01-24 19:29:29,063 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:30,056 - application - INFO - Déplacement du joueur 2
+2016-01-24 19:29:30,056 - application - DEBUG - Test Libre de la position (10,1)
+2016-01-24 19:29:30,056 - application - DEBUG - Résultat : True
+2016-01-24 19:29:30,056 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:30,056 - application - DEBUG - Le joueur 2 se déplace à (10,1)
+2016-01-24 19:29:30,056 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:31,557 - application - INFO - Le joueur 2 essaie de plaquer le joueur 4
+2016-01-24 19:29:31,573 - application - INFO - Résolution attaquant2/équipe 2 - défenseur 4/équipe 1
+2016-01-24 19:29:31,573 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:29:31,573 - application - DEBUG - La carte 0 de l'équipe 2 a été utilisée 
+2016-01-24 19:29:31,573 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:29:31,573 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
+2016-01-24 19:29:31,573 - application - DEBUG - Résultat : -2
+2016-01-24 19:29:35,797 - application - INFO - Déplacement du joueur 1
+2016-01-24 19:29:35,797 - application - DEBUG - Test Libre de la position (11,0)
+2016-01-24 19:29:35,797 - application - DEBUG - Résultat : True
+2016-01-24 19:29:35,797 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:35,797 - application - DEBUG - Le joueur 1 se déplace à (11,0)
+2016-01-24 19:29:35,797 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:43,230 - application - INFO - Le joueur 1 essaie de plaquer le joueur 4
+2016-01-24 19:29:43,230 - application - INFO - Résolution attaquant1/équipe 2 - défenseur 4/équipe 1
+2016-01-24 19:29:43,230 - application - DEBUG - Calcul de la forme de l'équipe 2
+2016-01-24 19:29:43,230 - application - DEBUG - La carte 0 de l'équipe 2 a été utilisée 
+2016-01-24 19:29:43,230 - application - DEBUG - Calcul de la forme de l'équipe 1
+2016-01-24 19:29:43,230 - application - DEBUG - La carte 0 de l'équipe 1 a été utilisée 
+2016-01-24 19:29:43,230 - application - DEBUG - Résultat : -2
+2016-01-24 19:29:46,023 - application - DEBUG - Test fin du tour
+2016-01-24 19:29:46,023 - application - DEBUG - Le tour est fini
+2016-01-24 19:29:46,023 - application - INFO - Début des tours de jeu
+2016-01-24 19:29:46,023 - application - INFO - Tour de jeu équipe 1
+2016-01-24 19:29:46,023 - application - DEBUG - L'équipe 1 joue un tour
+2016-01-24 19:29:48,255 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:29:48,255 - application - DEBUG - Test Libre de la position (11,0)
+2016-01-24 19:29:48,255 - application - DEBUG - Résultat : True
+2016-01-24 19:29:48,255 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:48,255 - application - DEBUG - Le joueur 4 se déplace à (11,0)
+2016-01-24 19:29:48,255 - application - DEBUG - Initialisation du joueur 0 de l'équipe 3
+2016-01-24 19:29:48,255 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:29:48,255 - application - DEBUG - Le ballon se deplace à la postion (11,0)
+2016-01-24 19:29:49,580 - application - INFO - Déplacement du joueur 4
+2016-01-24 19:29:49,580 - application - DEBUG - Test Libre de la position (12,0)
+2016-01-24 19:29:49,580 - application - DEBUG - Résultat : True
+2016-01-24 19:29:49,580 - application - DEBUG - Test si la postion du joueur est bonne
+2016-01-24 19:29:49,580 - application - DEBUG - Le joueur 4 se déplace à (12,0)
+2016-01-24 19:29:49,580 - application - INFO - Le joueur est porteur, le ballon doit aussi se déplacer
+2016-01-24 19:29:49,596 - application - DEBUG - Le ballon se deplace à la postion (12,0)
