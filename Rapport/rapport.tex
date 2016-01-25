@@ -47,7 +47,7 @@ citecolor=black,	%couleur des références
 
 \section{Objectif initial}
 
-Notre objectif initial fut de r\'ealiser un jeu de Kahmat\'e fonctionnel, et d'impl\'ementer une intelligence artificielle. Nous pensions d'abord en finir rapidement avec l'implémen-tation du jeu, pour pouvoir ensuite nous consacrer pleinement \`a l'intelligence artificielle, la partie la plus difficile \`a encoder selon nous.
+Notre objectif initial fut de r\'ealiser un jeu de Kahmat\'e fonctionnel, et d'impl\'ementer une intelligence artificielle. Nous pensions d'abord en finir rapidement avec l'implémen-tation du jeu, pour pouvoir ensuite nous consacrer pleinement \`a l'intelligence artificielle, la partie la plus difficile \`a coder selon nous.
 
 
 Le but \'etait donc d'abord fonctionnel : rendre un jeu qui marche. L'unique contrainte non-fonctionnelle que nous nous \'etions fix\'es : une certaine robustesse aux bugs. La performance, en revanche, n'est que peu rentr\'ee en ligne de compte, sauf lorsque nous avons pens\'e \`a faire une IA.
@@ -66,17 +66,14 @@ Nous avons cod\'e notre jeu de Kahmat\'e en langage Python. Cela nous a grandeme
 \subsubsection{Fichier central}
  Il nous a ainsi \'et\'e facile d'organiser notre fichier principal, \textbf{projet.py}. Celui-ci se d\'ecompose principalement en quatre classes :
 \begin{itemize} 
-\item Une pour le ballon contenant les instances qui concernent le porteur et le d\'eplacement du ballon.\\
-\item Une pour les joueurs o\`u se trouvent les m\'ethodes les plus importantes du jeu : celles pour d\'eplacer les joueurs (\textbf{deplace} et \textbf{deplacement}), pour plaquer (\textbf{placage}), pour passer en force, pour faire une passe et pour tirer en avant. \\
-\item Une pour les \'equipes de facon \`a rassembler tous les joueurs d'une m\^eme \'equipe. \\ 
-\item Une derni\`ere pour le jeu en lui-m\^eme, permettant de l'initialiser, de r\'esoudre les actions et de g\'erer le tour de chaque joueur. \\
+\item Une pour le ballon contenant les instances qui concernent le porteur et le d\'eplacement du ballon.
+\item Une pour les joueurs o\`u se trouvent les m\'ethodes les plus importantes du jeu : celles pour d\'eplacer les joueurs (\textbf{deplace} et \textbf{deplacement}), pour plaquer (\textbf{placage}), pour passer en force, pour faire une passe et pour tirer en avant. 
+\item Une pour les \'equipes de facon \`a rassembler tous les joueurs d'une m\^eme \'equipe. 
+\item Une derni\`ere pour le jeu en lui-m\^eme, permettant de l'initialiser, de r\'esoudre les actions et de g\'erer le tour de chaque joueur.
 \end{itemize}
 
 \subsubsection{Fichiers annexes}
-Autour du fichier central, \textbf{projet.py}, qui contient le coeur du jeu, nous avons ajout\'e de nombreux fichiers secondaires :
-\begin{itemize}
-
-\item Plusieurs fichiers pour r\'ealiser les tests, un pour l'interface graphique, un autre pour la gestion des queues et un dernier pour lancer le jeu. Nous voulions assurer une couverture de code maximale.
+Autour du fichier central, \textbf{projet.py}, qui contient le coeur du jeu, nous avons ajout\'e de nombreux fichiers secondaires : plusieurs fichiers pour r\'ealiser les tests, un pour l'interface graphique, un autre pour la gestion des queues et un dernier pour lancer le jeu. Nous voulions assurer une couverture de code maximale.
 A cet \'egard, Python possède un grand nombre de biblioth\`eques qui se sont r\'ev\'el\'ees tr\`es utiles, en particulier celles relatives aux tests :
 \begin{itemize}
 \item \textbf{unittest} nous a permis de tester notre code et nos fonctions, notamment les principales m\'ethodes de la classe Joueur : \textbf{d\'eplace}, 
@@ -84,12 +81,12 @@ A cet \'egard, Python possède un grand nombre de biblioth\`eques qui se sont r\'
 \item Le module \textbf{coverage} a permis de v\'erifier dans quelle mesure les nombreuses fonctions, correspondant \`a toutes les actions diff\'erentes, \'etaient bien parcourues par les tests.
 \end{itemize}
 
-\item Quant \`a l'interface graphique, nous avons utilis\'e des bibliothèques telles que \textit{Threading} ou encore \textit{PyQt} pour construire notre jeu et faire en sorte que les actions r\'ealis\'ees avec la souris soient effectives : nous avons mod\'elis\'e les joueurs et leurs actions par des boutons cliquables. Il a donc fallu lier \`a chaque bouton un objet ou une m\'ethode.
+Quant \`a l'interface graphique, nous avons utilis\'e des bibliothèques telles que \textit{Threading} ou encore \textit{PyQt} pour construire notre jeu et faire en sorte que les actions r\'ealis\'ees avec la souris soient effectives : nous avons mod\'elis\'e les joueurs et leurs actions par des boutons cliquables. Il a donc fallu lier \`a chaque bouton un objet ou une m\'ethode.
 
-\end{itemize}
+
 \section{Gestion du projet}
 
-Pour mener bien notre projet, nous avons utilis\'e divers outils de communication et de partage. 
+Pour mener à bien notre projet, nous avons utilis\'e divers outils de communication et de partage. 
 \subsection{Github}
 
 \begin{figure}[!h]
@@ -99,9 +96,7 @@ Pour mener bien notre projet, nous avons utilis\'e divers outils de communicatio
 	\end{center}
 \end{figure}
 
-Pour g\'erer le partage du code de façon efficace, nous nous sommes servis de Github, une plate-forme permettant l'\'echange de fichiers. L'avantage de Github est qu'il permet à chacun de modifier librement le code fait par les autres sans que cela affecte la totalit\'e. Ensuite, il suffit de push pour partager les modifications effectu\'ees avec tous les autres aussit\^ot qu'ils feront un pull. De cette facon, la coordination entre nous s'est retrouv\'ee consid\'erablement simplifi\'ee car \`a chaque pull, c'est Github lui-m\^eme qui se charge d'int\'egrer automatiquement les nouveaut\'es. 
-
-En cas de conflit, il le signale pour que l'utilisateur le r\`egle manuellement. Pour communiquer, nous avons bien \'evidemment \'echang\'e des mails, mais l'utilisation d'un tchat nous a vite paru indispensable, c'est pourquoi nous nous sommes tourn\'es vers Slack. 
+Pour g\'erer le partage du code de façon efficace, nous nous sommes servis de Github, une plate-forme permettant l'\'echange de fichiers. L'avantage de Github est qu'il permet à chacun de modifier librement le code fait par les autres sans que cela affecte la totalit\'e. De cette facon, la coordination entre nous s'est retrouv\'ee consid\'erablement simplifi\'ee car Github se charge d'int\'egrer automatiquement les nouveaut\'es et de synchroniser les fichiers. En cas de conflit, il le signale pour que l'utilisateur le r\`egle manuellement. Pour communiquer, nous avons bien \'evidemment \'echang\'e des mails, mais l'utilisation d'un tchat nous a vite paru indispensable, c'est pourquoi nous nous sommes tourn\'es vers Slack. 
 
 
 \subsection{Slack}
@@ -113,7 +108,7 @@ En cas de conflit, il le signale pour que l'utilisateur le r\`egle manuellement.
 	\end{center}
 \end{figure}
 
-Slack nous a permis d'avoir des \'echanges plus efficaces et de dynamiser notre communication. Il devenait ainsi plus facile de demander de l'aide aux autres en cas de probl\`eme, de signaler ce qui ne fonctionnait pas ou encore d'indiquer les bugs qui venaient d'\^etre corrig\'es. Ce fut donc \'et\'e notre outil principal pour communiquer. Cette plate-forme avait de nombreux avantages, mais les messages pouvaient parfois d\'efiler tr\`es rapidement et la recherche d'un commentaire particulier devenait fastidieuse. C'est pourquoi nous avons aussi utilis\'e Trello qui nous a permis d'organiser plus ais\'ement les projets, afin de savoir plus clairement ce qui devait \^etre fait.
+Slack nous a permis d'avoir des \'echanges plus efficaces et de dynamiser notre communication. Il devenait ainsi plus facile de demander de l'aide aux autres en cas de probl\`eme, de signaler ce qui ne fonctionnait pas ou encore d'indiquer les bugs qui venaient d'\^etre corrig\'es. Ce fut donc notre outil principal pour communiquer. Cette plate-forme avait de nombreux avantages, notamment d'afficher les événements de Github et du Trello, mais les messages pouvaient parfois d\'efiler tr\`es rapidement et la recherche d'un commentaire particulier devenait fastidieuse. C'est pourquoi nous avons aussi utilis\'e Trello qui nous a permis d'organiser plus ais\'ement les projets, afin de savoir plus clairement ce qui devait \^etre fait.
 
 
 \subsection{Trello}
@@ -125,13 +120,7 @@ Slack nous a permis d'avoir des \'echanges plus efficaces et de dynamiser notre 
 	\end{center}
 \end{figure}
 
-Notre espace Trello \'etait constitu\'e :
-\begin{itemize}
-\item d'une premi\`ere liste montrant les bugs \`a r\'esoudre,
-\item d'une deuxi\`eme indiquant ce qui restait \`a faire
-\item d'une troisi\`eme indiquant ce qui \'etait en cours
-\item d'une derni\`ere affichant ce qui avait \'et\'e fait.
-\end{itemize}
+Notre espace Trello \'etait constitu\'e : d'une premi\`ere liste montrant les bugs \`a r\'esoudre, d'une deuxi\`eme indiquant ce qui restait \`a faire,  d'une troisi\`eme indiquant ce qui \'etait en cours et d'une derni\`ere affichant ce qui avait \'et\'e fait.
 
 
 De cette facon, il \'etait tr\'es simple de savoir ce que chacun \'etait en train de faire ou devait faire. Tout \'etait class\'e et la plupart des t\^aches portait le nom du membre du projet qui devait s'en charger. Nous avons choisi de mettre les bugs hors des autres listes car ils correspondaient souvent \`a des probl\`emes majeurs qui emp\^echaient le programme de fonctionner correctement et qu'il \'etait par cons\'equent n\'ecessaire de r\'esoudre au plus vite. 
@@ -141,7 +130,7 @@ De cette facon, il \'etait tr\'es simple de savoir ce que chacun \'etait en trai
 
 \subsection{Organisation du groupe}
 
-Il nous a rapidement sembl\'e plus judicieux de nous orienter vers une gestion de projet classique, plut\^ot que d'adopter les m\'ethodes qui nous avaient \'et\'e pr\'esent\'ees par Theodo, comme les gestions Scrum ou XP. En effet, au regard du faible nombre de personnes impliqu\'ees dans le projet (trois), et que la demande risquait assez peu d'\'evoluer au cours du projet, nous avons opt\'e pour une structure classique en V : d'abord, sp\'ecification et conception, puis correction des bugs par des tests de diff\'erentes natures. Il nous a sembl\'e que cette m\'ethode se pr\^etait plus \`a un projet simple comme celui-ci. En effet, le jeu a \'et\'e assez vite sur le point d'\^etre fini : au fur et \`a mesure de l'avanc\'ee du projet, les tests et le debuggage occupaient une partie de plus en plus importante de notre temps.
+Il nous a rapidement sembl\'e plus judicieux de nous orienter vers une gestion de projet classique, plut\^ot que d'adopter les m\'ethodes qui nous avaient \'et\'e pr\'esent\'ees par Theodo, comme les gestions Scrum ou XP. En effet, au regard du faible nombre de personnes impliqu\'ees dans le projet, et que la demande risquait assez peu d'\'evoluer au cours du projet, nous avons opt\'e pour une structure classique en V : d'abord, sp\'ecification et conception, puis correction des bugs par des tests de diff\'erentes natures. Il nous a sembl\'e que cette m\'ethode se pr\^etait plus \`a un projet simple comme celui-ci. En effet, le jeu a \'et\'e assez vite sur le point d'\^etre fini : au fur et \`a mesure de l'avanc\'ee du projet, les tests et le debuggage occupaient une partie de plus en plus importante de notre temps.
 
 Nous nous sommes aussi r\'eunis r\'eguli\`erement, d'abord chaque mercredi matin pendant le cours de TDLOG, mais aussi de plus en plus souvent en dehors de ce cr\'eneau au fur et \`a mesure que l'\'ech\'eance approchait. Cela afin de discuter de l'orientation que devait prendre le projet, notamment en ce qui concerne l'intelligence artificielle, l'interface graphique ou les interprétations possibles des règles du jeu.
 
@@ -152,17 +141,17 @@ Au cours du d\'eroulement du projet, nous avons \'et\'e confront\'es \`a plusieu
 
 \subsection{Manier de nouveaux outils : GitHub}
 
-GitHub \'etait un outil nouveau pour nous tous. Il nous a fallu du temps pour bien le ma\^itriser. Par exemple, au d\'ebut, la proc\'edure \`a suivre lors d'un probl\`eme de fusion de fichiers apr\`es un pull ne nous a pas sembl\'e tr\`es intuitive. Ainsi, vers le milieu du projet, il y a eu de nombreuses confusions, surtout lorsque tout le monde faisait des push simultan\'ement. Il nous a donc fallu un peu de temps pour nous habituer \`a ce nouvel environnement de travail. 
+GitHub \'etait un outil nouveau pour nous tous. Il nous a fallu du temps pour bien le ma\^itriser. Par exemple, au d\'ebut, la proc\'edure \`a suivre lors d'un probl\`eme de fusion de fichiers apr\`es un pull ne nous a pas sembl\'e tr\`es intuitive. Ainsi, vers le milieu du projet, il y a eu de nombreuses confusions, surtout lorsque tout le monde codait simultan\'ement sur un même fichier. Il nous a donc fallu un peu de temps pour nous habituer \`a ce nouvel environnement de travail. 
 
 \subsection{Kahmat\'e}
-Ensuite, il y a eu des problèmes avec le jeu en lui m\^eme. Nous avons parfois pris des d\'ecisions pour simplifier notre code tout en respectant les r\`egles du jeu. Par exemple, pour la fonction \textbf{placage}, le choix de la case o\`u le ballon doit arriver en cas de succ\`es n'est pas \'evidente. Nous avons choisi de le placer \`a l'oppos\'e du plaqueur avec des cas particuliers pour les bords du terrain. D'autres choix \'etaient possibles mais ils risquaient d'\^etre plus compliqu\'es \`a impl\'ementer et il fallait garder du temps pour produire l'interface graphique.
+Ensuite, il y a eu des problèmes avec le jeu en lui m\^eme. Nous avons parfois pris des d\'ecisions pour simplifier notre code tout en respectant les r\`egles du jeu. Par exemple, pour la fonction \textbf{placage}, le choix de la case o\`u le ballon doit arriver en cas de succ\`es n'est pas \'evidente et n'est pas précisé dans les règles. Nous avons choisi de le placer \`a l'oppos\'e du plaqueur avec des cas particuliers pour les bords du terrain. D'autres choix \'etaient possibles mais ils risquaient d'\^etre plus compliqu\'es \`a impl\'ementer et il fallait garder du temps pour produire l'interface graphique.
 
 \subsection{L'intelligence artificielle}
 
 En premi\`ere approche, nous souhaitions 
-r\'ealiser, en sus du jeu simple, une intelligence artificielle contre laquelle un humain pourrait jouer.  Malheureusement, après un change de mails avec un expert du domaine, Tristan Cazenave, nous avons choisi d'abandonner l'id\'ee de faire une IA car il s'av\`ere qu'elle aurait \'et\'e beaucoup trop lente. En effet, deux possibilit\'es qui s'offraient \`a nous :
+r\'ealiser, en sus du jeu simple, une intelligence artificielle contre laquelle un humain pourrait jouer.  Malheureusement, après un échange de mails avec un expert du domaine, Tristan Cazenave, nous avons choisi d'abandonner l'id\'ee de faire une IA car il s'av\`ere qu'elle aurait \'et\'e inefficace. En effet, deux possibilit\'es qui s'offraient \`a nous :
 \begin{itemize}
-\item L'algorithme min-max , qui consiste, par l'intermédiaire d'une fonction d'\'evaluation et un algorithme arborescent, \`a minimiser les pertes d'un joueur en supposant que l'adversaire souhaite les maximiser. Malheuresement, cet algorithme demandait le calcul d'un minimum sur un nombre de coups (dit facteur de branchement) dont nous avons vite compris qu'il allait se r\'ev\'eler \^etre prohibitif (aux alentours de 1000, sachant que pour un jeu de Go, o\`u l'algorithme min-max ne fonctionne pas, il est aux alentours de 400). Nous avons un moment envisag\'e de r\'eduire artificiellement le facteur de branchement, en limitant le nombre de coups possibles pour notre IA, avant d'abandonner en constatant que le facteur de branchement serait toujours rest\'e trop \'elev\'e.
+\item L'algorithme min-max , qui consiste, par l'intermédiaire d'une fonction d'\'evaluation et un algorithme arborescent, \`a minimiser les pertes d'un joueur en supposant que l'adversaire souhaite les maximiser. Malheureusement, cet algorithme demandait le calcul d'un minimum sur un nombre de coups (dit facteur de branchement) dont nous avons vite compris qu'il allait se r\'ev\'eler \^etre prohibitif (aux alentours de 1000, sachant que pour un jeu de Go, o\`u l'algorithme min-max ne fonctionne pas, il est aux alentours de 400). Nous avons un moment envisag\'e de r\'eduire artificiellement le facteur de branchement, en limitant le nombre de coups possibles pour notre IA, avant d'abandonner en constatant que le facteur de branchement serait toujours rest\'e trop \'elev\'e.
 \item Les syst\`emes experts, qui consistent \`a pratiquer le jeu, et \`a r\'ealiser un algorithme ad hoc. En raison de la contrainte de temps, nous n'avons finalement pas pu choisir cette solution. 
 \end{itemize}
 
@@ -172,17 +161,16 @@ Nous nous sommes donc concentr\'es sur l'interface graphique, qui, bien que plus
 
 \subsection{Debugger}
 
-La gestion de projet en V nous a \'et\'e assez b\'en\'efique pour ce programme. En effet, les diff\'erentes classes et m\'ethodes \'etaient imbriqu\'ees les unes dans les autres. Par cons\'equent, tout test unitaire \'etait impossible (ou presque). En premier lieu, nous avons donc pleinement mis \`a profit le concept de mock object.
+Les diff\'erentes classes et m\'ethodes \'etaient imbriqu\'ees les unes dans les autres. Par cons\'equent, tout test unitaire \'etait impossible (ou presque). En premier lieu, nous avons donc pleinement mis \`a profit le concept de mock object.
 Par la suite, nous avons pu repasser \`a des tests de niveau de granularit\'e plus \'elev\'es : par int\'egration ou par validation.
 
 Nous avons rencontr\'e un certain nombre de r\'egressions, par exemple lors de la mise en place des logs. Ces régressions ont pu être corrigées rapidement et efficacement grâce aux tests déjà mis en place.
 
-Depuis que l'interface graphique a \'et\'e int\'egr\'ee, il ne nous est plus possible de lancer les tests. En effet, nous lancions ces derniers depuis la version de notre jeu avec une interface utilisateur sur la console. Bien entendu, nous avons bien v\'erifi\'e que les fonctions r\'epondaient au cahier des charges avant de finalement les int\'egrer dans l'interface.
+Depuis que l'interface graphique a \'et\'e int\'egr\'ee, il ne nous est plus possible de lancer les tests. En effet, nous lancions ces derniers depuis la version de notre jeu avec interface utilisateur sur la console. Bien entendu, nous avons bien v\'erifi\'e que les fonctions r\'epondaient au cahier des charges avant de finalement les int\'egrer dans l'interface.
 
 
-\subsection{R\`egles}
-
-Nous nous sommes rendus compte que nous avions mal interprété un point de d\'etail des r\`egles. En effet, l'utilisation de telle ou telle carte Forme, qui participe \`a la r\'esolution des actions, doit \^etre un choix du joueur et non pas le fait du hasard. Contraint par le temps, nous n'avons pas pu corriger cette interprétation qui selon nous n'empêche pas le joueur de jouer et ne fait perdre aucune saveur au jeu.
+\subsection{Interprétation des règles}
+Certaines règles sur la résolution d'évènements n'étaient pas précisées, nous avons donc du interpréter le jeu, apporter des réponses cohérentes pour résoudre ces actions sans fausser le jeu. Cependant, nous nous sommes rendus compte que nous avions mal interprété un point de d\'etail des r\`egles. En effet, l'utilisation de telle ou telle carte \textit{forme}, qui participe \`a la r\'esolution des actions, doit \^etre un choix du joueur et non pas le fait du hasard. Contraint par le temps, nous n'avons pas pu corriger cette interprétation qui selon nous n'empêche pas le joueur de jouer et ne fait perdre aucune saveur au jeu.
 
 \section{Les r\'esultats obtenus}
 
@@ -204,6 +192,6 @@ En d\'efinitive, \`a la fin de la p\'eriode de d\'eveloppement, nous sommes parv
 
 
 \subsection{Conclusion}
-Notre jeu est op\'erationnel, il est possible d'y jouer \`a deux sur une m\^eme machine. Les fonctionnalités principales ont \'et\'e testées plusieurs fois dans des cas distincts (test par \'enum\'eration, principalement) et semblent satisfaisantes. On peut enti\`erement jouer \`a la souris gr\^ace l'interface graphique.Il y a une divergence par rapport à ce qui \'etait pr\'evu au d\'epart puisque l'intelligence artificielle n'a finalement pas vu le jour, mais son absence a \'et\'e compensée par une meilleure interface graphique. Cela mis \`a part, le r\'esultat final nous para\^it en accord avec ce que nous avions annonc\'e au d\'ebut.
+Notre jeu est op\'erationnel, il est possible d'y jouer \`a deux sur une m\^eme machine. Les fonctionnalités principales ont \'et\'e testées plusieurs fois dans des cas distincts et semblent satisfaisantes. On peut enti\`erement jouer \`a la souris gr\^ace l'interface graphique. Il y a une divergence par rapport à ce qui \'etait pr\'evu au d\'epart puisque l'intelligence artificielle n'a finalement pas vu le jour, mais son absence a \'et\'e compensée par une meilleure interface graphique. Cela mis \`a part, le r\'esultat final nous para\^it en accord avec ce que nous avions annonc\'e au d\'ebut.
 
 \end{document}
