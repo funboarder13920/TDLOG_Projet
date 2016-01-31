@@ -10,6 +10,7 @@ log.propagate = True
 nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire", "ordinaire", "dur", "costaud", "fute", "rapide"]
+
 # propriété ,( bonus attaque , bonus défense, déplacement)
 bonus = {"ordinaire": (0, 0, 3), "dur": (1, 0, 3), "costaud": (
     2, 1, 2), "fute": (0, 1, 3), "rapide": (-1, -1, 4)}
@@ -17,6 +18,17 @@ bonus = {"ordinaire": (0, 0, 3), "dur": (1, 0, 3), "costaud": (
 crash = pyglet.media.load("crash.mp3", streaming=False)
 swoosh = pyglet.media.load("swoosh.mp3", streaming=False)
 firework = pyglet.media.load("Fireworks.mp3", streaming=False)
+
+
+def printIntro():
+    print("****************************************** Kahmaté ******************************************")
+    print("Auteurs : Valentin B., Quentin B., François D (2015) ")
+    print("\nLe Kahmaté se joue à deux joueurs, amusez-vous bien !")
+    print("Voir règle du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
+    print("\n")
+    print("Instructions: ")
+    print("* Suivre les instructions de la console")
+    print("**********************************************************************************************")
 
 
 def add(p1, p2):
@@ -32,8 +44,8 @@ def absol(point):
 
 
 def droite(point1, point2):
+    # Retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
     log.debug("droite({0},{1})".format(point1, point2))
-    # retourne a,b,c de la droite ax+by+c=0 passant par point1 et point2
     assert point1 != point2
     if point1[0] == point2[0]:
         return(1, 0, -point1[0])
@@ -44,18 +56,22 @@ def droite(point1, point2):
 
 
 def calcPosDroite(r, pos):
+    # Calcul du point pos sur la droite r
     return r[0] * pos[0] + r[1] * pos[1] + r[2]
 
 
 def inRange(pos):
-    return (pos[0] > 0 and pos[0] < 12 and pos[1] >= 0 and pos[1] < 8)
+    # Vérifie si pos à l'intérieur du terrain
+    return (pos[0] > 0 and pos[0] < nbColonne - 1 and pos[1] >= 0 and pos[1] < nbLigne)
 
 
 def inRangeGrid(pos):
-    return (pos[0] >= 0 and pos[0] <= 12 and pos[1] >= 0 and pos[1] < 8)
+    # Vérifie si pos à l'intérieur ou sur les limites du terrain
+    return (pos[0] >= 0 and pos[0] <= nbColonne - 1 and pos[1] >= 0 and pos[1] < nbLigne)
 
 
 def choixPos(nEquipe):
+    # Choix des positions des joueurs de nEquipe
     log.info("Choix de l'équipe {0} ...".format(nEquipe))
     globalQueue.waitChoix.put(True)
     positions = globalQueue.sendPosition.get()
@@ -70,15 +86,7 @@ class jeu:
         for i in range(nbLigne):
             for j in range(nbColonne):
                 joueur(None, self, 3, (j, i), "", 0)
-        # TODO :Mettre ce texte dans une fonction printIntro
-        print("****************************************** Kahmaté ******************************************")
-        print("Auteurs : Valentin B., Quentin B., François D (2015) ")
-        print("\nLe Kahmaté se joue à deux joueurs, amusez-vous bien !")
-        print("Voir règle du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
-        print("\n")
-        print("Instructions: ")
-        print("* Suivre les instructions de la console")
-        print("**********************************************************************************************")
+        printIntro()
         print("\nChoix de la position des joueurs de l'équipe 1")
         positions1 = choixPos(1)
         print("\nChoix de la position des joueurs de l'équipe 2")
@@ -90,6 +98,7 @@ class jeu:
         globalQueue.queue.put(self)
 
     def changeTour(self):
+        # Changement de tour
         log.info("Début des tours de jeu")
         if self.tour == 2:
             log.info("Tour de jeu équipe 1")
@@ -101,6 +110,7 @@ class jeu:
             self.equipe2.joue()
 
     def resolution(self, attaquant, defenseur):
+        # Résolution des actions entre deux joueurs
         log.info("Résolution attaquant{0}/équipe {1} - défenseur {2}/équipe {3}".format(
             attaquant.numero, attaquant.nEquipe, defenseur.numero, defenseur.nEquipe))
         vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
@@ -111,6 +121,7 @@ class jeu:
         elif vDef > vAtt:
             print("Victoire du défenseur par {0}".format(vDef - vAtt))
         else:
+            # En cas d'égalité on retire une carte
             print("Egalité, on tire une nouvelle carte forme")
             vAtt = bonus[attaquant.prop][0] + attaquant.equipe.forme()
             vDef = bonus[defenseur.prop][1] + defenseur.equipe.forme()
@@ -122,6 +133,7 @@ class jeu:
         return vAtt - vDef
 
     def libre(self, pos, depRestant=0):
+        # Vérifie si la case pos est disponible
         log.debug("Test Libre de la position ({0},{1})".format(pos[0], pos[1]))
         assert(pos[0] >= 0 and pos[0] < nbColonne and pos[
                1] >= 0 and pos[1] < nbLigne)
@@ -131,6 +143,7 @@ class jeu:
         return isLibre
 
     def interception(self, joueur1, joueur2):
+        # Tentative d'interception suite à une passe entre joueur1 et joueur2
         pos1 = joueur1.pos
         pos2 = joueur2.pos
         log.info("Interception entre ({0},{1}) et ({2},{3})".format(
@@ -167,6 +180,7 @@ class jeu:
         return inter
 
     def fin(self):
+        # Fin du jeu
         print("Vous avez gagné")
 
 
@@ -180,6 +194,7 @@ class ballon:
         self.porteur = self.jeu.matrice[position[0]][position[1]][-1]
 
     def deplacement(self):
+        # Déplacement du ballon
         if self.porteur.nEquipe != 3:
             self.position = self.porteur.pos
             log.debug("Le ballon se deplace à la postion ({0},{1})".format(
@@ -207,23 +222,26 @@ class joueur:
             self.depRestant = 0
 
     def deplace(self, pos):
+        # Le joueur se déplace sur la case pos
         log.debug("Le joueur {0} se déplace à ({1},{2})".format(
             self.numero, pos[0], pos[1]))
-        # Cas où on va sur une case où il y a un joueur ko
         if self.jeu.matrice[pos[0]][pos[1]][0].ko and not self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko:
+            # Cas où le joueur va sur une case où il y a un joueur ko
             self.jeu.matrice[pos[0]][pos[1]].append(self)
             self.jeu.matrice[self.pos[0]][self.pos[1]][0] = joueur(
-                None, self.jeu, 3, self.pos, "", 0)  # joueur de l'équipe 3 pour compléter
-        # Cas où on part d'une case où il y a un joueur ko
+                None, self.jeu, 3, self.pos, "", 0)
+            # On ajoute un joueur de l'équipe 3 à la place
         elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and not self.jeu.matrice[pos[0]][pos[1]][0].ko:
+            # Cas où le joueur part d'une case où il y a un joueur ko
             self.jeu.matrice[pos[0]][pos[1]][0] = self
             self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
-        # Cas où on part d'une case où un joueur est ko pour arriver ù une case
-        # où un autre joueur est ko
         elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and self.jeu.matrice[pos[0]][pos[1]][0].ko:
+            # Cas où le joueur part d'une case où un joueur est ko pour arriver sur une case
+            # où un autre joueur est ko
             self.jeu.matrice[pos[0]][pos[1]].append(self)
             self.jeu.matrice[self.pos[0]][self.pos[1]].remove(self)
-        else:  # Cas où les joueurs ko ne sont pas impliqués
+        else:
+            # Cas où les joueurs ko ne sont pas impliqués
             self.jeu.matrice[pos[0]][pos[1]][0] = self
             self.jeu.matrice[self.pos[0]][self.pos[1]][
                 0] = joueur(None, self.jeu, 3, self.pos, "", 0)
@@ -232,9 +250,8 @@ class joueur:
 
     def deplacement(self, pos):
         log.info("Déplacement du joueur {0}".format(self.numero))
-        # pas par pas c'est plus simple
-        # le joueur ne doit pas être KO et le déplacement doit être
-        # d'au plus 1
+        # Le joueur se déplace d'une case à la fois
+        # Le joueur ne doit pas être KO
         if not self.ko:
             if self.depRestant > 0 and sum(absol(sub(self.pos, pos))) == 1 and self.jeu.libre(pos, self.depRestant) and self.onGrid(pos):
                 if self.depRestant == bonus[self.prop][2]:
@@ -263,29 +280,31 @@ class joueur:
         globalQueue.queue.put(self.jeu)
 
     def onGrid(self, pos):
-        log.debug("Test si la postion du joueur est bonne")
+        # Vérifie si la case pos est accessible au joueur
+        log.debug("Test si la position du joueur est bonne")
         posx = pos[0]
         posy = pos[1]
         if self.nEquipe == 2:
             if self.porteur:
-                return (posx >= 0 and posx < 12 and posy >= 0 and posy < 8)
+                return (posx >= 0 and posx < nbColonne - 1 and posy >= 0 and posy < nbLigne)
             else:
-                return (posx > 0 and posx < 12 and posy >= 0 and posy < 8)
+                return (posx > 0 and posx < nbColonne - 1 and posy >= 0 and posy < nbLigne)
         else:
             if self.porteur:
-                return (posx > 0 and posx <= 12 and posy >= 0 and posy < 8)
+                return (posx > 0 and posx <= nbColonne - 1 and posy >= 0 and posy < nbLigne)
             else:
-                return (posx > 0 and posx < 12 and posy >= 0 and posy < 8)
+                return (posx > 0 and posx < nbColonne - 1 and posy >= 0 and posy < nbLigne)
 
     def enArriere(self, joueur2):
         log.debug("Test si le joueur 2 est derrière joueur 1")
-        # joueur2 est il derrière joueur 1?
+        # Vérifie si le joueur2 est derrière le joueur
         if self.nEquipe == 1:
             return (self.pos[0] - joueur2.pos[0]) > 0 and max(absol(sub(self.pos, joueur2.pos))) <= 2
         else:
             return (self.pos[0] - joueur2.pos[0]) < 0 and max(absol(sub(self.pos, joueur2.pos))) <= 2
 
     def passe(self, joueur2):
+        # Passe du joueur au joueur2
         log.info("Le joueur {0} essaie de passer au joueur {1}".format(
             self.numero, joueur2.numero))
         if self.porteur:
@@ -317,6 +336,7 @@ class joueur:
         globalQueue.queue.put(self.jeu)
 
     def poseballon(self, joueur2):
+        # Position du ballon après un placage ou un passage en force
         log.debug("Plaquage classique ou passage en force")
         if joueur2.pos[0] > self.pos[0]:
             log.debug("Joueur plaqué à gauche du plaqueur")
@@ -384,6 +404,8 @@ class joueur:
             self.jeu.ballon.porteur.porteur = True
 
     def placage(self, joueur2, plaquer=True):
+        # Placage du joueur sur joueur2 si plaquer = True
+        # Passage en force du joueur sinon
         log.info("Le joueur {0} essaie de plaquer le joueur {1}".format(
             self.numero, joueur2.numero))
         if sum(absol(sub(self.pos, joueur2.pos))) == 1 and (plaquer or self.depRestant > 1) and not(self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko):
@@ -414,11 +436,12 @@ class joueur:
         globalQueue.queue.put(self.jeu)
 
     def nobodyFront(self):
+        # Vérifie si d'autres joueurs de la même équipe sont devant
         log.debug("Test personne en face")
         if self.nEquipe == 1:
             for joueur in self.equipe.equipe:
                 if joueur.pos[0] > self.pos[0]:
-                    #log.debug("Résultat : Faux")
+                    log.debug("Résultat : Faux")
                     return False
             log.debug("Résultat : Vrai")
             return True
@@ -431,6 +454,8 @@ class joueur:
             return True
 
     def front(self, pos):
+        # Vérifie si le ballon peut être envoyé sur la case pos
+        # pour un tir en avant
         log.debug("Test endroit où on envoie le ballon")
         if self.nEquipe == 1:
             return pos[0] - self.pos[0] > 0 and pos[0] - self.pos[0] <= 3
@@ -438,6 +463,7 @@ class joueur:
             return pos[0] - self.pos[0] < 0 and -pos[0] + self.pos[0] <= 3
 
     def tirAvant(self, pos):
+        # Envoie la ballon sur la case pos si c'est possible
         log.info("Le joueur {0} essaie de tirer en avant".format(self.numero))
         if self.porteur:
             if self.nobodyFront() and self.front(pos):
@@ -473,7 +499,7 @@ class equipe:
                               i], prop[i], i) for i in range(6)]
 
     def joue(self):
-        # Reinitialisation
+        # Le joueur qui contrôle l'équipe joue
         log.debug("L'équipe {0} joue un tour".format(self.nEquipe))
         self.coupRestant = 2
         for joueur in self.equipe:
@@ -537,6 +563,7 @@ class equipe:
             print("L'équipe " + str(self.nEquipe) + " a gagné!")
 
     def forme(self):
+        # Choix aléatoire des cartes forme pour la résolution des actions
         log.debug("Calcul de la forme de l'équipe {0}".format(self.nEquipe))
         if self.carte == [False for i in range(6)]:
             log.debug(
@@ -553,9 +580,11 @@ class equipe:
         return cartePossible[e] + 1
 
     def finTour(self):
+        # Fin du tour
         log.debug("Test fin du tour")
         for joueur in self.equipe:
             if len(self.jeu.matrice[joueur.pos[0]][joueur.pos[1]]) != 1:
+                # Le tour ne peut pas être fini s'il y a plus d'un joueur sur une case
                 log.debug("Le tour n'est pas fini")
                 return False
         log.debug("Le tour est fini")
