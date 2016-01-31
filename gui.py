@@ -93,6 +93,7 @@ class choixThread(qtc.QThread):
         while not(self.gui.goChoix.empty()):
             self.gui.goChoix.get()
         self.gui.equipeActu = 2
+        self.gui.buttonChoix.setIcon(qtg.QIcon("./images/thumbRed.png"))
         self.gui.choixPos(2)
         self.emit(qtc.SIGNAL("play"))
         self.blockSend = True
@@ -135,7 +136,7 @@ class gui1(qtg.QWidget):
         self.posTemp = (-1, -1)
         self.goChoix = queue.Queue()
         self.resize(800, 600)
-        self.buttonFinTour = qtg.QPushButton("Fin du tour", self)
+        self.buttonFinTour = qtg.QPushButton("", self)
         self.button = buttonPos(self, 0, 0)
         self.blockSend = True
         self.buttonEquipe1 = [None for j in range(6)]
@@ -147,15 +148,17 @@ class gui1(qtg.QWidget):
         self.thread = listen()
         self.interc = askInter()
         self.depThread = depThread()
-        self.buttonChoix = qtg.QPushButton("Fin du choix", self)
+        self.buttonChoix = qtg.QPushButton("", self)
         self.choix = choixThread(self)
         self.initAll()
         print("fin de l'initialisation")
         sys.exit(self.app.exec_())
 
     def initAll(self):
-        self.buttonFinTour.resize(70, 25)
-        self.buttonFinTour.move(85, 20)
+        self.buttonFinTour.resize(70, 40)
+        self.buttonFinTour.move(340, 25)
+        self.buttonFinTour.setStyleSheet("background-color: transparent")
+        self.buttonFinTour.setIconSize(qtc.QSize(40, 40))
         self.buttonFinTour.hide()
         self.button.resize(700, 492)
         self.button.move(20, 90)
@@ -198,8 +201,11 @@ class gui1(qtg.QWidget):
         self.buttonBallon.setIconSize(qtc.QSize(20, 20))
         self.buttonBallon.show()
         self.show()
-        self.buttonChoix.resize(70, 25)
-        self.buttonChoix.move(85, 20)
+        self.buttonChoix.setIcon(qtg.QIcon("./images/thumbBlue.png"))
+        self.buttonChoix.resize(70, 40)
+        self.buttonChoix.move(340, 10)
+        self.buttonChoix.setStyleSheet("background-color: transparent")
+        self.buttonChoix.setIconSize(qtc.QSize(40, 40))
         self.buttonChoix.clicked.connect(self.endChoixTrue)
         self.buttonChoix.show()
         self.choix.start()
@@ -224,9 +230,11 @@ class gui1(qtg.QWidget):
         if nEquipe == 1:
             self.equipeInfo.setTextColor(qtg.QColor("blue"))
             self.equipeInfo.setText("Equipe 1")
+            self.buttonFinTour.setIcon(qtg.QIcon("./images/thumbBlue.png"))
         else:
             self.equipeInfo.setTextColor(qtg.QColor("red"))
             self.equipeInfo.setText("Equipe 2")
+            self.buttonFinTour.setIcon(qtg.QIcon("./images/thumbRed.png"))
 
     def showPlayerInfo(self, pos1):
         try:
