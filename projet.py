@@ -61,12 +61,12 @@ def calcPosDroite(r, pos):
 
 
 def inRange(pos):
-    # Vérifie si pos à l'intérieur du terrain
+    # Vérifie si pos est à l'intérieur du terrain
     return (pos[0] > 0 and pos[0] < nbColonne - 1 and pos[1] >= 0 and pos[1] < nbLigne)
 
 
 def inRangeGrid(pos):
-    # Vérifie si pos à l'intérieur ou sur les limites du terrain
+    # Vérifie si pos est à l'intérieur ou sur les limites du terrain
     return (pos[0] >= 0 and pos[0] <= nbColonne - 1 and pos[1] >= 0 and pos[1] < nbLigne)
 
 
@@ -230,7 +230,7 @@ class joueur:
             self.jeu.matrice[pos[0]][pos[1]].append(self)
             self.jeu.matrice[self.pos[0]][self.pos[1]][0] = joueur(
                 None, self.jeu, 3, self.pos, "", 0)
-            # On ajoute un joueur de l'équipe 3 à la place
+            # On ajoute un joueur de l'équipe 3 à la place du joueur
         elif self.jeu.matrice[self.pos[0]][self.pos[1]][0].ko and not self.jeu.matrice[pos[0]][pos[1]][0].ko:
             # Cas où le joueur part d'une case où il y a un joueur ko
             self.jeu.matrice[pos[0]][pos[1]][0] = self
@@ -463,7 +463,7 @@ class joueur:
             return pos[0] - self.pos[0] < 0 and -pos[0] + self.pos[0] <= 3
 
     def tirAvant(self, pos):
-        # Envoie la ballon sur la case pos si c'est possible
+        # Envoie le ballon sur la case pos si c'est possible
         log.info("Le joueur {0} essaie de tirer en avant".format(self.numero))
         if self.porteur:
             if self.nobodyFront() and self.front(pos):
