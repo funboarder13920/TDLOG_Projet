@@ -6,7 +6,7 @@ import pyglet
 
 logging.config.fileConfig("log.conf")
 log = logging.getLogger("application")
-log.propagate = True
+log.propagate = False
 nbColonne = 13
 nbLigne = 8
 prop = ["ordinaire", "ordinaire", "dur", "costaud", "fute", "rapide"]
@@ -24,11 +24,8 @@ def printIntro():
     print("****************************************** Kahmaté ******************************************")
     print("Auteurs : Valentin B., Quentin B., François D (2015) ")
     print("\nLe Kahmaté se joue à deux joueurs, amusez-vous bien !")
-    print("Voir règle du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
+    print("Règles du jeu sur : http://jeuxstrategie1.free.fr/jeu_kahmate/regle.pdf")
     print("\n")
-    print("Instructions: ")
-    print("* Suivre les instructions de la console")
-    print("**********************************************************************************************")
 
 
 def add(p1, p2):
@@ -584,7 +581,8 @@ class equipe:
         log.debug("Test fin du tour")
         for joueur in self.equipe:
             if len(self.jeu.matrice[joueur.pos[0]][joueur.pos[1]]) != 1:
-                # Le tour ne peut pas être fini s'il y a plus d'un joueur sur une case
+                # Le tour ne peut pas être fini s'il y a plus d'un joueur sur
+                # une case
                 log.debug("Le tour n'est pas fini")
                 return False
         log.debug("Le tour est fini")

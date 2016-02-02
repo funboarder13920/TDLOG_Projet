@@ -16,7 +16,7 @@ token = ["normal1.png", "normal2.png", "dur.png",
 queuePos = queue.Queue()
 queueListen = queue.Queue()
 log = logging.getLogger("gui")
-log.propagate = True
+log.propagate = False
 
 
 def reverse(click):
@@ -24,6 +24,7 @@ def reverse(click):
 
 
 class listen(qtc.QThread):
+    # Récupère la position des joueurs pour mettre à jour l'affichage graphique
 
     def __init__(self, parent=None):
         qtc.QThread.__init__(self, parent)
@@ -35,6 +36,7 @@ class listen(qtc.QThread):
 
 
 class askInter(qtc.QThread):
+# Lorsqu'une interception de passe est possible, une boite de dialogue s'ouvre pour demander si le joueur souhaite intercepter
 
     def __init__(self, parent=None):
         qtc.QThread.__init__(self, parent)
@@ -47,6 +49,7 @@ class askInter(qtc.QThread):
 
 
 class depThread(qtc.QThread):
+# Renvoie la position d'un joueur et celle d'une case de la grille au programme principal
 
     def __init__(self, parent=None):
         qtc.QThread.__init__(self, parent)
@@ -73,6 +76,7 @@ class depThread(qtc.QThread):
 
 
 class choixThread(qtc.QThread):
+# Récupère le choix de position des équipes et le renvoie au fichier principal
 
     def __init__(self, gui):
         qtc.QThread.__init__(self, None)
@@ -87,19 +91,20 @@ class choixThread(qtc.QThread):
             self.gui.goChoix.get()
         self.blockSend = False
         self.gui.choixPos(1)
-        swoosh.play()
+        #swoosh.play()
         while not(queuePos.empty()):
             queuePos.get()
         while not(self.gui.goChoix.empty()):
             self.gui.goChoix.get()
         self.gui.equipeActu = 2
-        self.gui.buttonChoix.setIcon(qtg.QIcon("./images/thumbRed.png"))
+        self.emit(qtc.SIGNAL("turnRed"))
         self.gui.choixPos(2)
         self.emit(qtc.SIGNAL("play"))
         self.blockSend = True
 
 
 class buttonPos(qtg.QPushButton):
+# Class button modifiée pour renvoyer la position lorsque l'on clique sur un bouton
 
     def __init__(self, parent, nEquipe, nJoueur):
         super(buttonPos, self).__init__(parent)
@@ -219,6 +224,7 @@ class gui1(qtg.QWidget):
         self.connect(self.interc, qtc.SIGNAL(
             "interception"), self.askInterception)
         self.connect(self.choix, qtc.SIGNAL("play"), self.changeAffich)
+        self.connect(self.choix, qtc.SIGNAL("turnRed"), self.turnRed)
         self.buttonFinTour.clicked.connect(self.finTour)
         self.depThread.start()
         self.thread.start()
@@ -226,6 +232,7 @@ class gui1(qtg.QWidget):
         log.info("initAll : fin de l'affichage")
 
     def showEquipe(self, nEquipe):
+    # Changement de l'affichage lorsque c'est au tour de l'équipe suivante de jouer
         log.info("showEquip: affiche équipe")
         if nEquipe == 1:
             self.equipeInfo.setTextColor(qtg.QColor("blue"))
@@ -237,6 +244,7 @@ class gui1(qtg.QWidget):
             self.buttonFinTour.setIcon(qtg.QIcon("./images/thumbRed.png"))
 
     def showPlayerInfo(self, pos1):
+    # Affiche des informations sur le joueur sélectionné au dessus du plateau
         try:
             log.info("showPlayerInfo: Affiche les infos du joueur")
             if self.jeu.matrice[pos1[0]][pos1[1]][-1].nEquipe != 3:
@@ -247,14 +255,21 @@ class gui1(qtg.QWidget):
         except:
             log.error("showPlayerInfo: Fail de l'affichage des infos du joueur")
 
+    def turnRed(self):
+    # Rend le pouce rouge
+        self.buttonChoix.setIcon(qtg.QIcon("./images/thumbRed.png"))
+
     def hidePlayerInfo(self):
+    # Cache les informations sur le joueur
         self.playerInfo.hide()
 
     def changeAffich(self):
+    # Transition entre le placement des joueurs et le début de la partie
         self.buttonChoix.hide()
         self.buttonFinTour.show()
 
     def endChoixTrue(self):
+    # Permet de quitter proprement la boucle principale lorsqu'un joueur a terminé de placer ses joueurs
         log.info("endChoixTrue: mettre fin au choix")
         self.endChoix = True
         if queuePos.empty():
@@ -265,9 +280,12 @@ class gui1(qtg.QWidget):
             self.goChoix.put(True)
 
     def send(self, button, nJoueur, nEquipe):
+    # Renvoie la position sur la grille du joueur
+    # Fais passer la boucle à l'étape suivante: attendre une position sur la grille
         log.info("Fonction send")
         if not self.blockSend:
-            log.info("Send: envoyer les infos du joueur sur lequel on vient de cliquer")
+            log.info(
+                "Send: envoyer les infos du joueur sur lequel on vient de cliquer")
             self.nJoueurTemp = nJoueur
             self.nEquipeTemp = nEquipe
             self.posTemp = reverse((self.button.x(), self.button.y()))
@@ -276,6 +294,7 @@ class gui1(qtg.QWidget):
                 self.goChoix.put(True)
 
     def choixPos(self, nEquipe):
+    # Boucle de choix de position des joueurs pour une équipe
         globalQueue.waitChoix.get()
         positions = [(-1, -1) for i in range(6)]
         k = 0
@@ -360,6 +379,7 @@ class gui1(qtg.QWidget):
             self.nEquipe = -1
 
     def askInterception(self, str):
+    # Boite de dialogue lors d'une interception
         reply = qtg.QMessageBox.question(
             self, 'Message', str, qtg.QMessageBox.Yes, qtg.QMessageBox.No)
         if reply == qtg.QMessageBox.Yes:
@@ -368,6 +388,7 @@ class gui1(qtg.QWidget):
             globalQueue.askInter.put(False)
 
     def finTour(self):
+    # Le joueur met fin à son tour
         if globalQueue.waitOut:
             while(not queuePos.empty()):
                 queuePos.get()
@@ -376,6 +397,7 @@ class gui1(qtg.QWidget):
             globalQueue.queueAction.put(["fin"])
 
     def update(self, value):
+    # Met à jour l'affichage graphique
         self.jeu = value
         for i in range(6):
             if value.equipe1.equipe[i].ko:
