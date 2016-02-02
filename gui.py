@@ -156,7 +156,7 @@ class gui1(qtg.QWidget):
 
     def initAll(self):
         self.buttonFinTour.resize(70, 40)
-        self.buttonFinTour.move(340, 25)
+        self.buttonFinTour.move(340, 20)
         self.buttonFinTour.setStyleSheet("background-color: transparent")
         self.buttonFinTour.setIconSize(qtc.QSize(40, 40))
         self.buttonFinTour.hide()
@@ -172,7 +172,7 @@ class gui1(qtg.QWidget):
         self.playerInfo.setStyleSheet(
             "QFrame {background: rgba(0,255,0,0%); border: rgba(0,255,0,0%)}")
         self.equipeInfo.setReadOnly(True)
-        self.equipeInfo.move(400, 15)
+        self.equipeInfo.move(400, 20)
         self.equipeInfo.setFontWeight(200)
         self.equipeInfo.setFontPointSize(20)
         self.equipeInfo.resize(400, 50)
